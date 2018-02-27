@@ -12,13 +12,13 @@
 	<!-- css -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
-	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
+	<link href="${ pageContext.request.contextPath }/resources/f4/css/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- bootstrap -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- sweet alert -->
-	<script src="js/common.js"></script> <!-- customizing -->
+	<script src="${ pageContext.request.contextPath }/resources/f4/js/common.js"></script> <!-- customizing -->
 
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -112,7 +112,7 @@
 			
 			<!-- visual -->
 			<section class="mainVisual">
-				<video autoplay="" muted="" preload="true" loop="" class="wFull"><source src="img/visual.mp4" type="video/mp4"></video>
+				<video autoplay="autoplay" muted="" preload="true" loop="" class="wFull"><source src="${ pageContext.request.contextPath }/resources/f4/img/visual.mp4" type="video/mp4"></video>
 			</section>
 			<!-- //visual -->
 			
@@ -124,19 +124,19 @@
 					<ul class="row">
 						<li class="col-sm-4 col-xs-12">
 							<a href="">
-								<img src="img/img_main_category1.jpg" alt="Category MEN" class="wFull" />
+								<img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_category1.jpg" alt="Category MEN" class="wFull" />
 								<span>MEN</span>
 							</a>
 						</li>
 						<li class="col-sm-4 col-xs-12">
 							<a href="">
-								<img src="img/img_main_category2.jpg" alt="Category Accessory" class="wFull" />
+								<img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_category2.jpg" alt="Category Accessory" class="wFull" />
 								<span>ACCESSORY</span>
 							</a>
 						</li>
 						<li class="col-sm-4 col-xs-12">
 							<a href="">
-								<img src="img/img_main_category3.jpg" alt="Category Women" class="wFull" />
+								<img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_category3.jpg" alt="Category Women" class="wFull" />
 								<span>WOMEN</span>
 							</a>
 						</li>
@@ -144,7 +144,7 @@
 				</div>
 				<!-- //category -->
 
-				<div class="banner mt70"><img src="img/img_main_banner1.jpg" alt="banner" class="wFull" /></div>
+				<div class="banner mt70"><img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_banner1.jpg" alt="banner" class="wFull" /></div>
 
 				<!-- goods list -->
 				<div class="goodsList mt70">
@@ -153,7 +153,7 @@
 						<!-- Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike1.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike1.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -164,7 +164,7 @@
 						<!-- //Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike2.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike2.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -174,7 +174,7 @@
 						</li>
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike3.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike3.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -184,7 +184,7 @@
 						</li>
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike4.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike4.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -196,7 +196,7 @@
 				</div>
 				<!-- //goods list -->
 
-				<div class="banner mt70"><img src="img/img_main_banner2.jpg" alt="banner" class="wFull" /></div>
+				<div class="banner mt70"><img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_banner2.jpg" alt="banner" class="wFull" /></div>
 
 				<!-- goods list -->
 				<div class="goodsList mt70">
@@ -205,7 +205,7 @@
 						<!-- Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike5.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike5.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -216,7 +216,7 @@
 						<!-- //Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike6.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike6.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -226,7 +226,7 @@
 						</li>
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike7.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike7.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -236,7 +236,7 @@
 						</li>
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href=""><img src="img/sample/nike8.jpg" alt="상품" class="wFull" /></a>
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike8.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
