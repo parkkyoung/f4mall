@@ -20,7 +20,7 @@ show databases
 
 --테이블 삭제
 use f4mall;
-drop table test;
+drop table sub_test;
 
 use f4mall;
 create table test(
@@ -28,6 +28,20 @@ create table test(
 	test_no int,
 	test_text varchar(100)
 );
+
+use f4mall;
+create table sub_test(
+	sub_test_idx int primary key auto_increment,
+	test_idx int not null,
+	test_text text not null
+)
+
+--foreing key 생성하는 방법
+use f4mall;
+alter table sub_test add constraint fk_idx foreign key(test_idx) references test (test_idx)
+
+use f4mall;
+select * from sub_test;
 
 --데이터베이스 사입
 use f4mall;
@@ -50,4 +64,8 @@ insert into test (test_no,test_text) values (20,'글자');
 --데이터베이스 데이터 보기
 use f4mall;
 select * from test;
+
+SHOW GRANTS FOR CURRENT_USER;
+
+
 

@@ -29,6 +29,18 @@ alter table member
 	add constraint pk_m_id primary key(m_id);
 
 	
+-- Member_DB sample
+-- Oracle 에서는 date 처리를 sysdate / MySQL에서는 now() 로 처리
+use f4mall;
+insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) values('shin','1234','훈철','123.456.7',now(),010);
+	
+	
+	
+	
+	
+	
+	
+	
 		
 use f4mall;
 create table h_test(
