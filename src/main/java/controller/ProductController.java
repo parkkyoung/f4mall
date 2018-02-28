@@ -7,26 +7,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dao.TestDao;
-import vo.TestVo;
+import dao.ProductDao;
+import vo.ProductVo;
 
 @Controller
-public class TestController {
+public class ProductController {
 	
 	@Autowired
-	TestDao test_dao;
+	ProductDao product_dao;
 	
-	public TestController() {
+	public ProductController() {
 		// TODO Auto-generated constructor stub
 	}
-
-	@RequestMapping("main/list.do")
-	public String list(Model model){
+	
+	@RequestMapping("main/p_list.do")
+	public String product_list(Model model){
 		
-		List<TestVo> list = test_dao.select_list();
+		List<ProductVo> p_list = product_dao.select_list();
 		
-		model.addAttribute("list",list);
+		model.addAttribute("p_list",p_list);
 		
-		return "main/join2";
+		return "main/main";
 	}
+	
 }

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -273,8 +276,8 @@
 				<div class="goodsList mt70">
 					<h3 class="hide">상품 리스트</h3>
 					<ul class="row">
-						<!-- Loop -->
-						<li class="col-md-3 col-xs-6">
+						
+						<%-- <li class="col-md-3 col-xs-6">
 							<div class="imgBox">
 								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike5.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
@@ -284,7 +287,7 @@
 								<span>&#x20a9;20,000</span>
 							</div>
 						</li>
-						<!-- //Loop -->
+						
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
 								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike6.jpg" alt="상품" class="wFull" /></a>
@@ -314,7 +317,21 @@
 								<h4>나이키</h4>
 								<span>&#x20a9;20,000</span>
 							</div>
+						</li> --%>
+						<!-- Loop -->
+						<c:forEach var="product" items="${ p_list }">
+						<li class="col-md-3 col-xs-6">
+							<div class="imgBox">
+								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/${ product.p_image_m }" alt="상품" class="wFull" /></a>
+								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+							<div class="txtBox">
+								<h4>${ product.p_name }</h4>
+								<span>&#x20a9;<fmt:formatNumber value="${ product.p_price }"/></span>
+							</div>
 						</li>
+						</c:forEach>
+						<!-- //Loop -->
 					</ul>
 				</div>
 				<!-- //goods list -->

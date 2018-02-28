@@ -30,6 +30,40 @@ use f4mall;
 create table order_table(
 	o_no int primary key auto_increment
 )
+
+--레코드 삭제
+use f4mall;
+delete from product where p_no=1;
+
+use f4mall;
+insert into product (p_name,p_content,p_price,
+					p_image_m,p_pdate,p_country,p_entry) 
+					values(
+					'나이키(회색)','아름다운 커플룩입니다잉~!!',109900,
+					'nike5.jpg','2018.02.01','미국',now()
+					);
+					
+
+insert into product (p_name,p_content,p_price,
+					p_image_m,p_pdate,p_country,p_entry) 
+					values(
+					'나이키(로고)','아름다운 커플룩입니다잉~!!',99900,
+					'nike6.jpg','2018.02.01','미국',now()
+					);
+					
+insert into product (p_name,p_content,p_price,
+					p_image_m,p_pdate,p_country,p_entry) 
+					values(
+					'나이키(집업)','아름다운 커플룩입니다잉~!!',59900,
+					'nike7.jpg','2018.02.01','미국',now()
+					);
+use f4mall;
+insert into product (p_name,p_content,p_price,
+					p_image_m,p_pdate,p_country,p_entry) 
+					values(
+					'나이키(테스트)','아름다운 커플룩입니다잉~!!',209900,
+					'nike8.jpg','2018.02.01','미국',now()
+					);
     
 use f4mall;
 drop table order_table

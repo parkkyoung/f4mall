@@ -31,6 +31,12 @@ create table sub_test(
 	test_text text not null
 )
 
+use f4mall;
+select * from sub_test
+use f4mall;
+insert into sub_test(test_idx,test_text)
+values (10,'text')
+
 --foreing key 积己窍绰 规过
 use f4mall;
 alter table sub_test add constraint fk_idx foreign key(test_idx) references test (test_idx)
