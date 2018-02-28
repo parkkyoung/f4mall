@@ -15,7 +15,7 @@
 		<property name="username" value="${user}"/>
 		<property name="password" value="${pwd}"/>
 		<property name="defaultAutoCommit" value="false"/>
-		<property name="maxActive" value="10"/>
+		<property name="maxActive" value="2"/>
 	</bean>
 	
 		
