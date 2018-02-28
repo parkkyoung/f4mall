@@ -13,6 +13,6 @@
 	</typeAliases>
 	
 	<mappers>
-		<!-- <mapper resource="config/mybatis/mapper/dept.xml" />-->
+		<mapper resource="config/mybatis/mapper/test.xml" />
 	</mappers>
 </configuration>

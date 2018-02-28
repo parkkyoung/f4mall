@@ -22,10 +22,12 @@
 	</beans:bean>
 	
 	<!-- Component자동생성 -->
-	<context:component-scan base-package="com.shopping.f4mall" />
+	<context:component-scan base-package="dao,controller" />
 	
 	<!-- Controller수동생성 -->
-	
+	<!-- <beans:bean class="com.shopping.f4mall.TestController">
+		<beans:property name="test_dao" ref="test_daoBean"/>
+	</beans:bean> -->
 	
 	
 	
