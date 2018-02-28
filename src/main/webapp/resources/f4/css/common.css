@@ -84,30 +84,42 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .vTop {vertical-align:top !important;}
 .inBlock {display:inline-block !important;}
 .hide {display:none !important;}
+@media(max-width:767px){.mHide {display:none !important;}}
+@media(min-width:768px){.pHide {display:none !important;}}
+
 /* space */
 .pd10 {padding:10px;}
+.mt5 {margin-top:5px;}
 .mt10 {margin-top:10px;}
+.mt20 {margin-top:20px;}
 .mt40 {margin-top:40px;}
 .mt70 {margin-top:70px;}
+.ml10 {margin-left:10px;}
 .wFull {width:100%;}
 .mwFull {max-width:100%;}
+
+/* font */
+.ft24 {font-size:24px !important;}
+.ftWhite {color:white !important;}
 /* ===== common ===== */
 /* skip nav */
 .skip-navigation a {display:block;height:1px;width:1px;margin:0 -1px -1px 0;padding:0;overflow:hidden;font-size:0;line-height:0;}
 .skip-navigation a:hover,.skip-navigation a:active,.skip-navigation a:focus {position:fixed;top:0;left:0;width:100%;height:auto;padding:8px 0 12px;font-weight:bold;font-size:14px;color:#fff;font-family:Tahoma;line-height:1;text-align:center;text-decoration:none;background:black;}
-/* header */
-#header {position:relative;padding-bottom:67px;}
+/* layout */
+#header {position:relative;z-index:100;margin:0 auto;padding:0 15px;max-width:1170px;background:white;}
 #header .head {padding:15px 0;height:60px;overflow:hidden;border-bottom: 1px solid #ddd;}
+#header .head .btnGnb {display:none;position:absolute;top:15px;left:15px;width:30px;height:24px;text-indent:-9999px;font-size:0;border-top:2px solid black;border-bottom:2px solid black;}
+#header .head .btnGnb:after {content:"";display:block;position:absolute;top:50%;margin-top:-1px;width:100%;height:2px;background:black;}
 #header .head h1 {float:left;}
 #header .head .util {float:right;}
 #header .head .util>* {margin-left:5px;}
-#header .head .util .fa {font-size:20px;transition:all 0.2s ease;}
+#header .head .util .fa {font-size:26px;transition:all 0.2s ease;}
 #header .head .util .fa:hover {color:#ec971f;}
 #header .head .util .textSerch {padding:5px 2px;width:60px;vertical-align: bottom;border:0;border-bottom:1px solid #ccc;transition:all 0.3s ease;}
 #header .head .util .textSerch:hover,
 #header .head .util .textSerch:focus {width:120px;border-bottom:1px solid #999;}
 #header .gnb {position:absolute;top:60px;left:15px;z-index:100;padding:10px 0;width:100%;background:white;transition:opacity 0.3s ease;}
-#header .gnb.on {position:fixed;top:0;left:0;padding:10px 15px;opacity:0.6;}
+#header .gnb.on {position:fixed;top:0;left:0;padding:10px 15px;opacity:0.6;border-bottom:1px solid #ddd;}
 #header .gnb.on:hover {opacity:1;}
 #header .gnb.on ul {margin:0 auto;max-width:1140px;overflow:hidden;}
 #header .gnb li {float:left;padding-right:25px;}
@@ -115,11 +127,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #header .gnb li a:after {content:"";display:block;position:absolute;left:0;bottom:0;width:0;height:2px;background:black;transition:all 0.3s ease;}
 #header .gnb li a:hover:after {width:100%;}
 
-@media(max-width:767px){
-	#header {padding-bottom:0;}
-	#header .head .util,
-	#header .gnb {display:none;}
-}
+#container {padding-top:67px;}
 
 #footer .foot {margin-top:50px;padding:20px 0 50px;border-top:1px solid #ddd;}
 #footer .foot h4 {padding-bottom:10px;font-size:16px;}
@@ -133,9 +141,40 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #footer .footAdrs span {display:block;}
 #footer .footCall div {position:relative;padding:0 0 5px 30px;}
 #footer .footCall i {position:absolute;top:0;left:0;font-size:18px;}
-#footer .footCall span {}
 
+@media(max-width:767px){
+	#header {position:fixed;top:0;left:0;width:100%;transition:opacity 0.3s ease;}
+	#header.on {opacity:0.6;border-bottom:1px solid #ddd;}
+	#header:hover,
+	#header:focus {opacity:1;}
+	#header .head {border-bottom:0;}
+	#header .head h1 {position:absolute;top:15px;left:50%;float:none;margin-left:-50px;text-align:center;}
+	#header .head .btnGnb {display:block;}
+	#header .head .util,
+	#header .gnb {display:none;}
+	#container {padding-top:60px;}
+}
+
+/* gnb */
+.c-menu {background:#f5f5f5;}
+.c-menu .btnClose {display:block;position:absolute;top:25px;right:12px;z-index:1;width:30px;height:30px;text-indent:-9999px;font-size:0;}
+.c-menu .btnClose:before {content:"";display:block;position:absolute;top:15px;left:0px;width:100%;height:2px;background:black;transform:rotate(45deg);}
+.c-menu .btnClose:after {content:"";display:block;position:absolute;top:15px;left:0px;width:100%;height:2px;background:black;transform:rotate(-45deg);}
+.c-menu .mHead {position:relative;padding:15px 50px 15px 15px;border-bottom:2px solid #666;background:#eee;}
+.c-menu .mHead .imgBox {position:absolute;top:15px;left:15px;width:50px;height:50px;overflow:hidden;vertical-align: top;border-radius:100%;border:1px solid #999;}
+.c-menu .mHead .txtBox {padding:15px 0 0 60px;min-height:50px;}
+.c-menu .mHead .txtBox strong {color:#ec971f;}
+.c-menu .mContents {padding:15px;}
+.c-menu .mContents .mList {margin-top:15px;padding-top:15px;border-top:1px solid #333;}
+.c-menu .mContents .mList:first-child {margin-top:0;padding-top:0;border-top:0;}
+.c-menu .mContents dl {overflow:hidden;text-align:center;border-right:1px solid #666;border-bottom:1px solid #666;background:white;}
+.c-menu .mContents dl dt {padding:10px 0;border-top:1px solid #666;border-left:1px solid #666;}
+.c-menu .mContents dl dd {float:left;width:33.3333%;border-top:1px solid #666;border-left:1px solid #666;}
+.c-menu .mContents dl dd a {display:block;padding:15px 5px 0;height:84px;font-size:10px;}
+.c-menu .mContents dl dd a i {font-size:26px;}
+.c-menu .mContents dl dd a div {margin-top:5px;}
 /* ===== main ===== */
+.main {margin-top:70px;}
 .main .category li a {display:block;position:relative;margin:15px 0;overflow:hidden;}
 .main .category li a:before {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;opacity: 0;background:#ec971f;transition:all 0.3s ease;z-index:1;}
 .main .category li a:hover:before {opacity: 0.1;}
@@ -156,6 +195,11 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .goodsList .txtBox span {display:block;margin-top:3px;font-size:16px;color:#449d44;}
 
 /* ===== sub ===== */
+.sub {padding:70px 15px;}
+.sub .form-horizontal {margin:0 auto;padding:15px;max-width:767px;}
+.sub .form-group label {font-size:16px;font-weight:500;cursor:pointer;}
+.sub .form-group .alert {margin-bottom:0;}
+.sub .btnBox {margin:15px auto 0;padding-top:15px;text-align:right;border-top:1px solid #ccc;}
 
 /* ===== pc small ====== */
 @media (max-width:1200px){

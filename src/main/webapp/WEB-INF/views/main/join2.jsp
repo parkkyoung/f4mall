@@ -26,18 +26,63 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-
+	
+	<!-- page script -->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 다음 우편 -->
 	<script>
-		$(function(){
-			$(".btnCart").click(function(){
-				swal({
-					text : "장바구니에 저장되었습니다!",
-					icon: "success",
-				});
-			});
-		});
-	</script>
+	function findAddress() {
+		new daum.Postcode({
+			oncomplete: function(data) {
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var fullAddr = ''; // 최종 주소 변수
+				var extraAddr = ''; // 조합형 주소 변수
+
+				// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+					fullAddr = data.roadAddress;
+
+				} else { // 사용자가 지번 주소를 선택했을 경우(J)
+					fullAddr = data.jibunAddress;
+				}
+
+				// 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+				if(data.userSelectedType === 'R'){
+					//법정동명이 있을 경우 추가한다.
+					if(data.bname !== ''){
+						extraAddr += data.bname;
+					}
+					// 건물명이 있을 경우 추가한다.
+					if(data.buildingName !== ''){
+						extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+					}
+					// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+					fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+				}
+
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('addressNumber').value = data.zonecode; //5자리 새우편번호 사용
+				document.getElementById('address').value = fullAddr;
+
+				// 커서를 상세주소 필드로 이동한다.
+				document.getElementById('address2').focus();
+			}
+		}).open();
+	}
+
+	// 회원가입
+	function join(){
+		// 유효성 검사 해주세요
+		swal({
+			text : "회원가입이 완료되었습니다.",
+			icon: "success",
+		}).then((value) => {
+			location.href = "main.jsp";
+		});
+	};
+	</script>
 </head>
 <body>
 	<!-- Login -->
@@ -68,7 +113,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<a href="join.jsp" class="btn btn-warning">Join us</a>
+					<a href="join.html" class="btn btn-warning">Join us</a>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary">Login</button>
 				</div>
@@ -84,7 +129,7 @@
 
 		
 		<!-- 미 로그인 노출 -->
-		<!-- <div class="mHead text-center">
+		<!-- <div class="mHead tCenter">
 			<button type="button" title="login" data-toggle="modal" data-target="#loginPop" class="btn btn-primary">로그인을 해주세요! <i class="fa fa-lock ftWhite"></i></button>
 		</div> -->
 		
@@ -182,145 +227,73 @@
 		<div id="container">
 			
 			<!-- visual -->
-			<section class="mainVisual">
-				<video autoplay="" muted="" preload="true" loop="" class="wFull"><source src="${ pageContext.request.contextPath }/resources/f4/img/visual.mp4" type="video/mp4"></video>
+			<section class="subVisual">
+				<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
 			</section>
 			<!-- //visual -->
 			
-			<!-- main contents -->
-			<section class="main container">
-				<h2 class="hide">메인</h2>
-				<!-- category -->
-				<div class="category">
-					<ul class="row">
-						<li class="col-sm-4 col-xs-12">
-							<a href="">
-								<img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_category1.jpg" alt="Category MEN" class="wFull" />
-								<span>MEN</span>
-							</a>
-						</li>
-						<li class="col-sm-4 col-xs-12">
-							<a href="">
-								<img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_category2.jpg" alt="Category Accessory" class="wFull" />
-								<span>ACCESSORY</span>
-							</a>
-						</li>
-						<li class="col-sm-4 col-xs-12">
-							<a href="">
-								<img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_category3.jpg" alt="Category Women" class="wFull" />
-								<span>WOMEN</span>
-							</a>
-						</li>
-					</ul>
+			<!-- sub contents -->
+			<section class="sub container">
+				<h2 class="hide">회원가입</h2>
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label for="id" class="col-sm-4 control-label">ID</label>
+						<div class="col-sm-6">
+							<input type="text" id="id" class="form-control" placeholder="메일 주소" />
+							<p class="mt5">메일 주소로 작성해주세요</p>
+						</div>
+					</div>
+
+					<!-- 패스워드 유효성검사 체크 후에 완료되면 .alert-success 실패하면 alert-danger 추가 -->
+					<div class="form-group">
+						<label for="pw" class="col-sm-4 control-label">Password</label>
+						<div class="col-sm-4">
+							<input type="password" id="pw" class="form-control alert alert-success" placeholder="비밀번호" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-4">
+							<input type="password" class="form-control alert alert-danger" placeholder="비밀번호 확인" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="name" class="col-sm-4 control-label">이름</label>
+						<div class="col-sm-4">
+							<input type="text" id="name" class="form-control" placeholder="이름" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="btnNumber" class="col-sm-4 col-xs-12 control-label">주소</label>
+						<div class="col-sm-4 col-xs-8">
+							<input type="text" id="addressNumber" class="form-control" placeholder="우편번호" readonly />
+						</div>
+						<div class="col-sm-4 col-xs-4">
+							<button type="button" id="btnNumber" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-6">
+							<input type="text" id="address" class="form-control" placeholder="도로명주소" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-6">
+							<input type="text" id="address2" class="form-control" placeholder="상세주소" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="phoneNumber" class="col-sm-4 control-label">핸드폰번호</label>
+						<div class="col-sm-4">
+							<input type="tel" id="phoneNumber" class="form-control" placeholder="01012345678" />
+							<p class="mt5">괄호(-) 없이 숫자만 입력해주세요</p>
+						</div>
+					</div>
+					<div class="form-group btnBox">
+						<button type="button" class="btn btn-primary btn-lg" onclick="join();">회원가입</button>
+					</div>
 				</div>
-				<!-- //category -->
-
-				<div class="banner mt70"><img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_banner1.jpg" alt="banner" class="wFull" /></div>
-
-				<!-- goods list -->
-				<div class="goodsList mt70">
-					<h3 class="hide">상품 리스트</h3>
-					<ul class="row">
-						<!-- Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike1.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<!-- //Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike2.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike3.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike4.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- //goods list -->
-
-				<div class="banner mt70"><img src="${ pageContext.request.contextPath }/resources/f4/img/img_main_banner2.jpg" alt="banner" class="wFull" /></div>
-
-				<!-- goods list -->
-				<div class="goodsList mt70">
-					<h3 class="hide">상품 리스트</h3>
-					<ul class="row">
-						<!-- Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike5.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<!-- //Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike6.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike7.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href=""><img src="${ pageContext.request.contextPath }/resources/f4/img/sample/nike8.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- //goods list -->
-
 			</section>
-			<!-- //main contents -->
+			<!-- //sub contents -->
 		</div>
 		<!-- //contents -->
 
