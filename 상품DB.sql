@@ -1,21 +1,18 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 use f4mall;
 select * from test;
 =======
 
 use f4mall;
 CREATE TABLE product (
-       p_no bigint primary key auto_increment,
+       p_no int primary key auto_increment,
        o_no int,
        category_no int,
-       p_material varchar(100),
-       p_color varchar(100),
+       material_no int,
+       color_no int,
        sex_no int,
-       p_brand varchar(100),
-       p_size varchar(100),
+       brand_no int,
+       size_no int,
        e_no int,
        m_id varchar(200),
        p_supply varchar(200),
@@ -64,7 +61,7 @@ insert into product (p_name,p_content,p_price,
 					'나이키(집업)','아름다운 커플룩입니다잉~!!',59900,
 					'nike7.jpg','2018.02.01','미국',now()
 					);
-					
+use f4mall;
 insert into product (p_name,p_content,p_price,
 					p_image_m,p_pdate,p_country,p_entry) 
 					values(
@@ -73,14 +70,7 @@ insert into product (p_name,p_content,p_price,
 					);
     
 use f4mall;
-drop table product
+drop table order_table
 
 use f4mall;
-<<<<<<< HEAD
 select * from product
-
-use f4mall;
-delete from product where p_no = 6;
-=======
-select * from product
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
