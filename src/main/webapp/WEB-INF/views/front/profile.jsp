@@ -3,7 +3,7 @@
 <%@include file="header.jsp" %>
 <!-- visual -->
 <section class="subVisual">
-	<img src="img/img_f4.jpg" alt="sub visual" class="wFull" />
+	<img src="${ pageContext.request.contextPath }/resources/front/img/img_f4.jpg" alt="sub visual" class="wFull" />
 </section>
 <!-- //visual -->
 
@@ -15,7 +15,7 @@
 
 		<!-- 경민 -->
 		<div class="box">
-			<div class="imgBox"><img src="img/img_profile01.jpg" alt="chopin" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile01.jpg" alt="chopin" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>Chopin</dt>
@@ -52,7 +52,7 @@
 
 		<!-- 덕원 -->
 		<div class="box">
-			<div class="imgBox"><img src="img/img_profile02.jpg" alt="chopin" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile02.jpg" alt="chopin" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>DUCK</dt>
@@ -81,7 +81,7 @@
 
 		<!-- 훈철 -->
 		<div class="box">
-			<div class="imgBox"><img src="img/img_profile03.jpg" alt="chopin" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile03.jpg" alt="chopin" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>HOON</dt>
@@ -110,7 +110,7 @@
 
 		<!-- 봉성 -->
 		<div class="box">
-			<div class="imgBox"><img src="img/img_profile04.jpg" alt="chopin" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile04.jpg" alt="chopin" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>BBONG</dt>
