@@ -1,7 +1,12 @@
 --데이터베이스 생성
 create database testDB
 
+<<<<<<< HEAD
+create database f4mall
+
+=======
 --테이블 생성
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
 use f4mall;
 CREATE TABLE dept (
        dept_no int

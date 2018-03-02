@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+use f4mall;
+select * from test;
+=======
 
 use f4mall;
 CREATE TABLE product (
@@ -70,3 +74,4 @@ drop table order_table
 
 use f4mall;
 select * from product
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
