@@ -1,0 +1,269 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+	<title>F4 Mall Admin</title>
+	
+	<!-- css -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.4/metisMenu.min.css" rel="stylesheet"> <!-- menu -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet"> <!-- sbadmin -->
+	<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"> <!-- datatables(bootstrap) -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"> <!-- datepicker -->
+
+	<!-- js -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- sweet alert -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- bootstrap -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.4/metisMenu.min.js"></script> <!-- menu -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.min.js"></script> <!-- sbadmin-->
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> <!-- datatables -->
+	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> <!-- datatables(bootstrap) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> <!-- datepicker -->
+	<script src="${ pageContext.request.contextPath }/resources/f4/js/admin/common.js"></script> <!-- customizing -->
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">F4 Mall Admin</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<ul class="nav navbar-top-links navbar-right">
+				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
+				<li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
+
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="sidebar-search">
+							<div class="input-group custom-search-form">
+								<input type="text" class="form-control" placeholder="Search...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</div>
+						</li>
+						<li>
+							<a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-user fa-fw"></i> 회원관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="member.html">회원목록</a></li>
+								<li><a href="member_insert.html">회원등록</a></li>
+								<li><a href="member_order.html">주문목록</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-user fa-fw"></i> 상품관리<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="goods.html">상품목록</a></li>
+								<li><a href="goods_insert.html">상품등록</a></li>
+								<li><a href="goods_stock.html">상품입출고</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-table fa-fw"></i> FAQ<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+								<li><a href="faq.html">FAQ 목록</a></li>
+								<li><a href="faq_insert.html">FAQ 등록</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+		<!-- //Navigation -->
+
+		<!-- Page Content -->
+		<div id="page-wrapper">
+			<div class="container-fluid">
+
+				<!-- page title -->
+				<h1 class="page-header">상품입출고</h1>
+				<!-- //page title -->
+
+				<!-- 상품재고 -->
+				<div class="panel panel-default">
+					<div class="panel-heading">재고목록</div>
+					<div class="panel-body">
+						<table width="100%" class="tableData table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>상품코드</th>
+									<th>상품이름</th>
+									<th>재고수량</th>
+									<th>최신입출고일자</th>
+								</tr>
+							</thead>
+							<tbody>
+									<!-- Loop -->
+									<tr>
+										<td><a href="goods_update.html">0000</a></td>
+										<td>나이키신발</td>
+										<td>100개</td>
+										<td>YYYY-MM-DD</td>
+									</tr>
+									<!-- //Loop -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //상품재고 -->
+
+				<!-- 상품입고 -->
+				<div class="row">
+					<!-- 상품입고 목록 -->
+					<div class="col-lg-9">
+						<div class="panel panel-default">
+							<div class="panel-heading">입고목록</div>
+							<div class="panel-body">
+								<table width="100%" class="tableData table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>상품코드</th>
+											<th>상품이름</th>
+											<th>입고수량</th>
+											<th>입고일자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- Loop -->
+										<tr>
+											<td><a href="goods_update.html">0000</a></td>
+											<td>나이키신발</td>
+											<td>100개</td>
+											<td>YYYY-MM-DD</td>
+										</tr>
+										<!-- //Loop -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- // 상품입고목록 -->
+					
+					<!-- 입고등록 -->
+					<div class="col-lg-3">
+						<div class="panel panel-default">
+							<div class="panel-heading">입고등록</div>
+							<div class="panel-body">
+								<form action="" role="form" class="panel-body">
+									<div class="form-group">
+										<label for="">상품코드</label>
+										<input type="text" class="form-control" placeholder="상품코드" />
+									</div>
+									<div class="form-group">
+										<label for="">입고수량</label>
+										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
+									</div>
+									<div class="form-group">
+										<label for="">입고일자</label>
+										<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD">
+									</div>
+									<div class="form-group text-right">
+										<button type="button" class="btn btn-primary">입고등록</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- //입고등록 -->
+				</div>
+				<!-- //상품입고 -->
+
+
+				<!-- 상품출고 -->
+				<div class="row">
+					<!-- 출고목록 -->
+					<div class="col-lg-9">
+						<div class="panel panel-default">
+							<div class="panel-heading">출고목록</div>
+							<div class="panel-body">
+								<table width="100%" class="tableData table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>상품코드</th>
+											<th>상품이름</th>
+											<th>출고수량</th>
+											<th>출고일자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- Loop -->
+										<tr>
+											<td><a href="goods_update.html">0000</a></td>
+											<td>나이키신발</td>
+											<td>100개</td>
+											<td>YYYY-MM-DD</td>
+										</tr>
+										<!-- //Loop -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- // 출고목록 -->
+					
+					<!-- 출고등록 -->
+					<div class="col-lg-3">
+						<div class="panel panel-default">
+							<div class="panel-heading">출고등록</div>
+							<div class="panel-body">
+								<form action="" role="form" class="panel-body">
+									<div class="form-group">
+										<label for="">상품코드</label>
+										<input type="text" class="form-control" placeholder="상품코드" />
+									</div>
+									<div class="form-group">
+										<label for="">출고수량</label>
+										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
+									</div>
+									<div class="form-group">
+										<label for="">출고일자</label>
+										<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD">
+									</div>
+									<div class="form-group text-right">
+										<button type="button" class="btn btn-primary">출고등록</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- // 출고등록 -->
+				</div>
+				<!-- //상품출고 -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+	<!-- /#wrapper -->
+</body>
+</html>

@@ -1,14 +1,22 @@
 package vo;
 
 public class ProductVo {
-	int p_no,o_no,category_no,material_no,color_no,
-		sex_no,brand_no,size_no,e_no;
-	String m_id,p_supply,p_name,p_content;
+	int p_no,o_no,category_no,
+		sex_no,e_no;
+	String m_id,p_supply,p_name,p_content,p_material,p_color,p_brand;
 	int p_price,p_sale;
-	String p_image_m,p_image_s,p_pdate,p_country,p_entry;
+	String p_image_m,p_image_s,p_pdate,p_country,p_entry,p_size;
 	
 	public ProductVo() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getP_size() {
+		return p_size;
+	}
+
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
 	}
 
 	public int getP_no() {
@@ -35,22 +43,6 @@ public class ProductVo {
 		this.category_no = category_no;
 	}
 
-	public int getMaterial_no() {
-		return material_no;
-	}
-
-	public void setMaterial_no(int material_no) {
-		this.material_no = material_no;
-	}
-
-	public int getColor_no() {
-		return color_no;
-	}
-
-	public void setColor_no(int color_no) {
-		this.color_no = color_no;
-	}
-
 	public int getSex_no() {
 		return sex_no;
 	}
@@ -59,20 +51,28 @@ public class ProductVo {
 		this.sex_no = sex_no;
 	}
 
-	public int getBrand_no() {
-		return brand_no;
+	public String getP_material() {
+		return p_material;
 	}
 
-	public void setBrand_no(int brand_no) {
-		this.brand_no = brand_no;
+	public void setP_material(String p_material) {
+		this.p_material = p_material;
 	}
 
-	public int getSize_no() {
-		return size_no;
+	public String getP_color() {
+		return p_color;
 	}
 
-	public void setSize_no(int size_no) {
-		this.size_no = size_no;
+	public void setP_color(String p_color) {
+		this.p_color = p_color;
+	}
+
+	public String getP_brand() {
+		return p_brand;
+	}
+
+	public void setP_brand(String p_brand) {
+		this.p_brand = p_brand;
 	}
 
 	public int getE_no() {

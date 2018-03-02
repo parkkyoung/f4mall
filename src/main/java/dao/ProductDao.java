@@ -26,4 +26,24 @@ public class ProductDao {
 		
 		return list;
 	}
+
+	public int insert_product(ProductVo vo) {
+		// TODO Auto-generated method stub
+		
+		int res = 0;
+		
+		res = sqlSession.insert("product_insert",vo);
+		
+		return res;
+	}
+
+	public int delete_product(ProductVo vo) {
+		// TODO Auto-generated method stub
+		
+		int res = 0;
+		
+		res = sqlSession.delete("product_delete",vo);
+		
+		return 0;
+	}
 }

@@ -66,4 +66,10 @@ $(function(){
 			});
 		};
 	});
+
+	// 캐러셀
+	$('.carousel').carousel({
+		interval:5000,	// 자동으로 돌아가는 시간
+	});
+
 });
