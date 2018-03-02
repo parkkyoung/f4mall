@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 use f4mall;
 select * from test;
 =======
@@ -74,4 +74,3 @@ drop table order_table
 
 use f4mall;
 select * from product
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall

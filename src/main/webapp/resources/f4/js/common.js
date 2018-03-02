@@ -66,4 +66,16 @@ $(function(){
 			});
 		};
 	});
+
+	// 캐러셀
+	$('.carousel').carousel({
+		interval:5000,	// 자동으로 돌아가는 시간
+	});
+
+	// 별점
+	$(".starRating input").click(function() {
+		$(this).siblings("label").removeClass("on");
+		$(this).addClass("on").prevAll("label").addClass("on");
+	});
+
 });
