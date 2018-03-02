@@ -81,13 +81,13 @@
 		var m_pwd_pattern  = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 		
 		// 값 얻어오기
-		var m_id 	  = f.m_id.value();
-		var m_pwd 	  = f.m_pwd.value();
-		var m_name 	  = f.m_name.value();
-		var m_zipcode = f.m_zipcode.value();
-		var m_addr    = f.m_addr.value();
-		var m_addr_d  = f.m_addr_d.value();
-		var m_tel 	  = f.m_tel.value();
+		var m_id 	  = f.m_id.value.trim();
+		var m_pwd 	  = f.m_pwd.value.trim();
+		var m_name 	  = f.m_name.value.trim();
+		var m_zipcode = f.m_zipcode.value.trim();
+		var m_addr    = f.m_addr.value.trim();
+		var m_addr_d  = f.m_addr_d.value.trim();
+		var m_tel 	  = f.m_tel.value.trim();
 		
 		// 값 체크
 		if(m_id==''){
@@ -133,15 +133,14 @@
 			return;
 		}
 		
-		
-		
-		
+		f.action = 'member_insert.do';
+		f.submit();
 		
 		swal({
 			text : "회원가입이 완료되었습니다.",
 			icon: "success",
 		}).then((value) => {
-			location.href = "main.jsp";
+			location.href = "product_list.do";
 		});
 	};
 	
@@ -341,7 +340,7 @@
 					<div class="form-group">
 						<label for="id" class="col-sm-4 control-label">ID</label>
 						<div class="col-sm-6">
-							<input type="text" id="m_id" class="form-control alert alert-success" placeholder="메일 주소" />
+							<input type="text" id="m_id" name="m_id" class="form-control alert alert-success" placeholder="메일 주소" />
 							<span class="mt5" id="m_id_msg">메일 주소로 작성해주세요</span>
 						</div>
 					</div>
@@ -351,7 +350,7 @@
 					<div class="form-group">
 						<label for="pw" class="col-sm-4 control-label">Password</label>
 						<div class="col-sm-4">
-							<input type="password" id="m_pwd" class="form-control alert alert-success" placeholder="비밀번호" />
+							<input type="password" id="m_pwd" name="m_pwd" class="form-control alert alert-success" placeholder="비밀번호" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -365,13 +364,13 @@
 					<div class="form-group">
 						<label for="name" class="col-sm-4 control-label">이름</label>
 						<div class="col-sm-4">
-							<input type="text" id="m_name" class="form-control" placeholder="이름" />
+							<input type="text" id="m_name" name="m_name" class="form-control" placeholder="이름" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="btnNumber" class="col-sm-4 col-xs-12 control-label">주소</label>
 						<div class="col-sm-4 col-xs-8">
-							<input type="text" id="m_zipcode" class="form-control" placeholder="우편번호" readonly />
+							<input type="text" id="m_zipcode" name="m_zipcode" class="form-control" placeholder="우편번호" />
 						</div>
 						<div class="col-sm-4 col-xs-4">
 							<button type="button" id="btnNumber" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
@@ -379,18 +378,18 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-6">
-							<input type="text" id="m_addr" class="form-control" placeholder="도로명주소" />
+							<input type="text" id="m_addr" name="m_addr" class="form-control" placeholder="도로명주소" />
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-6">
-							<input type="text" id="m_addr_d" class="form-control" placeholder="상세주소" />
+							<input type="text" id="m_addr_d" name="m_addr_d" class="form-control" placeholder="상세주소" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="phoneNumber" class="col-sm-4 control-label">핸드폰번호</label>
 						<div class="col-sm-4">
-							<input type="tel" id="m_tel" class="form-control" placeholder="01012345678" />
+							<input type="tel" id="m_tel" name="m_tel" class="form-control" placeholder="01012345678" />
 							<p class="mt5">괄호(-) 없이 숫자만 입력해주세요</p>
 						</div>
 					</div>

@@ -15,8 +15,8 @@
 	<!-- css -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
-	<link href="${ pageContext.request.contextPath }/resources/f4/css/menu.css" rel="stylesheet"> <!-- mobile left menu -->
-	<link href="${ pageContext.request.contextPath }/resources/f4/css/common.css" rel="stylesheet"> <!-- customizing -->
+	<link href="${ pageContext.request.contextPath }/resources/f4/css/main/menu.css" rel="stylesheet"> <!-- mobile left menu -->
+	<link href="${ pageContext.request.contextPath }/resources/f4/css/main/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->

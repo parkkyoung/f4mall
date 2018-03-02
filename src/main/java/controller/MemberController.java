@@ -22,6 +22,9 @@ public class MemberController {
 	@Autowired
 	MemberDao member_dao;
 	
+	@Autowired
+	HttpServletRequest request;
+	
 	
 	public MemberController() {
 		// TODO Auto-generated constructor stub
@@ -57,9 +60,19 @@ public class MemberController {
 		    
 		    //결과정송
 		   /* response.getWriter().print(resultStr);*/
-			System.out.println(resultStr);
 		
 		return resultStr;
+	}
+	
+	@RequestMapping("/main/member_insert.do")
+	public String insert_id(MemberVo vo){
+		
+		String m_ip = request.getRemoteAddr();
+		vo.setM_ip(m_ip);
+		
+		int res =member_dao.insert_id(vo);
+		
+		return "redirect:product_list.do";
 	}
 
 	

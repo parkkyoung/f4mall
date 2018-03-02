@@ -8,6 +8,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product
 	</select>
 
+	<insert id="product_insert" parameterType="vo.ProductVo">
+		insert into product (p_name,p_content,p_price,
+					p_pdate,p_country,p_entry,p_no,o_no,
+					category_no,p_material,p_color,sex_no,p_brand,
+					p_size,e_no,m_id,p_supply,p_sale,p_image_m,
+					p_image_s) 
+					values(#{ p_name },#{ p_content },#{ p_price },
+					#{ p_pdate },#{ p_country },now(),#{ p_no },#{ o_no },
+					#{ category_no },#{ p_material },#{ p_color },#{ sex_no },#{ p_brand },
+					#{ p_size },#{ e_no },#{ m_id },#{ p_supply },#{ p_sale },#{ p_image_m },
+					#{ p_image_s })
+	</insert>
+	
+	<delete id="product_delete" parameterType="vo.ProductVo">
+		delete from product where p_no = #{ p_no }
+	</delete>
 
 </mapper>
 

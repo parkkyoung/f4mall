@@ -42,6 +42,16 @@ public class MemberDao {
 		
 		return vo;
 	}
+
+
+	public int insert_id(MemberVo vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.insert("insert_id",vo);
+		
+		return res;
+	}
 	
 	
 }

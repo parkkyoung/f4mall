@@ -32,7 +32,7 @@ alter table member
 -- Member_DB sample
 -- Oracle ¿¡¼­´Â date Ã³¸®¸¦ sysdate / MySQL¿¡¼­´Â now() ·Î Ã³¸®
 use f4mall;
-insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) values('shin','1234','ÈÆÃ¶','123.456.7',now(),010);
+insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) values('kimbongsung@hotmail.com','kbs123123','±èºÀ¼º','123.456.78',now(),010-1234-1234);
 	
 	
 	
