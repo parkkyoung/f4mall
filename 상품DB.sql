@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 use f4mall;
 select * from test;
 =======
@@ -72,7 +76,11 @@ use f4mall;
 drop table product
 
 use f4mall;
+<<<<<<< HEAD
 select * from product
 
 use f4mall;
 delete from product where p_no = 6;
+=======
+select * from product
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
