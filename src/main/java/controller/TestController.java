@@ -27,6 +27,6 @@ public class TestController {
 		
 		model.addAttribute("list",list);
 		
-		return "main/join2";
+		return "front/join";
 	}
 }

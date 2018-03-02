@@ -31,20 +31,20 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("/main/member_list.do")
+	@RequestMapping("/member_list.do")
 	public String list(Model model){
 		
 		List<MemberVo> m_list = member_dao.select_list();
 		
 		model.addAttribute("m_list", m_list);
 		
-		return "main/bongsung";
+		return "front/bongsung";
 		
 	}
 	
 	/*@RequestMapping("/main/member_insert.do")*/
 	
-	@RequestMapping("/main/check_id.do")
+	@RequestMapping("/check_id.do")
 	@ResponseBody
 	public String check_id(Model model,String m_id,String pwd){
 		
@@ -67,7 +67,7 @@ public class MemberController {
 		return resultStr;
 	}
 	
-	@RequestMapping("/main/member_insert.do")
+	@RequestMapping("/member_insert.do")
 	public String insert_id(MemberVo vo){
 		
 		String m_ip = request.getRemoteAddr();

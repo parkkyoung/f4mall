@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
 encoding//src/main/resources/config/mybatis/db.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/views/front/board_insert.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/front/footer.jsp=UTF-8

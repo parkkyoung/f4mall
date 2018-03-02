@@ -20,23 +20,23 @@ public class ProductController {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@RequestMapping("main/product_list.do")
+	@RequestMapping("/product_list.do")
 	public String product_list(Model model){
 		
 		List<ProductVo> p_list = product_dao.select_list();
 		
 		model.addAttribute("p_list",p_list);
 		
-		return "main/main";
+		return "front/main";
 	}
 	
-	@RequestMapping("admin/product_insert_form.do")
+	@RequestMapping("/admin/product_insert_form.do")
 	public String product_insert_form(){
 		
 		return "admin/goods_insert";
 	}
 	
-	@RequestMapping("main/product_insert.do")
+	@RequestMapping("/product_insert.do")
 	public String product_insert(ProductVo vo){
 		
 		int res = product_dao.insert_product(vo);
@@ -44,7 +44,7 @@ public class ProductController {
 		return "redirect:product_list.do";
 	}
 	
-	@RequestMapping("admin/product_delete.do")
+	@RequestMapping("/admin/product_delete.do")
 	public String product_delete(ProductVo vo){
 		
 		int res = product_dao.delete_product(vo);

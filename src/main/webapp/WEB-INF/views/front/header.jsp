@@ -11,20 +11,41 @@
 	<!-- css -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
-	<link href="css/menu.css" rel="stylesheet"> <!-- mobile left menu -->
-	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
+	<link href="${ pageContext.request.contextPath }/resources/front/css/menu.css" rel="stylesheet"> <!-- mobile left menu -->
+	<link href="${ pageContext.request.contextPath }/resources/front/css/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- bootstrap -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- sweet alert -->
-	<script src="js/menu.js"></script> <!-- mobile left menu -->
-	<script src="js/common.js"></script> <!-- customizing -->
+	<script src="${ pageContext.request.contextPath }/resources/front/js/menu.js"></script> <!-- mobile left menu -->
+	<script src="${ pageContext.request.contextPath }/resources/front/js/common.js"></script> <!-- customizing -->
 
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- page script -->
+	<script>	
+		$(function(){
+			// 게시판 리스트 말줄임
+			var blSubjectWidth = 0;
+			function blSubjectEllipsis(){
+				if($(window).width() > 767){
+					blSubjectWidth = $(".boardList").width() * 0.5 - 20;
+					$(".blSubject a").css("width", blSubjectWidth);
+				} else {
+					blSubjectWidth = $(".boardList").width() * 0.7 - 20;
+					$(".blSubject a").css("width", blSubjectWidth);
+				}
+			};
+			blSubjectEllipsis();
+			$(window).resize(function(){
+				blSubjectEllipsis();
+			});
+		});
+	</script>
 </head>
 <body>
 	
@@ -174,129 +195,3 @@
 
 		<!-- contents -->
 		<div id="container">
-			
-			<!-- visual -->
-			<section class="subVisual">
-				<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
-			</section>
-			<!-- //visual -->
-			
-			<!-- sub contents -->
-			<section class="sub container">
-				<h2 class="hide">상품목록</h2>
-
-				<!-- goods list -->
-				<div class="goodsList">
-					<h3 class="hide">상품 리스트</h3>
-					<ul class="row">
-						<!-- Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike1.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<!-- //Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike2.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike3.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike4.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- //goods list -->
-
-			</section>
-			<!-- //sub contents -->
-		</div>
-		<!-- //contents -->
-
-		<!-- footer -->
-		<footer id="footer" class="container">
-			<div class="foot">
-				<div class="row">
-					<!-- about us & sns -->
-					<div class="footAbout mt40 col-lg-3 col-md-6 col-sm-12">
-						<h3>F4 Mall</h3>
-						<p>고구려는 부여의 왕자라 전해지는 고주몽이 건국하였다. 부여와의 투쟁 속에서 성장하였고, 산간지대에 위치한 고구려의 지리적 사정으로 인한 부족한 식량 사정과 부족한 논밭 문제를 해결하기 위해 주변의 비옥한 영토를 정복하는 적극적인 정복 활동과 대규모 정복전쟁을 벌였다. 중국 사서에서는 약탈로 인해 신나라 왕망의 분노를...</p>
-						<div class="snsBox">
-							<a href=""><i class="fa fa-twitter"></i></a>
-							<a href=""><i class="fa fa-facebook"></i></a>
-							<a href=""><i class="fa fa-pinterest"></i></a>
-							<a href=""><i class="fa fa-instagram"></i></a>
-						</div>
-					</div>
-					<!-- //about us & sns -->
-
-					<!-- category -->
-					<div class="footInfo mt40 col-lg-3 col-md-6 col-sm-12">
-						<dl>
-							<dt>CATEGORY</dt>
-							<dd><a href="goods.html">OUTER</a></dd>
-							<dd><a href="goods.html">SHIRTS</a></dd>
-							<dd><a href="goods.html">JEANS</a></dd>
-							<dd><a href="goods.html">SHOES</a></dd>
-							<dd><a href="goods.html">ACCESSORIES</a></dd>
-							<dd><a href="goods.html">CHILDE</a></dd>
-						</dl>
-					</div>
-					<!-- //category -->
-
-					<!-- address -->
-					<div class="footAdrs mt40 col-lg-3 col-md-6 col-sm-12">
-						<h4>ADDRESS</h4>
-						<address>
-							<span>COMPANY : F4 Entertainment</span>
-							<span>OWNER : Junpyo Gu</span>
-							<span>CALL CENTER : 1577-1577</span>
-							<span>ADDRESS : 평양 직할시 정은동 주석궁 401호</span>
-							<span>LICENSE NUMBER : [012-34-56789]</span>
-							<strong>Copyright (c) by f4mall.com. All Right Reserved</strong>
-						</address>
-					</div>
-					<!-- //address -->
-
-					<!-- call -->
-					<div class="footCall mt40 col-lg-3 col-md-6 col-sm-12">
-						<h4>GET IN TOUCH</h4>
-						<div><i class="fa fa-home"></i><span>평양 직할시 정은동 주석궁 401호</span></div>
-						<div><i class="fa fa-phone"></i><span>1577-1577</span></div>
-						<div><i class="fa fa-envelope"></i><span>rudals0731@naver.com</span></div>
-					</div>
-					<!-- //call -->
-				</div>
-			</div>
-		</footer>
-		<!-- //footer -->
-	</div>
-</body>
-</html>
