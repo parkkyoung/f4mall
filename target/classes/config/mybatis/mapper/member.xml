@@ -13,6 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="check_id"  parameterType="String" resultType="vo.MemberVo">
 	    select * from member where m_id=#{ m_id }
 	</select>
+	
+	<!-- 비밀번호 체크 -->
+	<select id="check_pwd"  parameterType="String" resultType="vo.MemberVo">
+	    select * from member where m_pwd=#{ m_pwd }
+	</select>
 
 </mapper>
 

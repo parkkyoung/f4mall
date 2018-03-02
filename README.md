@@ -1,4 +1,7 @@
 # f4mall
+<<<<<<< HEAD
+Final Project ÁøÇàÁß
+=======
 F4MALL
 ¹Ú°æ¹ÎÂ»Â»¸Ç
 ¼­´ö¿ø´ö¼­´ö¿ø´ö¼­
@@ -10,3 +13,4 @@ F4MALL
 ¤¾¤¾¤¾¤¾¤¾¤¾¤¾
 
 ¤©¤©¤©
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git

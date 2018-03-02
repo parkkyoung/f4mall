@@ -43,8 +43,9 @@ public class MemberController {
 	
 	@RequestMapping("/main/check_id.do")
 	@ResponseBody
-	public String check_id(Model model,String m_id){
+	public String check_id(Model model,String m_id,String pwd){
 		
+		// ID체크
 		MemberVo vo = member_dao.selectOne(m_id);
 		
 		String result = "no";
@@ -57,12 +58,14 @@ public class MemberController {
 		    
 		    //결과정송
 		   /* response.getWriter().print(resultStr);*/
-			System.out.println(resultStr);
+			//System.out.println(resultStr);
 		
 		return resultStr;
 	}
-
 	
+	
+	
+
 }
     
 
