@@ -21,7 +21,7 @@ public class MemberDao {
 	}
 	
 	
-	
+	// 회원리스트
 	public List<MemberVo> select_list(){
 		
 		List<MemberVo> list = null;
@@ -29,6 +29,18 @@ public class MemberDao {
 		list = sqlSession.selectList("member_list");
 		
 		return list;
+	}
+
+
+	
+	public MemberVo selectOne(String m_id) {
+		// TODO Auto-generated method stub
+		
+		MemberVo vo = null;
+		
+		vo = sqlSession.selectOne("check_id",m_id);
+		
+		return vo;
 	}
 	
 	

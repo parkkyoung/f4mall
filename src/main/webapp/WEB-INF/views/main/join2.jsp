@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
@@ -73,8 +75,104 @@
 	}
 
 	// 회원가입
-	function join(){
-		// 유효성 검사 해주세요
+	function join(f){
+		
+		// 비밀번호 유효성 체크
+		var m_pwd_pattern  = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+		
+		// 값 얻어오기
+		var m_id 	  = f.m_id.value();
+		var m_pwd 	  = f.m_pwd.value();
+		var m_name 	  = f.m_name.value();
+		var m_zipcode = f.m_zipcode.value();
+		var m_addr    = f.m_addr.value();
+		var m_addr_d  = f.m_addr_d.value();
+		var m_tel 	  = f.m_tel.value();
+		
+		// 값 체크
+		if(m_id==''){
+			alert('아이디를 입력해주세요');
+			f.m_id.focus();
+			return;
+		}
+		
+		if(m_pwd=='' || !(m_pwd_pattern.test(m_pwd))){
+			alert('비밀번호를 확인해주세요');
+			f.m_pwd.focus();
+			return;
+		}
+		
+		
+		if(m_name==''){
+			alert('이름을 확인해주세요');
+			f.m_name.focus();
+			return;
+		}
+		
+		if(m_zipcode==''){
+			alert('우편번호를 입력 해주세요');
+			f.m_zipcode.focus();
+			return;
+		}
+		
+		if(m_addr==''){
+			alert('주소를 확인해주세요');
+			f.m_addr.focus();
+			return;
+		}
+		
+		if(m_addr_d==''){
+			alert('상세주소를 확인해주세요');
+			f.m_addr_d.focus();
+			return;
+		}
+		
+		if(m_tel==''){
+			alert('전화번호를 확인해주세요');
+			f.m_tel.focus();
+			return;
+		}
+		
+		
+		$('#m_id').keyup(function(event){
+		      var m_id= $(this).val();
+		      var m_id_pattern   = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+			  //console.log('id값 ='+id);
+		      if(!(m_id_pattern.test(m_id))){
+		         $('#m_id_msg').html('이메일형식을 입력해주세요.').css('color','red');
+		         return;
+		      }
+		      
+		      //서버로 id전송(Ajax통신)
+		      $.ajax({
+		         url:'check_id.do',
+		         data:{'m_id':m_id},
+		         success:function(data){
+		            // data="[{'result':'yes'}]";
+		            var json = eval(data);
+		            // var json=[{'result':'yes'}];    => 배열이다
+		            if(json[0].result == 'yes'){
+		               $('#m_id_msg').html('사용 가능한 아이디입니다').css('color','blue');
+		               
+		            }else{
+		               $('#id_msg').html('이미 사용중인 아이디입니다').css('color','red');
+		               
+		               /* $("#m_pwd").change(function(){
+		   			$.ajax({
+		   				//어쩌고저쩌고
+		   				if(true) $(this).addClass("alert-success").removeClass("alert-danger"); // 성공
+		   				else $(this).addClass("alert-danger").removeClass("alert-success"); // 실패
+		   			});
+		   			
+		   		}) */
+		   		
+		            }
+		         }
+		      });
+		   });
+		});
+		
+		
 		swal({
 			text : "회원가입이 완료되었습니다.",
 			icon: "success",
@@ -233,13 +331,15 @@
 			<!-- //visual -->
 			
 			<!-- sub contents -->
+			<form>
 			<section class="sub container">
 				<h2 class="hide">회원가입</h2>
 				<div class="form-horizontal">
 					<div class="form-group">
 						<label for="id" class="col-sm-4 control-label">ID</label>
 						<div class="col-sm-6">
-							<input type="text" id="id" class="form-control" placeholder="메일 주소" />
+							<input type="text" id="m_id" class="form-control alert alert-success" placeholder="메일 주소" />
+							<span id="m_id_msg"></span>
 							<p class="mt5">메일 주소로 작성해주세요</p>
 						</div>
 					</div>
@@ -248,7 +348,7 @@
 					<div class="form-group">
 						<label for="pw" class="col-sm-4 control-label">Password</label>
 						<div class="col-sm-4">
-							<input type="password" id="pw" class="form-control alert alert-success" placeholder="비밀번호" />
+							<input type="password" id="m_pwd" class="form-control alert alert-success" placeholder="비밀번호" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -259,13 +359,13 @@
 					<div class="form-group">
 						<label for="name" class="col-sm-4 control-label">이름</label>
 						<div class="col-sm-4">
-							<input type="text" id="name" class="form-control" placeholder="이름" />
+							<input type="text" id="m_name" class="form-control" placeholder="이름" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="btnNumber" class="col-sm-4 col-xs-12 control-label">주소</label>
 						<div class="col-sm-4 col-xs-8">
-							<input type="text" id="addressNumber" class="form-control" placeholder="우편번호" readonly />
+							<input type="text" id="m_zipcode" class="form-control" placeholder="우편번호" readonly />
 						</div>
 						<div class="col-sm-4 col-xs-4">
 							<button type="button" id="btnNumber" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
@@ -273,26 +373,27 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-6">
-							<input type="text" id="address" class="form-control" placeholder="도로명주소" />
+							<input type="text" id="m_addr" class="form-control" placeholder="도로명주소" />
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-6">
-							<input type="text" id="address2" class="form-control" placeholder="상세주소" />
+							<input type="text" id="m_addr_d" class="form-control" placeholder="상세주소" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="phoneNumber" class="col-sm-4 control-label">핸드폰번호</label>
 						<div class="col-sm-4">
-							<input type="tel" id="phoneNumber" class="form-control" placeholder="01012345678" />
+							<input type="tel" id="m_tel" class="form-control" placeholder="01012345678" />
 							<p class="mt5">괄호(-) 없이 숫자만 입력해주세요</p>
 						</div>
 					</div>
 					<div class="form-group btnBox">
-						<button type="button" class="btn btn-primary btn-lg" onclick="join();">회원가입</button>
+						<button type="button" class="btn btn-primary btn-lg" onclick="join(this.form);">회원가입</button>
 					</div>
 				</div>
 			</section>
+			</form>
 			<!-- //sub contents -->
 		</div>
 		<!-- //contents -->

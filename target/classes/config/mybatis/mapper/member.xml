@@ -3,11 +3,16 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="">
-
+	
+	<!-- 전체목록 -->
 	<select id="member_list" resultType="vo.MemberVo">
 		select * from member
 	</select>
-
+	
+	<!-- 아이디 체크 -->
+	<select id="check_id"  parameterType="String" resultType="vo.MemberVo">
+	    select * from member where m_id=#{ m_id }
+	</select>
 
 </mapper>
 
