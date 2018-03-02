@@ -244,6 +244,7 @@
 						</div>
 					</div>
 
+
 					<!-- 패스워드 유효성검사 체크 후에 완료되면 .alert-success 실패하면 alert-danger 추가 -->
 					<div class="form-group">
 						<label for="pw" class="col-sm-4 control-label">Password</label>
@@ -256,6 +257,9 @@
 							<input type="password" class="form-control alert alert-danger" placeholder="비밀번호 확인" />
 						</div>
 					</div>
+					
+					
+					
 					<div class="form-group">
 						<label for="name" class="col-sm-4 control-label">이름</label>
 						<div class="col-sm-4">
