@@ -40,15 +40,15 @@
 			<div class="col-sm-6">
 				<form action="" class="goodsOption form-horizontal">
 					<div class="form-group clearFix">
-						<a href="" class="pull-left">카테고리명</a>
-						<span class="pull-right">상품번호 : 1234</span>
+						<a href="" class="pull-left">${ vo.category_no }</a>
+						<span class="pull-right">상품번호 : ${ vo.p_no }</span>
 					</div>
 					<div class="form-group">
-						<h3>나이키신발</h3>
+						<h3>${ vo.p_name }</h3>
 					</div>
 					<div class="form-group">
 						<label for="" class="control-label">배송비</label>
-						<div class="">2500원</div>
+						<div class="">${ vo.p_price }</div>
 					</div>
 				</form>
 			</div>

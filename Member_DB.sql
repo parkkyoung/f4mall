@@ -24,22 +24,16 @@ create table member (
 );
 
 
--- ±âº»Å°(primary key)
+-- ï¿½âº»Å°(primary key)
 alter table member
 	add constraint pk_m_id primary key(m_id);
 
 	
 -- Member_DB sample
--- Oracle ¿¡¼­´Â date Ã³¸®¸¦ sysdate / MySQL¿¡¼­´Â now() ·Î Ã³¸®
+-- Oracle ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ date Ã³ï¿½ï¿½ï¿½ï¿½ sysdate / MySQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ now() ï¿½ï¿½ Ã³ï¿½ï¿½
 use f4mall;
-insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) values('kimbongsung@hotmail.com','kbs123123','±èºÀ¼º','123.456.78',now(),010-1234-1234);
-	
-	
-	
-	
-	
-	
-	
+insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) 
+values('kimbongsung@hotmail.com','kbs123123','ï¿½ï¿½ï¿½ï¿½ï¿½','123.456.78',now(),010-1234-1234);
 	
 		
 use f4mall;

@@ -1,24 +1,24 @@
---µ¥ÀÌÅÍº£ÀÌ½º »ý¼º
+--ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 create database testDB
 
 <<<<<<< HEAD
 create database f4mall
 
 =======
---Å×ÀÌºí »ý¼º
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 >>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
 use f4mall;
 CREATE TABLE dept (
        dept_no int
     );
 
---µ¥ÀÌÅÍ º£ÀÌ½º »ç¿ë   
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½   
 use f4mall;
 
---»ý¼ºµÈ µ¥ÀÌÅÍº£ÀÌ½º º¸±â
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
 show databases
 
---Å×ÀÌºí »èÁ¦
+--ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 use f4mall;
 drop table sub_test;
 
@@ -37,37 +37,75 @@ create table sub_test(
 )
 
 use f4mall;
+create table test_hub(
+	hub_no int primary key auto_increment,
+	test_idx int,
+	sub_test_idx int
+)
+
+use f4mall;
+select t.test_idx 
+from test as t 
+join sub_test as s on t.test_idx = s.test_idx;
+
+use f4mall;
+select
+hub_no, test_idx, sub_test_idx 
+from test t inner join test_hub h on
+test_idx = h.test_idx inner join sub_test s on h.sub_test_idx = s.sub_test_idx
+
+use f4mall;
+select test_test, test_idx, test_no 
+from test as t  
+join sub_test as s 
+on t.test_idx = s.s_test_idx;
+
+use f4mall;
+alter table test_hub add constraint fk_sub_idx foreign key(sub_test_idx) 
+references sub_test (sub_test_idx)
+
+use f4mall;
+alter table test_hub add constraint fk_sub_idx foreign key(test_idx) 
+references test (test_idx)
+
+--join test
+use f4mall;
+select 
+
+--foreing key ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
+use f4mall;
+alter table sub_test add constraint fk_idx foreign key(s_test_idx) 
+references test (test_idx)
+
+use f4mall;
+select * from sub_test;
+
+--ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½
+use f4mall;
+insert into test (test_no,test_text) values (10,'string');
+use f4mall;
+insert into test (test_no,test_text) values (20,'ï¿½ï¿½ï¿½ï¿½');
+
+use f4mall;
 select * from sub_test
 use f4mall;
 insert into sub_test(test_idx,test_text)
 values (10,'text')
 
---foreing key »ý¼ºÇÏ´Â ¹æ¹ý
-use f4mall;
-alter table sub_test add constraint fk_idx foreign key(test_idx) references test (test_idx)
-
-use f4mall;
-select * from sub_test;
-
---µ¥ÀÌÅÍº£ÀÌ½º »çÀÔ
-use f4mall;
-insert into test (test_no,test_text) values (10,'string');
-use f4mall;
-insert into test (test_no,test_text) values (20,'±ÛÀÚ');
 
 --****************
 /*
- auto_increment¿¡ ´ëÇÑ ¼³¸í
- Oracle¿¡¼­ sequence»ç¿ëÇÏ´Â ¹ý°ú MySql¿¡¼­ »ç¿ëÇÏ´Â ¹æ¹ýÀÌ ´Ù¸¨´Ï´Ù
- MySQL¿¡¼­´Â auto_incrementÇÏ¸éÀº ÀÚµ¿À¸·Î 1ÀÇ ¼ö¸¸Å­ Áõ°¡ÇÕ´Ï´Ù
- ±×¸®°í insert¹®µµ ´Ù¸¨´Ï´Ù
- ÇÊµå¸í(column)À» Å×ÀÌºí ¿·¿¡ Ãß°¡ÇØÁà¾ßÇÕ´Ï´Ù
- **Âü°í·Î insert¹®¿¡¼­ auto_increment ÇÊµå´Â »ý·«ÇÏ¸é µË´Ï´Ù.
- À§ÀÇ SQL¹®À» Âü°íÇÏ¼¼¿ä 
+ auto_incrementï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ Oracleï¿½ï¿½ï¿½ï¿½ sequenceï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ MySqlï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½Ï´ï¿½
+ MySQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ auto_incrementï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
+ ï¿½×¸ï¿½ï¿½ï¿½ insertï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½Ï´ï¿½
+ ï¿½Êµï¿½ï¿½(column)ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½
+ **ï¿½ï¿½ï¿½ï¿½ï¿½ insertï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ auto_increment ï¿½Êµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ë´Ï´ï¿½.
+ ï¿½ï¿½ï¿½ï¿½ SQLï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ 
  * */
 --****************
 
---µ¥ÀÌÅÍº£ÀÌ½º µ¥ÀÌÅÍ º¸±â
+--ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 use f4mall;
 select * from test;
 

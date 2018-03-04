@@ -35,7 +35,7 @@ create table order_table(
 	o_no int primary key auto_increment
 )
 
---·¹ÄÚµå »èÁ¦
+--ï¿½ï¿½ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 use f4mall;
 delete from product where p_no=1;
 
@@ -43,34 +43,34 @@ use f4mall;
 insert into product (p_name,p_content,p_price,
 					p_image_m,p_pdate,p_country,p_entry) 
 					values(
-					'³ªÀÌÅ°(È¸»ö)','¾Æ¸§´Ù¿î Ä¿ÇÃ·èÀÔ´Ï´ÙÀ×~!!',109900,
-					'nike5.jpg','2018.02.01','¹Ì±¹',now()
+					'ï¿½ï¿½ï¿½ï¿½Å°(È¸ï¿½ï¿½)','ï¿½Æ¸ï¿½ï¿½Ù¿ï¿½ Ä¿ï¿½Ã·ï¿½ï¿½Ô´Ï´ï¿½ï¿½ï¿½~!!',109900,
+					'nike5.jpg','2018.02.01','ï¿½Ì±ï¿½',now()
 					);
 					
 
 insert into product (p_name,p_content,p_price,
 					p_image_m,p_pdate,p_country,p_entry) 
 					values(
-					'³ªÀÌÅ°(·Î°í)','¾Æ¸§´Ù¿î Ä¿ÇÃ·èÀÔ´Ï´ÙÀ×~!!',99900,
-					'nike6.jpg','2018.02.01','¹Ì±¹',now()
+					'ï¿½ï¿½ï¿½ï¿½Å°(ï¿½Î°ï¿½)','ï¿½Æ¸ï¿½ï¿½Ù¿ï¿½ Ä¿ï¿½Ã·ï¿½ï¿½Ô´Ï´ï¿½ï¿½ï¿½~!!',99900,
+					'nike6.jpg','2018.02.01','ï¿½Ì±ï¿½',now()
 					);
 					
 insert into product (p_name,p_content,p_price,
 					p_image_m,p_pdate,p_country,p_entry) 
 					values(
-					'³ªÀÌÅ°(Áý¾÷)','¾Æ¸§´Ù¿î Ä¿ÇÃ·èÀÔ´Ï´ÙÀ×~!!',59900,
-					'nike7.jpg','2018.02.01','¹Ì±¹',now()
+					'ï¿½ï¿½ï¿½ï¿½Å°(ï¿½ï¿½ï¿½ï¿½)','ï¿½Æ¸ï¿½ï¿½Ù¿ï¿½ Ä¿ï¿½Ã·ï¿½ï¿½Ô´Ï´ï¿½ï¿½ï¿½~!!',59900,
+					'nike7.jpg','2018.02.01','ï¿½Ì±ï¿½',now()
 					);
 use f4mall;
 insert into product (p_name,p_content,p_price,
 					p_image_m,p_pdate,p_country,p_entry) 
 					values(
-					'³ªÀÌÅ°(Å×½ºÆ®)','¾Æ¸§´Ù¿î Ä¿ÇÃ·èÀÔ´Ï´ÙÀ×~!!',209900,
-					'nike8.jpg','2018.02.01','¹Ì±¹',now()
+					'ï¿½ï¿½ï¿½ï¿½Å°(ï¿½×½ï¿½Æ®)','ï¿½Æ¸ï¿½ï¿½Ù¿ï¿½ Ä¿ï¿½Ã·ï¿½ï¿½Ô´Ï´ï¿½ï¿½ï¿½~!!',209900,
+					'nike8.jpg','2018.02.01','ï¿½Ì±ï¿½',now()
 					);
     
 use f4mall;
 drop table order_table
 
 use f4mall;
-select * from product
+select * from product where p_no = 1
