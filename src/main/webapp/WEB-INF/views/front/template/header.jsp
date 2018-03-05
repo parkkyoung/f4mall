@@ -330,7 +330,7 @@
 		<div class="head">
 			<button type="button" class="btnGnb">메뉴</button>
 			<h1>
-				<a href="index.html" title="HOME">F4 Mall</a>
+				<a href="product_list.do" title="HOME">F4 Mall</a>
 			</h1>
 			<div class="util">
 				<input type="text" class="textSerch" />

@@ -12,7 +12,7 @@ function add_cart(p_no){
 			var json = eval(data);
 			//json =[{'result':'success'}];
 			if(json[0].result == 'fail'){
-				alert('이미 장바구니에 담겨져 있습니다');
+				alert('장바구니 담기에 실패했습니다. 다시 시도해 주세요');
 				return;
 			}
 			

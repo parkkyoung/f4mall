@@ -74,3 +74,6 @@ drop table order_table
 
 use f4mall;
 select * from product where p_no = 1
+
+use f4mall;
+select * from product

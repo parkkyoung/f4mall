@@ -94,7 +94,7 @@ public class MemberController {
 	
 	@RequestMapping("/login.do")
 	@ResponseBody
-	public String Login(String m_id, String m_pwd,Model model,HttpServletRequest request) {
+	public String Login(String m_id, String m_pwd,HttpServletRequest request) {
 
 		MemberVo user = member_dao.selectOne(m_id);
 
