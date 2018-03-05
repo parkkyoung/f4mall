@@ -4,15 +4,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<table align="center" width="600" border="1"
- style="border-collapse:collapse;font-size:8pt"
+<%@include file= "header.jsp"%>
+
+	<table align="center" width="1000" border="1"
+ style="border-collapse:collapse;font-size:12pt"
  bordercolor="navy" cellpadding="4" cellspacing="0">
 		<tr>
 			<td colspan="6">:: 장바구니 내용</td>

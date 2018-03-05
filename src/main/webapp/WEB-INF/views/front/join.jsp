@@ -94,7 +94,7 @@
 			</div>
 		</div>
 		<div class="form-group btnBox">
-			<a href="join2.jsp" class="btn btn-primary btn-lg">다음</a>
+			<a href="member_join_form.do" class="btn btn-primary btn-lg">다음</a>
 		</div>
 	</div>
 </section>

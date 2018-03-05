@@ -1,7 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="header.jsp" %>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+function add_cart(p_no){
+	var param = { 'p_no' : p_no, 'm_id' : '${ user.id }' };
+	$.ajax({
+		url : 'cart_insert.do',
+		data: param,
+		success:function(data){
+			var json = eval(data);
+			//json =[{'result':'success'}];
+			if(json[0].result == 'fail'){
+				alert('이미 장바구니에 담겨져 있습니다');
+				return;
+			}
 			
+			//장바구니 담기 성공
+			if(confirm('장바구니 담기 성공\n장바구니 보기로 이동하시겠습니까?')==false){
+				return;
+			}
+			location.href='cart_list.do';
+		}
+	});
+}
+</script>
 <!-- visual -->
 <section class="subVisual">
 	<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
@@ -50,6 +73,7 @@
 						<label for="" class="control-label">배송비</label>
 						<div class="">${ vo.p_price }</div>
 					</div>
+					<input type="button" value="장바구니" onclick="add_cart(this.form);">
 				</form>
 			</div>
 			<!-- //옵션 -->

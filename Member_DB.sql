@@ -23,6 +23,10 @@ create table member (
 	m_image		text
 );
 
+use f4mall;
+insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel)
+values('admin@f4mall.com','f4mall','°ü¸®ÀÚ','localhost',now(),01012341234)
+
 
 -- ï¿½âº»Å°(primary key)
 alter table member
@@ -33,7 +37,7 @@ alter table member
 -- Oracle ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ date Ã³ï¿½ï¿½ï¿½ï¿½ sysdate / MySQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ now() ï¿½ï¿½ Ã³ï¿½ï¿½
 use f4mall;
 insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) 
-values('kimbongsung@hotmail.com','kbs123123','ï¿½ï¿½ï¿½ï¿½ï¿½','123.456.78',now(),010-1234-1234);
+values('kimbongsung@hotmail.com','kbs123123','','123.456.78',now(),010-1234-1234);
 	
 		
 use f4mall;
