@@ -4,12 +4,22 @@
 <%@include file="template/header.jsp" %>
 
 <script>
+// faq 삭제
 function faqDelete(idx){
 	swal({
-		text : "삭제되었습니다.",
-		icon : "success",
+		text : "삭제하시겠습니까?",
+		icon : "info",
+		buttons: true,
+	}).then((willDelete) =>{
+		if(willDelete){
+			swal({
+				text : "삭제되었습니다.",
+				icon : "success"
+			}).then((value) =>{
+				location.href= "faq_delete.do?f_no="+idx;
+			})
+		}
 	});
-	location.href= "faq_delete.do?f_no="+idx;
 }
 </script>
 
@@ -27,25 +37,21 @@ function faqDelete(idx){
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title clearfix">
-						<a data-toggle="collapse" href="#faq${list.f_no}" class="pull-left" style="padding-top:8px;">${list.f_name}</a>
+						<a data-toggle="collapse" href="#faq<c:out value='${list.f_no}'/>" class="pull-left" style="padding-top:8px;"><c:out value="${list.f_name}"/></a>
                         <div class="pull-right">
-                            <div style="margin-right:10px;padding-top:8px;">${list.f_regdate }</div>
-                            <a href="faq_update.html" class="btn btn-outline btn-warning">수정</a>
-                            <button class="btn btn-warning" onclick="faqDelete(${list.f_no});">삭제</button>
+                            <div style="display:inline-block;margin-right:10px;padding-top:8px;"><c:out value="${list.f_regdate }"/></div>
+                            <a href="faq_update_form.do?f_no=<c:out value='${list.f_no }'/>" class="btn btn-warning">수정</a>
+                            <button class="btn btn-danger" onclick="faqDelete(<c:out value='${list.f_no}'/>);">삭제</button>
                         </div>
 					</h4>
 				</div>
 				<div id="faq${list.f_no}" class="collapse">
 					<div class="panel-body">
-						<p>${list.f_content }</p>
-                        <div>no : ${list.f_no}</div>
-                        <div>ip : ${list.f_ip}</div>
-                        <div>작성자 : ${list.m_id}</div>
+						<p>${list.f_content}</p>
 					</div>
 				</div>
 			</div>
 			</c:forEach>
-
 		</div>
 	</div>
 </div>

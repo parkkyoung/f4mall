@@ -5,10 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="">
 
     <select id="faq_list" resultType="vo.FaqVo">
-        select * from faq
+        select * from faq order by f_no desc
     </select>
     
-    <select id="faq_view" parameterType="int" resultType="vo.FaqVo"></select>
+    <select id="faq_view" parameterType="int" resultType="vo.FaqVo">
+        select * from faq where f_no=#{f_no}
+    </select>
     
     <insert id="faq_insert" parameterType="vo.FaqVo">
         insert into faq(m_id, f_name, f_content, f_ip, f_regdate)
@@ -24,6 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="faq_delete" parameterType="int">
         delete from faq where f_no=#{f_no}
     </delete>
+    
+    <update id="faq_update" parameterType="vo.FaqVo">
+        update faq set f_name=#{f_name}, f_content=#{f_content} where f_no=#{f_no}
+    </update>
 
 </mapper>
 
