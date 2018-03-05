@@ -17,3 +17,6 @@ insert into faq(m_id,f_name,f_content,f_ip,f_regdate) values('admin','¹Ú°æ¹Î','Ç
 
 use f4mall;
 select * from faq
+
+use f4mall;
+delete from faq where f_no=2

@@ -2,6 +2,11 @@ package common;
 
 public class Constant {
 	
+	// Admin(관리자) 상수
+	public static class Admin {
+		// 관리자 url
+		public static final String ADMINPATH = "admin/";
+	}
 	
 	//게시판 상수
 	public static class Board{
