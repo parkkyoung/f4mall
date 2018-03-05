@@ -45,6 +45,33 @@
 				blSubjectEllipsis();
 			});
 		});
+		
+		
+		
+		function login_bt_click(f){
+			
+			var login_id  = f.login_id.value.trim();
+			var login_pwd = f.login_pwd.value.trim();
+			
+			
+			if(login_id==''){
+				alert('아이디를 입력하세요')
+				f.login_id.focus();
+				return;
+			}
+			
+			if(login_pwd==''){
+				alert('비밀번호를 입력하세요')
+				f.login_pwd.focus();
+				return;
+			}
+			
+			
+			
+		}
+		
+		
+		
 	</script>
 </head>
 <body>
@@ -56,6 +83,7 @@
 	<!-- //스킵 네비게이션 -->
 
 	<!-- Login popup -->
+	<form>
 	<div class="modal fade" id="loginPop" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -67,11 +95,11 @@
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label for="loginId" class="col-sm-2 col-xs-3 control-label">Email</label>
-							<div class="col-sm-10 col-xs-9"><input type="email" class="form-control" id="loginId" placeholder="Email"></div>
+							<div class="col-sm-10 col-xs-9"><input type="email" class="form-control" id="login_id"  placeholder="Email"></div>
 						</div>
 						<div class="form-group">
 							<label for="loginPw" class="col-sm-2 col-xs-3 control-label">Password</label>
-							<div class="col-sm-10 col-xs-9"><input type="password" class="form-control" id="loginPw" placeholder="Password"></div>
+							<div class="col-sm-10 col-xs-9"><input type="password" class="form-control" id="login_pwd" placeholder="Password"></div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10 col-xs-offset-3 col-xs-9">
@@ -83,13 +111,14 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<a href="join.html" class="btn btn-warning">Join us</a>
+					<a href="join2.html" class="btn btn-warning">Join us</a>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Login</button>
+					<button type="button" class="btn btn-primary" id="login_bt" onclick="login_bt_click(this.form);">Login</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	</form>
 	<!-- //Login popup -->
 	
 	<!-- 모바일 gnb -->
