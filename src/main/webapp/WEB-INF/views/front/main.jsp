@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@include file="header.jsp" %>
+<%@include file="template/header.jsp" %>
 			
 <!-- visual -->
 <section class="mainVisual">
@@ -161,4 +161,4 @@
 
 </section>
 <!-- //main contents -->
-<%@include file="footer.jsp" %>
+<%@include file="template/footer.jsp" %>

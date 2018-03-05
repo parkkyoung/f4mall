@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@include file="header.jsp" %>
+<%@include file="template/header.jsp" %>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 function add_cart(p_no){
@@ -83,4 +83,4 @@ function add_cart(p_no){
 
 </section>
 <!-- //sub contents -->
-<%@include file="footer.jsp" %>
+<%@include file="template/footer.jsp" %>

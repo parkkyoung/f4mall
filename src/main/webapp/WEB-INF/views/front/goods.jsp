@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="header.jsp" %>
+<%@include file="template/header.jsp" %>
 <!-- visual -->
 <section class="subVisual">
 	<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
@@ -62,4 +62,4 @@
 
 </section>
 <!-- //sub contents -->
-<%@include file="footer.jsp" %>
+<%@include file="template/footer.jsp" %>

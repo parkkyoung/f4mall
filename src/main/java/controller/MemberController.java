@@ -113,7 +113,7 @@ public class MemberController {
 			resultStr = String.format("[{'result':'%s'}]", result);
 			return resultStr;
 		}
-		System.out.println(result);
+
 			// 로그인정보를 세션에 저장
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user);

@@ -27,6 +27,12 @@ public class TestController {
 		
 		model.addAttribute("list",list);
 		
-		return "front/main";
+		return "admin/index";
+	}
+	
+	@RequestMapping("admin/test.do")
+	public String admin_page(){
+		
+		return "admin/index";
 	}
 }

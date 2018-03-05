@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@include file="header.jsp" %>
+<%@include file="template/header.jsp" %>
 
 	<!-- 이용약관 popup -->
 	<div class="modal fade" id="termsPop1" tabindex="-1" role="dialog" aria-hidden="true">
@@ -99,4 +99,4 @@
 	</div>
 </section>
 <!-- //sub contents -->
-<%@include file="footer.jsp" %>
+<%@include file="template/footer.jsp" %>

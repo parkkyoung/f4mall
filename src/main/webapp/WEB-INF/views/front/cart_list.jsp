@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@include file= "header.jsp"%>
+<%@include file= "template/header.jsp"%>
 
 	<table align="center" width="1000" border="1"
  style="border-collapse:collapse;font-size:12pt"
