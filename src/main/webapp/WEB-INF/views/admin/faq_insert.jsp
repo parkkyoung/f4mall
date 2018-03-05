@@ -1,139 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="ko">
+<%@include file="template/header.jsp" %>
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
-	<title>F4 Mall Admin</title>
+<script>
+function faqInsert(f){
 	
-	<!-- css -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.4/metisMenu.min.css" rel="stylesheet"> <!-- menu -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet"> <!-- sbadmin -->
-	<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"> <!-- datatables(bootstrap) -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"> <!-- datepicker -->
+	var f_name = f.f_name.value;
+	var f_content = f.f_content.value;
+    
+    if(f_name == ''){
+        swal({
+            text : "제목을 입력해주세요",
+            icon : "error"
+        });
+        return;
+    }
+    
+    if(f_content == ''){
+        swal({
+            text : "내용을 입력해주세요",
+            icon : "error"
+        });
+        return;
+    }
+    
+    swal({
+        text : "상품등록이 완료되었습니다.",
+        icon : "success"
+    });
+	
+	f.action = "faq_insert.do";
+	f.submit();
+}
+</script>
 
-	<!-- js -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- sweet alert -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- bootstrap -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.4/metisMenu.min.js"></script> <!-- menu -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/js/sb-admin-2.min.js"></script> <!-- sbadmin-->
-	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> <!-- datatables -->
-	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> <!-- datatables(bootstrap) -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> <!-- datepicker -->
-	<script src="${ pageContext.request.contextPath }/resources/f4/js/admin/common.js"></script> <!-- customizing -->
-</head>
+<!-- page title -->
+<h1 class="page-header">FAQ 등록</h1>
+<!-- //page title -->
 
-<body>
-
-	<div id="wrapper">
-
-		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html">F4 Mall Admin</a>
+<!-- page contents -->
+<div class="panel panel-default">
+	<div class="panel-heading">FAQ 등록</div>
+	<div class="panel-body">
+		<form role="form" class="panel-body">
+			<div class="form-group">
+				<label for="">제목</label>
+				<input type="text" name="f_name" class="form-control" placeholder="FAQ 타이틀" />
 			</div>
-			<!-- /.navbar-header -->
-
-			<ul class="nav navbar-top-links navbar-right">
-				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-				<li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
-			</ul>
-			<!-- /.navbar-top-links -->
-
-			<div class="navbar-default sidebar" role="navigation">
-				<div class="sidebar-nav navbar-collapse">
-					<ul class="nav" id="side-menu">
-						<li class="sidebar-search">
-							<div class="input-group custom-search-form">
-								<input type="text" class="form-control" placeholder="Search...">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div>
-						</li>
-						<li>
-							<a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-user fa-fw"></i> 회원관리<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a href="member.html">회원목록</a></li>
-								<li><a href="member_insert.html">회원등록</a></li>
-								<li><a href="member_order.html">주문목록</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-user fa-fw"></i> 상품관리<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a href="goods.html">상품목록</a></li>
-								<li><a href="goods_insert.html">상품등록</a></li>
-								<li><a href="goods_stock.html">상품입출고</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#"><i class="fa fa-table fa-fw"></i> FAQ<span class="fa arrow"></span></a>
-							<ul class="nav nav-second-level">
-								<li><a href="faq.html">FAQ 목록</a></li>
-								<li><a href="faq_insert.html">FAQ 등록</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- /.sidebar-collapse -->
+			<div class="form-group">
+				<label for="">내용</label>
+				<textarea name="f_content" class="form-control" rows="10" placeholder="FAQ 설명"></textarea>
 			</div>
-			<!-- /.navbar-static-side -->
-		</nav>
-		<!-- //Navigation -->
-
-		<!-- Page Content -->
-		<div id="page-wrapper">
-			<div class="container-fluid">
-
-				<!-- page title -->
-				<h1 class="page-header">FAQ 등록</h1>
-				<!-- //page title -->
-
-				<!-- page contents -->
-				<div class="panel panel-default">
-					<div class="panel-heading">FAQ 등록</div>
-					<div class="panel-body">
-						<form action="" role="form" class="panel-body">
-							<div class="form-group">
-								<label for="">제목</label>
-								<input type="text" class="form-control" placeholder="FAQ 타이틀" />
-							</div>
-							<div class="form-group">
-								<label for="">내용</label>
-								<textarea class="form-control" rows="10" placeholder="FAQ 설명"></textarea>
-							</div>
-							<div class="form-group text-right">
-								<button type="button" class="btn btn-primary">FAQ 등록</button>
-							</div>
-						</form>
-					</div>
-				</div>
-				<!-- //page contents -->
+			<div class="form-group text-right">
+				<button type="button" class="btn btn-primary" onclick="faqInsert(this.form);">FAQ 등록</button>
 			</div>
-			<!-- /.container-fluid -->
-		</div>
-		<!-- /#page-wrapper -->
+		</form>
 	</div>
-	<!-- /#wrapper -->
-</body>
-</html>
+</div>
+<!-- //page contents -->
+
+<%@include file="template/footer.jsp" %>

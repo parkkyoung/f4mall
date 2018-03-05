@@ -24,4 +24,23 @@ public class FaqDao {
 		return list;
 	}
 	
+	public FaqVo select_one(int f_no){
+		FaqVo vo = null;
+		vo = sqlSession.selectOne("faq_view", f_no);
+		return vo;
+	}
+	
+	public int insert(FaqVo vo){
+		int res = 0;
+		res = sqlSession.insert("faq_insert", vo);
+		return res;
+	}
+
+	public int delete(int f_no) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		res = sqlSession.insert("faq_delete", f_no);
+		return res;
+	}
+	
 }
