@@ -25,6 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from product where p_no = #{ p_no }
 	</delete>
 
+	<select id="product_view" parameterType="int" resultType="vo.ProductVo">
+		select * from product where p_no = #{ p_no }
+	</select>
+
 </mapper>
 
 

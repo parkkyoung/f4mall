@@ -7,26 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dao.TestDao;
-import vo.TestVo;
+import dao.FaqDao;
+import vo.FaqVo;
 
 @Controller
-public class TestController {
+public class FaqController {
 	
 	@Autowired
-	TestDao test_dao;
+	FaqDao faq_dao;
 	
-	public TestController() {
+	public FaqController() {
 		// TODO Auto-generated constructor stub
 	}
-
-	@RequestMapping("main/test.do")
-	public String list(Model model){
+	
+	
+	@RequestMapping(value="/admin/faq_list.do")
+	public String faq_list(Model model){
+		List<FaqVo> f_list = faq_dao.select_list();
 		
-		List<TestVo> list = test_dao.select_list();
+		model.addAttribute("f_list", f_list);
 		
-		model.addAttribute("list",list);
-		
-		return "front/main";
+		return "admin/faq";
 	}
 }

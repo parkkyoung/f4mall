@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -115,50 +115,22 @@
 					<div class="panel-body">
 						<div class="panel-group">
 							
-							<!--faq 컨텐츠의 아이디와 faq 타이틀의 href에 해당 faq 넘버를 삽입 -->
-							<!-- Loop -->
+							<c:forEach var="list" items="${f_list}">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title clearfix">
-										<a data-toggle="collapse" href="#faq01" class="pull-left" style="padding-top:8px;">faq 타이틀입니다.</a>
+										<a data-toggle="collapse" href="#faq${list.f_no}" class="pull-left" style="padding-top:8px;">${list.f_name}</a>
 										<a href="faq_update.html" class="btn btn-outline btn-warning pull-right">수정</a>
-										<div class="pull-right" style="margin-right:10px;padding-top:8px;">2018-03-01</div>
+										<div class="pull-right" style="margin-right:10px;padding-top:8px;">${list.f_regdate }</div>
 									</h4>
 								</div>
-								<div id="faq01" class="collapse">
+								<div id="faq${list.f_no}" class="collapse">
 									<div class="panel-body">
-										<p>faq 컨텐츠입니다.</p>
+										<p>${list.f_content }</p>
 									</div>
 								</div>
 							</div>
-							<!-- //Loop -->
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title clearfix">
-										<a data-toggle="collapse" href="#faq02" class="pull-left" style="padding-top:8px;">faq 타이틀입니다.2</a>
-										<a href="faq_update.html" class="btn btn-outline btn-warning pull-right">수정</a>
-										<div class="pull-right" style="margin-right:10px;padding-top:8px;">2018-03-01</div>
-									</h4>
-								</div>
-								<div id="faq02" class="collapse">
-									<div class="panel-body">
-										faq 컨텐츠입니다.
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title clearfix">
-										<a data-toggle="collapse" href="#faq03" class="pull-left" style="padding-top:8px;">faq 타이틀입니다.3</a>
-										<a href="faq_update.html" class="btn btn-outline btn-warning pull-right">수정</a>
-										<div class="pull-right" style="margin-right:10px;padding-top:8px;">2018-03-01</div>
-									</h4>
-								</div>
-								<div id="faq03" class="collapse">
-									<div class="panel-body">faq 컨텐츠입니다.</div>
-								</div>
-							</div>
+							</c:forEach>
 
 						</div>
 					</div>

@@ -52,6 +52,20 @@ public class ProductController {
 		return "redirect:product_list.do";
 	}
 	
+	@RequestMapping("product_view.do")
+	public String product_view(Model model, Integer p_no) {
+		
+	System.out.println("파라미터 받기p_no:"+ p_no);
+		
+		ProductVo vo = product_dao.select_one(p_no);
+		
+		System.out.println("dao에서 넘어온vo:" + vo);
+		
+		model.addAttribute("vo",vo);
+		
+		return "front/goods_view";
+	}
+	
 	
 	
 }

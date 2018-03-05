@@ -142,9 +142,10 @@
 			</li> --%>
 			<!-- Loop -->
 			<c:forEach var="product" items="${ p_list }">
+			
 			<li class="col-md-3 col-xs-6">
 				<div class="imgBox">
-					<a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ product.p_image_m }" alt="상품" class="wFull" /></a>
+					<a href="product_view.do?p_no=${ product.p_no }"><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ product.p_image_m }" alt="상품" class="wFull" /></a>
 					<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 				</div>
 				<div class="txtBox">
