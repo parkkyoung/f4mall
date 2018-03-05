@@ -90,7 +90,7 @@
                             <a href="#"><i class="fa fa-table fa-fw"></i> FAQ<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li><a href="faq_list.do">FAQ 목록</a></li>
-                                <li><a href="faq_insert.do">FAQ 등록</a></li>
+                                <li><a href="faq_insert_form.do">FAQ 등록</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -7,6 +7,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="faq_list" resultType="vo.FaqVo">
         select * from faq
     </select>
+    
+    <select id="faq_view" parameterType="int" resultType="vo.FaqVo"></select>
+    
+    <insert id="faq_insert" parameterType="vo.FaqVo">
+        insert into faq(m_id, f_name, f_content, f_ip, f_regdate)
+            values(
+                'admin',
+                #{f_name},
+                #{f_content},
+                #{f_ip},
+                now()
+            )
+    </insert>
+    
+    <delete id="faq_delete" parameterType="int">
+        delete from faq where f_no=#{f_no}
+    </delete>
 
 </mapper>
 

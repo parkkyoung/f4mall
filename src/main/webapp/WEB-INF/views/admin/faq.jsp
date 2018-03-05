@@ -3,6 +3,16 @@
 
 <%@include file="template/header.jsp" %>
 
+<script>
+function faqDelete(idx){
+	swal({
+		text : "삭제되었습니다.",
+		icon : "success",
+	});
+	location.href= "faq_delete.do?f_no="+idx;
+}
+</script>
+
 <!-- page title -->
 <h1 class="page-header">FAQ 목록</h1>
 <!-- //page title -->
@@ -18,13 +28,19 @@
 				<div class="panel-heading">
 					<h4 class="panel-title clearfix">
 						<a data-toggle="collapse" href="#faq${list.f_no}" class="pull-left" style="padding-top:8px;">${list.f_name}</a>
-						<a href="faq_update.html" class="btn btn-outline btn-warning pull-right">수정</a>
-						<div class="pull-right" style="margin-right:10px;padding-top:8px;">${list.f_regdate }</div>
+                        <div class="pull-right">
+                            <div style="margin-right:10px;padding-top:8px;">${list.f_regdate }</div>
+                            <a href="faq_update.html" class="btn btn-outline btn-warning">수정</a>
+                            <button class="btn btn-warning" onclick="faqDelete(${list.f_no});">삭제</button>
+                        </div>
 					</h4>
 				</div>
 				<div id="faq${list.f_no}" class="collapse">
 					<div class="panel-body">
 						<p>${list.f_content }</p>
+                        <div>no : ${list.f_no}</div>
+                        <div>ip : ${list.f_ip}</div>
+                        <div>작성자 : ${list.m_id}</div>
 					</div>
 				</div>
 			</div>
