@@ -28,10 +28,8 @@ public class CartController {
 	
 	@RequestMapping("cart_insert.do")
 	@ResponseBody
-	public String cart_list(Integer p_no, String m_id){
-		
-		System.out.println("하이하이");
-		
+	public String cart_insert(Integer p_no, String m_id){
+	
 		String result = "fail";
 		String resultStr = "";
 		
@@ -52,6 +50,16 @@ public class CartController {
 		resultStr = String.format("[{'result':'%s'}]", result);
 		
 		return resultStr;
+	}
+	
+	@RequestMapping("cart_view.do")
+	public String cart_list(Model model, MemberVo vo){
+		
+		/*List<CartVo> c_view = cart_dao.select_list();*/
+		
+		/*model.*/
+		
+		return "";
 	}
 	
 	

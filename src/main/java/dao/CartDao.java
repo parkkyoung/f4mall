@@ -24,7 +24,7 @@ public class CartDao {
 		
 		res = sqlSession.insert("cart_insert",map);
 		
-		return 0;
+		return res;
 	}
 
 

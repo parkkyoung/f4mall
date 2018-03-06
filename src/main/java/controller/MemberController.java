@@ -125,17 +125,15 @@ public class MemberController {
 
 	}
 
-	
-	@RequestMapping("/member/login_form.do")
-	public String MemberLoginFormAction(HttpServletRequest request) throws IOException {
-		HttpSession session = request.getSession();
-		if(session.getAttribute("user")!=null){
-			
-			return "redirect:../member/list.do";
-		}
-			
-			return "member_login_form";
+	@RequestMapping("/logout.do")
+	public String logout(MemberVo vo){
 		
+		System.out.println("·Î±×¾Æ¿ô");
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("user");
+		
+		return "redirect:product_list.do";
 	}
 	
 	

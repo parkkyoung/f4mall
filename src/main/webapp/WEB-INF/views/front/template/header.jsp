@@ -101,7 +101,7 @@
 						text : "로그인 성공.",
 						icon : "success",
 					}).then((value) => {
-						location.href = "product_list.do";
+						location.href = '';
 					});
 				} else if (json[0].result == 'id_fail') {
 					alert('아이디가 틀립니다');
@@ -152,14 +152,14 @@
 									<label for="loginId" class="col-sm-2 col-xs-3 control-label">Email</label>
 									<div class="col-sm-10 col-xs-9">
 										<input type="email" class="form-control" id="m_id" name="m_id"
-											placeholder="Email">
+											placeholder="Email" value="kimbongsung@hotmail.com">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="loginPw" class="col-sm-2 col-xs-3 control-label">Password</label>
 									<div class="col-sm-10 col-xs-9">
 										<input type="password" class="form-control" id="m_pwd"
-											name="m_pwd" placeholder="Password">
+											name="m_pwd" placeholder="Password" value="kbs123123">
 									</div>
 								</div>
 								<div class="form-group">
@@ -174,11 +174,15 @@
 							<c:if test="${ not empty user }">
 								<div class="form-group">[${ user.m_name }]님 환영합니다</div>
 								<div class="form-group">♥오늘 하루도 즐거운 쇼핑되십쇼♥</div>
+								<input type="button" value="로그아웃" onclick="location.href='logout.do'">
 							</c:if>
 
 						</div>
 					</div>
 					<div class="modal-footer">
+						<p>관리자 계정</p>
+						<p>admin@f4mall.com</p>
+						<p>f4mall</p>
 						<a href="member_join_clause.do" class="btn btn-warning">Join
 							us</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -345,12 +349,12 @@
 				<a href="" title="user"><i class="fa fa-user"></i></a>
 				</c:if>
 				<!-- 로그인 후에 노출 -->
-				<c:if test="${ empty user }">
+				
 				<button type="button" title="login" data-toggle="modal"
 					data-target="#loginPop">
 					<i class="fa fa-lock"></i>
 				</button>
-				</c:if>
+				
 				<!-- 미 로그인 시에 노출 -->
 				<c:if test="${ user.m_id eq 'admin@f4mall.com' }">
 				<a href="../admin/index.html"><i class="fa fa-wrench fa-w-16"></i></a>
