@@ -20,14 +20,14 @@ public class TestController {
 		// TODO Auto-generated constructor stub
 	}
 
-	@RequestMapping("main/test.do")
+	@RequestMapping("/test.do")
 	public String list(Model model){
 		
 		List<TestVo> list = test_dao.select_list();
 		
 		model.addAttribute("list",list);
 		
-		return "admin/index";
+		return "front/goods_view";
 	}
 	
 	@RequestMapping("admin/test.do")
