@@ -8,6 +8,12 @@ public class Constant {
 		public static final String ADMINPATH = "admin/";
 	}
 	
+	// Front(사용자) 상수
+	public static class Front{
+		// 사용자 url
+		public static final String FRONTPATH = "front/";
+	}
+	
 	//게시판 상수
 	public static class Board{
 		// 하나의 화면에 보여질 게시물 개수
