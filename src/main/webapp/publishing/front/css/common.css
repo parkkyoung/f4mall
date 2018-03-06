@@ -104,6 +104,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .ft24 {font-size:24px !important;}
 .ftWhite {color:white !important;}
 .ftRed {color:red !important;}
+.ftGreen {color:green !important;}
 /* ===== common ===== */
 /* skip nav */
 .skip-navi a {display:block;height:1px;width:1px;margin:0 -1px -1px 0;padding:0;overflow:hidden;font-size:0;line-height:0;}
