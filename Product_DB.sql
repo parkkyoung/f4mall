@@ -92,12 +92,12 @@ select * from information_schema.table_constraints where table_name = 'product';
 --카테고리 코드
 use f4mall;
 alter table product add constraint
-	fk_category_no FOREIGN KEY (category_no) REFERENCES category (category_no) on delete cascade;
+	fk_category_no FOREIGN KEY (category_no) REFERENCES category(category_no) on delete cascade;
 
 --재질 코드
 use f4mall; 
 alter table product add constraint
-	fk_material_no FOREIGN KEY (material_no) REFERENCES material (material_no) on delete cascade;
+	fk_material_no FOREIGN KEY (material_no) REFERENCES material(material_no) on delete cascade;
 
 use f4mall;
 desc material;
@@ -106,7 +106,7 @@ desc product;
 --색상 코드
 use f4mall;
 alter table product add constraint
-	fk_color_no FOREIGN KEY (color_no) REFERENCES color (color_no) on delete cascade;
+	fk_color_no FOREIGN KEY (color_no) REFERENCES color(color_no) on delete cascade;
 
 use f4mall;
 desc color;	
@@ -114,7 +114,7 @@ desc color;
 --성별 코드
 use f4mall;
 alter table product add constraint
-	fk_sex_no FOREIGN KEY (sex_no) REFERENCES sex (sex_no) on delete cascade;
+	fk_sex_no FOREIGN KEY (sex_no) REFERENCES sex(sex_no) on delete cascade;
 
 use f4mall;
 desc sex;
@@ -122,22 +122,22 @@ desc sex;
 --브랜드 코드
 use f4mall;
 alter table product add constraint
-	fk_brand_no FOREIGN KEY (brand_no) REFERENCES brand (brand_no) on delete cascade;
+	fk_brand_no FOREIGN KEY (brand_no) REFERENCES brand(brand_no) on delete cascade;
 
 --사이즈 코드
 use f4mall;
 alter table product add constraint
-	fk_size_no FOREIGN KEY (size_no) REFERENCES size (size_no) on delete cascade;
+	fk_size_no FOREIGN KEY (size_no) REFERENCES size(size_no) on delete cascade;
 
 --회원아이디
 use f4mall;
 alter table product add constraint
-	fk_m_id foreign key (m_id) references member (m_id);
+	fk_m_id foreign key (m_id) references member(m_id);
 
 --상품평점
 use f4mall;
 alter table product add constraint
-	fk_e_no foreign key (e_no) references e (e_no);
+	fk_e_no foreign key (e_no) references e(e_no);
 
 
 
