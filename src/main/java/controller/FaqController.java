@@ -24,7 +24,7 @@ public class FaqController {
 	}
 	
 	/**
-	 * faq 리스트
+	 * admin faq 리스트
 	 * @param model
 	 * @return
 	 */
@@ -38,7 +38,7 @@ public class FaqController {
 	}
 	
 	/**
-	 * faq 등록 폼 이동
+	 * admin faq 등록 폼 이동
 	 * @return
 	 */
 	@RequestMapping(value="/admin/faq_insert_form.do")
@@ -47,7 +47,7 @@ public class FaqController {
 	}
 	
 	/**
-	 * faq 등록
+	 * admin faq 등록
 	 * @param vo
 	 * @param request
 	 * @return
@@ -68,7 +68,7 @@ public class FaqController {
 	}
 	
 	/**
-	 * faq 삭제
+	 * admin faq 삭제
 	 * @param f_no
 	 * @return
 	 */
@@ -79,7 +79,7 @@ public class FaqController {
 	}
 
 	/**
-	 * faq 수정 폼으로 이동
+	 * admin faq 수정 폼으로 이동
 	 * @param model
 	 * @param f_no
 	 * @return
@@ -96,7 +96,11 @@ public class FaqController {
 		return Constant.Admin.ADMINPATH+"faq_update";
 	}
 	
-	
+	/**
+	 * admin faq 수정
+	 * @param vo
+	 * @return
+	 */
 	@RequestMapping(value="/admin/faq_update.do")
 	public String faq_update(FaqVo vo){
 		
@@ -106,5 +110,14 @@ public class FaqController {
 
 		int res = faq_dao.update(vo);
 		return "redirect:faq_list.do";
+	}
+	
+	@RequestMapping(value="/faq.do")
+	public String faq(Model model){
+		List<FaqVo> f_list = faq_dao.select_list();
+		
+		model.addAttribute("f_list", f_list);
+		
+		return Constant.Front.FRONTPATH+"faq";
 	}
 }

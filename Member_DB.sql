@@ -23,13 +23,35 @@ create table member (
 	m_image		text
 );
 
+use f4mall;
+insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel)
+values('admin@f4mall.com','f4mall','관리자','localhost',now(),01012341234)
+
 
 	
 /*-- Member_DB sample
 -- Oracle에서 date sysdate / MySQL 에서는 now() 처리
 use f4mall;
 insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) 
+<<<<<<< HEAD
+values('kimbongsung@hotmail.com','kbs123123','','123.456.78',now(),010-1234-1234);
+	
+		
+use f4mall;
+create table h_test(
+	pk_no int primary key,
+	fk_no int
+)
+
+use f4mall;
+create table sub_h_test(
+	sub_pk int primary key,
+	h_fk int
+)
+
+=======
 values('kimbongsung@hotmail.com','kbs123123','','123.456.78',now(),010-1234-1234);*/
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 
 use f4mall;
 select * from member;

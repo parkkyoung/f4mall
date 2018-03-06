@@ -36,7 +36,7 @@ public class ProductController {
 		return "admin/goods_insert";
 	}
 	
-	@RequestMapping("/product_insert.do")
+	@RequestMapping("/admin/product_insert.do")
 	public String product_insert(ProductVo vo){
 		
 		int res = product_dao.insert_product(vo);
@@ -55,11 +55,7 @@ public class ProductController {
 	@RequestMapping("product_view.do")
 	public String product_view(Model model, Integer p_no) {
 		
-	System.out.println("파라미터 받기p_no:"+ p_no);
-		
 		ProductVo vo = product_dao.select_one(p_no);
-		
-		System.out.println("dao에서 넘어온vo:" + vo);
 		
 		model.addAttribute("vo",vo);
 		

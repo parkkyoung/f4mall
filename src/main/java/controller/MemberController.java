@@ -69,6 +69,18 @@ public class MemberController {
 		return resultStr;
 	}
 	
+	@RequestMapping("/member_join_clause.do")
+	public String member_join_clause(){
+		
+		return "front/join";
+	}
+	
+	@RequestMapping("/member_join_form.do")
+	public String member_join_form(){
+		
+		return "front/join2";
+	}
+	
 	@RequestMapping("/member_insert.do")
 	public String insert_id(MemberVo vo){
 		
@@ -78,6 +90,39 @@ public class MemberController {
 		int res =member_dao.insert_id(vo);
 		
 		return "redirect:product_list.do";
+	}
+	
+	@RequestMapping("/login.do")
+	@ResponseBody
+	public String Login(String m_id, String m_pwd,HttpServletRequest request) {
+
+		MemberVo user = member_dao.selectOne(m_id);
+
+		String result="no";
+		String resultStr ="";// String.format("[{'result':'%s'}]", result);
+		// 아이디 틀린경우
+		if (user == null) {
+			result ="id_fail";
+			resultStr = String.format("[{'result':'%s'}]", result);
+			return resultStr;	
+		}
+
+		// 비밀번호가 틀린경우
+		if (user.getM_pwd().equals(m_pwd) == false) {
+			result = "pwd_fail";
+			resultStr = String.format("[{'result':'%s'}]", result);
+			return resultStr;
+		}
+
+			// 로그인정보를 세션에 저장
+		HttpSession session = request.getSession();
+		session.setAttribute("user", user);
+		result = "yes";
+		resultStr = String.format("[{'result':'%s'}]", result);
+		
+
+		return resultStr;
+
 	}
 
 	

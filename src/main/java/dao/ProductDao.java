@@ -51,11 +51,7 @@ public class ProductDao {
 		// TODO Auto-generated method stub
 		ProductVo vo = null;
 		
-		System.out.println("dao에서 받은 p_no:"+p_no);
-		
 		vo = sqlSession.selectOne("product_view",p_no);
-		
-		System.out.println("mapper로 받은 vo:" + vo);
 		
 		return vo;
 	}
