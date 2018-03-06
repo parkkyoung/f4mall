@@ -139,6 +139,9 @@ use f4mall;
 alter table product add constraint
 	fk_e_no foreign key (e_no) references e(e_no);
 
-
+--주문코드
+use f4mall;
+alter table product add constraint
+	fk_o_no foreign key(o_no) references demand(o_no) on delete cascade;
 
 

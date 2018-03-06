@@ -29,7 +29,8 @@ SELECT * FROM information_schema.table_constraints WHERE table_name = 'delivery'
 --주문코드
 use f4mall;
 alter table delivery add constraint
-	fk_o_no1 foreign key(o_no) references demand(o_no) on delete cascade;
+	fk_o1_no foreign key(o_no) references demand(o_no) on delete cascade;
+	
 
 --회원아이디
 use f4mall;
