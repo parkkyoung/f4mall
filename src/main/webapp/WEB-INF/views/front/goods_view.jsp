@@ -4,6 +4,7 @@
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 function add_cart(p_no){
+	// 
 	var param = { 'p_no' : p_no, 'm_id' : '${ user.id }' };
 	$.ajax({
 		url : 'cart_insert.do',
