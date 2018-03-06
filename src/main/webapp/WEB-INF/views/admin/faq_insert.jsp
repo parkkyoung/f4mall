@@ -25,12 +25,12 @@ function faqInsert(f){
     }
     
     swal({
-        text : "상품등록이 완료되었습니다.",
+        text : "faq 등록이 완료되었습니다.",
         icon : "success"
+    }).then((value) => {
+    	f.action = "faq_insert.do";
+        f.submit();
     });
-	
-	f.action = "faq_insert.do";
-	f.submit();
 }
 </script>
 
