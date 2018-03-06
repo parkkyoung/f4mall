@@ -96,12 +96,14 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .mt40 {margin-top:40px;}
 .mt70 {margin-top:70px;}
 .ml10 {margin-left:10px;}
+.w50 {width:50px !important;}
 .wFull {width:100%;}
 .mwFull {max-width:100%;}
 
 /* font */
 .ft24 {font-size:24px !important;}
 .ftWhite {color:white !important;}
+.ftRed {color:red !important;}
 /* ===== common ===== */
 /* skip nav */
 .skip-navi a {display:block;height:1px;width:1px;margin:0 -1px -1px 0;padding:0;overflow:hidden;font-size:0;line-height:0;}
@@ -176,6 +178,9 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .c-menu .mContents dl dd a {display:block;padding:15px 5px 0;height:84px;font-size:10px;}
 .c-menu .mContents dl dd a i {font-size:26px;}
 .c-menu .mContents dl dd a div {margin-top:5px;}
+.c-menu .mContents .halfList dl dd {width:50%;}
+.c-menu .mContents .halfList dl dd a i {font-size:32px;}
+.c-menu .mContents .halfList dl dd a div {font-size:14px;}
 
 /* list */
 .goodsList .imgBox {position:relative;overflow:hidden;}
@@ -189,6 +194,14 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .goodsList .txtBox {margin-bottom:10px;padding:5px 5px 0;}
 .goodsList .txtBox h4 {margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:14px;color:#999;}
 .goodsList .txtBox span {display:block;margin-top:3px;font-size:16px;color:#449d44;}
+
+/* searchbox */
+.searchBox {text-align:right;}
+.searchBox input[type="text"] {padding: 5px 2px;width: 60px;vertical-align: bottom;border: 0;border-bottom: 1px solid #ccc;transition: all 0.3s ease;}
+.searchBox input[type="text"]:hover,
+.searchBox input[type="text"]:focus {width:120px;}
+.searchBox button {vertical-align: top;margin-top:3px;}
+.searchBox button i {font-size:18px;}
 
 /* ===== main ===== */
 .main {margin-top:70px;}
@@ -228,6 +241,11 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .goods .panel-group .panel-title {overflow:hidden;}
 .goods .panel-group .panel-title div.pull-right {margin-right:10px;padding-top:8px;}
 .goods .panel-group .panel-title .btn {color:white;}
+
+/* 주문하기 */
+.orderList table.table th {vertical-align: middle;text-align:center;font-size:14px;}
+.orderList table.table td {vertical-align: middle;text-align:center;font-size:16px;}
+.orderList table.table td img {max-width:150px;}
 
 /* 별점 */
 .starRating {font-size:0; letter-spacing:-4px;}
@@ -278,7 +296,6 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .boardView .panel-heading h3 {padding-bottom:3px;}
 .boardView .panel-heading span {display:inline-block;margin-right:15px;}
 .boardView .panel-body {min-height:700px;}
-
 
 /* ===== pc small ====== */
 @media (max-width:1200px){

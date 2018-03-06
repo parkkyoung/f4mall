@@ -24,17 +24,52 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
+	
+	<!-- page script -->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 다음 우편 -->
 	<script>
-		$(function(){
-			$(".btnCart").click(function(){
-				swal({
-					text : "장바구니에 저장되었습니다!",
-					icon: "success",
-				});
-			});
-		});
-	</script>
+	function findAddress() {
+		new daum.Postcode({
+			oncomplete: function(data) {
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var fullAddr = ''; // 최종 주소 변수
+				var extraAddr = ''; // 조합형 주소 변수
+
+				// 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+					fullAddr = data.roadAddress;
+
+				} else { // 사용자가 지번 주소를 선택했을 경우(J)
+					fullAddr = data.jibunAddress;
+				}
+
+				// 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+				if(data.userSelectedType === 'R'){
+					//법정동명이 있을 경우 추가한다.
+					if(data.bname !== ''){
+						extraAddr += data.bname;
+					}
+					// 건물명이 있을 경우 추가한다.
+					if(data.buildingName !== ''){
+						extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+					}
+					// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+					fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+				}
+
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('addressNumber').value = data.zonecode; //5자리 새우편번호 사용
+				document.getElementById('address').value = fullAddr;
+
+				// 커서를 상세주소 필드로 이동한다.
+				document.getElementById('address2').focus();
+			}
+		}).open();
+	}
+	</script>
 </head>
 <body>
 	
@@ -43,8 +78,8 @@
 		<p><a href="#container" tabindex="0">본문 바로가기</a></p>
 	</div>
 	<!-- //스킵 네비게이션 -->
-	
-	<!-- Login -->
+
+	<!-- Login popup -->
 	<div class="modal fade" id="loginPop" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -79,7 +114,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- //Login -->
+	<!-- //Login popup -->
 	
 	<!-- 모바일 gnb -->
 	<nav id="c-menu--push-left" class="c-menu c-menu--push-left">
@@ -88,7 +123,7 @@
 
 		
 		<!-- 미 로그인 노출 -->
-		<!-- <div class="mHead text-center">
+		<!-- <div class="mHead tCenter">
 			<button type="button" title="login" data-toggle="modal" data-target="#loginPop" class="btn btn-primary">로그인을 해주세요! <i class="fa fa-lock ftWhite"></i></button>
 		</div> -->
 		
@@ -101,13 +136,12 @@
 		<div class="mContents">
 			
 			<!-- 개인정보 // 로그인 후에 노출 -->
-			<div class="mList halfList">
+			<div class="mList">
 				<dl>
 					<dt>MY PAGE</dt>
-					<dd><a href="cart.html"><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
+					<dd><a href=""><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
 					<dd><a href=""><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
 					<dd><a href=""><i class="fa fa-user"></i><div>회원정보</div></a></dd>
-					<dd><a href=""><i class="fa fa-unlock"></i><div>로그아웃</div></a></dd>
 				</dl>
 			</div>
 			<!-- //개인정보 -->
@@ -157,18 +191,11 @@
 				<button type="button" class="btnGnb">메뉴</button>
 				<h1><a href="index.html" title="HOME">F4 Mall</a></h1>
 				<div class="util">
-					<input type="text" class="textSerch" placeholder="search" />
+					<input type="text" class="textSerch" />
 					<button type="button" class="btnSerch"><i class="fa fa-search fa-w-16"></i></button>
-
-					 <!-- 미 로그인 시에 노출 -->
-					<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button>
-
-					 <!-- 로그인 후에 노출 -->
-					<a href="cart.html" title="cart"><i class="fa fa-shopping-cart"></i></a>
-					<a href="member.html" title="user"><i class="fa fa-user"></i></a>
-					<a href="member_order.html" title="order list"><i class="fa fa-list-alt"></i></a>
-					<button type="button" title="logout"><i class="fa fa-unlock"></i></button>
-
+					<a href="" title="cart"><i class="fa fa-shopping-cart"></i></a> <!-- 로그인 후에 노출 -->
+					<a href="" title="user"><i class="fa fa-user"></i></a> <!-- 로그인 후에 노출 -->
+					<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button> <!-- 미 로그인 시에 노출 -->
 					<a href="../admin/index.html"><i class="fa fa-wrench fa-w-16"></i></a> <!-- 관리자 접속시에 노출 -->
 				</div>
 			</div>
@@ -184,7 +211,6 @@
 				<li><a href="goods.html">CHILDE</a></li>
 				<li class="active"><a href="profile.html">PROFILE</a></li>
 				<li><a href="board.html">COMMUNITY</a></li>
-				<li><a href="faq.html">FAQ</a></li>
 			</ul>
 			</nav>
 			<!-- //pc gnb -->
@@ -195,145 +221,96 @@
 		<div id="container">
 			
 			<!-- visual -->
-			<section class="mainVisual">
-				<video autoplay="" muted="" preload="true" loop="" class="wFull"><source src="img/visual.mp4" type="video/mp4"></video>
+			<section class="subVisual">
+				<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
 			</section>
 			<!-- //visual -->
 			
-			<!-- main contents -->
-			<section class="main container">
-				<h2 class="hide">메인</h2>
-				<!-- category -->
-				<div class="category">
-					<ul class="row">
-						<li class="col-sm-4 col-xs-12">
-							<a href="goods_view.html">
-								<img src="img/img_main_category1.jpg" alt="Category MEN" class="wFull" />
-								<span>MEN</span>
-							</a>
-						</li>
-						<li class="col-sm-4 col-xs-12">
-							<a href="goods_view.html">
-								<img src="img/img_main_category2.jpg" alt="Category Accessory" class="wFull" />
-								<span>ACCESSORY</span>
-							</a>
-						</li>
-						<li class="col-sm-4 col-xs-12">
-							<a href="goods_view.html">
-								<img src="img/img_main_category3.jpg" alt="Category Women" class="wFull" />
-								<span>WOMEN</span>
-							</a>
-						</li>
-					</ul>
+			<!-- sub contents -->
+			<section class="sub container">
+				<h2 class="hide">주문하기</h2>
+
+				<!-- 주문확인 -->
+				<h3>주문정보</h3>
+				<div class="orderList table-reponsive mt10">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>상품이미지</th>
+								<th>상품이름</th>
+								<th>수량</th>
+								<th>상품금액</th>
+								<th>할인금액</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Loop -->
+							<tr>
+								<td><a href=""><img src="http://placehold.it/150x150" alt="" /></a></td>
+								<td><a href="">나이키후드집업</a></td>
+								<td><input type="number" value="1" class="form-control inBlock w50 text-center" /></td>
+								<td><del>50,000</del>원</td>
+								<td><strong class="ftRed">20,000원</strong></td>
+							</tr>
+							<!-- //Loop -->
+							<tr>
+								<td><a href=""><img src="http://placehold.it/150x150" alt="" /></a></td>
+								<td><a href="">나이키신발</a></td>
+								<td><input type="number" value="1" class="form-control inBlock w50 text-center" /></td>
+								<td><del>20,000</del>원</td>
+								<td><strong class="ftRed">10,000원</strong></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<!-- //category -->
+				<!-- //주문확인 -->
+				
+				<!-- 주문하기  -->
+				<h3 class="mt40">정보 입력</h3>
+				<form role="form" class="form-horizontal widthM">
 
-				<div class="banner mt70"><img src="img/img_main_banner1.jpg" alt="banner" class="wFull" /></div>
+					<div class="form-group mt10">
+						<label class="col-lg-3 control-label">결제금액(원)</label>
+						<div class="col-lg-3"><input type="text" class="form-control" value="10,000" readyonly /></div>
+					</div>
+					<div class="form-group mt10">
+						<label class="col-lg-3 control-label">결제방법</label>
+						<div class="col-lg-9">
+							<label><input type="radio" checked /> 무통장입금</label>
+							<strong class="ml10">신한은행 / 123-456-78910 / 박경민</strong>
+						</div>
+					</div>
 
-				<!-- goods list -->
-				<div class="goodsList mt70">
-					<h3 class="hide">상품 리스트</h3>
-					<ul class="row">
-						<!-- Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike1.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<!-- //Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike2.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike3.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike4.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- //goods list -->
+					<!-- 배송지 정보는 회원의 db에서 가져오기 -->
+					<div class="form-group">
+						<label class="col-lg-3 control-label">배송지 주소</label>
+						<div class="col-lg-4"><input type="text" id="addressNumber" class="form-control" placeholder="우편번호" readonly /></div>
+						<div class="col-lg-3"><button type="button" class="btn btn-primary" onclick="findAddress();">주소찾기</button></div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-offset-3 col-lg-7"><input type="text" id="address" class="form-control" placeholder="지번주소" /></div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-offset-3 col-lg-7"><input type="text" id="address2" class="form-control" placeholder="상세주소" /></div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">배송지 연락처</label>
+						<div class="col-lg-3"><input type="text" placeholder="숫자만 기입" class="form-control" /></div>
+					</div>
 
-				<div class="banner mt70"><img src="img/img_main_banner2.jpg" alt="banner" class="wFull" /></div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">기타사항</label>
+						<div class="col-lg-9"><textarea class="form-control" placeholder="기타사항" rows="6"></textarea></div>
+					</div>
 
-				<!-- goods list -->
-				<div class="goodsList mt70">
-					<h3 class="hide">상품 리스트</h3>
-					<ul class="row">
-						<!-- Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike5.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<!-- //Loop -->
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike6.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike7.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike8.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- //goods list -->
-
+					<div class="form-group btnBox">
+						<button type="button" class="btn btn-default">취소</button>
+						<button type="button" class="btn btn-primary">결제하기</button>
+					</div>
+				</form>
+				<!-- //주문하기 -->
 			</section>
-			<!-- //main contents -->
+			<!-- //sub contents -->
 		</div>
 		<!-- //contents -->
 
