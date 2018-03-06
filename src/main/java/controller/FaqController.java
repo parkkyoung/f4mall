@@ -112,6 +112,11 @@ public class FaqController {
 		return "redirect:faq_list.do";
 	}
 	
+	/**
+	 * front faq ¸ñ·Ï
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/faq.do")
 	public String faq(Model model){
 		List<FaqVo> f_list = faq_dao.select_list();
