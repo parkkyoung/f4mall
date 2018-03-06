@@ -4,7 +4,7 @@
 
 use f4mall;
 create table member (
-	m_id 		varchar(200) primary key,
+	m_id 		varchar(200) primary key auto_increment,
 	o_no 		int,
 	category_no int,
 	material_no int,
@@ -28,15 +28,12 @@ insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel)
 values('admin@f4mall.com','f4mall','°ü¸®ÀÚ','localhost',now(),01012341234)
 
 
--- ï¿½âº»Å°(primary key)
-alter table member
-	add constraint pk_m_id primary key(m_id);
-
 	
--- Member_DB sample
--- Oracle ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ date Ã³ï¿½ï¿½ï¿½ï¿½ sysdate / MySQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ now() ï¿½ï¿½ Ã³ï¿½ï¿½
+/*-- Member_DB sample
+-- Oracle¿¡¼­ date sysdate / MySQL ¿¡¼­´Â now() Ã³¸®
 use f4mall;
 insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel) 
+<<<<<<< HEAD
 values('kimbongsung@hotmail.com','kbs123123','','123.456.78',now(),010-1234-1234);
 	
 		
@@ -52,9 +49,61 @@ create table sub_h_test(
 	h_fk int
 )
 
+=======
+values('kimbongsung@hotmail.com','kbs123123','','123.456.78',now(),010-1234-1234);*/
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 
 use f4mall;
 select * from member;
 
 use f4mall;
 drop table h_test;
+
+use f4mall;
+drop table member;
+
+
+--Å×ÀÌºí Á¦¾àÁ¶°Ç È®ÀÎ(foreign key È®ÀÎ)
+use f4mall;
+select * from information_schema.table_constraints where table_name = 'member';
+
+
+-- foreign key Ãß°¡ »çÇ×(È¸¿øÅ×ÀÌºí °ü·Ã)
+-- on delete cascade ¿É¼Ç => ÂüÁ¶ÇÏ´Â ºÎ¸ðÅ×ÀÌºíÀÇ columnÀÌ »èÁ¦µÇ¸é ÀÚ½Ä Å×ÀÌºíÀÇ columnµµ ¸ðµÎ »èÁ¦ÇÏ¶ó
+--Ä«Å×°í¸® ÄÚµå
+use f4mall;
+alter table member add constraint
+	fk_category_no FOREIGN KEY (category_no) REFERENCES category (category_no) on delete cascade;
+
+use f4mall;
+select * from member
+
+use f4mall;
+select * from category
+	
+--ÀçÁú ÄÚµå
+use f4mall;
+alter table member add constraint fk_m_material_no 
+	FOREIGN KEY (material_no) REFERENCES material (material_no) on delete cascade;
+
+--»ö»ó ÄÚµå
+use f4mall;
+alter table member add constraint
+	fk_m_color_no FOREIGN KEY (color_no) REFERENCES color (color_no) on delete cascade;
+
+--¼ºº° ÄÚµå
+use f4mall;
+alter table member add constraint
+	fk_m_sex_no FOREIGN KEY (sex_no) REFERENCES sex (sex_no) on delete cascade;
+
+--ºê·£µå ÄÚµå
+use f4mall;
+alter table member add constraint
+	fk_m_brand_no FOREIGN KEY (brand_no) REFERENCES brand (brand_no) on delete cascade;
+
+--»çÀÌÁî ÄÚµå
+use f4mall;
+alter table member add constraint
+	fk_m_size_no FOREIGN KEY (size_no) REFERENCES size (size_no) on delete cascade;
+
+
