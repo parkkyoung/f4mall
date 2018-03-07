@@ -37,5 +37,16 @@ public class CartDao {
 		return c_list;
 	}
 
+	public int cart_delete(CartVo vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.delete("delete_cart",vo);
+		
+		return res;
+	}
+
+
+
 	
 }

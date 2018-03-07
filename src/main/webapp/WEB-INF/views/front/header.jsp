@@ -176,7 +176,7 @@
 			<div class="mList">
 				<dl>
 					<dt>MY PAGE</dt>
-					<dd><a href=""><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
+					<dd><a href="cart_view.do?m_id=${ user.m_id }"><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
 					<dd><a href=""><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
 					<dd><a href=""><i class="fa fa-user"></i><div>회원정보</div></a></dd>
 				</dl>

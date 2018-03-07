@@ -40,8 +40,6 @@ public class CartController {
 		
 		int res = cart_dao.cart_insert(map);
 		
-		System.out.println(res);
-		
 		if(res == 1){
 			result = "success";
 			resultStr = String.format("[{'result':'%s'}]", result);
@@ -58,12 +56,19 @@ public class CartController {
 		
 		List<CartVo> c_view = cart_dao.select_list(m_id);
 		
-		System.out.println(m_id);
-		System.out.println(c_view);
-		
 		model.addAttribute("c_view",c_view);
 		
 		return "front/cart_list";
+	}
+	
+	@RequestMapping("delete_cart.do")
+	public String delete_cart(CartVo vo, String m_id){
+		
+		System.out.println(vo);
+		
+		int res = cart_dao.cart_delete(vo);
+		
+		return "redirect:cart_view.do?m_id=" + m_id;
 	}
 	
 	
