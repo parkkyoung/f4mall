@@ -34,7 +34,9 @@ public class FaqController {
 		
 		model.addAttribute("f_list", f_list);
 		
-		return Constant.Admin.ADMINPATH+"faq";
+		/*	2018년3월7일(seo) 	*/
+		return common.ShortCut.Admin.ADMIN_VIEW_PATH+"faq";
+		/*	//2018년3월7일(seo) 	*/
 	}
 	
 	/**
@@ -43,7 +45,9 @@ public class FaqController {
 	 */
 	@RequestMapping(value="/admin/faq_insert_form.do")
 	public String faq_insert_form(){
-		return Constant.Admin.ADMINPATH+"faq_insert";
+		/*	2018년3월7일(seo) 	*/
+		return common.ShortCut.Admin.ADMIN_VIEW_PATH+"faq_insert";
+		/*	//2018년3월7일(seo) 	*/
 	}
 	
 	/**
@@ -92,8 +96,9 @@ public class FaqController {
 		vo.setF_content(f_content);
 		
 		model.addAttribute("vo", vo);
-		
-		return Constant.Admin.ADMINPATH+"faq_update";
+		/*	2018년3월7일(seo) 	*/
+		return common.ShortCut.Admin.ADMIN_VIEW_PATH+"faq_update";
+		/*	//2018년3월7일(seo) 	*/
 	}
 	
 	/**
@@ -122,7 +127,8 @@ public class FaqController {
 		List<FaqVo> f_list = faq_dao.select_list();
 		
 		model.addAttribute("f_list", f_list);
-		
-		return Constant.Front.FRONTPATH+"faq";
+		/*	2018년3월7일(seo) 	*/
+		return common.ShortCut.Admin.ADMIN_VIEW_PATH+"faq";
+		/*	//2018년3월7일(seo) 	*/
 	}
 }

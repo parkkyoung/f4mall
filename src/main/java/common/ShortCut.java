@@ -1,13 +1,18 @@
 package common;
 
 public class ShortCut {
-
-	public static class Board{
-		public static final String VIEW_PAHT = "board/";
+	/*	2018년3월7일(seo)	*/
+	// Front(사용자) 상수
+	public static class Front{
+		// 사용자 url
+		public static final String VIEW_PAHT = "front/";
 	}
 	
+	
+	// Admin(관리자) 상수
 	public static class Admin{
+		// 관리자 url
 		public static final String ADMIN_VIEW_PATH = "admin/";
 	}
-	
+	/*	//2018년3월7일(seo)	*/
 }

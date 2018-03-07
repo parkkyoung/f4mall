@@ -4,11 +4,96 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="">
 
-	<select id="board_list " resultType="vo.BoardVo">
-		select * from board order by ref desc, step asc
+	<select id="board_list_condition" resultType="vo.BoardVo">
+	
+	 select bbb.* from 
+	 (
+		(
+	     select bb.* from	
+			(
+				select  *,(@rank := @rank +1 ) as no,(select count(*) from board where b_notice = 1) as cnt
+				from
+				board b,(select @rank :=0) as r
+				where b_notice = 1 
+				order by b.b_ref desc,b.b_step asc 
+	            limit 3
+			) bb
+		)
+	union
+		(
+	    select bb.* from	
+			(
+				select  *,(@rank := @rank +1 ) as no,(select count(*) from board where b_notice != 1) as cnt
+				from
+				(select * from board where b_notice != 1) b,(select @rank :=0) as r
+		
+			<trim prefix="where" prefixOverrides="or">
+						
+					<if test="m_id!=null">
+						 m_id like '%${m_id}%'
+					</if>
+					<if test="b_name!=null">
+						or b_name like '%${b_name}%'
+					</if>
+					<if test="b_content!=null">
+						or b_content like '%${b_content}%'
+					</if>
+		
+				</trim>
+			order by b.b_ref desc,b.b_step asc
+			) bb
+			
+		where bb.no between #{start} and #{end} 
+		)
+	)bbb
 	
 	</select>
 
+	<!-- 조건별 전체레코드수 구하기 -->
+	<select id="board_row_total_condition" resultType="int"
+		parameterType="java.util.Map">
+
+		select ifnull(count(*),0 ) from board
+
+		<trim prefix="where" prefixOverrides="or" >
+			
+				b_notice != 1
+			
+			<if test="m_id!=null">
+				or m_id like '%${m_id}%'
+			</if>
+			<if test="b_name!=null">
+				or b_name like '%${b_name}%'
+			</if>
+			<if test="b_content!=null">
+				or b_content like '%${b_content}%'
+			</if>
+		</trim>
+
+	</select>
+	
+	<insert id="board_insert" parameterType="vo.BoardVo">
+	
+		insert into board 
+		(m_id,
+		b_name,
+		b_content,
+		b_ip,
+		b_regdate,
+		b_notice
+		) 
+		values(
+		#{m_id},
+		#{b_content},
+		#{b_ip},
+		now(),
+		#{b_notice}
+		);
+	
+	
+	
+	</insert>
+	
 
 </mapper>
 
