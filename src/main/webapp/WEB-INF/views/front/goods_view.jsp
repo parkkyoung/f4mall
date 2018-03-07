@@ -33,7 +33,7 @@ function add_cart(p_no){
 					dangerMode: true,
 				}).then((willMove) =>{
 					if(willMove){
-						location.href = 'cart_view.do';
+						location.href = 'cart_view.do?m_id=${ user.m_id }';
 					}
 				})
 

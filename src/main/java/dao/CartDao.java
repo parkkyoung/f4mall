@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,7 +28,14 @@ public class CartDao {
 		return res;
 	}
 
+	public List<CartVo> select_list(String m_id) {
+		// TODO Auto-generated method stub
+		List<CartVo> c_list = null;
+		
+		c_list = sqlSession.selectList("cart_view",m_id);
+		
+		return c_list;
+	}
 
-	
 	
 }

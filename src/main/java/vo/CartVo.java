@@ -3,6 +3,9 @@ package vo;
 public class CartVo {
 	int car_no, p_no, cart_amt;
 	String m_id, cart_regdate;
+	String p_image_s, p_name;
+	int p_price,p_sale;
+	String m_name,m_addr,m_addr_d;
 	
 	public CartVo() {
 		// TODO Auto-generated constructor stub
