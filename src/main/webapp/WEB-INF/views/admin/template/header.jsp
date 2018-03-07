@@ -48,7 +48,7 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li><a href="../index.do"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
+                <li><a href="../product_list.do"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
                 <li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
 
             </ul>

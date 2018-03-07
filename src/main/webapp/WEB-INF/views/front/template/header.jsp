@@ -70,9 +70,8 @@
 			blSubjectEllipsis();
 		});
 	});
-</script>
-
-<script type="text/javascript">
+    
+	// 로그인
 	function login(f) {
 		var m_id = f.m_id.value;
 		var m_pwd = f.m_pwd.value;
@@ -117,6 +116,17 @@
 			}
 		});
 	}
+	
+	// 로그아웃
+	function logout(){
+		swal({
+			text : "로그아웃 하시겠습니까?",
+			icon : "info",
+			buttons : true
+		}).then((willLogout) => {
+			if(willLogout) location.href='logout.do';
+		});
+	};
 </script>
 </head>
 <body>
@@ -169,12 +179,6 @@
 										</div>
 									</div>
 								</div>
-							</c:if>
-
-							<c:if test="${ not empty user }">
-								<div class="form-group">[${ user.m_name }]님 환영합니다</div>
-								<div class="form-group">♥오늘 하루도 즐거운 쇼핑되십쇼♥</div>
-								<input type="button" value="로그아웃" onclick="location.href='logout.do'">
 							</c:if>
 
 						</div>
@@ -341,25 +345,29 @@
 				<button type="button" class="btnSerch">
 					<i class="fa fa-search fa-w-16"></i>
 				</button>
+				
+                <!-- 로그인 후에 노출 -->
 				<c:if test="${ not empty user }">
 				<a href="" title="cart"><i class="fa fa-shopping-cart"></i></a>
-				</c:if>
-				<!-- 로그인 후에 노출 -->
-				<c:if test="${ not empty user }">
 				<a href="" title="user"><i class="fa fa-user"></i></a>
+				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<!-- 로그인 후에 노출 -->
 				
+                <!-- 미 로그인 시에 노출 -->
+                <c:if test="${ empty user }">
 				<button type="button" title="login" data-toggle="modal"
 					data-target="#loginPop">
 					<i class="fa fa-lock"></i>
 				</button>
-				
-				<!-- 미 로그인 시에 노출 -->
-				<c:if test="${ user.m_id eq 'admin@f4mall.com' }">
-				<a href="../admin/index.html"><i class="fa fa-wrench fa-w-16"></i></a>
 				</c:if>
-				<!-- 관리자 접속시에 노출 -->
+                <!-- //미 로그인 시에 노출 -->
+				
+                <!-- 관리자 접속시에 노출 -->
+				<c:if test="${ user.m_id eq 'admin@f4mall.com' }">
+				<a href="admin/index.do"><i class="fa fa-wrench fa-w-16"></i></a>
+				</c:if>
+				
 			</div>
 		</div>
 
