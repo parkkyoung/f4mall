@@ -1,7 +1,7 @@
 package vo;
 
 public class BoardVo {
-	
+	/*	2018년3월7일(seo) 	*/
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
 	}
@@ -19,8 +19,30 @@ public class BoardVo {
 	int b_depth;
 	
 	int no; 
+	int cnt;
 	
 	
+	/* no는 페이지 넘버를 직접적으로 보여주기 위함.*/
+	public int getNo() {
+		return no;
+	}
+	/* cnt는 게시물 총합으로 역순을 만들기위해 만든 것.*/
+	public int getCnt() {
+		return cnt;
+	}
+	
+	
+
+	/* regdate값 월-일로 변환*/
+	String b_regdateShort;
+	
+	
+	
+	public String getB_regdateShort() {
+		
+		String str = getB_regdate().substring(5);
+		return str;
+	}
 	
 	
 	public BoardVo(String m_id, String b_name, String b_content, String b_ip, String b_regdate, int b_notice) {
@@ -45,12 +67,7 @@ public class BoardVo {
 		this.b_regdate = b_regdate;
 		this.b_notice = b_notice;
 	}
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
+
 	public int getB_no() {
 		return b_no;
 	}
@@ -117,6 +134,6 @@ public class BoardVo {
 	public void setB_depth(int b_depth) {
 		this.b_depth = b_depth;
 	}
-	
+	/*	//2018년3월7일(seo) 	*/
 	
 }
