@@ -37,7 +37,7 @@
 						<tbody>
 							<!-- Loop -->
 							
-						<c:forEach var="cart" items="c_view">
+						<c:forEach var="cart" items="${ c_view }">
 							<tr>
 								<td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
 								<td><a href=""><img src="http://placehold.it/150x150" alt="" /></a></td>
@@ -46,7 +46,7 @@
 								<td><del>${ cart.p_price }</del>원</td>
 								<td><strong class="ftRed">${ cart.p_sale }원</strong></td>
 								<td>YYYY-MM-DD</td>
-								<td><button type="button" class="btn btn-danger">삭제</button></td>
+								<td><button type="button" class="btn btn-danger" onclick="location.href='delete_cart.do?cart_no=${ cart.cart_no }&m_id=${ cart.cart_no }'">삭제</button></td>
 							</tr>
 							<!-- //Loop -->
 							<!-- <tr>

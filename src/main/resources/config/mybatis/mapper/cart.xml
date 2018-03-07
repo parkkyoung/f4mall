@@ -12,6 +12,10 @@ insert into cart (p_no, m_id, cart_regdate) values(#{ p_no },#{ m_id },now())
 	select * from cart_view where m_id = #{ m_id }
 </select>
 
+<delete id="delete_cart" parameterType="java.lang.Integer">
+	delete from cart where cart_no = #{ cart_no }
+</delete>
+
 </mapper>
 
 
