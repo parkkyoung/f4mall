@@ -5,7 +5,7 @@ public class ShortCut {
 	// Front(사용자) 상수
 	public static class Front{
 		// 사용자 url
-		public static final String VIEW_PAHT = "front/";
+		public static final String VIEW_PATH = "front/";
 	}
 	
 	

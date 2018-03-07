@@ -58,14 +58,19 @@ public class SmartEditerController {
 	            }
 	            os.flush();
 	            os.close();
+	            
+	            
+	            String url = request.getRequestURL().toString();
+	            System.out.println(url);
+	            
+	            
 	            // 정보 출력
 	            sb = new StringBuffer();
 	            sb.append("&bNewLine=true")
 	              .append("&sFileName=").append(oldName)
 	              
 	              //주소 변경 필요하다.
-	              .append("&sFileURL=").append("http://localhost:9090/Spring/resources/photoUpload/")
-	        .append(saveName);
+	              .append("&sFileURL=").append(url.replace("/file_uploader_html5.do", web_path)).append(saveName);
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }

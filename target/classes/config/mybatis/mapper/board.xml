@@ -94,7 +94,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</insert>
 	
+	<select id="board_one" parameterType="int" resultType="vo.BoardVo">
 
+		select *
+		from (
+		select
+		rank() over(order by ref desc,step asc) no, b.*
+
+		from
+		(select * from board) b
+		)
+		where idx=#{idx}
+
+	</select>
+	
+	<update id="board_update_hit" parameterType="int">
+
+		update board set
+		readhit =readhit +1 where idx=#{idx}
+
+	</update>
+	
 </mapper>
 
 

@@ -75,7 +75,30 @@ public class BoardDao {
 		
 		return res;
 	}
-/*	//2018년3월7일(seo) 	*/	
+/*	//2018년3월7일(seo) 	*/
+
+
+
+	public BoardVo selectOne(int b_no) {
+		// TODO Auto-generated method stub
+		
+		BoardVo vo = null;
+
+		vo = sqlSession.selectOne("board_one", b_no);
+		
+		return vo;
+	}
+
+
+
+	public int updateHit(int b_no) {
+		// TODO Auto-generated method stub
+		int res = 0;
+
+		res = sqlSession.update("board_update_hit", b_no);
+
+		return res;
+	}	
 	
 	
 	

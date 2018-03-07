@@ -47,6 +47,15 @@ function insert_form(){
 						</tr>
 					</thead>
 					<tbody>
+						<!-- 게시글 없을경우 -->
+						<c:if test="${empty list }">
+							<tr>
+								<td align="center" colspan="11" width="100%" height="50"
+									style="border: 1 solid #efefef">현재 등록된 글이 없습니다.</td>
+							</tr>
+						</c:if>
+						<!-- //게시글 없을경우 -->
+						
 						<!-- 공지사항 Loop -->
 						<c:forEach var="vo" items="${list}">
 							<c:if test="${vo.b_notice eq 1 }">
@@ -80,17 +89,12 @@ function insert_form(){
 						</c:forEach>
 						<!-- //일반글 Loop -->
 
-						<!-- 게시글 없을경우 -->
-						<c:if test="${empty list }">
-							<tr>
-								<td align="center" colspan="11" width="100%" height="50"
-									style="border: 1 solid #efefef">현재 등록된 글이 없습니다.</td>
-							</tr>
-						</c:if>
-						<!-- //게시글 없을경우 -->
+						
 					</tbody>
 				</table>
 			</div>
+			
+			<!-- page table  -->
 			<table align="center">
 				<tr>
 					<td>${pageMenu}</td>

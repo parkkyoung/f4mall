@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import vo.BoardVo;
 
 @Controller
 public class BoardController {
-	/*	2018년3월7일(seo) 	*/
+	
 	@Autowired
 	BoardDao board_dao;
 	
@@ -87,12 +88,12 @@ public class BoardController {
 		model.addAttribute("pageMenu",pageMenu);
 		
 		
-		return common.ShortCut.Front.VIEW_PAHT+"board";
+		return common.ShortCut.Front.VIEW_PATH+"board";
 	}
 	@RequestMapping(value="/board_insert_form.do")
 	public String BoardInsertFormAction() {
 		
-		return common.ShortCut.Front.VIEW_PAHT+"board_insert";
+		return common.ShortCut.Front.VIEW_PATH+"board_insert";
 		
 	}
 	/**
@@ -116,6 +117,25 @@ public class BoardController {
 		
 		return "redirect:board_list.do";
 	}
-	/*	2018년3월7일(seo)  */
 	
+	@RequestMapping(value="/board/view.do")
+	public String BoardViewAction(Model model,BoardVo vo,HttpServletRequest request) {
+		int b_no = vo.getB_no();
+		
+		 vo = board_dao.selectOne(b_no);
+		
+		HttpSession session = request.getSession();
+		
+		Object show = session.getAttribute("show");
+		
+		if(show==null) { //처음이냐?
+			int res = board_dao.updateHit(b_no);
+			
+			session.setAttribute("show", true);
+		}
+		
+		model.addAttribute("vo", vo);
+		
+		return common.ShortCut.Front.VIEW_PATH+"board_view";
+	}
 }

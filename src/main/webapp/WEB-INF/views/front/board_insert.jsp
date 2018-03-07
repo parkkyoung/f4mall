@@ -40,16 +40,15 @@
 	        //id가 smarteditor인 textarea에 에디터에서 대입
 	        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
 	        //폼 submit
-	        $("#insertBoardFrm").submit();
+	        $("#f").submit();
 	    });
 	});
 /* <!-- //script SmartEditer --> */
 /* <!-- script btn_write  --> */
 function send(f){
-	
-	var b_notice = f.b_notice.value;
 	var b_name = f.b_name.value;
-	
+	var b_notice = f.b_notice.value;
+	var b_content = f.b_content.value;
 	
 	if(b_name=""){
 		alert("제목을 입력해주세요.");
@@ -77,10 +76,10 @@ function send(f){
 	<input type="hidden" name="page" value="${param.page }">
 	<input type="hidden" name="id" value="${ user.m_id }">
 	
-		
-		<form action="./insertBoard.do" class="form-horizontal widthM" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+		<!-- action="./insertBoard.do" -->
+		<form name="f" class="form-horizontal widthM" method="post" id="insertBoardFrm" enctype="multipart/form-data">
 
-			<!-- 괄리자만 노출 -->
+			<!-- 관리자만 노출 -->
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">공지사항여부</label>
 				<div class="col-sm-10">
