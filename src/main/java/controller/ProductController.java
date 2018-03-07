@@ -23,9 +23,9 @@ public class ProductController {
 	@RequestMapping("/product_list.do")
 	public String product_list(Model model){
 		
-		List<ProductVo> p_list = product_dao.select_list();
+		/*List<ProductVo> p_list = product_dao.select_list();
 		
-		model.addAttribute("p_list",p_list);
+		model.addAttribute("p_list",p_list);*/
 		
 		return "front/main";
 	}

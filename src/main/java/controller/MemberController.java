@@ -33,6 +33,10 @@ public class MemberController {
 	}
 	
 	
+	/**
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/member_list.do")
 	public String list(Model model){
 		
@@ -46,6 +50,12 @@ public class MemberController {
 	
 	/*@RequestMapping("/main/member_insert.do")*/
 	
+	/**
+	 * @param model
+	 * @param m_id
+	 * @param pwd
+	 * @return
+	 */
 	@RequestMapping("/check_id.do")
 	@ResponseBody
 	public String check_id(Model model,String m_id,String pwd){
@@ -69,18 +79,30 @@ public class MemberController {
 		return resultStr;
 	}
 	
+	
+	/**
+	 * @return
+	 */
 	@RequestMapping("/member_join_clause.do")
 	public String member_join_clause(){
 		
 		return "front/join";
 	}
 	
+	
+	/**
+	 * @return
+	 */
 	@RequestMapping("/member_join_form.do")
 	public String member_join_form(){
 		
 		return "front/join2";
 	}
 	
+	
+	/**
+	 * @return
+	 */
 	@RequestMapping("/member_insert.do")
 	public String insert_id(MemberVo vo){
 		
@@ -92,6 +114,13 @@ public class MemberController {
 		return "redirect:product_list.do";
 	}
 	
+	
+	/**
+	 * @param m_id
+	 * @param m_pwd
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/login.do")
 	@ResponseBody
 	public String Login(String m_id, String m_pwd,HttpServletRequest request) {
@@ -124,7 +153,12 @@ public class MemberController {
 		return resultStr;
 
 	}
-
+	
+	
+	/**
+	 * @param vo
+	 * @return
+	 */
 	@RequestMapping("/logout.do")
 	public String logout(MemberVo vo){
 		
