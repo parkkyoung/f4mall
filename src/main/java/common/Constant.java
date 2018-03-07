@@ -1,23 +1,11 @@
 package common;
 
 public class Constant {
-	
-	// Admin(관리자) 상수
-	public static class Admin {
-		// 관리자 url
-		public static final String ADMINPATH = "admin/";
-	}
-	
-	// Front(사용자) 상수
-	public static class Front{
-		// 사용자 url
-		public static final String FRONTPATH = "front/";
-	}
-	
+	/*	2018년3월7일(seo)	*/
 	//게시판 상수
 	public static class Board{
 		// 하나의 화면에 보여질 게시물 개수
-		public static final int BLOCKLIST = 10;
+		public static final int BLOCKLIST = 5;
 		// 하나의 화면에 보여질 메뉴 개수
 		public static final int BLOCKPAGE = 3;
 		
@@ -38,6 +26,6 @@ public class Constant {
 		public static final int BlOCKLIST = 5;
 		public static final int BLOCKPAGE = 3;
 	}
-	
+	/*	//2018년3월7일(seo)	*/
 
 }

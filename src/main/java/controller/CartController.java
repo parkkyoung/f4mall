@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -53,13 +54,16 @@ public class CartController {
 	}
 	
 	@RequestMapping("cart_view.do")
-	public String cart_list(Model model, MemberVo vo){
+	public String cart_list(Model model, String m_id){
 		
-		/*List<CartVo> c_view = cart_dao.select_list();*/
+		List<CartVo> c_view = cart_dao.select_list(m_id);
 		
-		/*model.*/
+		System.out.println(m_id);
+		System.out.println(c_view);
 		
-		return "";
+		model.addAttribute("c_view",c_view);
+		
+		return "front/cart_list";
 	}
 	
 	

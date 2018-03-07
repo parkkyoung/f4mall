@@ -8,6 +8,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 insert into cart (p_no, m_id, cart_regdate) values(#{ p_no },#{ m_id },now())
 </insert>
 
+<select id="cart_view" parameterType="java.lang.String" resultType="vo.CartVo">
+	select * from cart_view where m_id = #{ m_id }
+</select>
+
 </mapper>
 
 
