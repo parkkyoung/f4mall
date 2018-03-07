@@ -124,6 +124,6 @@ public class FaqController {
 		
 		model.addAttribute("f_list", f_list);
 		
-		return common.ShortCut.Front.VIEW_PAHT+"faq";
+		return common.ShortCut.Front.VIEW_PATH+"faq";
 	}
 }
