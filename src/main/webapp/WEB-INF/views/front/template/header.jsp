@@ -232,15 +232,15 @@
 			<dl>
 				<dt>MY PAGE</dt>
 				<dd>
-					<a href=""><i class="fa fa-shopping-cart"></i>
+					<a href="cart_view.do"><i class="fa fa-shopping-cart"></i>
 					<div>장바구니</div></a>
 				</dd>
 				<dd>
-					<a href=""><i class="fa fa-list-alt"></i>
+					<a href="member_orders.do"><i class="fa fa-list-alt"></i>
 					<div>주문내역</div></a>
 				</dd>
 				<dd>
-					<a href=""><i class="fa fa-user"></i>
+					<a href="member.do"><i class="fa fa-user"></i>
 					<div>회원정보</div></a>
 				</dd>
 			</dl>
@@ -253,27 +253,27 @@
 			<dl>
 				<dt>CATEGORY</dt>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>SHOES</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>OUTER</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>JEANS</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>SHIRTS</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>ACCESSORIES</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>CHILDE</div></a>
 				</dd>
 			</dl>
@@ -285,39 +285,39 @@
 			<dl>
 				<dt>BRAND</dt>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>NIKE</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>ADIDAS</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>ZARA</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>DESCENTE</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>NEWBALANCE</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>CALVINKLEIN</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>TOMMY</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>LACOSTE</div></a>
 				</dd>
 				<dd>
-					<a href="goods.html"><i class="fa fa-user"></i>
+					<a href="product_list.do"><i class="fa fa-user"></i>
 					<div>UNDERARMOUR</div></a>
 				</dd>
 			</dl>
@@ -338,7 +338,7 @@
 		<div class="head">
 			<button type="button" class="btnGnb">메뉴</button>
 			<h1>
-				<a href="product_list.do" title="HOME">F4 Mall</a>
+				<a href="index.do" title="HOME">F4 Mall</a>
 			</h1>
 			<div class="util">
 				<input type="text" class="textSerch" />
@@ -348,16 +348,15 @@
 				
                 <!-- 로그인 후에 노출 -->
 				<c:if test="${ not empty user }">
-				<a href="" title="cart"><i class="fa fa-shopping-cart"></i></a>
-				<a href="" title="user"><i class="fa fa-user"></i></a>
+				<a href="cart_view.do" title="cart"><i class="fa fa-shopping-cart"></i></a>
+				<a href="member.do" title="user"><i class="fa fa-user"></i></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<!-- 로그인 후에 노출 -->
 				
                 <!-- 미 로그인 시에 노출 -->
                 <c:if test="${ empty user }">
-				<button type="button" title="login" data-toggle="modal"
-					data-target="#loginPop">
+				<button type="button" title="login" data-toggle="modal" data-target="#loginPop">
 					<i class="fa fa-lock"></i>
 				</button>
 				</c:if>
@@ -371,18 +370,23 @@
 			</div>
 		</div>
 
-		<!-- pc gnb --> <nav class="gnb">
+		<!-- pc gnb --> 
+		<nav class="gnb">
 		<ul>
-			<li><a href="goods.html">OUTER</a></li>
-			<li><a href="goods.html">SHIRTS</a></li>
-			<li><a href="goods.html">JEANS</a></li>
-			<li><a href="goods.html">SHOES</a></li>
-			<li><a href="goods.html">ACCESSORIES</a></li>
-			<li><a href="goods.html">CHILDE</a></li>
-			<li class="active"><a href="profile.html">PROFILE</a></li>
-			<li><a href="board.html">COMMUNITY</a></li>
+			<li><a href="product_list.do">OUTER</a></li>
+			<li><a href="product_list.do">SHIRTS</a></li>
+			<li><a href="product_list.do">JEANS</a></li>
+			<li><a href="product_list.do">SHOES</a></li>
+			<li><a href="product_list.do">ACCESSORIES</a></li>
+			<li><a href="product_list.do">CHILDE</a></li>
+			<li class="active"><a href="profile.do">PROFILE</a></li>
+            <li><a href="board_list.do">COMMUNITY</a></li>
+            <li><a href="faq.do">FAQ</a></li>
 		</ul>
-		</nav> <!-- //pc gnb --> </header>
+		</nav> 
+		<!-- //pc gnb --> 
+		
+		</header>
 		<!-- //header -->
 
 		<!-- contents -->
