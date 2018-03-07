@@ -27,10 +27,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title clearfix">
-                    <a data-toggle="collapse" href="#faq<c:out value='${list.f_no}'/>" class="pull-left" style="padding-top:8px;"><c:out value="${list.f_name}"/></a>
-                    <div class="pull-right">
-                        <div style="display:inline-block;margin-right:10px;padding-top:8px;"><c:out value="${list.f_regdate}"/></div>
-                    </div>
+                    <a data-toggle="collapse" href="#faq<c:out value='${list.f_no}'/>" style="padding-top:8px;"><c:out value="${list.f_name}"/></a>
                 </h4>
             </div>
             <div id="faq${list.f_no}" class="collapse">

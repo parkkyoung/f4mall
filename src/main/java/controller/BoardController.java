@@ -87,12 +87,12 @@ public class BoardController {
 		model.addAttribute("pageMenu",pageMenu);
 		
 		
-		return common.ShortCut.Front.VIEW_PAHT+"board";
+		return common.ShortCut.Front.VIEW_PATH+"board";
 	}
 	@RequestMapping(value="/board_insert_form.do")
 	public String BoardInsertFormAction() {
 		
-		return common.ShortCut.Front.VIEW_PAHT+"board_insert";
+		return common.ShortCut.Front.VIEW_PATH+"board_insert";
 		
 	}
 	/**

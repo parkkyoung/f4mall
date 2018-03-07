@@ -43,13 +43,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">F4 Mall Admin</a>
+                <a class="navbar-brand" href="index.do">F4 Mall Admin</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
                 <li><a href="../index.do"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-                <li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
+                <li><a href="../logout.do"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
 
             </ul>
             <!-- /.navbar-top-links -->
@@ -68,22 +68,22 @@
                             </div>
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="index.do"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> 회원관리<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="member.html">회원목록</a></li>
-                                <li><a href="member_insert.html">회원등록</a></li>
-                                <li><a href="member_order.html">주문목록</a></li>
+                                <li><a href="member_list.do">회원목록</a></li>
+                                <li><a href="member_insert_form.do">회원등록</a></li>
+                                <li><a href="member_order.do">주문목록</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> 상품관리<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li><a href="goods.html">상품목록</a></li>
-                                <li><a href="goods_insert.html">상품등록</a></li>
-                                <li><a href="goods_stock.html">상품입출고</a></li>
+                                <li><a href="goods_list.do">상품목록</a></li>
+                                <li><a href="goods_insert_form.do">상품등록</a></li>
+                                <li><a href="goods_stock.do">상품입출고</a></li>
                             </ul>
                         </li>
                         <li>
