@@ -56,3 +56,4 @@ select
 p.p_no, c.cart_amt, m.m_id
 from product as p inner join cart as c on p.p_no = c.p_no
 inner join member as m on c.m_id = m.m_id;
+--
