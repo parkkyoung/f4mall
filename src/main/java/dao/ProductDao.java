@@ -7,6 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.ProductVo;
+import vo.option.BrandVo;
+import vo.option.CategoryVo;
+import vo.option.ColorVo;
+import vo.option.MaterialVo;
+import vo.option.SexVo;
+import vo.option.SizeVo;
 
 @Repository
 public class ProductDao {
@@ -54,6 +60,38 @@ public class ProductDao {
 		vo = sqlSession.selectOne("product_view",p_no);
 		
 		return vo;
+	}
+	
+	// 상품 옵션
+	public List<CategoryVo> category(){
+		List<CategoryVo> list = null;
+		list = sqlSession.selectList("category");
+		return list;
+	}
+	public List<MaterialVo> material(){
+		List<MaterialVo> list = null;
+		list = sqlSession.selectList("material");
+		return list;
+	}
+	public List<ColorVo> color(){
+		List<ColorVo> list = null;
+		list = sqlSession.selectList("color");
+		return list;
+	}
+	public List<SexVo> sex(){
+		List<SexVo> list = null;
+		list = sqlSession.selectList("sex");
+		return list;
+	}
+	public List<BrandVo> brand(){
+		List<BrandVo> list = null;
+		list = sqlSession.selectList("brand");
+		return list;
+	}
+	public List<SizeVo> size(){
+		List<SizeVo> list = null;
+		list = sqlSession.selectList("size");
+		return list;
 	}
 
 

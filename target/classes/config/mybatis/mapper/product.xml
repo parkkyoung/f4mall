@@ -9,16 +9,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="product_insert" parameterType="vo.ProductVo">
-		insert into product (p_name,p_content,p_price,
-					p_pdate,p_country,p_entry,p_no,o_no,
-					category_no,p_material,p_color,sex_no,p_brand,
-					p_size,e_no,m_id,p_supply,p_sale,p_image_m,
-					p_image_s) 
-					values(#{ p_name },#{ p_content },#{ p_price },
-					#{ p_pdate },#{ p_country },now(),#{ p_no },#{ o_no },
-					#{ category_no },#{ p_material },#{ p_color },#{ sex_no },#{ p_brand },
-					#{ p_size },#{ e_no },#{ m_id },#{ p_supply },#{ p_sale },#{ p_image_m },
-					#{ p_image_s })
+	   insert into product(
+	       category_no, material_no, color_no, sex_no,
+	       brand_no, size_no, m_id, p_supply, p_name,
+	       p_content, p_price, p_sale, p_image_m, p_image_s,
+	       p_pdate, p_country, p_entry
+	   ) values(
+	       #{category_no}, #{material_no}, #{color_no},
+	       #{sex_no}, #{brand_no}, #{size_no}, 'admin@f4mall.com',
+	       #{p_supply}, #{p_name}, #{p_content}, #{p_price},
+	       #{p_sale}, #{p_image_m}, #{p_image_s},
+           #{p_pdate}, #{p_country}, now()
+	   )
 	</insert>
 	
 	<delete id="product_delete" parameterType="vo.ProductVo">
@@ -28,6 +30,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="product_view" parameterType="int" resultType="vo.ProductVo">
 		select * from product where p_no = #{ p_no }
 	</select>
+	
+	<!-- 옵션들 -->
+    <select id="category" resultType="vo.option.CategoryVo">
+       select * from category
+    </select>
+    <select id="material" resultType="vo.option.MaterialVo">
+       select * from material
+    </select>
+    <select id="color" resultType="vo.option.ColorVo">
+       select * from color
+    </select>
+    <select id="sex" resultType="vo.option.SexVo">
+       select * from sex
+    </select>
+    <select id="brand" resultType="vo.option.BrandVo">
+       select * from brand
+    </select>
+    <select id="size" resultType="vo.option.SizeVo">
+       select * from size
+    </select>
 
 </mapper>
 

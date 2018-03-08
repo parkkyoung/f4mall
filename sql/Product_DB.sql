@@ -1,8 +1,13 @@
 
 use f4mall;
-select * from test;
+select * from product;
 =======
 
+use f4mall;
+select * from product
+alter table product drop o_no
+alter table product drop foreign key fk_o_no -- 포린키 삭제
+--drop table product
 
 --상품테이블
 use f4mall;

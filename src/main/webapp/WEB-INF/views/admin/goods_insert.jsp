@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="template/header.jsp" %>
 
 <!-- page script -->
@@ -8,73 +8,54 @@
 		
 		var p_name = f.p_name.value;
 		var p_content= f.p_content.value;
-		var p_price = f.p_price.value;
-		var p_supply= f.p_supply.value;
+        var p_price = f.p_price.value;
 		var p_pdate= f.p_pdate.value;
-		var p_country= f.p_country.value;
-		var p_material= f.p_material.value;
-		var p_color= f.p_color.value;
-		var sex_no= f.sex_no.value;
-		var p_brand= f.p_brand.value;
-		var p_size= f.size_no.value;
-		
-		if(p_name = ''){
-			alert('상품명을 입력해주세요')
-			f.p_name.focus();
-			return;
-		}
-		if(p_content = ''){
-			alert('상품 설명을 입력해주세요')
-			f.p_content.focus();
-			return;
-		}
-		if(p_pdate = ''){
-			alert('제조일자를 입력해주세요')
-			f.p_pdate.focus();
-			return;
-		}
-		if(p_country = ''){
-			alert('제주국을 입력해주세요')
-			f.p_country.focus();
-			return;
-		}
-
-		if(p_material = ''){
-			alert('재질을 입력해주세요')
-			f.p_material.focus();
-			return;
-		}
-		if(sex_no = ''){
-			alert('성별을 입력해주세요')
-			f.sex_no.focus();
-			return;
-		}
-		if(p_brand = ''){
-			alert('브랜드명을 입력해주세요')
-			f.p_brand.focus();
-			return;
-		}
-		if(p_size = ''){
-			alert('사이즈를 입력해주세요')
-			f.p_size.focus();
-			return;
-		}
-		
-		f.action = 'product_insert.do';
-		f.submit();
-		
-		swal({
-			text : "상품등록이 완료되었습니다.",
-			icon : "success"
-		});
+        
+		if(p_name == ''){
+			swal({
+				text : "상품명을 입력해주세요",
+				icon : "error"
+			}).then((value) =>{
+				f.p_name.focus();
+				return;
+			});
+		} else if(p_content == ''){
+        	swal({
+                text : "상품 설명을 입력해주세요",
+                icon : "error"
+            }).then((value) =>{
+            	f.p_content.focus();
+                return;
+            });
+        } else if(p_price == ''){
+            swal({
+                text : "상품 가격을 입력해주세요",
+                icon : "error"
+            }).then((value) =>{
+            	f.p_price.focus();
+                return;
+            });
+        } else if(p_pdate == ''){
+            swal({
+                text : "제조일자를 입력해주세요",
+                icon : "error"
+            }).then((value) =>{
+            	f.p_pdate.focus();
+                return;
+            });
+		} else {
+	        swal({
+	            text : "상품등록이 완료되었습니다.",
+	            icon : "success"
+	        }).then((value) =>{
+	        	f.action = 'goods_insert.do';
+	            f.submit();
+	        });
+        };
 	};
 </script>
 
-<!-- Page Content -->
-<div id="page-wrapper">
-	<div class="container-fluid">
-
-		<!-- page title -->
+<!-- page title -->
 <h1 class="page-header">상품등록</h1>
 <!-- //page title -->
 
@@ -114,9 +95,9 @@
 					<div class="form-group">
 						<label for="">제조국가</label>
 						<select id="p_country" name="p_country" class="form-control">
-							<option value="">한국</option>
-							<option value="">중국</option>
-							<option value="">일본</option>
+							<option value="kor" selected>한국</option>
+							<option value="chi">중국</option>
+							<option value="jap">일본</option>
 						</select>
 					</div>
 				</div>
@@ -124,36 +105,50 @@
 					<div class="form-group">
 						<label for="">카테고리</label>
 						<select id="category_no" name="category_no" class="form-control">
-							<option value="1">OUTER</option>
-							<option value="2">SHIRTS</option>
-							<option value="3">JEANS</option>
-							<option value="4">SHOES</option>
-							<option value="5">ACCESSORIES</option>
-							<option value="6">CHILD</option>
+                            <c:forEach var="category" items="${category}">
+                            <option value="<c:out value='${category.category_no}'/>"><c:out value="${category.category_name}"/></option>
+                            </c:forEach>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="">재질</label>
-						<input type="text" id="p_material" name="p_material" class="form-control" placeholder="재질" />
+                        <select id="material_no" name="material_no" class="form-control">
+							<c:forEach var="material" items="${material}">
+	                        <option value="<c:out value='${material.material_no}'/>"><c:out value="${material.material_name}"/></option>
+	                        </c:forEach>
+	                    </select>
 					</div>
 					<div class="form-group">
 						<label for="">색상</label>
-						<input type="text" id="p_color" name="p_color" class="form-control" placeholder="영어 대문자로 대표색상 한가지만 표기(ex : WHITE)" />
+                        <select id="color_no" name="color_no" class="form-control">
+                            <c:forEach var="color" items="${color}">
+                            <option value="<c:out value='${color.color_no}'/>"><c:out value="${color.color_name}"/></option>
+                            </c:forEach>
+                        </select>
 					</div>
 					<div class="form-group">
 						<label for="">성별</label>
-						<div class="radio">
-							<label><input type="radio" id="sex_male" name="sex_no" value="1">남자</label>
-							<label><input type="radio" id="sex_female" name="sex_no" value="2">여자</label>
-						</div>
+                        <select id="sex_no" name="sex_no" class="form-control">
+                            <c:forEach var="sex" items="${sex}">
+                            <option value="<c:out value='${sex.sex_no}'/>"><c:out value="${sex.sex_name}"/></option>
+                            </c:forEach>
+                        </select>
 					</div>
 					<div class="form-group">
 						<label for="">브랜드</label>
-						<input type="text" id="p_brand" name="p_brand" class="form-control" placeholder="브랜드" />
+                        <select id="brand_no" name="brand_no" class="form-control">
+                            <c:forEach var="brand" items="${brand}">
+                            <option value="<c:out value='${brand.brand_no}'/>"><c:out value="${brand.brand_name}"/></option>
+                            </c:forEach>
+                        </select>
 					</div>
 					<div class="form-group">
 						<label for="">사이즈</label>
-						<input type="text" id="size_no" name="size_no" class="form-control" placeholder="사이즈" />
+                        <select id="size_no" name="size_no" class="form-control">
+                            <c:forEach var="size" items="${size}">
+                            <option value="<c:out value='${size.size_no}'/>"><c:out value="${size.size_name}"/></option>
+                            </c:forEach>
+                        </select>
 					</div>
 					<div class="form-group">
 						<label for="">이미지 썸네일</label>

@@ -1,14 +1,19 @@
 
 show databases;
 
+use f4mall;
+select * from member
+--insert into size(size_name) values('XS') -- 데이터 추가
+--alter table e add o_no int -- 필드 추가
+--alter table e change e_count p_no int -- 테이블명 수정
+
 -- 카테고리 테이블
 use f4mall;
 CREATE TABLE category(
-
 	category_no int primary key auto_increment, --카테고리코드
 	category_name varchar(200)					--카테고리명
-
 )
+
 
 use f4mall;
 select * from category
@@ -65,11 +70,10 @@ CREATE TABLE size(
 
 -- 상품평점 테이블
 use f4mall;
+select * from e
 CREATE TABLE e(
-
 	e_no int primary key auto_increment, --상품평점코드
-	e_score int					         --상품점수
-
+	e_score int,					         --상품점수
+    e_count int
 )
-
 

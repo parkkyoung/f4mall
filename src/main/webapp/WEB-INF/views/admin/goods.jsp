@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@include file="template/header.jsp" %>
 
@@ -21,34 +22,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!-- Loop -->
+				<c:forEach var="list" items="${p_list}">
 				<tr>
-					<td><a href="goods_update.html">0000</a></td>
-					<td>나이키신발00</td>
-					<td>신발</td>
-					<td>10000</td>
-					<td>18년</td>
+					<td><c:out value="${list.p_no}" /></td>
+					<td><a href="goods_update_form.do?p_no=<c:out value='${list.p_no}'/>"><c:out value="${list.p_name}" /></a></td>
+					<td><c:out value="${list.category_no}" /></td>
+					<td><c:out value="${list.p_price}" /></td>
+					<td><c:out value="${list.p_entry}" /></td>
 				</tr>
-				<!-- //Loop -->
-				<tr>
-					<td><a href="goods_update.html">0001</a></td>
-					<td>나이키신발01</td>
-					<td>신발01</td>
-					<td>10001</td>
-					<td>18년01</td>
-				</tr>
-				<tr>
-					<td><a href="goods_update.html">0002</a></td>
-					<td>나이키신발02</td>
-					<td>신발02</td>
-					<td>10002</td>
-					<td>18년02</td>
-				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
-		<!-- /.table-responsive -->
 	</div>
-	<!-- /.panel-body -->
 </div>
 <!-- //상품목록 -->
 
