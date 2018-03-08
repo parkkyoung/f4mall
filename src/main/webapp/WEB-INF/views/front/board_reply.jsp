@@ -48,18 +48,18 @@
 
 <!-- sub contents -->
 <section class="sub container">
-	<h2 class="hide">커뮤니티 등록</h2>
+	<h2 class="hide">커뮤니티 답변 등록</h2>
 
 	<!-- 커뮤니티 등록  -->
 	<div class="board boardInsert">
 		
 
 
-		<form name="f" action="board_insert.do" class="form-horizontal widthM"
+		<form name="f" action="board_reply.do" class="form-horizontal widthM"
 			method="post" id="insertBoardFrm" enctype="multipart/form-data">
 		<input type="hidden" name="page" value="${param.page }"> 
 		<input type="hidden" name="m_id" value="${user.m_id}">
-
+		<input type="hidden" name="b_no" value="${ param.b_no }">
 			<!-- 괄리자만 노출 -->
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">공지사항여부</label>

@@ -83,6 +83,7 @@ public class BoardDao {
 	 * @param b_no
 	 * @return
 	 */
+	// b_no로 게시글 가져오기.
 	public BoardVo selectOne(int b_no) {
 		// TODO Auto-generated method stub
 		
@@ -99,6 +100,7 @@ public class BoardDao {
 	 * @param b_no
 	 * @return
 	 */
+	// 조회수 증가
 	public int updateHit(int b_no) {
 		// TODO Auto-generated method stub
 		int res = 0;
@@ -108,11 +110,45 @@ public class BoardDao {
 		return res;
 	}	
 	
+	//삭제
 	public int delete(int b_no) {
 		// TODO Auto-generated method stub
 		int res =0;
 		
 		res =sqlSession.delete("board_delete",b_no);
+		
+		return res;
+	}
+
+
+	//수정
+	public int update(BoardVo vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.update("board_update",vo);
+		
+		return res;
+	}
+
+
+
+	public int update_step(BoardVo baseVo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.update("board_update_step",baseVo);
+		
+		return res;
+	}
+
+
+
+	public int reply(BoardVo vo) {
+		// TODO Auto-generated method stub
+		int res=0;
+		
+		res = sqlSession.insert("board_reply",vo);
 		
 		return res;
 	}

@@ -4,6 +4,7 @@ public class BoardVo {
 	/*	2018년3월7일(seo) 	*/
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
+		
 	}
 	
 	int b_no;
@@ -19,19 +20,18 @@ public class BoardVo {
 	int b_depth;
 	
 	int no; 
+
 	int cnt;
-	
 	
 	/* no는 페이지 넘버를 직접적으로 보여주기 위함.*/
 	public int getNo() {
 		return no;
 	}
 	/* cnt는 게시물 총합으로 역순을 만들기위해 만든 것.*/
+	/* 공지사항 및 게시물 총 갯수*/
 	public int getCnt() {
 		return cnt;
 	}
-	
-	
 
 	/* regdate값 월-일로 변환*/
 	String b_regdateShort;
@@ -43,7 +43,34 @@ public class BoardVo {
 		String str = getB_regdate().substring(5);
 		return str;
 	}
+	public BoardVo(int b_no, String m_id, String b_name, String b_content, String b_ip,int b_readhit, String b_regdate,
+			int b_notice, int b_ref, int b_step, int b_depth) {
+		super();
+		this.b_no = b_no;
+		this.m_id = m_id;
+		this.b_name = b_name;
+		this.b_content = b_content;
+		this.b_ip = b_ip;
+		this.b_readhit = b_readhit;
+		this.b_regdate = b_regdate;
+		this.b_notice = b_notice;
+		this.b_ref = b_ref;
+		this.b_step = b_step;
+		this.b_depth = b_depth;
+	}
 	
+	public BoardVo(int b_no, String m_id, String b_name, String b_content, String b_ip, String b_regdate,
+			int b_notice, int b_ref) {
+		super();
+		this.b_no = b_no;
+		this.m_id = m_id;
+		this.b_name = b_name;
+		this.b_content = b_content;
+		this.b_ip = b_ip;
+		this.b_regdate = b_regdate;
+		this.b_notice = b_notice;
+		this.b_ref = b_ref;
+	}
 	
 	public BoardVo(String m_id, String b_name, String b_content, String b_ip, String b_regdate, int b_notice) {
 		super();

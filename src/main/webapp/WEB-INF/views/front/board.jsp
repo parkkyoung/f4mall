@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="header.jsp"%>
+<%@ include file="template/header.jsp"%>
 
 <!-- script btn_write -->
 <script type="text/javascript">
@@ -77,11 +77,16 @@ function insert_form(){
 
 							<c:if test="${vo.b_notice eq 0 }">
 								<tr>
-									<td class="blNo mHide"><c:out value="${1+vo.cnt-vo.no+1}" /></td>
+									<td class="blNo mHide"><c:out value="${vo.cnt-vo.no+1}" /></td>
+									
 									<td class="blSubject">
-									<c:if test="${vo.b_depth !=0 }">ㄴ</c:if> 
 									<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search=${param.search}&search_text=${param.search_text}">
-									<c:out value="${vo.b_name}" /></a></td>
+									<c:forEach begin="1" end="${ vo.b_depth }">&nbsp;&nbsp;</c:forEach>
+									<c:if test="${vo.b_depth !=0 }">
+									<i class="fa fa-share fa-fw fa-flip-vertical"></i>
+									</c:if> <c:out value="${vo.b_name}" />
+									</a></td>
+									
 									<td class="blId"><c:out value="${vo.m_id}" /></td>
 									<td class="blDate mHide"><c:out
 											value="${vo.b_regdateShort}" /></td>

@@ -10,6 +10,14 @@ public class Constant {
 		public static final int BLOCKPAGE = 3;
 		
 	}
+	//댓글 상수
+		public static class Comment{
+			// 하나의 화면에 보여질 게시물 개수
+			public static final int BLOCKLIST = 3;
+			// 하나의 화면에 보여질 메뉴 개수
+			public static final int BLOCKPAGE = 3;
+			
+		}
 	
 	//공지사항 상수
 	public static class Notice{

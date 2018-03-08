@@ -56,8 +56,8 @@ window.onload=function(){
 		<option value="m_id_b_name_b_content">작성자+제목+내용</option>
 		
 	</select>
-	<input id="search_text" value="${param.search_text}" class="search_style">
-	<input class="btn btn" type="button" name="검색" value="검색" onclick="find();" class="search_style">
+	<input id="search_text" value="${param.search_text}" class="search_style" onkeyup="if(window.event.keyCode == 13) find();">
+	<button  class="btn btn-default" type="button" name="검색" onclick="find();" class="search_style"> 검색</button>
 
 </body>
 </html>

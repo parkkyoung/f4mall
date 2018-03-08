@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+	
+	<select id="comment_select_list" resultType="vo.CommentVo" parameterType="java.util.Map">
+	
+ 	     select bb.* from	
+		(
+				select  *,(@rank := @rank +1 ) as no,(select count(*) from b_comment) as cnt
+			from
+			b_comment b,(select @rank :=0) as r
+			order by b.c_ref desc,b.c_step asc 
+		) bb where bb.no between #{start} and #{end} 
+		
+	
+	
+	</select>
+	
+	<select id="comment_row_total" parameterType="int"  resultType="int">
+	
+		select ifnull(count(*),0) from b_comment where b_no=#{b_no}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

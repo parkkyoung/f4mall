@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -109,10 +110,10 @@ public class BoardController {
 	@RequestMapping(value="/board_insert.do")
 	public String BoardInsertAction(BoardVo vo,String page,Model model,HttpServletRequest request) {
 		
-		int res = board_dao.insert(vo);
-		
 		String b_ip = request.getRemoteAddr();
 		vo.setB_ip(b_ip);
+		
+		int res = board_dao.insert(vo);
 		
 		model.addAttribute("page",page);
 		
@@ -149,5 +150,64 @@ public class BoardController {
 		model.addAttribute("page",page);
 		
 		return "redirect:board_list.do";
+	}
+	@RequestMapping(value="/board_update_form.do")
+	public String BoardUpdateFormAction(BoardVo vo,Model model) {
+		
+		int b_no = vo.getB_no();
+		
+		vo = board_dao.selectOne(b_no);
+		
+		model.addAttribute("vo",vo);
+		
+		return common.ShortCut.Front.VIEW_PATH+"board_update";
+	}
+	@RequestMapping(value="/board_update.do")
+	public String BoardUpdateAction(BoardVo vo,Model model,HttpServletRequest request,String page,String search,String search_text) throws IOException {
+		
+		String b_ip = request.getRemoteAddr();
+		vo.setB_ip(b_ip);
+		
+		int res = board_dao.update(vo);
+		model.addAttribute("page",page);
+		model.addAttribute("search",search);
+		model.addAttribute("search_text",search_text);
+		
+		return "redirect:board_list.do";
+	}
+	@RequestMapping(value="/board_reply_form.do")
+	public String BoardReplyFormAction() {
+		
+		return common.ShortCut.Front.VIEW_PATH+"board_reply";
+	}
+	@RequestMapping(value="/board_reply.do")
+	public String BoardReplyAction(Model model,Integer page,BoardVo vo,HttpServletRequest request) {
+		int b_no = vo.getB_no();
+		String b_ip = request.getRemoteAddr();
+		vo.setB_ip(b_ip);
+		
+		BoardDao dao = board_dao;
+		
+		BoardVo baseVo = dao.selectOne(b_no);
+		
+		
+		//답글의 ref,step,depth를 설정
+		vo.setB_ref(baseVo.getB_ref());
+		vo.setB_step(baseVo.getB_step()+1);
+		vo.setB_depth(baseVo.getB_depth()+1);
+		
+		int res = dao.update_step(baseVo);
+		
+		
+		
+		res = dao.reply(vo);
+		
+		if(baseVo.getNo()%common.Constant.Board.BLOCKLIST==0) 
+			page++;
+		
+		model.addAttribute("page",page);
+		
+		return "redirect:board_list.do";
+	
 	}
 }
