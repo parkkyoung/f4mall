@@ -4,5 +4,5 @@
 
 참여 개발자 : 박경민, 신훈철, 서덕원, 김봉성
 
-호스팅 도메인 :   http://chopine.cafe24.com/(http://chopine.cafe24.com/)
+호스팅 도메인 :   http://chopine.cafe24.com/
 

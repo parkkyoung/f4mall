@@ -3,6 +3,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@include file= "template/header.jsp"%>
+
+<script>
+function findFaq(){
+	var find_faq_txt = $("#findFaqTxt").val();
+	
+	if(find_faq_txt == ''){
+		swal({
+			text : "검색할 내용을 입력하세요",
+			icon : "error",
+		}).then((value) => {
+			find_faq_txt.focus();
+			return;
+		});
+	} else {
+		location.href='faq.do?find_faq_txt='+encodeURIComponent(find_faq_txt);
+	}
+}
+</script>
+
 <!-- visual -->
 <section class="subVisual">
     <img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
@@ -15,8 +34,8 @@
 
     <!-- search box -->
     <div class="searchBox">
-        <input type="text" placeholder="search" />
-        <button type="button"><i class="fa fa-search fa-w-16"></i></button>
+        <input type="text" id="findFaqTxt" placeholder="search" value="${ param.find_faq_txt }" onkeyup="if (window.event.keyCode == 13) findFaq();" />
+        <button type="button" onclick="findFaq();"><i class="fa fa-search fa-w-16"></i></button>
     </div>
     <!-- //search box -->
     

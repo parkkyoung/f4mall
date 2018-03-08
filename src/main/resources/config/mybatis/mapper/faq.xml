@@ -5,7 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="">
 
     <select id="faq_list" resultType="vo.FaqVo">
-        select * from faq order by f_no desc
+        select * from faq
+        <trim prefix="where">
+            <if test="f_name != null">
+                f_name like '%${f_name}%'
+                or f_content like '%${f_content}%'
+            </if>
+        </trim>
+        order by f_no desc
     </select>
     
     <select id="faq_view" parameterType="int" resultType="vo.FaqVo">

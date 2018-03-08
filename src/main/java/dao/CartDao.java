@@ -46,6 +46,24 @@ public class CartDao {
 		return res;
 	}
 
+	public CartVo select_one(Map map) {
+		// TODO Auto-generated method stub
+		CartVo vo = null;
+		
+		vo = sqlSession.selectOne("select_cart",map);
+		
+		return vo;
+	}
+
+	public int update_cart(Map map) {
+		// TODO Auto-generated method stub
+		int res = 0;
+				
+		res = sqlSession.update("update_cart",map); 
+		
+		return res;
+	}
+
 
 
 	

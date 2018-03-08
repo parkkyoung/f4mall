@@ -232,7 +232,7 @@
 			<dl>
 				<dt>MY PAGE</dt>
 				<dd>
-					<a href="cart_view.do"><i class="fa fa-shopping-cart"></i>
+					<a href="cart_view.do?m_id=${ user.m_id }"><i class="fa fa-shopping-cart"></i>
 					<div>장바구니</div></a>
 				</dd>
 				<dd>
@@ -348,7 +348,7 @@
 				
                 <!-- 로그인 후에 노출 -->
 				<c:if test="${ not empty user }">
-				<a href="cart_view.do" title="cart"><i class="fa fa-shopping-cart"></i></a>
+				<a href="cart_view.do?m_id=${ user.m_id }" title="cart"><i class="fa fa-shopping-cart"></i></a>
 				<a href="member.do" title="user"><i class="fa fa-user"></i></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>

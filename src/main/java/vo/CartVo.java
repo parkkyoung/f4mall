@@ -5,8 +5,49 @@ public class CartVo {
 	String m_id, cart_regdate;
 	String p_image_s, p_name;
 	int p_price,p_sale;
-	String m_name,m_addr,m_addr_d;
+	String m_name,m_addr,m_addr_d, m_zipcode,m_tel;
+	int sale_total, price_total, sales_price;
 	
+	public String getM_tel() {
+		return m_tel;
+	}
+
+	public void setM_tel(String m_tel) {
+		this.m_tel = m_tel;
+	}
+
+	public int getSale_total() {
+		return sale_total;
+	}
+
+	public void setSale_total(int sale_total) {
+		this.sale_total = sale_total;
+	}
+
+	public int getSales_price() {
+		return sales_price;
+	}
+
+	public void setSales_price(int sales_price) {
+		this.sales_price = sales_price;
+	}
+
+	public int getPrice_total() {
+		return price_total;
+	}
+
+	public void setPrice_total(int price_total) {
+		this.price_total = price_total;
+	}
+
+	public String getM_zipcode() {
+		return m_zipcode;
+	}
+
+	public void setM_zipcode(String m_zipcode) {
+		this.m_zipcode = m_zipcode;
+	}
+
 	public String getP_image_s() {
 		return p_image_s;
 	}
