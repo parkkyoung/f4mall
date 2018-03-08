@@ -29,8 +29,14 @@ public class FaqController {
 	 * @return
 	 */
 	@RequestMapping(value="/admin/faq_list.do")
-	public String faq_list(Model model){
-		List<FaqVo> f_list = faq_dao.select_list();
+	public String faq_list(Model model, String find_faq_txt){
+		FaqVo vo = new FaqVo();
+		if(find_faq_txt != null){
+			vo.setF_name(find_faq_txt);
+			vo.setF_content(find_faq_txt);
+		}
+		
+		List<FaqVo> f_list = faq_dao.select_list(vo);
 		
 		model.addAttribute("f_list", f_list);
 		
@@ -119,11 +125,16 @@ public class FaqController {
 	 * @return
 	 */
 	@RequestMapping(value="/faq.do")
-	public String faq(Model model){
-		List<FaqVo> f_list = faq_dao.select_list();
+	public String faq(Model model, String find_faq_txt){
 		
+		FaqVo vo = new FaqVo();
+		if(find_faq_txt != null){
+			vo.setF_name(find_faq_txt);
+			vo.setF_content(find_faq_txt);
+		}
+		
+		List<FaqVo> f_list = faq_dao.select_list(vo);
 		model.addAttribute("f_list", f_list);
-		
 		return common.ShortCut.Front.VIEW_PATH+"faq";
 	}
 }

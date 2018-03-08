@@ -18,26 +18,28 @@ public class FaqDao {
 		// TODO Auto-generated constructor stub
 	}
 	
-	// 전체목록
-	public List<FaqVo> select_list(){
+	// faq 전체목록
+	public List<FaqVo> select_list(FaqVo vo){
 		List<FaqVo> list = null;
-		list = sqlSession.selectList("faq_list");
+		list = sqlSession.selectList("faq_list", vo);
 		return list;
 	}
 	
-	// 
+	// faq 1개만 불러오기
 	public FaqVo select_one(int f_no){
 		FaqVo vo = null;
 		vo = sqlSession.selectOne("faq_view", f_no);
 		return vo;
 	}
 	
+	// faq 등록
 	public int insert(FaqVo vo){
 		int res = 0;
 		res = sqlSession.insert("faq_insert", vo);
 		return res;
 	}
 
+	// faq 삭제
 	public int delete(int f_no) {
 		// TODO Auto-generated method stub
 		System.out.println(f_no);
@@ -45,7 +47,8 @@ public class FaqDao {
 		res = sqlSession.delete("faq_delete", f_no);
 		return res;
 	}
-
+	
+	// faq 수정
 	public int update(FaqVo vo) {
 		// TODO Auto-generated method stub
 		int res = 0;
