@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+
+<select id="demand_list" parameterType="java.util.Map" resultType="vo.CartVo">
+	select * from cart_view where p_no=#{ p_no } and m_id = #{ m_id }
+</select>
+
+<select id="sales_price" parameterType="java.lang.String" resultType="int">	
+	select sum(sale_total) as sales_price from cart_view where m_id=#{ m_id }
+</select>
+
+<insert id="demand_insert" parameterType="vo.CartVo">
+	insert
+</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
