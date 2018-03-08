@@ -21,7 +21,7 @@ function add_cart(p_no){
 				//json =[{'result':'success'}];
 				if(json[0].result == 'fail'){
 					swal({
-						text : "장바구니 담기에 실패했습니다. 다시 시도해 주세요.",
+						text : "이미 장바구니에 있는 상품입니다. 장바구니 목록으로 이동하시겠습니까?.",
 						icon : "error",
 					});
 					return;
