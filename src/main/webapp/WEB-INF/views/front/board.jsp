@@ -61,8 +61,9 @@ function insert_form(){
 							<c:if test="${vo.b_notice eq 1 }">
 								<tr class="active">
 									<td class="blNo mHide">공지</td>
-									<td class="blSubject"><a href="board_view.html"><c:out
-												value="${vo.b_name}" /></a></td>
+									<td class="blSubject"><a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}
+									 &search=${param.search}&search_text=${param.search_text}">
+									 <c:out value="${vo.b_name}" /></a></td>
 									<td class="blId"><c:out value="${vo.m_id}" /></td>
 									<td class="blDate mHide"><c:out
 											value="${vo.b_regdateShort}" /></td>
@@ -77,9 +78,10 @@ function insert_form(){
 							<c:if test="${vo.b_notice eq 0 }">
 								<tr>
 									<td class="blNo mHide"><c:out value="${1+vo.cnt-vo.no+1}" /></td>
-									<td class="blSubject"><c:if test="${vo.b_depth !=0 }">
-									ㄴ
-									</c:if> <a href="board_view.html"><c:out value="${vo.b_name}" /></a></td>
+									<td class="blSubject">
+									<c:if test="${vo.b_depth !=0 }">ㄴ</c:if> 
+									<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search=${param.search}&search_text=${param.search_text}">
+									<c:out value="${vo.b_name}" /></a></td>
 									<td class="blId"><c:out value="${vo.m_id}" /></td>
 									<td class="blDate mHide"><c:out
 											value="${vo.b_regdateShort}" /></td>

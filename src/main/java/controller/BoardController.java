@@ -82,7 +82,8 @@ public class BoardController {
 											common.Constant.Board.BLOCKLIST, 
 											common.Constant.Board.BLOCKPAGE);
 		
-		/*request.getSession().removeAttribute("show");*/
+		//readhit+1À» À§ÇÑ show
+		request.getSession().removeAttribute("show");
 		
 		model.addAttribute("list",list);
 		model.addAttribute("pageMenu",pageMenu);
@@ -118,7 +119,7 @@ public class BoardController {
 		return "redirect:board_list.do";
 	}
 	
-	@RequestMapping(value="/board/view.do")
+	@RequestMapping(value="/board_view.do")
 	public String BoardViewAction(Model model,BoardVo vo,HttpServletRequest request) {
 		int b_no = vo.getB_no();
 		
@@ -137,5 +138,16 @@ public class BoardController {
 		model.addAttribute("vo", vo);
 		
 		return common.ShortCut.Front.VIEW_PATH+"board_view";
+	}
+	@RequestMapping(value="/board_delete.do")
+	public String BoardDeleteAction(BoardVo vo,String page,Model model) {
+		
+		int b_no = vo.getB_no();
+		vo = board_dao.selectOne(b_no);
+		
+		int res = board_dao.delete(b_no);
+		model.addAttribute("page",page);
+		
+		return "redirect:board_list.do";
 	}
 }

@@ -5,14 +5,11 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
-	<!-- file Upload -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    	<!-- Encoding -->
-    	<property name="defaultEncoding" value="utf-8"/>
-        <!-- max upload size in bytes -->
-        <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
-        <!-- max size of file in memory (in bytes) -->
-        <property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
-    </bean>
+   <!-- multipartResolver -->
+	<bean name="multipartResolver"
+	      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <property name="defaultEncoding" value="utf-8"/>
+	    <property name="maxUploadSize" value="104857600"/>
+	</bean>
 	
 </beans>

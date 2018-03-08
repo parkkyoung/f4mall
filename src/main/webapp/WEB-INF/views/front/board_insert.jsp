@@ -1,12 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="header.jsp"%>
 
-<!-- /*	2018년3월7일(seo) 	*/  -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file="header.jsp" %>
-
-<!-- smarteditor 사용을 위한 파일 -->
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="./resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <!-- visual -->
 <section class="subVisual">
@@ -14,55 +10,35 @@
 </section>
 <!-- //visual -->
 
+<!-- ckeditor -->
+<script
+	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<!-- //ckeditor -->
+
 
 <script type="text/javascript">
-/* <!-- script SmartEditer --> */
 
-	$(function(){
-	    //전역변수
-	    var obj = [];              
-	    //스마트에디터 프레임생성
-	    nhn.husky.EZCreator.createInIFrame({
-	        oAppRef: obj,
-	        elPlaceHolder: "editor",
-	        sSkinURI: "./resources/editor/SmartEditor2Skin.html",
-	        htParams : {
-	            // 툴바 사용 여부
-	            bUseToolbar : true,            
-	            // 입력창 크기 조절바 사용 여부
-	            bUseVerticalResizer : true,    
-	            // 모드 탭(Editor | HTML | TEXT) 사용 여부
-	            bUseModeChanger : true,
-	        }
-	    });
-	    //전송버튼
-	    $("#insertBoard").click(function(){
-	        //id가 smarteditor인 textarea에 에디터에서 대입
-	        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
-	        //폼 submit
-	        $("#f").submit();
-	    });
-	});
-/* <!-- //script SmartEditer --> */
-/* <!-- script btn_write  --> */
-function send(f){
-	var b_name = f.b_name.value;
-	var b_notice = f.b_notice.value;
-	var b_content = f.b_content.value;
-	
-	if(b_name=""){
-		alert("제목을 입력해주세요.");
-		f.b_name.focus();
-		return;
+
+	function send(f) {
+		var b_notice = f.b_notice.value;
+		var b_content = CKEDITOR.instances.content.getData();
+		var b_name = f.b_name.value;
+
+
+		if (b_name = "") {
+			alert("제목을 입력해주세요.");
+			f.b_name.focus();
+			return;
+		}
+		if (content == "") {
+			alert("내용을 입력해주세요.");
+			f.content.focus();
+			return;
+		}
+
+		f.submit();
+
 	}
-	
-	f.submit();
-	
-}
-
-/* <!-- //script btn_write  --> */
-
-
 </script>
 
 
@@ -70,22 +46,23 @@ function send(f){
 <!-- sub contents -->
 <section class="sub container">
 	<h2 class="hide">커뮤니티 등록</h2>
-	
+
 	<!-- 커뮤니티 등록  -->
 	<div class="board boardInsert">
-	<input type="hidden" name="page" value="${param.page }">
-	<input type="hidden" name="id" value="${ user.m_id }">
-	
-		<!-- action="./insertBoard.do" -->
-		<form name="f" class="form-horizontal widthM" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+		<input type="hidden" name="page" value="${param.page }"> <input
+			type="hidden" name="id" value="${ user.m_id }">
 
-			<!-- 관리자만 노출 -->
+
+		<form name="f" action="board_insert.do" class="form-horizontal widthM"
+			method="post" id="insertBoardFrm" enctype="multipart/form-data">
+
+			<!-- 괄리자만 노출 -->
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">공지사항여부</label>
 				<div class="col-sm-10">
 					<select name="b_notice" class="form-control">
 						<option value=0 selected>X</option>
-						<option value=1 >O</option>
+						<option value=1>O</option>
 					</select>
 				</div>
 			</div>
@@ -93,7 +70,8 @@ function send(f){
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">제목</label>
 				<div class="col-sm-10">
-					<input name="b_name" type="text" class="form-control" placeholder="게시글 제목" />
+					<input name="b_name" type="text" class="form-control"
+						placeholder="게시글 제목" />
 				</div>
 			</div>
 
@@ -101,19 +79,46 @@ function send(f){
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">내용</label>
 				<div class="col-sm-10">
-					<textarea rows="20" class="form-control" name="b_content" id="editor" ></textarea>
+					<textarea rows="20" class="form-control" name="b_content" id="b_content"></textarea>
+					
+					<!-- ckeditor -->
+					<script>
+						// Replace the <textarea id="editor1"> with a CKEditor
+						// instance, using default configuration.
+						CKEDITOR
+							.replace(
+								'b_content',
+								{
+									filebrowserUploadUrl : '${pageContext.request.contextPath}/ckeditorImageUpload.do'
+								});
+					
+						CKEDITOR.on('dialogDefinition', function(ev) {
+							var dialogName = ev.data.name;
+							var dialogDefinition = ev.data.definition;
+					
+							switch (dialogName) {
+							case 'image': //Image Properties dialog
+								//dialogDefinition.removeContents('info');
+								dialogDefinition.removeContents('Link');
+								dialogDefinition.removeContents('advanced');
+								break;
+							}
+						});
+					</script>
+					<!-- //ckeditor -->
+					
 				</div>
 			</div>
 
 			<div class="form-group btnBox">
 				<a href="board_list.do?page=${param.page}" class="btn btn-default">취소</a>
-				<a onclick="send(this.form); return false;" class="btn btn-primary">글쓰기</a>
+				<input type="button" onclick="send(this.form); return false;"
+					class="btn btn-primary" />
+
 			</div>
 		</form>
 	</div>
 	<!-- //커뮤니티 등록  -->
 </section>
 
-<%@include file="template/footer.jsp" %>
-
-<!-- /*	//2018년3월7일(seo) 	*/ -->
+<%@include file="template/footer.jsp"%>

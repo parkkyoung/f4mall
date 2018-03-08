@@ -78,7 +78,11 @@ public class BoardDao {
 /*	//2018³â3¿ù7ÀÏ(seo) 	*/
 
 
-
+	/**
+	 * 
+	 * @param b_no
+	 * @return
+	 */
 	public BoardVo selectOne(int b_no) {
 		// TODO Auto-generated method stub
 		
@@ -90,7 +94,11 @@ public class BoardDao {
 	}
 
 
-
+	/**
+	 * 
+	 * @param b_no
+	 * @return
+	 */
 	public int updateHit(int b_no) {
 		// TODO Auto-generated method stub
 		int res = 0;
@@ -100,6 +108,14 @@ public class BoardDao {
 		return res;
 	}	
 	
+	public int delete(int b_no) {
+		// TODO Auto-generated method stub
+		int res =0;
+		
+		res =sqlSession.delete("board_delete",b_no);
+		
+		return res;
+	}
 	
 	
 }
