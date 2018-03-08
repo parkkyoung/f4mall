@@ -1,16 +1,8 @@
-# f4mall
-<<<<<<< HEAD
-Final Project ÁøÇàÁß
-=======
-F4MALL
-¹Ú°æ¹ÎÂ»Â»¸Ç
-¼­´ö¿ø´ö¼­´ö¿ø´ö¼­
-¤Ñ,¤Ó¤Ñ,¤¿¤¿¤Ñ
-¿ø´ö¼­´ö¿ø´ö¼­´õ°Å´õ°Å´õ
-¿ø´ö¼­´ö¿ø´ö¼­´õ°Å´õ°Å´õ
-??
-µ¢±â´öÄô´õ·¯·¯·¯
-¤¾¤¾¤¾¤¾¤¾¤¾¤¾
+# F4mall
 
-¤©¤©¤©
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
+º» ÇÁ·ÎÁ§Æ®´Â Æ÷Æ®Æú¸®¿À¿ë ¼îÇÎ¸ô ÇÁ·ÎÁ§Æ®ÀÔ´Ï´Ù.
+
+Âü¿© °³¹ßÀÚ : ¹Ú°æ¹Î, ½ÅÈÆÃ¶, ¼­´ö¿ø, ±èºÀ¼º
+
+È£½ºÆÃ µµ¸ÞÀÎ :   http://chopine.cafe24.com/(http://chopine.cafe24.com/)
+
