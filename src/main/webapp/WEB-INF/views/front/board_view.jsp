@@ -125,7 +125,7 @@ $(document).ready(function(){
 				
 				<!-- comment  -->
 				<div id="comment_form" class="mt40">
-					<textarea id="comment_content" class="form-control" rows="3"></textarea>
+					<textarea id="comment_content" class="form-control" rows="3"><label for="loginPw" class="col-sm-2 col-xs-3 control-label">Password</label></textarea>
 					<div class="text-right mt10"><button id="comment_bt_insert" type="button" class="btn btn-primary">댓글달기</button></div>
 				</div>
 					
