@@ -133,6 +133,11 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #header .gnb li.active a {color:#ec971f;}
 #header .gnb li.active a:after {background:#ec971f;}
 
+@media(max-width:991px){
+	#header .gnb li {padding-right:15px;}
+	#header .gnb li a {font-size:16px;}
+}
+
 #container {padding-top:67px;}
 
 #footer .foot {margin-top:50px;padding:20px 0 50px;border-top:1px solid #ddd;}
@@ -176,25 +181,27 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .c-menu .mContents dl {overflow:hidden;text-align:center;border-right:1px solid #666;border-bottom:1px solid #666;background:white;}
 .c-menu .mContents dl dt {padding:10px 0;border-top:1px solid #666;border-left:1px solid #666;}
 .c-menu .mContents dl dd {float:left;width:33.3333%;border-top:1px solid #666;border-left:1px solid #666;}
-.c-menu .mContents dl dd a {display:block;padding:15px 5px 0;height:84px;font-size:10px;}
-.c-menu .mContents dl dd a i {font-size:26px;}
-.c-menu .mContents dl dd a div {margin-top:5px;}
+
+.c-menu .mContents dl dd>* {display:block;padding:15px 5px 0;width:100%;height:84px;font-size:10px;}
+.c-menu .mContents dl dd>* i {font-size:26px;}
+.c-menu .mContents dl dd>* div {margin-top:5px;}
 .c-menu .mContents .halfList dl dd {width:50%;}
-.c-menu .mContents .halfList dl dd a i {font-size:32px;}
-.c-menu .mContents .halfList dl dd a div {font-size:14px;}
+.c-menu .mContents .halfList dl dd>* i {font-size:32px;}
+.c-menu .mContents .halfList dl dd>* div {font-size:14px;}
 
 /* list */
-.goodsList .imgBox {position:relative;overflow:hidden;}
-.goodsList .imgBox a:after {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0);transition:all 0.3s ease;}
-.goodsList .imgBox:hover a:after {background:rgba(0, 0, 0, 0.15);}
-.goodsList .imgBox button {position:absolute;top:-40px;right:10px;width:40px;height:40px;border-radius:100%;background:white;transition:all 0.3s ease;}
-.goodsList .imgBox button i {font-size:20px;color:#ec971f;transition:all 0.3s ease;}
-.goodsList .imgBox:hover button {top:10px;}
-.goodsList .imgBox button:hover {background:#ec971f;}
-.goodsList .imgBox button:hover i {color:white;}
-.goodsList .txtBox {margin-bottom:10px;padding:5px 5px 0;}
-.goodsList .txtBox h4 {margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:14px;color:#999;}
-.goodsList .txtBox span {display:block;margin-top:3px;font-size:16px;color:#449d44;}
+.productList .imgBox {position:relative;overflow:hidden;}
+.productList .imgBox a:after {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0);transition:all 0.3s ease;}
+.productList .imgBox:hover a:after {background:rgba(0, 0, 0, 0.15);}
+.productList .imgBox button {position:absolute;top:-40px;right:10px;width:40px;height:40px;border-radius:100%;background:white;transition:all 0.3s ease;}
+.productList .imgBox button i {font-size:20px;color:#ec971f;transition:all 0.3s ease;}
+.productList .imgBox:hover button {top:10px;}
+.productList .imgBox button:hover {background:#ec971f;}
+.productList .imgBox button:hover i {color:white;}
+
+.productList .txtBox {margin-bottom:10px;padding:5px 5px 0;}
+.productList .txtBox h4 {margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:14px;color:#999;}
+.productList .txtBox span {display:block;margin-top:3px;font-size:16px;color:#449d44;}
 
 /* searchbox */
 .searchBox {text-align:right;}
@@ -206,12 +213,12 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 
 /* ===== main ===== */
 .main {margin-top:70px;}
-.main .category li a {display:block;position:relative;margin:15px 0;overflow:hidden;}
-.main .category li a:before {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;opacity: 0;background:#ec971f;transition:all 0.3s ease;z-index:1;}
-.main .category li a:hover:before {opacity: 0.1;}
-.main .category li a img {transition: all 0.3s ease;}
-.main .category li a:hover img {transform:scale(1.05);}
-.main .category li a span {position:absolute;top:50%;margin-top:-25px;text-align:center;width:100%;height:50px;line-height:50px;font-size:24px;font-weight:700;color:white;}
+.main .mainSex li a {display:block;position:relative;margin:15px 0;overflow:hidden;}
+.main .mainSex li a:before {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;opacity: 0;background:#ec971f;transition:all 0.3s ease;z-index:1;}
+.main .mainSex li a:hover:before {opacity: 0.1;}
+.main .mainSex li a img {transition: all 0.3s ease;}
+.main .mainSex li a:hover img {transform:scale(1.05);}
+.main .mainSex li a span {position:absolute;top:50%;margin-top:-25px;text-align:center;width:100%;height:50px;line-height:50px;font-size:24px;font-weight:700;color:white;}
 
 /* ===== sub ===== */
 .sub {padding:70px 15px;}
@@ -225,23 +232,35 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .btnBox {margin:15px auto 0;padding-top:15px;text-align:right;border-top:1px solid #ccc;}
 
 /* 상품상세 */
-.goods .goodsOption {text-align:right;}
-.goods .goodsOption .form-group {padding-top:15px;border-top:1px solid #f2f2f2;}
-.goods .goodsOption .form-group h3 {font-size:40px;}
-.goods .goodsOption .form-group.goCategory {padding-top:0;overflow:hidden;border-top:0;}
-.goods .goodsOption .form-group.goCategory a {float:left;font-size:24px;}
-.goods .goodsOption .form-group.goCategory span {float:right;padding-top:8px;}
-.goods .goodsOption .form-group.goTitle {overflow:hidden;}
-.goods .goodsOption .form-group.goTitle h3 {float:right;}
-.goods .goodsOption .form-group.goTitle div {float:left;font-size:24px;}
-.goods .goodsOption .form-group.goPrice del {font-size:20px;}
-.goods .goodsOption .form-group.goPrice strong {font-size:40px;}
-.goods .goodsOption .form-group.btnBox {padding-top:20px;border-top:1px solid #aaa;}
-.goods .goodsOption .form-group.btnBox input[type="number"] {margin-top:6px;}
-.goods .panel-group {margin-top:40px;}
-.goods .panel-group .panel-title {overflow:hidden;}
-.goods .panel-group .panel-title div.pull-right {margin-right:10px;padding-top:8px;}
-.goods .panel-group .panel-title .btn {color:white;}
+.product .productOption {text-align:right;}
+.product .productOption .form-group {padding-top:15px;border-top:1px solid #f2f2f2;}
+.product .productOption .form-group h3 {font-size:40px;}
+.product .productOption .form-group.goCategory {padding-top:0;overflow:hidden;border-top:0;}
+.product .productOption .form-group.goCategory a {float:left;font-size:24px;}
+.product .productOption .form-group.goCategory span {float:right;padding-top:8px;}
+.product .productOption .form-group.goTitle {overflow:hidden;}
+.product .productOption .form-group.goTitle h3 {float:right;}
+.product .productOption .form-group.goTitle div {float:left;font-size:24px;}
+.product .productOption .form-group.goPrice del {font-size:20px;}
+.product .productOption .form-group.goPrice strong {font-size:40px;}
+.product .productOption .form-group.btnBox {padding-top:20px;border-top:1px solid #aaa;}
+.product .productOption .form-group.btnBox input[type="number"] {margin-top:6px;}
+.product .panel-group {margin-top:40px;}
+.product .panel-group .panel-title {overflow:hidden;}
+.product .panel-group .panel-title div.pull-right {margin-right:10px;padding-top:8px;}
+.product .panel-group .panel-title .btn {color:white;}
+
+/* 장바구니 */
+#cartPop table {margin-bottom:0;}
+#cartPop th,
+#cartPop td {text-align:center;vertical-align: middle;}
+#cartPop input[type="number"].form-control {width:50px;}
+@media(max-width:767px){
+	#cartPop .modal-body {padding:0;}
+	#cartPop th {padding:8px 4px;font-size:12px;}
+	#cartPop td {padding:8px 4px;font-size:10px;}
+	#cartPop input[type="number"].form-control {width:40px;}
+}
 
 /* 주문하기 */
 .orderList table.table th {vertical-align: middle;text-align:center;font-size:14px;}
@@ -297,6 +316,8 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .boardView .panel-heading h3 {padding-bottom:3px;}
 .boardView .panel-heading span {display:inline-block;margin-right:15px;}
 .boardView .panel-body {min-height:700px;}
+
+
 
 /* ===== pc small ====== */
 @media (max-width:1200px){

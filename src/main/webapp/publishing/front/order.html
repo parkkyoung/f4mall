@@ -78,6 +78,62 @@
 		<p><a href="#container" tabindex="0">본문 바로가기</a></p>
 	</div>
 	<!-- //스킵 네비게이션 -->
+	
+	<!-- cart -->
+	<div class="modal fade" id="cartPop" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">장바구니</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th><input type="checkbox" class="checkController" data-controller="checkAll"></th>
+								<th class="mHide">상품이미지</th>
+								<th>상품이름</th>
+								<th>수량</th>
+								<th class="mHide">상품금액</th>
+								<th>할인금액</th>
+								<th class="mHide">담은날</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Loop -->
+							<tr>
+								<td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
+								<td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
+								<td><a href="">나이키후드집업</a></td>
+								<td><input type="number" value="1" class="form-control inBlock text-center" /></td>
+								<td class="mHide"><del>50,000</del>원</td>
+								<td><strong class="ftRed">20,000원</strong></td>
+								<td class="mHide">YYYY-MM-DD</td>
+								<td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
+							</tr>
+							<!-- //Loop -->
+							<tr>
+								<td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
+								<td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
+								<td><a href="">나이키신발</a></td>
+								<td><input type="number" value="1" class="form-control inBlock text-center" /></td>
+								<td class="mHide"><del>20,000</del>원</td>
+								<td><strong class="ftRed">10,000원</strong></td>
+								<td class="mHide">YYYY-MM-DD</td>
+								<td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="location.href='order.html';">구매하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //cart -->
 
 	<!-- Login popup -->
 	<div class="modal fade" id="loginPop" tabindex="-1" role="dialog" aria-hidden="true">
@@ -150,12 +206,12 @@
 			<div class="mList">
 				<dl>
 					<dt>CATEGORY</dt>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>SHOES</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>OUTER</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>JEANS</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>SHIRTS</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>ACCESSORIES</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>CHILDE</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>RUNNINGS</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>SNEAKERS</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>OXFORDS</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>WALKERS</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>HEELS</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>SLIPPERS</div></a></dd>
 				</dl>
 			</div>
 			<!-- //category -->
@@ -164,15 +220,15 @@
 			<div class="mList">
 				<dl>
 					<dt>BRAND</dt>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>NIKE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>ADIDAS</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>ZARA</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>DESCENTE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>NEWBALANCE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>CALVINKLEIN</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>TOMMY</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>LACOSTE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>UNDERARMOUR</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>NIKE</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>ADIDAS</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>NEWBALANCE</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>SODA</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>FERRAGAMO</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>KUMKANG</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>CHRISTIAN LOUBOUTIN</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>ELCANTO</div></a></dd>
+					<dd><a href="product.html"><i class="fa fa-user"></i><div>RACHELCOX</div></a></dd>
 				</dl>
 			</div>
 			<!-- //brand -->
@@ -191,11 +247,18 @@
 				<button type="button" class="btnGnb">메뉴</button>
 				<h1><a href="index.html" title="HOME">F4 Mall</a></h1>
 				<div class="util">
-					<input type="text" class="textSerch" />
+					<input type="text" class="textSerch" placeholder="search" />
 					<button type="button" class="btnSerch"><i class="fa fa-search fa-w-16"></i></button>
-					<a href="" title="cart"><i class="fa fa-shopping-cart"></i></a> <!-- 로그인 후에 노출 -->
-					<a href="" title="user"><i class="fa fa-user"></i></a> <!-- 로그인 후에 노출 -->
-					<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button> <!-- 미 로그인 시에 노출 -->
+
+					 <!-- 미 로그인 시에 노출 -->
+					<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button>
+
+					 <!-- 로그인 후에 노출 -->
+					<a href="cart.html" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></a>
+					<a href="member.html" title="user"><i class="fa fa-user"></i></a>
+					<a href="member_order.html" title="order list"><i class="fa fa-list-alt"></i></a>
+					<button type="button" title="logout"><i class="fa fa-unlock"></i></button>
+
 					<a href="../admin/index.html"><i class="fa fa-wrench fa-w-16"></i></a> <!-- 관리자 접속시에 노출 -->
 				</div>
 			</div>
@@ -203,14 +266,15 @@
 			<!-- pc gnb -->
 			<nav class="gnb">
 			<ul>
-				<li><a href="goods.html">OUTER</a></li>
-				<li><a href="goods.html">SHIRTS</a></li>
-				<li><a href="goods.html">JEANS</a></li>
-				<li><a href="goods.html">SHOES</a></li>
-				<li><a href="goods.html">ACCESSORIES</a></li>
-				<li><a href="goods.html">CHILDE</a></li>
+				<li><a href="product.html">RUNNINGS</a></li>
+				<li><a href="product.html">SNEAKERS</a></li>
+				<li><a href="product.html">OXFORDS</a></li>
+				<li><a href="product.html">WALKERS</a></li>
+				<li><a href="product.html">HEELS</a></li>
+				<li><a href="product.html">SLIPPERS</a></li>
 				<li class="active"><a href="profile.html">PROFILE</a></li>
 				<li><a href="board.html">COMMUNITY</a></li>
+				<li><a href="faq.html">FAQ</a></li>
 			</ul>
 			</nav>
 			<!-- //pc gnb -->
@@ -335,12 +399,12 @@
 					<div class="footInfo mt40 col-lg-3 col-md-6 col-sm-12">
 						<dl>
 							<dt>CATEGORY</dt>
-							<dd><a href="goods.html">OUTER</a></dd>
-							<dd><a href="goods.html">SHIRTS</a></dd>
-							<dd><a href="goods.html">JEANS</a></dd>
-							<dd><a href="goods.html">SHOES</a></dd>
-							<dd><a href="goods.html">ACCESSORIES</a></dd>
-							<dd><a href="goods.html">CHILDE</a></dd>
+							<dd><a href="product.html">OUTER</a></dd>
+							<dd><a href="product.html">SHIRTS</a></dd>
+							<dd><a href="product.html">JEANS</a></dd>
+							<dd><a href="product.html">SHOES</a></dd>
+							<dd><a href="product.html">ACCESSORIES</a></dd>
+							<dd><a href="product.html">CHILDE</a></dd>
 						</dl>
 					</div>
 					<!-- //category -->
