@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="faq_insert" parameterType="vo.FaqVo">
         insert into faq(m_id, f_name, f_content, f_ip, f_regdate)
             values(
-                'admin',
+                'admin@f4mall.com',
                 #{f_name},
                 #{f_content},
                 #{f_ip},

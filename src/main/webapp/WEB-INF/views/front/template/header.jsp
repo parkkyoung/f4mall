@@ -12,38 +12,18 @@
 <title>F4 Mall</title>
 
 <!-- css -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- bootstrap -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
-<!-- font-awesome -->
-<link
-	href="${ pageContext.request.contextPath }/resources/front/css/menu.css"
-	rel="stylesheet">
-<!-- mobile left menu -->
-<link
-	href="${ pageContext.request.contextPath }/resources/front/css/common.css"
-	rel="stylesheet">
-<!-- customizing -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
+<link href="${ pageContext.request.contextPath }/resources/front/css/flaticon.css" rel="stylesheet"> <!-- flaticon -->
+<link href="${ pageContext.request.contextPath }/resources/front/css/menu.css" rel="stylesheet"> <!-- mobile left menu -->
+<link href="${ pageContext.request.contextPath }/resources/front/css/common.css" rel="stylesheet"><!-- customizing -->
 
 <!-- js -->
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- jquery -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- bootstrap -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- sweet alert -->
-<script
-	src="${ pageContext.request.contextPath }/resources/front/js/menu.js"></script>
-<!-- mobile left menu -->
-<script
-	src="${ pageContext.request.contextPath }/resources/front/js/common.js"></script>
-<!-- customizing -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- bootstrap -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> <!-- sweet alert -->
+<script src="${ pageContext.request.contextPath }/resources/front/js/menu.js"></script><!-- mobile left menu -->
+<script src="${ pageContext.request.contextPath }/resources/front/js/common.js"></script><!-- customizing -->
 
 <!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -138,9 +118,64 @@
 		</p>
 	</div>
 	<!-- //스킵 네비게이션 -->
+	
+	<!-- cart popup -->
+    <div class="modal fade" id="cartPop" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">장바구니</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="checkController" data-controller="checkAll"></th>
+                                <th class="mHide">상품이미지</th>
+                                <th>상품이름</th>
+                                <th>수량</th>
+                                <th class="mHide">상품금액</th>
+                                <th>할인금액</th>
+                                <th class="mHide">담은날</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Loop -->
+                            <tr>
+                                <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
+                                <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
+                                <td><a href="">나이키후드집업</a></td>
+                                <td><input type="number" value="1" class="form-control inBlock text-center" /></td>
+                                <td class="mHide"><del>50,000</del>원</td>
+                                <td><strong class="ftRed">20,000원</strong></td>
+                                <td class="mHide">YYYY-MM-DD</td>
+                                <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
+                            </tr>
+                            <!-- //Loop -->
+                            <tr>
+                                <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
+                                <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
+                                <td><a href="">나이키신발</a></td>
+                                <td><input type="number" value="1" class="form-control inBlock text-center" /></td>
+                                <td class="mHide"><del>20,000</del>원</td>
+                                <td><strong class="ftRed">10,000원</strong></td>
+                                <td class="mHide">YYYY-MM-DD</td>
+                                <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="location.href='order.html';">구매하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //cart popup -->
 
 	<!-- Login popup -->
-
 	<form>
 		<div class="modal fade" id="loginPop" tabindex="-1" role="dialog"
 			aria-hidden="true">
@@ -228,100 +263,50 @@
 
 		<!-- 개인정보 // 로그인 후에 노출 -->
 		<c:if test="${ not empty user }">
-		<div class="mList">
-			<dl>
-				<dt>MY PAGE</dt>
-				<dd>
-					<a href="cart_view.do?m_id=${ user.m_id }"><i class="fa fa-shopping-cart"></i>
-					<div>장바구니</div></a>
-				</dd>
-				<dd>
-					<a href="member_orders.do"><i class="fa fa-list-alt"></i>
-					<div>주문내역</div></a>
-				</dd>
-				<dd>
-					<a href="member.do"><i class="fa fa-user"></i>
-					<div>회원정보</div></a>
-				</dd>
-			</dl>
-		</div>
+		<div class="mList halfList">
+            <dl>
+                <dt>MY PAGE</dt>
+                <dd><button type="button" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i><div>장바구니</div></button></dd>
+                <dd><a href="member_orders.do"><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
+                <dd><a href="member.do"><i class="fa fa-user"></i><div>회원정보</div></a></dd>
+                <dd><button type="button" onclick="logout();"><i class="fa fa-unlock"></i><div>로그아웃</div></button></dd>
+            </dl>
+        </div>
 		</c:if>
 		<!-- //개인정보 -->
 
 		<!-- category -->
 		<div class="mList">
-			<dl>
-				<dt>CATEGORY</dt>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>SHOES</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>OUTER</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>JEANS</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>SHIRTS</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>ACCESSORIES</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>CHILDE</div></a>
-				</dd>
-			</dl>
-		</div>
+            <dl>
+                <dt>CATEGORY</dt>
+                <dd><a href="product_list.do"><i class="flaticon-sneaker"></i><div>RUNNINGS</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-sport-shoe"></i><div>SNEAKERS</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-men-shoe"></i><div>OXFORDS</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-hiking-boot"></i><div>WALKERS</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-high-heel-3"></i><div>HEELS</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-sandal"></i><div>SLIPPERS</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-football-shoe"></i><div>MEN</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-ugg-boot"></i><div>UNISEX</div></a></dd>
+                <dd><a href="product_list.do"><i class="flaticon-girls-flat-shoe"></i><div>WOMEN</div></a></dd>
+            </dl>
+        </div>
 		<!-- //category -->
 
 		<!-- brand -->
-		<div class="mList">
-			<dl>
-				<dt>BRAND</dt>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>NIKE</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>ADIDAS</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>ZARA</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>DESCENTE</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>NEWBALANCE</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>CALVINKLEIN</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>TOMMY</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>LACOSTE</div></a>
-				</dd>
-				<dd>
-					<a href="product_list.do"><i class="fa fa-user"></i>
-					<div>UNDERARMOUR</div></a>
-				</dd>
-			</dl>
-		</div>
+		<div class="mList brandList">
+            <dl>
+                <dt>BRAND</dt>
+                <dd class="brand01"><a href="product_list.do"><div>NIKE</div></a></dd>
+                <dd class="brand02"><a href="product_list.do"><div>ADIDAS</div></a></dd>
+                <dd class="brand03"><a href="product_list.do"><div>NEWBALANCE</div></a></dd>
+                <dd class="brand04"><a href="product_list.do"><div>SODA</div></a></dd>
+                <dd class="brand05"><a href="product_list.do"><div>FERRAGAMO</div></a></dd>
+                <dd class="brand06"><a href="product_list.do"><div>KUMKANG</div></a></dd>
+                <dd class="brand07"><a href="product_list.do"><div>CHRISTIAN LOUBOUTIN</div></a></dd>
+                <dd class="brand08"><a href="product_list.do"><div>ELCANTO</div></a></dd>
+                <dd class="brand09"><a href="product_list.do"><div>RACHELCOX</div></a></dd>
+            </dl>
+        </div>
 		<!-- //brand -->
 	</div>
 	</nav>
@@ -348,7 +333,8 @@
 				
                 <!-- 로그인 후에 노출 -->
 				<c:if test="${ not empty user }">
-				<a href="cart_view.do?m_id=${ user.m_id }" title="cart"><i class="fa fa-shopping-cart"></i></a>
+				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
+				<%-- <a href="cart_view.do?m_id=${ user.m_id }" title="cart"><i class="fa fa-shopping-cart"></i></a> --%>
 				<a href="member.do" title="user"><i class="fa fa-user"></i></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
@@ -356,9 +342,7 @@
 				
                 <!-- 미 로그인 시에 노출 -->
                 <c:if test="${ empty user }">
-				<button type="button" title="login" data-toggle="modal" data-target="#loginPop">
-					<i class="fa fa-lock"></i>
-				</button>
+				<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button>
 				</c:if>
                 <!-- //미 로그인 시에 노출 -->
 				

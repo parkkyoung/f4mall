@@ -4,16 +4,16 @@
 
 <!-- visual -->
 <section class="subVisual">
-	<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
+    <h2>상품목록</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_default.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_default.jpg" alt="sub visual" class="imgMobile" />
 </section>
 <!-- //visual -->
 
 <!-- sub contents -->
 <section class="sub container">
-	<h2 class="hide">상품목록</h2>
-
 	<!-- goods list -->
-	<div class="goodsList">
+	<div class="productList">
 		<h3 class="hide">상품 리스트</h3>
 		<ul class="row">
 		
