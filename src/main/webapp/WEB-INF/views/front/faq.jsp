@@ -21,17 +21,16 @@ function findFaq(){
 	}
 }
 </script>
-
 <!-- visual -->
 <section class="subVisual">
-    <img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
+    <h2>FAQ</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_faq.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_faq.jpg" alt="sub visual" class="imgMobile" />
 </section>
 <!-- //visual -->
 
 <!-- sub contents -->
 <section class="sub container">
-    <h2 class="hide">FAQ</h2>
-
     <!-- search box -->
     <div class="searchBox">
         <input type="text" id="findFaqTxt" placeholder="search" value="${ param.find_faq_txt }" onkeyup="if (window.event.keyCode == 13) findFaq();" />

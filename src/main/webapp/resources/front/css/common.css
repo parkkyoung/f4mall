@@ -15,7 +15,7 @@
 /* ===== Default ===== */
 html {line-height: 1.15;font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}/* 기본 글꼴 지정, 모든 브라우저의 line-height 값을 바로잡음, IE 및 IOS 등의 브라우저 별 글꼴 크기 조정 방지 */
 html, body {height:100%;font-size:12px;-webkit-margin-start: 0;-webkit-padding-start: 0px;-webkit-text-size-adjust: none;-moz-text-size-adjust: none;-ms-text-size-adjust: none;}
-body, * {font-family: 'Noto Sans KR','Nanum Gothic',Dotum,Sans-serif;color:#333;}
+body, * {font-family: 'Noto Sans KR','Nanum Gothic', '맑은 고딕',Dotum,Sans-serif;color:#333;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,label,fieldset,textarea,p,blockquote,th,td,input,select,textarea,button,hr {margin:0;padding:0;}
 ul,ol,dl,li,dd {list-style:none;}
 h1 {font-size: 2em;} /*  chrome/firefox/safari 에서 section과 article에 h1이 들어갈 경우 정렬 */
@@ -96,15 +96,19 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .mt40 {margin-top:40px;}
 .mt70 {margin-top:70px;}
 .ml10 {margin-left:10px;}
+.ml20 {margin-left:20px;}
 .w50 {width:50px !important;}
-.wFull {width:100%;}
-.mwFull {max-width:100%;}
+.wFull {width:100% !important;}
+.wAuto {width:auto !important;}
+.mwFull {max-width:100% !important;}
 
 /* font */
+.ft16 {font-size:16px !important;}
 .ft24 {font-size:24px !important;}
 .ftWhite {color:white !important;}
 .ftRed {color:red !important;}
 .ftGreen {color:green !important;}
+.ftBlue {color:blue !important;}
 /* ===== common ===== */
 /* skip nav */
 .skip-navi a {display:block;height:1px;width:1px;margin:0 -1px -1px 0;padding:0;overflow:hidden;font-size:0;line-height:0;}
@@ -132,6 +136,11 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #header .gnb li a:hover:after {width:100%;}
 #header .gnb li.active a {color:#ec971f;}
 #header .gnb li.active a:after {background:#ec971f;}
+
+@media(max-width:991px){
+    #header .gnb li {padding-right:15px;}
+    #header .gnb li a {font-size:16px;}
+}
 
 #container {padding-top:67px;}
 
@@ -176,25 +185,36 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .c-menu .mContents dl {overflow:hidden;text-align:center;border-right:1px solid #666;border-bottom:1px solid #666;background:white;}
 .c-menu .mContents dl dt {padding:10px 0;border-top:1px solid #666;border-left:1px solid #666;}
 .c-menu .mContents dl dd {float:left;width:33.3333%;border-top:1px solid #666;border-left:1px solid #666;}
-.c-menu .mContents dl dd a {display:block;padding:15px 5px 0;height:84px;font-size:10px;}
-.c-menu .mContents dl dd a i {font-size:26px;}
-.c-menu .mContents dl dd a div {margin-top:5px;}
+.c-menu .mContents dl dd>* {display:block;padding:15px 5px 0;width:100%;height:84px;font-size:10px;}
+.c-menu .mContents dl dd>* i {font-size:26px;}
+.c-menu .mContents dl dd>* div {margin-top:5px;}
 .c-menu .mContents .halfList dl dd {width:50%;}
-.c-menu .mContents .halfList dl dd a i {font-size:32px;}
-.c-menu .mContents .halfList dl dd a div {font-size:14px;}
+.c-menu .mContents .halfList dl dd>* i {font-size:32px;}
+.c-menu .mContents .halfList dl dd>* div {font-size:14px;}
+.c-menu .mContents .brandList div {padding-top:35px;background:url("../img/bg_brand.png") no-repeat;}
+.c-menu .mContents .brandList .brand01 div {background-position:center top;}
+.c-menu .mContents .brandList .brand02 div {background-position:center -100px;}
+.c-menu .mContents .brandList .brand03 div {background-position:center -200px;}
+.c-menu .mContents .brandList .brand04 div {background-position:center -300px;}
+.c-menu .mContents .brandList .brand05 div {background-position:center -400px;}
+.c-menu .mContents .brandList .brand06 div {background-position:center -500px;}
+.c-menu .mContents .brandList .brand07 div {background-position:center -600px;}
+.c-menu .mContents .brandList .brand08 div {background-position:center -700px;}
+.c-menu .mContents .brandList .brand09 div {background-position:center -800px;}
 
 /* list */
-.goodsList .imgBox {position:relative;overflow:hidden;}
-.goodsList .imgBox a:after {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0);transition:all 0.3s ease;}
-.goodsList .imgBox:hover a:after {background:rgba(0, 0, 0, 0.15);}
-.goodsList .imgBox button {position:absolute;top:-40px;right:10px;width:40px;height:40px;border-radius:100%;background:white;transition:all 0.3s ease;}
-.goodsList .imgBox button i {font-size:20px;color:#ec971f;transition:all 0.3s ease;}
-.goodsList .imgBox:hover button {top:10px;}
-.goodsList .imgBox button:hover {background:#ec971f;}
-.goodsList .imgBox button:hover i {color:white;}
-.goodsList .txtBox {margin-bottom:10px;padding:5px 5px 0;}
-.goodsList .txtBox h4 {margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:14px;color:#999;}
-.goodsList .txtBox span {display:block;margin-top:3px;font-size:16px;color:#449d44;}
+.productList .imgBox {position:relative;overflow:hidden;}
+.productList .imgBox a:after {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0);transition:all 0.3s ease;}
+.productList .imgBox:hover a:after {background:rgba(0, 0, 0, 0.15);}
+.productList .imgBox button {position:absolute;top:-40px;right:10px;width:40px;height:40px;border-radius:100%;background:white;transition:all 0.3s ease;}
+.productList .imgBox button i {font-size:20px;color:#ec971f;transition:all 0.3s ease;}
+.productList .imgBox:hover button {top:10px;}
+.productList .imgBox button:hover {background:#ec971f;}
+.productList .imgBox button:hover i {color:white;}
+
+.productList .txtBox {margin-bottom:10px;padding:5px 5px 0;}
+.productList .txtBox h4 {margin-top:6px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;font-size:14px;color:#999;}
+.productList .txtBox span {display:block;margin-top:3px;font-size:16px;color:#449d44;}
 
 /* searchbox */
 .searchBox {text-align:right;}
@@ -206,16 +226,28 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 
 /* ===== main ===== */
 .main {margin-top:70px;}
-.main .category li a {display:block;position:relative;margin:15px 0;overflow:hidden;}
-.main .category li a:before {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;opacity: 0;background:#ec971f;transition:all 0.3s ease;z-index:1;}
-.main .category li a:hover:before {opacity: 0.1;}
-.main .category li a img {transition: all 0.3s ease;}
-.main .category li a:hover img {transform:scale(1.05);}
-.main .category li a span {position:absolute;top:50%;margin-top:-25px;text-align:center;width:100%;height:50px;line-height:50px;font-size:24px;font-weight:700;color:white;}
+.main .mainSex li a {display:block;position:relative;margin:15px 0;overflow:hidden;}
+.main .mainSex li a:before {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;opacity: 0;background:#ec971f;transition:all 0.3s ease;z-index:1;}
+.main .mainSex li a:hover:before {opacity: 0.1;}
+.main .mainSex li a img {transition: all 0.3s ease;}
+.main .mainSex li a:hover img {transform:scale(1.05);}
+.main .mainSex li a span {position:absolute;top:50%;margin-top:-25px;text-align:center;width:100%;height:50px;line-height:50px;font-size:24px;font-weight:700;color:white;}
 
 /* ===== sub ===== */
 .sub {padding:70px 15px;}
 @media(max-width:767px){ .sub {padding:30px 10px;} }
+
+/* 비주얼 */
+.subVisual {position:relative;}
+.subVisual:before {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0.3);}
+.subVisual h2 {position:absolute;top:50%;left:50%;margin:-50px 0 0 -150px;width:300px;height:100px;line-height:100px;text-align:center;font-size:48px;color:white;border-top:2px solid white;border-bottom:2px solid white;}
+.subVisual img {width:100%;}
+.subVisual .imgMobile {display:none;}
+@media(max-width:767px){
+    .subVisual h2 {margin:-25px 0 0 -100px;width:200px;height:50px;line-height:50px;font-size:26px;}
+    .subVisual .imgPc {display:none;}
+    .subVisual .imgMobile {display:block;}
+}
 
 /* 폼 작성 */
 .widthS {margin:0 auto;padding:15px;max-width:767px;}
@@ -225,23 +257,34 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .btnBox {margin:15px auto 0;padding-top:15px;text-align:right;border-top:1px solid #ccc;}
 
 /* 상품상세 */
-.goods .goodsOption {text-align:right;}
-.goods .goodsOption .form-group {padding-top:15px;border-top:1px solid #f2f2f2;}
-.goods .goodsOption .form-group h3 {font-size:40px;}
-.goods .goodsOption .form-group.goCategory {padding-top:0;overflow:hidden;border-top:0;}
-.goods .goodsOption .form-group.goCategory a {float:left;font-size:24px;}
-.goods .goodsOption .form-group.goCategory span {float:right;padding-top:8px;}
-.goods .goodsOption .form-group.goTitle {overflow:hidden;}
-.goods .goodsOption .form-group.goTitle h3 {float:right;}
-.goods .goodsOption .form-group.goTitle div {float:left;font-size:24px;}
-.goods .goodsOption .form-group.goPrice del {font-size:20px;}
-.goods .goodsOption .form-group.goPrice strong {font-size:40px;}
-.goods .goodsOption .form-group.btnBox {padding-top:20px;border-top:1px solid #aaa;}
-.goods .goodsOption .form-group.btnBox input[type="number"] {margin-top:6px;}
-.goods .panel-group {margin-top:40px;}
-.goods .panel-group .panel-title {overflow:hidden;}
-.goods .panel-group .panel-title div.pull-right {margin-right:10px;padding-top:8px;}
-.goods .panel-group .panel-title .btn {color:white;}
+.product .productOption {text-align:right;}
+.product .productOption .form-group {margin-bottom:18px;padding-top:18px;overflow:hidden;border-top:1px solid #f2f2f2;}
+.product .productOption .form-group h3 {font-size:32px;}
+.product .productOption .form-group.goCategory {padding-top:0;overflow:hidden;border-top:0;}
+.product .productOption .form-group.goCategory a {float:left;font-size:24px;}
+.product .productOption .form-group.goCategory span {float:right;padding-top:8px;}
+.product .productOption .form-group.goTitle {overflow:hidden;}
+.product .productOption .form-group.goTitle h3 {float:right;}
+.product .productOption .form-group.goTitle div {float:left;font-size:24px;}
+.product .productOption .form-group.goPrice strong {font-size:32px;}
+.product .productOption .form-group.btnBox {padding-top:20px;border-top:1px solid #aaa;}
+.product .productOption .form-group.btnBox input[type="number"] {margin-top:6px;}
+.product .panel-group {margin-top:40px;}
+.product .panel-group .panel-title {overflow:hidden;}
+.product .panel-group .panel-title div.pull-right {margin-right:10px;padding-top:8px;}
+.product .panel-group .panel-title .btn {color:white;}
+
+/* 장바구니 */
+#cartPop table {margin-bottom:0;}
+#cartPop th,
+#cartPop td {text-align:center;vertical-align: middle;}
+#cartPop input[type="number"].form-control {width:50px;}
+@media(max-width:767px){
+    #cartPop .modal-body {padding:0;}
+    #cartPop th {padding:8px 4px;font-size:12px;}
+    #cartPop td {padding:8px 4px;font-size:10px;}
+    #cartPop input[type="number"].form-control {width:40px;}
+}
 
 /* 주문하기 */
 .orderList table.table th {vertical-align: middle;text-align:center;font-size:14px;}
@@ -296,17 +339,23 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 }
 .boardView .panel-heading h3 {padding-bottom:3px;}
 .boardView .panel-heading span {display:inline-block;margin-right:15px;}
-.boardView .panel-body {min-height:700px;}
+.boardView .panel-body {min-height:500px;}
+@media(max-width:767px){ .boardView .panel-body {min-height:300px;} }
 
-/* ===== pc small ====== */
-@media (max-width:1200px){
-    
-}
-/* ===== tablet ====== */
-@media (max-width:1080px){
-    html, body {font-size:14px;}
-}
-/* ===== mobile ====== */
-@media (max-width:736px){
-    
+/* 댓글 */
+.comments {margin-top:40px;}
+.commentsInsert textarea {height:100px;}
+.commentsInsert button {height:100px;}
+.commentsList {text-align:center;}
+.commentsList table tbody td {vertical-align: middle;}
+.commentsList .cImg {width:68px;}
+.commentsList .cId {width:100px;}
+.commentsList .cContent {text-align:left;}
+.commentsList .cDate {width:100px;}
+.commentsList .cIp {width:100px;}
+@media(max-width:767px){
+    .commentsList .cImg,
+    .commentsList .cDate,
+    .commentsList .cIp {display:none;}
+    .commentsList .cContent {font-size:12px;}
 }
