@@ -11,11 +11,11 @@ function demand_list(f){
 	
 	var checked=false;
 	
-	if(f.p_no.length==undefined){
+	if(f.i_no.length==undefined){
 		checked = f.p_no.checked;
 	}else{
-		for(var i=0; i<f.p_no.length; i++){
-			if(f.p_no[i].checked){
+		for(var i=0; i<f.i_no.length; i++){
+			if(f.i_no[i].checked){
 				checked = true;
 				break;
 			}
@@ -34,11 +34,13 @@ function demand_list(f){
 	
 }
 
-function update_cart(p_no,cart_amt_p_no){
+function update_cart(i_no,cart_amt_i_no){
 	//var cart_amt = f.cart_amt.value;
-	alert(p_no + ':' + cart_amt_p_no);
-	alert(document.getElementById(cart_amt_p_no).value);
-	location.href="update_cart.do?p_no=" + p_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_p_no).value;
+/*  	alert(i_no + ':' + cart_amt_i_no);
+ 	alert(document.getElementById(cart_amt_i_no).value); */
+// 	alert(cart_amt_p_no);
+// 	var cnt = document.getElementById(cart_amt_p_no).value;
+	location.href="update_cart.do?i_no=" + i_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_i_no).value;
 }
 
 </script>
@@ -79,11 +81,16 @@ function update_cart(p_no,cart_amt_p_no){
 							<c:forEach var="cart" items="${ c_view }">
 				               
 								<tr>
-									<td><input type="checkbox" class="checkMember" data-target="checkAll" name="p_no" value="${ cart.p_no }"></td>
-									<td><a href=""><img src="http://placehold.it/150x150" alt="" /></a></td>
-									<td><a href="">${ cart.p_name }</a></td>
-									<td><input type="number" value="${ cart.cart_amt }" id="cart_amt_'${ cart.p_no }'" class="form-control inBlock w50 text-center" /><br>
-									<input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ cart.p_no }','cart_amt_${ cart.cart_amt }'); return false;"></td>									
+									<td><input type="checkbox" class="checkMember" data-target="checkAll" name="i_no" id="i_no" value="${ cart.i_no }"></td>
+									<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ cart.p_image_m }" alt="" /></a></td>
+									<td><a href="">${ cart.p_name }</a><br>
+												[${ cart.color_name }] ,${ cart.size_name }</td>
+									<td><input type="number" value="${ cart.cart_amt }" id="cart_amt_${ cart.i_no }" class="form-control inBlock w50 text-center" /><br>
+									
+									<!-- 수정버튼 -->
+									<input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ cart.i_no }','cart_amt_${ cart.i_no }'); return false;"></td>
+									
+																	
 									<td><del>${ cart.p_price }</del>원</td>
 									<td><strong class="ftRed">${ cart.p_sale }원</strong></td>
 									<td>${ cart.cart_regdate }</td>

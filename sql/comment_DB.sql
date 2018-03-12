@@ -1,3 +1,4 @@
+
 /****************** 게시판 댓글 *******************************************************************************************/
 
 
@@ -11,7 +12,7 @@ create table b_comment(
 	constraint fk_mc_id foreign key(m_id) references member (m_id) on delete cascade, /*회원아이디 참고*/
 	c_content text not null,							/*내용*/
 	c_ip varchar(200) not null,							/*작성자IP*/
-	c_regdate date										/*작성일자*/
+	c_regdate date,										/*작성일자*/
 	)
 
 

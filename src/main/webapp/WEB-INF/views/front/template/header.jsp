@@ -162,14 +162,14 @@
 									<label for="loginId" class="col-sm-2 col-xs-3 control-label">Email</label>
 									<div class="col-sm-10 col-xs-9">
 										<input type="email" class="form-control" id="m_id" name="m_id"
-											placeholder="Email" value="kimbongsung@hotmail.com">
+											placeholder="Email" value="">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="loginPw" class="col-sm-2 col-xs-3 control-label">Password</label>
 									<div class="col-sm-10 col-xs-9">
 										<input type="password" class="form-control" id="m_pwd"
-											name="m_pwd" placeholder="Password" value="kbs123123">
+											name="m_pwd" placeholder="Password" value="">
 									</div>
 								</div>
 								<div class="form-group">

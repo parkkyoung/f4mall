@@ -25,16 +25,6 @@
 	<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> <!-- datatables(bootstrap) -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> <!-- datepicker -->
 	<script src="js/common.js"></script> <!-- customizing -->
-
-	<!-- page script -->
-	<script>
-		function productInsert(){
-			swal({
-				text : "상품등록이 완료되었습니다.",
-				icon : "success"
-			});
-		};
-	</script>
 </head>
 
 <body>
@@ -124,90 +114,83 @@
 					<!-- 상품등록 -->
 					<div class="panel-body">
 						<form action="" role="form" class="panel-body">
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label for="">상품명</label>
-										<input type="text" class="form-control" placeholder="상품이름" />
-									</div>
-									<div class="form-group">
-										<label for="">상품설명</label>
-										<textarea class="form-control" rows="5" placeholder="상품설명"></textarea>
-									</div>
-									<div class="form-group">
-										<label for="">상품가격(원)</label>
-										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
-									</div>
-									<div class="form-group">
-										<label for="">할인가(원)</label>
-										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
-									</div>
-									<div class="form-group">
-										<label for="">공급업체코드</label>
-										<input type="text" class="form-control" placeholder="공급업체코드" />
-									</div>
-									<div class="form-group">
-										<label for="">제조일자</label>
-										<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD">
-									</div>
-									<div class="form-group">
-										<label for="">제조국가</label>
-										<select name="" class="form-control">
-											<option value="">한국</option>
-											<option value="">중국</option>
-											<option value="">일본</option>
-										</select>
-									</div>
+							<div class="form-group">
+								<label for="">상품명</label>
+								<input type="text" class="form-control" placeholder="상품이름" />
+							</div>
+							<div class="form-group">
+								<label for="">상품설명</label>
+								<textarea class="form-control" rows="5" placeholder="상품설명"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="">공급업체코드</label>
+								<input type="text" class="form-control" placeholder="공급업체코드" />
+							</div>
+							<div class="form-group">
+								<label for="">제조일자</label>
+								<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD">
+							</div>
+							<div class="form-group">
+								<label for="">제조국가</label>
+								<div class="radio">
+									<label><input name="" type="radio">한국</label>
+									<label><input name="" type="radio">중국</label>
+									<label><input name="" type="radio">일본</label>
 								</div>
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label for="">카테고리</label>
-										<select name="" class="form-control">
-											<option value="">OUTER</option>
-											<option value="">SHIRTS</option>
-											<option value="">JEANS</option>
-											<option value="">SHOES</option>
-											<option value="">ACCESSORIES</option>
-											<option value="">CHILDE</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="">재질</label>
-										<input type="text" class="form-control" placeholder="재질" />
-									</div>
-									<div class="form-group">
-										<label for="">색상</label>
-										<input type="text" class="form-control" placeholder="영어 대문자로 대표색상 한가지만 표기(ex : WHITE)" />
-									</div>
-									<div class="form-group">
-										<label for="">성별</label>
-										<div class="radio">
-											<label><input name="" type="radio">남자</label>
-											<label><input name="" type="radio">여자</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="">브랜드</label>
-										<input type="text" class="form-control" placeholder="브랜드" />
-									</div>
-									<div class="form-group">
-										<label for="">사이즈</label>
-										<input type="text" class="form-control" placeholder="사이즈" />
-									</div>
-									<div class="form-group">
-										<label for="">이미지 썸네일</label>
-										<input type="file" class="form-control" />
-									</div>
-									<div class="form-group">
-										<label for="">이미지 메인</label>
-										<input type="file" class="form-control" />
-									</div>
+							</div>
+							<div class="form-group">
+								<label for="">카테고리</label>
+								<div class="radio">
+									<label><input name="" type="radio">기타</label>
+									<label><input name="" type="radio">running</label>
+									<label><input name="" type="radio">sneakers</label>
+									<label><input name="" type="radio">oxfords</label>
+									<label><input name="" type="radio">walkers</label>
+									<label><input name="" type="radio">heels</label>
+									<label><input name="" type="radio">slippers</label>
 								</div>
-								<div class="col-lg-12">
-									<div class="form-group text-right">
-										<button type="button" class="btn btn-primary" onclick="productInsert();">상품등록</button>
-									</div>
+							</div>
+							<div class="form-group">
+								<label for="">재질</label>
+								<input type="text" class="form-control" placeholder="재질" />
+							</div>
+							<div class="form-group">
+								<label for="">성별</label>
+								<div class="radio">
+									<label><input name="" type="radio">공용</label>
+									<label><input name="" type="radio">남자</label>
+									<label><input name="" type="radio">여자</label>
 								</div>
+							</div>
+							<div class="form-group">
+								<label for="">브랜드</label>
+								<div class="radio">
+									<label><input name="" type="radio">기타</label>
+									<label><input name="" type="radio">NIKE</label>
+									<label><input name="" type="radio">ADIDAS</label>
+									<label><input name="" type="radio">NEWBALANCE</label>
+									<label><input name="" type="radio">SODA</label>
+									<label><input name="" type="radio">FERRAGAMO</label>
+									<label><input name="" type="radio">KUMKANG</label>
+									<label><input name="" type="radio">CHRISTIAN LOUBOUTIN</label>
+									<label><input name="" type="radio">ELCANTO</label>
+									<label><input name="" type="radio">RACHELCOX</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="">이미지 썸네일</label>
+								<input type="file" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label for="">이미지 상세</label>
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+							</div>
+							<div class="form-group text-right">
+								<button type="button" class="btn btn-primary"">상품등록</button>
 							</div>
 						</form>
 					</div>

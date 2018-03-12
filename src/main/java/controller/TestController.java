@@ -27,7 +27,7 @@ public class TestController {
 		
 		model.addAttribute("list",list);
 		
-		return "front/goods_view";
+		return "front/cart_list";
 	}
 	
 	@RequestMapping("admin/test.do")

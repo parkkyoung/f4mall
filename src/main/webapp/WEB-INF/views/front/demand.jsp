@@ -43,8 +43,9 @@ function demand_insert(f){
 							<!-- Loop -->
 							<c:forEach var="d_list" items="${ d_list }">
 							<tr>
-								<td><a href=""><img src="http://placehold.it/150x150" alt="" /></a></td>
-								<td><a href="">${ d_list.p_name }</a></td>
+								<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ d_list.p_image_m }" alt="" /></a></td>
+								<td><a href="">${ d_list.p_name }</a><br>
+									[${ d_list.color_name }] ,${ d_list.size_name }</td>
 								<td><input type="text" value="${ d_list.cart_amt }" class="form-control inBlock w50 text-center" readonly/></td>
 								<td><del>${ d_list.price_total }</del>원</td>
 								<td><strong class="ftRed">${ d_list.sale_total }원</strong></td>

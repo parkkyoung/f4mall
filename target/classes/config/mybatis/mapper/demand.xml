@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="">
 
 <select id="demand_list" parameterType="java.util.Map" resultType="vo.CartVo">
-	select * from cart_view where p_no=#{ p_no } and m_id = #{ m_id }
+	select * from cart_view where i_no=#{ i_no } and m_id = #{ m_id }
 </select>
 
 <select id="sales_price" parameterType="java.lang.String" resultType="int">	
@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <insert id="demand_insert" parameterType="vo.CartVo">
-	insert
+
 </insert>
 
 </mapper>

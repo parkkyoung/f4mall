@@ -51,8 +51,16 @@ create table board(
 
 /*	foreign key 삽입(member => m_id)	*/
 use f4mall;
-alter table board add constraint fk_123_id foreign key(m_id) references member (m_id)
-	
+alter table board add constraint fk_123_id foreign key(m_id) references member(m_id) on delete cascade;
+
+
+use f4mall;
+alter table board drop foreign key fk_123_id;
+
+use f4mall;
+select * from information_schema.table_constraints where table_name = 'board';
+
+
 /*일반글 */
 use f4mall;
 insert into board (m_id,b_name,b_content,b_ip,b_regdate,b_ref,b_step,b_depth) values('admin@f4mall.com','1빠1-0다','1빠라구','111.223.0.22',now(),1,0,0);
@@ -97,7 +105,13 @@ drop table board
 use f4mall;	
 select * from board order by b_ref desc, b_step asc;
 
+use f4mall;
+delete from board where id = 'fk_123_id';
 
+use f4mall;
+delete from board;
 
+use f4mall;
+select * from information_schema.table_constraints where table_name = 'demand';
 
 /*	//2018년3월7일(seo) 	*/

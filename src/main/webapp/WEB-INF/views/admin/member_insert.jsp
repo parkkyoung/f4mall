@@ -4,7 +4,85 @@
 
 <!-- page script -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> <!-- 다음 우편 -->
-<script>
+
+
+<!--아이디 체크-->
+  
+  <script>
+
+	$(document).ready(function() {
+
+		$('#join_id').keyup(function(event) {
+
+			// console.log("----");
+			var join_id = $(this).val();
+			var join_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+			//console.log('id값 ='+id);
+			if (!(join_id_pattern.test(join_id))) {
+				$('#join_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
+				return;
+			}
+
+			//서버로 id전송(Ajax통신)
+			$.ajax({
+				url : 'check_id.do',
+				data : {'join_id' : join_id},
+				success : function(data) {
+					// data="[{'result':'yes'}]";
+					var json = eval(data);
+					// var json=[{'result':'yes'}];    => 배열이다
+					if (json[0].result == 'yes') {
+						$('#join_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
+					} else {
+						$('#id_msg').html('이미 사용중인 아이디입니다').css('color', 'red');
+					}
+				}
+			});
+		});
+
+	
+<!--비밀번호 체크-->
+		$('#join_pwd').keyup(function(event) {
+
+			// 비밀번호 유효성 체크
+			var join_pwd = $(this).val();
+			var join1_pwd = $(this).val();
+			var join_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+
+			if (!(join_pwd_pattern.test(join_pwd))) {
+				
+				$('#join_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
+				$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
+			} else {
+					
+					$('#join_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
+					$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
+				}
+			
+			
+<!--비밀번호 이중체크-->
+			$('#join1_pwd').keyup(function(event) {
+				
+				if($('#join1_pwd').val() != $('#join_pwd').val()){
+					
+					$('#join1_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
+					$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
+				  }
+					else if($('#join1_pwd').val() == $('#join_pwd').val()){
+						$('#join1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
+						$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
+						
+					}
+				});
+			});
+		 });
+
+
+
+
+
+
+
 function findAddress() {
 	new daum.Postcode({
 		oncomplete: function(data) {
@@ -65,7 +143,7 @@ function findAddress() {
 				<div class="col-lg-6">
 					<div class="form-group">
 						<label for="">ID</label>
-						<input type="text" class="form-control" placeholder="메일 주소" />
+						<input type="text" id=""class="form-control" placeholder="메일 주소" />
 					</div>
 					<div class="form-group">
 						<label for="">패스워드</label>
