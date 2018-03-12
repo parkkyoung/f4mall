@@ -8,9 +8,6 @@ public class CommentVo {
 	String c_content;
 	String c_ip;
 	String c_regdate;
-	int c_ref;
-	int c_step;
-	int c_depth;
 	
 	
 	
@@ -70,26 +67,7 @@ public class CommentVo {
 	public void setC_regdate(String c_regdate) {
 		this.c_regdate = c_regdate;
 	}
-	public int getC_ref() {
-		return c_ref;
-	}
-	public void setC_ref(int c_ref) {
-		this.c_ref = c_ref;
-	}
-	public int getC_step() {
-		return c_step;
-	}
-	public void setC_step(int c_step) {
-		this.c_step = c_step;
-	}
-	public int getC_depth() {
-		return c_depth;
-	}
-	public void setC_depth(int c_depth) {
-		this.c_depth = c_depth;
-	}
 
-	
 	
 	
 	
