@@ -4,6 +4,7 @@
 
 use f4mall;
 <<<<<<< HEAD
+<<<<<<< HEAD
 create table member (
 	m_id 		varchar(200) primary key,
 	m_pwd		varchar(200) not null,
@@ -31,7 +32,25 @@ create table member(
 		m_image 	text
 
 >>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
+=======
+create table member(
+		m_id 		varchar(200) primary key,
+		m_pwd 		varchar(200) not null,
+		m_name 		varchar(200) not null,
+		m_nick 		varchar(200) not null,
+		m_addr 		varchar(200),
+		m_addr_d 	varchar(200),
+		m_zipcode 	varchar(200),
+		m_ip 		varchar(200) not null,
+		m_regdate 	datetime not null,
+		m_tel 		int not null,
+		m_grade 	int,
+		m_image 	text
+
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 );
+
+
 
 
 
@@ -45,6 +64,17 @@ select * from member
 use f4mall;
 <<<<<<< HEAD
 update member set
+=======
+select * from member;
+
+
+use f4mall;
+<<<<<<< HEAD
+drop table member;
+
+use f4mall;
+delete from member;
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 =======
 select * from member;
 
