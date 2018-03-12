@@ -14,6 +14,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet"> <!-- sbadmin -->
 	<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"> <!-- datatables(bootstrap) -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"> <!-- datepicker -->
+	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
@@ -93,8 +94,7 @@
 
 			<ul class="nav navbar-top-links navbar-right">
 				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-				<li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
+				<li><a href="#" onclick="location.href='../front/index.html'"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
 			</ul>
 			<!-- /.navbar-top-links -->
 
@@ -180,11 +180,15 @@
 										<input type="text" class="form-control" placeholder="이름" value="홍길동" />
 									</div>
 									<div class="form-group">
-										<label for="">핸드폰번호</label>
-										<input type="number" class="form-control" placeholder="괄호(-)없이 숫자만 입력" value="01012345678" />
+										<label for="">닉네임</label>
+										<input type="text" class="form-control" placeholder="닉네임" value="닉네임1234" />
 									</div>
 								</div>
 								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="">핸드폰번호</label>
+										<input type="number" class="form-control" placeholder="괄호(-)없이 숫자만 입력" value="01012345678" />
+									</div>
 									<div class="form-group">
 										<label for="">가입일자</label>
 										<input type="text" class="form-control" placeholder="YYYY-MM-DD" value="2018-03-01" readonly>

@@ -146,12 +146,13 @@
 		<div class="mContents">
 			
 			<!-- 개인정보 // 로그인 후에 노출 -->
-			<div class="mList">
+			<div class="mList halfList">
 				<dl>
 					<dt>MY PAGE</dt>
-					<dd><a href=""><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
-					<dd><a href=""><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
-					<dd><a href=""><i class="fa fa-user"></i><div>회원정보</div></a></dd>
+					<dd><button type="button" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i><div>장바구니</div></button></dd>
+					<dd><a href="member_orders.html"><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
+					<dd><a href="member.html"><i class="fa fa-user"></i><div>회원정보</div></a></dd>
+					<dd><button type="button"><i class="fa fa-unlock"></i><div>로그아웃</div></button></dd>
 				</dl>
 			</div>
 			<!-- //개인정보 -->
@@ -273,7 +274,7 @@
 								<td class="ftRed">결제대기중</td>
 								<td class="mHide">YYYY-MM-DD</td>
 								<td class="mHide"><a href="product_view.html"><img src="http://placehold.it/100x100" alt="product thumbnail" /></a></td>
-								<td><a href="product_view.html">나이키후드집업</a></td>
+								<td><a href="product_view.html">나이키후드집업</a> <small>외 2건</small></td>
 								<td class="mHide">3</td>
 								<td><strong class="ftRed">20,000원</strong></td>
 								<td>
@@ -283,7 +284,16 @@
 							</tr>
 							<!-- //Loop -->
 							<tr>
-								<td class="ftGreen">배송중</td>
+								<td class="ftBlue">결제완료</td>
+								<td class="mHide">YYYY-MM-DD</td>
+								<td class="mHide"><a href="product_view.html"><img src="http://placehold.it/100x100" alt="product thumbnail" /></a></td>
+								<td><a href="product_view.html">나이키후드집업</a> <small>외 1건</small></td>
+								<td class="mHide">3</td>
+								<td><strong class="ftRed">20,000원</strong></td>
+								<td><button type="button" class="btn btn-default btn-sm block" onclick="location.href='member_order.html'">주문정보</button></td>
+							</tr>
+							<tr>
+								<td class="ftBlue">배송중</td>
 								<td class="mHide">YYYY-MM-DD</td>
 								<td class="mHide"><a href="product_view.html"><img src="http://placehold.it/100x100" alt="product thumbnail" /></a></td>
 								<td><a href="product_view.html">나이키후드집업</a></td>
@@ -292,7 +302,25 @@
 								<td><button type="button" class="btn btn-default btn-sm block" onclick="location.href='member_order.html'">주문정보</button></td>
 							</tr>
 							<tr>
-								<td>배송완료</td>
+								<td class="ftGreen">배송완료</td>
+								<td class="mHide">YYYY-MM-DD</td>
+								<td class="mHide"><a href="product_view.html"><img src="http://placehold.it/100x100" alt="product thumbnail" /></a></td>
+								<td><a href="product_view.html">나이키후드집업</a></td>
+								<td class="mHide">3</td>
+								<td><strong class="ftRed">20,000원</strong></td>
+								<td><button type="button" class="btn btn-default btn-sm block" onclick="location.href='member_order.html'">주문정보</button></td>
+							</tr>
+							<tr>
+								<td>주문취소</td>
+								<td class="mHide">YYYY-MM-DD</td>
+								<td class="mHide"><a href="product_view.html"><img src="http://placehold.it/100x100" alt="product thumbnail" /></a></td>
+								<td><a href="product_view.html">나이키후드집업</a></td>
+								<td class="mHide">3</td>
+								<td><strong class="ftRed">20,000원</strong></td>
+								<td><button type="button" class="btn btn-default btn-sm block" onclick="location.href='member_order.html'">주문정보</button></td>
+							</tr>
+							<tr>
+								<td>배송취소</td>
 								<td class="mHide">YYYY-MM-DD</td>
 								<td class="mHide"><a href="product_view.html"><img src="http://placehold.it/100x100" alt="product thumbnail" /></a></td>
 								<td><a href="product_view.html">나이키후드집업</a></td>

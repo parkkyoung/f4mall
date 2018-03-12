@@ -14,6 +14,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet"> <!-- sbadmin -->
 	<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"> <!-- datatables(bootstrap) -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"> <!-- datepicker -->
+	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
@@ -47,8 +48,7 @@
 
 			<ul class="nav navbar-top-links navbar-right">
 				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-				<li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
+				<li><a href="#" onclick="location.href='../front/index.html'"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
 			</ul>
 			<!-- /.navbar-top-links -->
 
@@ -115,20 +115,22 @@
 							<thead>
 								<tr>
 									<th>상품코드</th>
+									<th>아이템코드</th>
 									<th>상품이름</th>
-									<th>재고수량</th>
+									<th>재고수량(켤레)</th>
 									<th>최신입출고일자</th>
 								</tr>
 							</thead>
 							<tbody>
-									<!-- Loop -->
-									<tr>
-										<td><a href="product_update.html">0000</a></td>
-										<td>나이키신발</td>
-										<td>100개</td>
-										<td>YYYY-MM-DD</td>
-									</tr>
-									<!-- //Loop -->
+								<!-- Loop -->
+								<tr>
+									<td><a href="product_update.html">0000</a></td>
+									<td>1111</td>
+									<td>나이키신발</td>
+									<td>100</td>
+									<td>YYYY-MM-DD</td>
+								</tr>
+								<!-- //Loop -->
 							</tbody>
 						</table>
 					</div>
@@ -146,6 +148,7 @@
 									<thead>
 										<tr>
 											<th>상품코드</th>
+											<th>아이템코드</th>
 											<th>상품이름</th>
 											<th>입고수량</th>
 											<th>입고일자</th>
@@ -155,6 +158,7 @@
 										<!-- Loop -->
 										<tr>
 											<td><a href="product_update.html">0000</a></td>
+											<td>1111</td>
 											<td>나이키신발</td>
 											<td>100개</td>
 											<td>YYYY-MM-DD</td>
@@ -174,8 +178,8 @@
 							<div class="panel-body">
 								<form action="" role="form" class="panel-body">
 									<div class="form-group">
-										<label for="">상품코드</label>
-										<input type="text" class="form-control" placeholder="상품코드" />
+										<label for="">아이템코드</label>
+										<input type="text" class="form-control" placeholder="아이템코드" />
 									</div>
 									<div class="form-group">
 										<label for="">입고수량</label>
@@ -208,6 +212,7 @@
 									<thead>
 										<tr>
 											<th>상품코드</th>
+											<th>아이템코드</th>
 											<th>상품이름</th>
 											<th>출고수량</th>
 											<th>출고일자</th>
@@ -217,6 +222,7 @@
 										<!-- Loop -->
 										<tr>
 											<td><a href="product_update.html">0000</a></td>
+											<td>1111</td>
 											<td>나이키신발</td>
 											<td>100개</td>
 											<td>YYYY-MM-DD</td>
@@ -236,8 +242,8 @@
 							<div class="panel-body">
 								<form action="" role="form" class="panel-body">
 									<div class="form-group">
-										<label for="">상품코드</label>
-										<input type="text" class="form-control" placeholder="상품코드" />
+										<label for="">아이템코드</label>
+										<input type="text" class="form-control" placeholder="아이템코드" />
 									</div>
 									<div class="form-group">
 										<label for="">출고수량</label>
