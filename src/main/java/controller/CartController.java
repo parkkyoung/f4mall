@@ -29,14 +29,15 @@ public class CartController {
 	
 	@RequestMapping("/cart_insert.do")
 	@ResponseBody
-	public String cart_insert(Integer p_no, String m_id){
+	public String cart_insert(Integer i_no, String m_id, Integer cart_amt){
 		
 		String result = "fail";
 		String resultStr = "";
 		
 		Map map = new HashMap();
-		map.put("p_no", p_no);
+		map.put("i_no", i_no);
 		map.put("m_id", m_id);
+		map.put("cart_amt", cart_amt);
 		
 		CartVo vo = cart_dao.select_one(map);
 		
@@ -71,21 +72,19 @@ public class CartController {
 	}
 	
 	@RequestMapping("/update_cart.do")
-	public String update_cart(Model model,Integer p_no, String m_id, Integer cart_amt){
+	public String update_cart(Model model,Integer i_no, String m_id, Integer cart_amt){
 		
 		System.out.println(cart_amt);
-		System.out.println(p_no);
-		System.out.println(m_id);
-		
 		
 		Map map = new HashMap();
-		map.put("p_no", p_no);
+		map.put("i_no", i_no);
 		map.put("m_id", m_id);
 		map.put("cart_amt", cart_amt);
 		
 		int res = cart_dao.update_cart(map);
 		
 		model.addAttribute("m_id",m_id);
+		
 		return "redirect:cart_view.do";
 	}
 	

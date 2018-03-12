@@ -13,15 +13,13 @@ alter table product drop foreign key fk_o_no -- 포린키 삭제
 use f4mall;
 CREATE TABLE product (
        p_no int primary key auto_increment,
-       o_no int,
-       category_no int,
-       material_no int,	
-       color_no int,
-       sex_no int,
-       brand_no int,
-       size_no int,
-       e_no int,
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
        m_id varchar(200),
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
        p_supply varchar(200),
        p_name varchar(200) not null,
        p_content text not null,
@@ -33,8 +31,18 @@ CREATE TABLE product (
        p_country varchar(200) not null,
        p_entry date not null
     );
-    
-
+   
+use f4mall;
+insert into product (p_supply, p_name, p_content,
+					 p_price, p_sale,
+					 p_image_m, p_image_s, p_pdate,
+					 p_country, p_entry)
+					 values(
+					 '훈철유통','나이키백마','백옥피부',
+					 59900,49900,
+					 'nike8.jpg','nike8.jpg','2018년 03월10일 신상',
+					 'Made in Vietnam',now()
+					 )
     
 --상품평점테이블
 use f4mall;
@@ -47,6 +55,9 @@ CREATE TABLE e(
 
 use f4mall;
 select * from e;
+
+use f4mall;
+delete from product;
 
     
 use f4mall;
@@ -96,54 +107,6 @@ drop table order_table
 
 use f4mall;
 select * from product where p_no = 1
-
-
--- foreign key 추가 사항(상품테이블 관련)
--- on delete cascade 옵션 => 참조하는 부모테이블의 column이 삭제되면 자식 테이블의 column도 모두 삭제하라
---카테고리 코드
-use f4mall;
-alter table product add constraint
-	fk_category_no FOREIGN KEY (category_no) REFERENCES category(category_no) on delete cascade;
-
---재질 코드
-use f4mall; 
-alter table product add constraint
-	fk_material_no FOREIGN KEY (material_no) REFERENCES material(material_no) on delete cascade;
-	
---색상 코드
-use f4mall;
-alter table product add constraint
-	fk_color_no FOREIGN KEY (color_no) REFERENCES color(color_no) on delete cascade;
-
---성별 코드
-use f4mall;
-alter table product add constraint
-	fk_sex_no FOREIGN KEY (sex_no) REFERENCES sex(sex_no) on delete cascade;
-
---브랜드 코드
-use f4mall;
-alter table product add constraint
-	fk_brand_no FOREIGN KEY (brand_no) REFERENCES brand(brand_no) on delete cascade;
-
---사이즈 코드
-use f4mall;
-alter table product add constraint
-	fk_size_no FOREIGN KEY (size_no) REFERENCES size(size_no) on delete cascade;
-
---회원아이디
-use f4mall;
-alter table product add constraint
-	fk_m_id foreign key (m_id) references member(m_id);
-
---상품평점
-use f4mall;
-alter table product add constraint
-	fk_e_no foreign key (e_no) references e(e_no);
-
---주문코드
-use f4mall;
-alter table product add constraint
-	fk_o_no foreign key(o_no) references demand(o_no) on delete cascade;
 	
 	
 --테이블 제약조건 확인(foreign key 확인)

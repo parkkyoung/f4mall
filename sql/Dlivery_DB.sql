@@ -19,6 +19,9 @@ create table delivery(
 use f4mall;
 select * from delivery
 
+use f4mall;
+delete from delivery;
+
 
 use f4mall;
 desc demand
