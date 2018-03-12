@@ -30,4 +30,22 @@ public class CommentDao {
 		return res;
 	}
 
+	public int insert(CommentVo vo) {
+		// TODO Auto-generated method stub
+		int res =0;
+		
+		res = sqlSession.insert("comment_insert",vo);
+		
+		return res;
+	}
+
+	public int delete(int c_no) {
+		// TODO Auto-generated method stub
+		int res =0;
+		
+		res = sqlSession.delete("comment_delete",c_no);
+		
+		return res;
+	}
+
 }

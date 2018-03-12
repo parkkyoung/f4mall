@@ -7,25 +7,21 @@
 
 /* reply */
 function reply(){
-	
+
 	//로그인 했냐?
-			 if ('${empty user}' == 'true') {
-
-				if (confirm('로그인하시겠습니까?') == false) {
-					return;
-				}
-				
-				$("#loginPop").modal();
-				/* var url = document.location.href;
-				
-				url = url.replace("view.do","reply_form.do")
-
-				location.href = "../member/login_form.do?url="+escape(url); */
-
-				return;
-			} 
-
-			location.href = 'board_reply_form.do?b_no=${vo.b_no}&page=${ param.page }';
+	 if ('${empty user}' == 'true') {
+		 swal({
+			  title: "로그인 하시겠습니까?",
+			  text: "답글은 로그인이후에 이용가능합니다.",
+			  type: "success",
+			  buttons: true,
+			}).then((willDelete) =>{
+				if(willDelete) $("#loginPop").modal();
+			});
+		
+	} else {	
+		location.href = 'board_reply_form.do?b_no=${vo.b_no}&page=${ param.page }';
+	}
 }
 /* delete */
 function del(){
@@ -43,15 +39,15 @@ function update(){
 	if (confirm('작성하신글을 수정하시겠습니까?') == false) {
 		return;
 	}
-	location.href = "board_update_form.do?b_no=${vo.b_no}&page=${param.page}&search=${param.search}&search_text=${param.search_text}";
+	location.href = "board_update_form.do?b_no=${vo.b_no}&page=${param.page}&search_text=${param.search_text}";
 
 	return;
 }
 /* comment_list_page*/
- function comment_list(page){
+ function comment_list(){
 	$.ajax({
 		url:'board_comment_list.do',
-		date:{'b_no':'${vo.b_no}','page':page},
+		data:{'b_no':'${param.b_no}'},{'c_no':'${param.c_no}'},
 		success:function(data){
 			$('#board_comment_list').html(data);
 		}	
@@ -61,7 +57,54 @@ function update(){
 /* comment_list 불러오기*/
 $(document).ready(function(){
 	//댓글목록을 가져온다.
-	comment_list(1);
+	comment_list();
+	
+	//글쓰기 버튼이 눌리면
+	$('#comment_bt_insert').click(function(){
+		
+		var url = document.location.href;
+		
+		
+		//로그인 했냐?
+		 if ('${empty user}' == 'true') {
+			 swal({
+				  title: "로그인 하시겠습니까?",
+				  text: "댓글은 로그인이후에 이용가능합니다.",
+				  type: "success",
+				  buttons: true,
+				}).then((willDelete) =>{
+					if(willDelete) $("#loginPop").modal();
+				});
+			
+		} 
+		
+		
+		var c_content = document.getElementById("comment_content").value;
+		if ('${empty user}' != 'true') {
+			if(c_content==''){
+				swal("Error", "댓글 내용을 입력해주세요.","warning")
+			}
+		}
+		
+		$.ajax({
+			url: 'board_comment_insert.do',
+			data:{'b_no':'${vo.b_no}',
+				  'm_id':'${user.m_id}',
+				  'c_content':c_content
+			},
+			success:function(data){
+				if(data.indexOf("fail") != -1){
+					alert("댓글달기 실패했습니다.");
+					return;
+				}
+				comment_list();
+				
+				$('#comment_content').val("");
+			}
+				  
+			
+		});
+	});
 	
 	
 	
@@ -118,6 +161,7 @@ $(document).ready(function(){
 						<button type="button" class="btn btn-danger" onclick="del()">삭제</button>
 						<button type="button" onclick="update()" class="btn btn-primary">수정</button>
 						<button type="button" class="btn btn-success" onclick="reply()">답글</button>
+						<button type="button" class="btn btn-info" onclick="location.href='board_list.do?page=${param.page}&search_text=${param.search_text}'">목록</button>
 					</div>
 
 				</div>
@@ -125,7 +169,7 @@ $(document).ready(function(){
 				
 				<!-- comment  -->
 				<div id="comment_form" class="mt40">
-					<textarea id="comment_content" class="form-control" rows="3"><label for="loginPw" class="col-sm-2 col-xs-3 control-label">Password</label></textarea>
+					<textarea id="comment_content" class="form-control" rows="3" placeholder="댓글을 입력해주세요"></textarea>
 					<div class="text-right mt10"><button id="comment_bt_insert" type="button" class="btn btn-primary">댓글달기</button></div>
 				</div>
 					
