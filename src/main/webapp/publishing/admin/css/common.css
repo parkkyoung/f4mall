@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* =================================================================================
+* INFORMATION
+* -----------------------------------------------------------------------
+* @Author : Park, Kyoung Min (rudals0731@naver.com)
+* @File Name: common.css
+* @Create Date: 2018-02-20
+* @Modifier: -
+* @Modified date: -
+* @Modified content : -
+* ================================================================================= */
+
+table th,
+table td {text-align:center;vertical-align: middle !important;}

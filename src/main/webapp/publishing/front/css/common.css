@@ -96,15 +96,19 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .mt40 {margin-top:40px;}
 .mt70 {margin-top:70px;}
 .ml10 {margin-left:10px;}
+.ml20 {margin-left:20px;}
 .w50 {width:50px !important;}
-.wFull {width:100%;}
-.mwFull {max-width:100%;}
+.wFull {width:100% !important;}
+.wAuto {width:auto !important;}
+.mwFull {max-width:100% !important;}
 
 /* font */
+.ft16 {font-size:16px !important;}
 .ft24 {font-size:24px !important;}
 .ftWhite {color:white !important;}
 .ftRed {color:red !important;}
 .ftGreen {color:green !important;}
+.ftBlue {color:blue !important;}
 /* ===== common ===== */
 /* skip nav */
 .skip-navi a {display:block;height:1px;width:1px;margin:0 -1px -1px 0;padding:0;overflow:hidden;font-size:0;line-height:0;}
@@ -245,7 +249,6 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 	.subVisual .imgMobile {display:block;}
 }
 
-
 /* 폼 작성 */
 .widthS {margin:0 auto;padding:15px;max-width:767px;}
 .widthM {margin:0 auto;padding:15px;max-width:992px;}
@@ -255,16 +258,15 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 
 /* 상품상세 */
 .product .productOption {text-align:right;}
-.product .productOption .form-group {padding-top:15px;border-top:1px solid #f2f2f2;}
-.product .productOption .form-group h3 {font-size:40px;}
+.product .productOption .form-group {margin-bottom:18px;padding-top:18px;overflow:hidden;border-top:1px solid #f2f2f2;}
+.product .productOption .form-group h3 {font-size:32px;}
 .product .productOption .form-group.goCategory {padding-top:0;overflow:hidden;border-top:0;}
 .product .productOption .form-group.goCategory a {float:left;font-size:24px;}
 .product .productOption .form-group.goCategory span {float:right;padding-top:8px;}
 .product .productOption .form-group.goTitle {overflow:hidden;}
 .product .productOption .form-group.goTitle h3 {float:right;}
 .product .productOption .form-group.goTitle div {float:left;font-size:24px;}
-.product .productOption .form-group.goPrice del {font-size:20px;}
-.product .productOption .form-group.goPrice strong {font-size:40px;}
+.product .productOption .form-group.goPrice strong {font-size:32px;}
 .product .productOption .form-group.btnBox {padding-top:20px;border-top:1px solid #aaa;}
 .product .productOption .form-group.btnBox input[type="number"] {margin-top:6px;}
 .product .panel-group {margin-top:40px;}
@@ -356,17 +358,4 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 	.commentsList .cDate,
 	.commentsList .cIp {display:none;}
 	.commentsList .cContent {font-size:12px;}
-}
-
-/* ===== pc small ====== */
-@media (max-width:1200px){
-	
-}
-/* ===== tablet ====== */
-@media (max-width:1080px){
-	html, body {font-size:14px;}
-}
-/* ===== mobile ====== */
-@media (max-width:736px){
-	
 }
