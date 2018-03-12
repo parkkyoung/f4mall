@@ -13,15 +13,6 @@ alter table product drop foreign key fk_o_no -- 포린키 삭제
 use f4mall;
 CREATE TABLE product (
        p_no int primary key auto_increment,
-       o_no int,
-       category_no int,
-       material_no int,	
-       color_no int,
-       sex_no int,
-       brand_no int,
-       size_no int,
-       e_no int,
-       m_id varchar(200),
        p_supply varchar(200),
        p_name varchar(200) not null,
        p_content text not null,
@@ -33,8 +24,18 @@ CREATE TABLE product (
        p_country varchar(200) not null,
        p_entry date not null
     );
-    
-
+   
+use f4mall;
+insert into product (p_supply, p_name, p_content,
+					 p_price, p_sale,
+					 p_image_m, p_image_s, p_pdate,
+					 p_country, p_entry)
+					 values(
+					 '훈철유통','나이키백마','백옥피부',
+					 59900,49900,
+					 'nike8.jpg','nike8.jpg','2018년 03월10일 신상',
+					 'Made in Vietnam',now()
+					 )
     
 --상품평점테이블
 use f4mall;

@@ -4,14 +4,7 @@
 
 use f4mall;
 create table member (
-	m_id 		varchar(200) primary key auto_increment,
-	o_no 		int,
-	category_no int,
-	material_no int,
-	color_no	int,
-	sex_no		int,
-	brand_no	int,
-	size_no		int,
+	m_id 		varchar(200) primary key,
 	m_pwd		varchar(200) not null,
 	m_name		varchar(200) not null,
 	m_addr		varchar(200),
@@ -24,10 +17,14 @@ create table member (
 );
 
 use f4mall;
-insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel)
-values('admin@f4mall.com','f4mall','°ü¸®ÀÚ','localhost',now(),01012341234)
+insert into member (m_id,m_pwd,m_name,m_nick,m_ip,m_regdate,m_tel)
+values('kimbongsung@hotmail.com','kbs123123','±èºÀ¼º','»Í»ó','localhost',now(),01012341234)
 
+use f4mall;
+select * from member
 
+use f4mall;
+update member set
 	
 /*-- Member_DB sample
 -- Oracle¿¡¼­ date sysdate / MySQL ¿¡¼­´Â now() Ã³¸®

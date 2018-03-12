@@ -1,13 +1,29 @@
 package vo;
 
 public class CartVo {
-	int cart_no, p_no, cart_amt;
+	int cart_no, i_no, cart_amt,p_no;
 	String m_id, cart_regdate;
-	String p_image_s, p_name;
+	String p_image_m, p_name,color_name,size_name;
 	int p_price,p_sale;
 	String m_name,m_addr,m_addr_d, m_zipcode,m_tel;
 	int sale_total, price_total, sales_price;
 	
+	public String getColor_name() {
+		return color_name;
+	}
+
+	public void setColor_name(String color_name) {
+		this.color_name = color_name;
+	}
+
+	public String getSize_name() {
+		return size_name;
+	}
+
+	public void setSize_name(String size_name) {
+		this.size_name = size_name;
+	}
+
 	public String getM_tel() {
 		return m_tel;
 	}
@@ -47,15 +63,7 @@ public class CartVo {
 	public void setM_zipcode(String m_zipcode) {
 		this.m_zipcode = m_zipcode;
 	}
-
-	public String getP_image_s() {
-		return p_image_s;
-	}
-
-	public void setP_image_s(String p_image_s) {
-		this.p_image_s = p_image_s;
-	}
-
+	
 	public String getP_name() {
 		return p_name;
 	}
@@ -115,13 +123,6 @@ public class CartVo {
 	public void setCart_no(int cart_no) {
 		this.cart_no = cart_no;
 	}
-
-	public int getP_no() {
-		return p_no;
-	}
-	public void setP_no(int p_no) {
-		this.p_no = p_no;
-	}
 	public int getCart_amt() {
 		return cart_amt;
 	}
@@ -139,6 +140,30 @@ public class CartVo {
 	}
 	public void setCart_regdate(String cart_regdate) {
 		this.cart_regdate = cart_regdate;
+	}
+
+	public int getI_no() {
+		return i_no;
+	}
+
+	public void setI_no(int i_no) {
+		this.i_no = i_no;
+	}
+
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
+	public String getP_image_m() {
+		return p_image_m;
+	}
+
+	public void setP_image_m(String p_image_m) {
+		this.p_image_m = p_image_m;
 	}
 	
 	

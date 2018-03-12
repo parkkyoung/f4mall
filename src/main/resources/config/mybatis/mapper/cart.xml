@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="">
 
 <insert id="cart_insert" parameterType="java.util.Map">
-insert into cart (cart_amt, p_no, m_id, cart_regdate) values(1,#{ p_no },#{ m_id },now())
+	insert into cart (cart_amt, i_no, m_id, cart_regdate) values(#{ cart_amt },#{ i_no },#{ m_id },now())
 </insert>
 
 <select id="cart_view" parameterType="java.lang.String" resultType="vo.CartVo">
@@ -17,11 +17,11 @@ insert into cart (cart_amt, p_no, m_id, cart_regdate) values(1,#{ p_no },#{ m_id
 </delete>
 
 <select id="select_cart" parameterType="java.util.Map" resultType="vo.CartVo">
-	select * from cart_view where p_no=#{ p_no } and m_id = #{ m_id }
+	select * from cart_view where i_no=#{ i_no } and m_id = #{ m_id }
 </select>
 
 <update id="update_cart" parameterType="java.util.Map">
-	update cart set cart_amt = #{ cart_amt } where m_id= #{ m_id } and p_no=#{ p_no }
+	update cart set cart_amt = #{ cart_amt } where m_id=#{ m_id } and i_no=#{ i_no }
 </update>
 
 </mapper>
