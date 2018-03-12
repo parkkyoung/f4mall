@@ -45,6 +45,10 @@ USE f4mall;
 DESC cart;
 
 use f4mall;
+delete from demand;
+
+
+use f4mall;
 select * from demand;
 
 -- foreign key 추가 사항(상품테이블 관련)

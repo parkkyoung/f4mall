@@ -29,6 +29,18 @@ insert into b_comment (b_no,m_id,c_content,c_ip,c_regdate) values(1,'admin@f4mal
 
 /* 기타 Comment 확인 밑 삭제*/
 
+use f4mall;
+alter table b_comment drop foreign key fk_mc_id;
+
+use f4mall;
+alter table b_comment add constraint
+	fk_mc_id foreign key(m_id) references member(m_id) on delete cascade;
+
+
+use f4mall;
+select * from information_schema.table_constraints where table_name = 'b_comment';
+
+
 
 use f4mall;
 select * from b_comment;
@@ -36,3 +48,5 @@ select * from b_comment;
 use f4mall;	
 drop table b_comment;
 
+use f4mall;
+delete from comment;

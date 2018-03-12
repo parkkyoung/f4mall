@@ -17,6 +17,13 @@ use f4mall;
 alter table cart add constraint fk_mmm_id foreign key(m_id) references member (m_id)
 
 use f4mall;
+alter table board drop foreign key fk_mmm_id;
+
+use f4mall;
+delete from cart;
+
+
+use f4mall;
 select * from information_schema.table_constraints where table_name = 'cart';
 
 use f4mall;

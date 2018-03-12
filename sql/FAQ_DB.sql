@@ -11,9 +11,23 @@ create table faq(
 -- 기본키(primary key)
 alter table faq
 	add constraint pk_f_no primary key(f_no);
-	
+
+--외래키(foreign key)
+use f4mall;
+alter table faq add constraint
+	fk_f1m_id foreign key(m_id) references member(m_id) on delete cascade; 
+
+--외래키확인
+use f4mall;
+select * from information_schema.table_constraints where table_name = 'faq';
+
+--샘플데이터
 use f4mall;
 insert into faq(m_id,f_name,f_content,f_ip,f_regdate) values('admin','박경민','헬로우월드','192.168.0.13',now())
+
+--데이터삭제
+use f4mall;
+delete from faq;
 
 use f4mall;
 select * from faq
