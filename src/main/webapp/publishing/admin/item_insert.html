@@ -104,54 +104,106 @@
 			<div class="container-fluid">
 
 				<!-- page title -->
-				<h1 class="page-header">주문목록</h1>
+				<h1 class="page-header">상품등록</h1>
 				<!-- //page title -->
-
-				<!-- 주문목록 -->
+				
+				<!-- 상품등록 -->
 				<div class="panel panel-default">
-					<div class="panel-heading">주문목록</div>
+					<div class="panel-heading">상품등록</div>
+
+					<!-- 상품등록 -->
 					<div class="panel-body">
-						<table width="100%" class="tableData table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th>ID</th>
-									<th>상품코드</th>
-									<th>배송지</th>
-									<th>주문일자</th>
-									<th>결제금액(원)</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- Loop -->
-								<tr>
-									<td><a href="member_update.html">hong00@naver.com</a></td>
-									<td><a href="product_update.html">0000</a></td>
-									<td>구로구00</td>
-									<td>18년00</td>
-									<td>10000</td>
-								</tr>
-								<!-- //Loop -->
-								<tr>
-									<td><a href="member_update.html">hong01@naver.com</a></td>
-									<td><a href="product_update.html">0001</a></td>
-									<td>구로구01</td>
-									<td>18년01</td>
-									<td>10001</td>
-								</tr>
-								<tr>
-									<td><a href="member_update.html">hong02@naver.com</a></td>
-									<td><a href="product_update.html">0002</a></td>
-									<td>구로구02</td>
-									<td>18년02</td>
-									<td>10002</td>
-								</tr>
-							</tbody>
-						</table>
-						<!-- /.table-responsive -->
+						<form action="" role="form" class="panel-body">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="">상품명</label>
+										<input type="text" class="form-control" placeholder="상품이름" />
+									</div>
+									<div class="form-group">
+										<label for="">상품설명</label>
+										<textarea class="form-control" rows="5" placeholder="상품설명"></textarea>
+									</div>
+									<div class="form-group">
+										<label for="">상품가격(원)</label>
+										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
+									</div>
+									<div class="form-group">
+										<label for="">할인가(원)</label>
+										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
+									</div>
+									<div class="form-group">
+										<label for="">공급업체코드</label>
+										<input type="text" class="form-control" placeholder="공급업체코드" />
+									</div>
+									<div class="form-group">
+										<label for="">제조일자</label>
+										<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD">
+									</div>
+									<div class="form-group">
+										<label for="">제조국가</label>
+										<select name="" class="form-control">
+											<option value="">한국</option>
+											<option value="">중국</option>
+											<option value="">일본</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="">카테고리</label>
+										<select name="" class="form-control">
+											<option value="">runnings</option>
+											<option value="">sneakers</option>
+											<option value="">oxfords</option>
+											<option value="">walkers</option>
+											<option value="">heels</option>
+											<option value="">slippers</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="">재질</label>
+										<input type="text" class="form-control" placeholder="재질" />
+									</div>
+									<div class="form-group">
+										<label for="">색상</label>
+										<input type="text" class="form-control" placeholder="영어 대문자로 대표색상 한가지만 표기(ex : WHITE)" />
+									</div>
+									<div class="form-group">
+										<label for="">성별</label>
+										<div class="radio">
+											<label><input name="" type="radio">남자</label>
+											<label><input name="" type="radio">여자</label>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="">브랜드</label>
+										<input type="text" class="form-control" placeholder="브랜드" />
+									</div>
+									<div class="form-group">
+										<label for="">사이즈</label>
+										<input type="text" class="form-control" placeholder="사이즈" />
+									</div>
+									<div class="form-group">
+										<label for="">이미지 썸네일</label>
+										<input type="file" class="form-control" />
+									</div>
+									<div class="form-group">
+										<label for="">이미지 메인</label>
+										<input type="file" class="form-control" />
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group text-right">
+										<button type="button" class="btn btn-primary"">상품등록</button>
+									</div>
+								</div>
+							</div>
+						</form>
 					</div>
-					<!-- /.panel-body -->
+					<!-- // 상품등록 -->
 				</div>
-				<!-- //주문목록 -->
+				<!-- //상품등록 -->
 			</div>
 			<!-- /.container-fluid -->
 		</div>
