@@ -79,9 +79,9 @@
 						<li>
 							<a href="#"><i class="fa fa-user fa-fw"></i> 상품관리<span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level">
-								<li><a href="goods.html">상품목록</a></li>
-								<li><a href="goods_insert.html">상품등록</a></li>
-								<li><a href="goods_stock.html">상품입출고</a></li>
+								<li><a href="product.html">상품목록</a></li>
+								<li><a href="product_insert.html">상품등록</a></li>
+								<li><a href="product_stock.html">상품입출고</a></li>
 							</ul>
 						</li>
 						<li>
@@ -104,54 +104,99 @@
 			<div class="container-fluid">
 
 				<!-- page title -->
-				<h1 class="page-header">상품목록</h1>
+				<h1 class="page-header">상품등록</h1>
 				<!-- //page title -->
-
-				<!-- 상품목록 -->
+				
+				<!-- 상품등록 -->
 				<div class="panel panel-default">
-					<div class="panel-heading">상품목록</div>
+					<div class="panel-heading">상품등록</div>
+
+					<!-- 상품등록 -->
 					<div class="panel-body">
-						<table width="100%" class="tableData table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th>상품코드</th>
-									<th>상품명</th>
-									<th>카테고리</th>
-									<th>상품가격(원)</th>
-									<th>등록일자</th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- Loop -->
-								<tr>
-									<td><a href="goods_update.html">0000</a></td>
-									<td>나이키신발00</td>
-									<td>신발</td>
-									<td>10000</td>
-									<td>18년</td>
-								</tr>
-								<!-- //Loop -->
-								<tr>
-									<td><a href="goods_update.html">0001</a></td>
-									<td>나이키신발01</td>
-									<td>신발01</td>
-									<td>10001</td>
-									<td>18년01</td>
-								</tr>
-								<tr>
-									<td><a href="goods_update.html">0002</a></td>
-									<td>나이키신발02</td>
-									<td>신발02</td>
-									<td>10002</td>
-									<td>18년02</td>
-								</tr>
-							</tbody>
-						</table>
-						<!-- /.table-responsive -->
+						<form action="" role="form" class="panel-body">
+							<div class="form-group">
+								<label for="">상품명</label>
+								<input type="text" class="form-control" placeholder="상품이름" />
+							</div>
+							<div class="form-group">
+								<label for="">상품설명</label>
+								<textarea class="form-control" rows="5" placeholder="상품설명"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="">공급업체코드</label>
+								<input type="text" class="form-control" placeholder="공급업체코드" />
+							</div>
+							<div class="form-group">
+								<label for="">제조일자</label>
+								<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD">
+							</div>
+							<div class="form-group">
+								<label for="">제조국가</label>
+								<div class="radio">
+									<label><input name="" type="radio">한국</label>
+									<label><input name="" type="radio">중국</label>
+									<label><input name="" type="radio">일본</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="">카테고리</label>
+								<div class="radio">
+									<label><input name="" type="radio">기타</label>
+									<label><input name="" type="radio">running</label>
+									<label><input name="" type="radio">sneakers</label>
+									<label><input name="" type="radio">oxfords</label>
+									<label><input name="" type="radio">walkers</label>
+									<label><input name="" type="radio">heels</label>
+									<label><input name="" type="radio">slippers</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="">재질</label>
+								<input type="text" class="form-control" placeholder="재질" />
+							</div>
+							<div class="form-group">
+								<label for="">성별</label>
+								<div class="radio">
+									<label><input name="" type="radio">공용</label>
+									<label><input name="" type="radio">남자</label>
+									<label><input name="" type="radio">여자</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="">브랜드</label>
+								<div class="radio">
+									<label><input name="" type="radio">기타</label>
+									<label><input name="" type="radio">NIKE</label>
+									<label><input name="" type="radio">ADIDAS</label>
+									<label><input name="" type="radio">NEWBALANCE</label>
+									<label><input name="" type="radio">SODA</label>
+									<label><input name="" type="radio">FERRAGAMO</label>
+									<label><input name="" type="radio">KUMKANG</label>
+									<label><input name="" type="radio">CHRISTIAN LOUBOUTIN</label>
+									<label><input name="" type="radio">ELCANTO</label>
+									<label><input name="" type="radio">RACHELCOX</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="">이미지 썸네일</label>
+								<input type="file" class="form-control" />
+							</div>
+							<div class="form-group">
+								<label for="">이미지 상세</label>
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+								<input type="file" class="form-control" />
+							</div>
+							<div class="form-group text-right">
+								<button type="button" class="btn btn-primary"">상품등록</button>
+							</div>
+						</form>
 					</div>
-					<!-- /.panel-body -->
+					<!-- // 상품등록 -->
 				</div>
-				<!-- //상품목록 -->
+				<!-- //상품등록 -->
 			</div>
 			<!-- /.container-fluid -->
 		</div>

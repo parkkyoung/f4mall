@@ -5,31 +5,33 @@
 
 <!-- page script -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<!-- 다음 우편 -->
+
+
+<!--아이디 체크-->
 <script>
 	$(document).ready(function() {
 
-		$('#m_id').keyup(function(event) {
+		$('#join_id').keyup(function(event) {
 
 			// console.log("----");
-			var m_id = $(this).val();
-			var m_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+			var join_id = $(this).val();
+			var join_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 			//console.log('id값 ='+id);
-			if (!(m_id_pattern.test(m_id))) {
-				$('#m_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
+			if (!(join_id_pattern.test(join_id))) {
+				$('#join_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
 				return;
 			}
 
 			//서버로 id전송(Ajax통신)
 			$.ajax({
 				url : 'check_id.do',
-				data : {'m_id' : m_id},
+				data : {'join_id' : join_id},
 				success : function(data) {
 					// data="[{'result':'yes'}]";
 					var json = eval(data);
 					// var json=[{'result':'yes'}];    => 배열이다
 					if (json[0].result == 'yes') {
-						$('#m_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
+						$('#join_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
 					} else {
 						$('#id_msg').html('이미 사용중인 아이디입니다').css('color', 'red');
 					}
@@ -37,36 +39,37 @@
 			});
 		});
 
-
-		$('#m_pwd').keyup(function(event) {
+	
+<!--비밀번호 체크-->
+		$('#join_pwd').keyup(function(event) {
 
 			// 비밀번호 유효성 체크
-			var m_pwd = $(this).val();
-			var m1_pwd = $(this).val();
-			var m_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+			var join_pwd = $(this).val();
+			var join1_pwd = $(this).val();
+			var join_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-			if (!(m_pwd_pattern.test(m_pwd))) {
+			if (!(join_pwd_pattern.test(join_pwd))) {
 				
-				$('#m_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
-				$("#m_pwd").addClass("alert alert-danger").removeClass("alert-success");
+				$('#join_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
+				$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
 			} else {
 					
-					$('#m_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
-					$("#m_pwd").addClass("alert alert-success").removeClass("alert-danger");
+					$('#join_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
+					$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
 				}
 			
 			
-			//비밀번호 이중체크
-			$('#m1_pwd').keyup(function(event) {
+<!--비밀번호 이중체크-->
+			$('#join1_pwd').keyup(function(event) {
 				
-				if($('#m1_pwd').val() != $('#m_pwd').val()){
+				if($('#join1_pwd').val() != $('#join_pwd').val()){
 					
-					$('#m_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
-					$("#m_pwd").addClass("alert alert-danger").removeClass("alert-success");
+					$('#join1_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
+					$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
 				  }
-					else if($('#m1_pwd').val() == $('#m_pwd').val()){
-						$('#m_pwd_msg').html('비밀번호 일치').css('color', 'blue');
-						$("#m_pwd").addClass("alert alert-success").removeClass("alert-danger");
+					else if($('#join1_pwd').val() == $('#join_pwd').val()){
+						$('#join1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
+						$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
 						
 					}
 				});
@@ -74,6 +77,7 @@
 		 });
 
 	
+<!-- 다음 우편 -->
 	function findAddress() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -117,11 +121,11 @@
 	}
 
 	
-	// 회원가입
+<!--회원가입-->
 	function join(f) {
 
-		var m_id 	  = f.m_id.value.trim();
-		var m_pwd 	  = f.m_pwd.value.trim();
+		var join_id   = f.join_id.value.trim();
+		var join_pwd  = f.join_pwd.value.trim();
 		var m_name 	  = f.m_name.value.trim();
 		var m_zipcode = f.m_zipcode.value.trim();
 		var m_addr    = f.m_addr.value.trim();
@@ -129,13 +133,13 @@
 		var m_tel 	  = f.m_tel.value.trim();
 
 		// 값 체크
-		if (m_id == '') {
+		if (join_id == '') {
 			alert('아이디를 입력해주세요');
 			f.m_id.focus();
 			return;
 		}
 
-		if (m_pwd == '' || !(m_pwd_pattern.test(m_pwd))) {
+		if (join_pwd == '' || !(m_pwd_pattern.test(m_pwd))) {
 			alert('비밀번호를 확인해주세요');
 			f.m_pwd.focus();
 			return;
@@ -182,6 +186,7 @@
 			location.href = "product_list.do";
 		});
 	};
+	
 </script>
 
 <!-- visual -->
@@ -199,9 +204,9 @@
 			<div class="form-group">
 				<label for="id" class="col-sm-4 control-label">ID</label>
 				<div class="col-sm-6">
-					<input type="text" id="m_id"
+					<input type="text" id="join_id"
 						class="form-control alert alert-success" placeholder="메일 주소" />
-					<span class="mt5" id="m_id_msg">메일 주소로 작성해주세요</span>
+					<span class="mt5" id="join_id_msg">메일 주소로 작성해주세요</span>
 				</div>
 			</div>
 
@@ -209,15 +214,15 @@
 			<div class="form-group">
 				<label for="pw" class="col-sm-4 control-label">Password</label>
 				<div class="col-sm-4">
-					<input type="password" name="user" id="m_pwd"
+					<input type="password" name="user" id="join_pwd"
 						class="form-control" placeholder="비밀번호" />
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
-					<input type="password" name="check" id="m1_pwd"
+					<input type="password" name="check" id="join1_pwd"
 						class="form-control" placeholder="비밀번호 확인" /> 
-						<span class="mt5" id="m_pwd_msg"></span>
+						<span class="mt5" id="join1_pwd_msg"></span>
 				</div>
 			</div>
 

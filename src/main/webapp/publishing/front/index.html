@@ -9,6 +9,7 @@
 	<!-- css -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
+	<link href="css/flaticon.css" rel="stylesheet"> <!-- flaticon -->
 	<link href="css/menu.css" rel="stylesheet"> <!-- mobile left menu -->
 	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
 
@@ -23,26 +24,69 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-
-	<script>
-		$(function(){
-			$(".btnCart").click(function(){
-				swal({
-					text : "장바구니에 저장되었습니다!",
-					icon: "success",
-				});
-			});
-		});
-	</script>
-
 </head>
 <body>
-	
 	<!-- 스킵 네비게이션 -->
 	<div class="skip-navi">
 		<p><a href="#container" tabindex="0">본문 바로가기</a></p>
 	</div>
 	<!-- //스킵 네비게이션 -->
+	
+	<!-- cart -->
+	<div class="modal fade" id="cartPop" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">장바구니</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th><input type="checkbox" class="checkController" data-controller="checkAll"></th>
+								<th class="mHide">상품이미지</th>
+								<th>상품이름</th>
+								<th>수량</th>
+								<th class="mHide">상품금액</th>
+								<th>할인금액</th>
+								<th class="mHide">담은날</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- Loop -->
+							<tr>
+								<td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
+								<td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
+								<td><a href="">나이키후드집업</a></td>
+								<td><input type="number" value="1" class="form-control inBlock text-center" /></td>
+								<td class="mHide"><del>50,000</del>원</td>
+								<td><strong class="ftRed">20,000원</strong></td>
+								<td class="mHide">YYYY-MM-DD</td>
+								<td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
+							</tr>
+							<!-- //Loop -->
+							<tr>
+								<td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
+								<td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
+								<td><a href="">나이키신발</a></td>
+								<td><input type="number" value="1" class="form-control inBlock text-center" /></td>
+								<td class="mHide"><del>20,000</del>원</td>
+								<td><strong class="ftRed">10,000원</strong></td>
+								<td class="mHide">YYYY-MM-DD</td>
+								<td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="location.href='order.html';">구매하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //cart -->
 	
 	<!-- Login -->
 	<div class="modal fade" id="loginPop" tabindex="-1" role="dialog" aria-hidden="true">
@@ -104,7 +148,7 @@
 			<div class="mList halfList">
 				<dl>
 					<dt>MY PAGE</dt>
-					<dd><a href="cart.html"><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
+					<dd><button type="button" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i><div>장바구니</div></button></dd>
 					<dd><a href=""><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
 					<dd><a href=""><i class="fa fa-user"></i><div>회원정보</div></a></dd>
 					<dd><a href=""><i class="fa fa-unlock"></i><div>로그아웃</div></a></dd>
@@ -116,29 +160,32 @@
 			<div class="mList">
 				<dl>
 					<dt>CATEGORY</dt>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>SHOES</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>OUTER</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>JEANS</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>SHIRTS</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>ACCESSORIES</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>CHILDE</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-sneaker"></i><div>RUNNINGS</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-sport-shoe"></i><div>SNEAKERS</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-men-shoe"></i><div>OXFORDS</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-hiking-boot"></i><div>WALKERS</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-high-heel-3"></i><div>HEELS</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-sandal"></i><div>SLIPPERS</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-football-shoe"></i><div>MEN</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-ugg-boot"></i><div>UNISEX</div></a></dd>
+					<dd><a href="product.html"><i class="flaticon-girls-flat-shoe"></i><div>WOMEN</div></a></dd>
 				</dl>
 			</div>
 			<!-- //category -->
 			
 			<!-- brand -->
-			<div class="mList">
+			<div class="mList brandList">
 				<dl>
 					<dt>BRAND</dt>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>NIKE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>ADIDAS</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>ZARA</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>DESCENTE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>NEWBALANCE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>CALVINKLEIN</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>TOMMY</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>LACOSTE</div></a></dd>
-					<dd><a href="goods.html"><i class="fa fa-user"></i><div>UNDERARMOUR</div></a></dd>
+					<dd class="brand01"><a href="product.html"><div>NIKE</div></a></dd>
+					<dd class="brand02"><a href="product.html"><div>ADIDAS</div></a></dd>
+					<dd class="brand03"><a href="product.html"><div>NEWBALANCE</div></a></dd>
+					<dd class="brand04"><a href="product.html"><div>SODA</div></a></dd>
+					<dd class="brand05"><a href="product.html"><div>FERRAGAMO</div></a></dd>
+					<dd class="brand06"><a href="product.html"><div>KUMKANG</div></a></dd>
+					<dd class="brand07"><a href="product.html"><div>CHRISTIAN LOUBOUTIN</div></a></dd>
+					<dd class="brand08"><a href="product.html"><div>ELCANTO</div></a></dd>
+					<dd class="brand09"><a href="product.html"><div>RACHELCOX</div></a></dd>
 				</dl>
 			</div>
 			<!-- //brand -->
@@ -160,13 +207,13 @@
 					<input type="text" class="textSerch" placeholder="search" />
 					<button type="button" class="btnSerch"><i class="fa fa-search fa-w-16"></i></button>
 
-					 <!-- 미 로그인 시에 노출 -->
+					<!-- 미 로그인 시에 노출 -->
 					<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button>
 
 					 <!-- 로그인 후에 노출 -->
-					<a href="cart.html" title="cart"><i class="fa fa-shopping-cart"></i></a>
+					<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
 					<a href="member.html" title="user"><i class="fa fa-user"></i></a>
-					<a href="member_order.html" title="order list"><i class="fa fa-list-alt"></i></a>
+					<a href="member_orders.html" title="order list"><i class="fa fa-list-alt"></i></a>
 					<button type="button" title="logout"><i class="fa fa-unlock"></i></button>
 
 					<a href="../admin/index.html"><i class="fa fa-wrench fa-w-16"></i></a> <!-- 관리자 접속시에 노출 -->
@@ -176,12 +223,12 @@
 			<!-- pc gnb -->
 			<nav class="gnb">
 			<ul>
-				<li><a href="goods.html">OUTER</a></li>
-				<li><a href="goods.html">SHIRTS</a></li>
-				<li><a href="goods.html">JEANS</a></li>
-				<li><a href="goods.html">SHOES</a></li>
-				<li><a href="goods.html">ACCESSORIES</a></li>
-				<li><a href="goods.html">CHILDE</a></li>
+				<li><a href="product.html">RUNNINGS</a></li>
+				<li><a href="product.html">SNEAKERS</a></li>
+				<li><a href="product.html">OXFORDS</a></li>
+				<li><a href="product.html">WALKERS</a></li>
+				<li><a href="product.html">HEELS</a></li>
+				<li><a href="product.html">SLIPPERS</a></li>
 				<li class="active"><a href="profile.html">PROFILE</a></li>
 				<li><a href="board.html">COMMUNITY</a></li>
 				<li><a href="faq.html">FAQ</a></li>
@@ -204,23 +251,23 @@
 			<section class="main container">
 				<h2 class="hide">메인</h2>
 				<!-- category -->
-				<div class="category">
+				<div class="mainSex">
 					<ul class="row">
 						<li class="col-sm-4 col-xs-12">
-							<a href="goods_view.html">
-								<img src="img/img_main_category1.jpg" alt="Category MEN" class="wFull" />
+							<a href="product_view.html">
+								<img src="img/img_main_sex1.jpg" alt="SEX Men" class="wFull" />
 								<span>MEN</span>
 							</a>
 						</li>
 						<li class="col-sm-4 col-xs-12">
-							<a href="goods_view.html">
-								<img src="img/img_main_category2.jpg" alt="Category Accessory" class="wFull" />
-								<span>ACCESSORY</span>
+							<a href="product_view.html">
+								<img src="img/img_main_sex2.jpg" alt="SEX Accessory" class="wFull" />
+								<span>UNISEX</span>
 							</a>
 						</li>
 						<li class="col-sm-4 col-xs-12">
-							<a href="goods_view.html">
-								<img src="img/img_main_category3.jpg" alt="Category Women" class="wFull" />
+							<a href="product_view.html">
+								<img src="img/img_main_sex3.jpg" alt="SEX Women" class="wFull" />
 								<span>WOMEN</span>
 							</a>
 						</li>
@@ -230,15 +277,15 @@
 
 				<div class="banner mt70"><img src="img/img_main_banner1.jpg" alt="banner" class="wFull" /></div>
 
-				<!-- goods list -->
-				<div class="goodsList mt70">
+				<!-- product list -->
+				<div class="productList mt70">
 					<h3 class="hide">상품 리스트</h3>
 					<ul class="row">
 						<!-- Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike1.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+								<a href="product_view.html"><img src="img/sample/nike1.jpg" alt="상품" class="wFull" /></a>
+								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button> <!-- 카트 등록 되면 .fa-shopping-cart -> fa-times 교체 -->
 							</div>
 							<div class="txtBox">
 								<h4>나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키나이키</h4>
@@ -248,7 +295,17 @@
 						<!-- //Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike2.jpg" alt="상품" class="wFull" /></a>
+								<a href="product_view.html"><img src="img/sample/nike2.jpg" alt="상품" class="wFull" /></a>
+								<button type="button" class="btnCart"><i class="fa fa-times"></i></button>
+							</div>
+							<div class="txtBox">
+								<h4>나이키</h4>
+								<span>&#x20a9;20,000</span>
+							</div>
+						</li>
+						<li class="col-md-3 col-xs-6">
+							<div class="imgBox">
+								<a href="product_view.html"><img src="img/sample/nike3.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -258,17 +315,7 @@
 						</li>
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike3.jpg" alt="상품" class="wFull" /></a>
-								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
-							</div>
-							<div class="txtBox">
-								<h4>나이키</h4>
-								<span>&#x20a9;20,000</span>
-							</div>
-						</li>
-						<li class="col-md-3 col-xs-6">
-							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike4.jpg" alt="상품" class="wFull" /></a>
+								<a href="product_view.html"><img src="img/sample/nike4.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -278,18 +325,18 @@
 						</li>
 					</ul>
 				</div>
-				<!-- //goods list -->
+				<!-- //product list -->
 
 				<div class="banner mt70"><img src="img/img_main_banner2.jpg" alt="banner" class="wFull" /></div>
 
-				<!-- goods list -->
-				<div class="goodsList mt70">
+				<!-- product list -->
+				<div class="productList mt70">
 					<h3 class="hide">상품 리스트</h3>
 					<ul class="row">
 						<!-- Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike5.jpg" alt="상품" class="wFull" /></a>
+								<a href="product_view.html"><img src="img/sample/nike5.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -300,7 +347,7 @@
 						<!-- //Loop -->
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike6.jpg" alt="상품" class="wFull" /></a>
+								<a href="product_view.html"><img src="img/sample/nike6.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -310,7 +357,7 @@
 						</li>
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike7.jpg" alt="상품" class="wFull" /></a>
+								<a href="product_view.html"><img src="img/sample/nike7.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -320,7 +367,7 @@
 						</li>
 						<li class="col-md-3 col-xs-6">
 							<div class="imgBox">
-								<a href="goods_view.html"><img src="img/sample/nike8.jpg" alt="상품" class="wFull" /></a>
+								<a href="product_view.html"><img src="img/sample/nike8.jpg" alt="상품" class="wFull" /></a>
 								<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 							</div>
 							<div class="txtBox">
@@ -330,7 +377,7 @@
 						</li>
 					</ul>
 				</div>
-				<!-- //goods list -->
+				<!-- //product list -->
 
 			</section>
 			<!-- //main contents -->
@@ -358,12 +405,12 @@
 					<div class="footInfo mt40 col-lg-3 col-md-6 col-sm-12">
 						<dl>
 							<dt>CATEGORY</dt>
-							<dd><a href="goods.html">OUTER</a></dd>
-							<dd><a href="goods.html">SHIRTS</a></dd>
-							<dd><a href="goods.html">JEANS</a></dd>
-							<dd><a href="goods.html">SHOES</a></dd>
-							<dd><a href="goods.html">ACCESSORIES</a></dd>
-							<dd><a href="goods.html">CHILDE</a></dd>
+							<dd><a href="product.html">OUTER</a></dd>
+							<dd><a href="product.html">SHIRTS</a></dd>
+							<dd><a href="product.html">JEANS</a></dd>
+							<dd><a href="product.html">SHOES</a></dd>
+							<dd><a href="product.html">ACCESSORIES</a></dd>
+							<dd><a href="product.html">CHILDE</a></dd>
 						</dl>
 					</div>
 					<!-- //category -->

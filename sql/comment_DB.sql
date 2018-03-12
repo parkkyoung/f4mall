@@ -1,3 +1,4 @@
+
 /****************** 게시판 댓글 *******************************************************************************************/
 
 
@@ -12,9 +13,6 @@ create table b_comment(
 	c_content text not null,							/*내용*/
 	c_ip varchar(200) not null,							/*작성자IP*/
 	c_regdate date,										/*작성일자*/
-	c_ref	int default 0,								/*메인글번호 N번하위*/
-	c_step int default 0, 								/*수직순서 N번하위의 순서*/
-	c_depth int default 0								/*깊이  N번하위순서에 맞는 것에 하위*/
 	)
 
 
