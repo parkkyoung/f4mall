@@ -24,19 +24,14 @@ public class CommentController {
 	
 	
 	@RequestMapping("/board_comment_list.do")
-	public String CommentListAction(CommentVo vo,Model model) {
+	public String CommentListAction(CommentVo vo,Model model,HttpServletRequest request) {
 		
 		
 		//int c_no= vo.getC_no();
 		int b_no= vo.getB_no();
-
-		Map map = new HashMap();
-
-			
+		Map map = new HashMap();	
 		map.put("b_no",b_no);
-		
 
-		
 		// 댓글목록 조회
 		List<CommentVo> c_list = comment_dao.selectList(map);
 		
@@ -50,8 +45,9 @@ public class CommentController {
 	@ResponseBody
 	public String CommentInsertAction(CommentVo vo,HttpServletRequest request) {
 		
+		String c_content = vo.getC_content();
 		String c_ip = request.getRemoteAddr();
-		String c_content = request.getParameter("c_content").replaceAll("\n", "<br>");
+		//c_content = request.getParameter("c_content").replaceAll("\n", "<br>");
 		vo.setC_ip(c_ip);
 		vo.setC_content(c_content);
 		
@@ -65,7 +61,6 @@ public class CommentController {
 	public String CommentDeleteAction(CommentVo vo,Model model,Integer page) {
 		int c_no = vo.getC_no();
 		
-		System.out.println(c_no);
 		
 		int res= comment_dao.delete(c_no);
 		

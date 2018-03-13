@@ -58,13 +58,9 @@ public class BoardController {
 		}
 		List<BoardVo> list = board_dao.selectList(map);
 		int rowTotal = board_dao.getRowTotal(map);
-		
-		
+			
 		//search_filter만들기
 		String search_filter="";
-		/*if(search!=null) {				// search=name&search_text=길동
-			search_filter = String.format("search_text=%s",search_text);
-		}*/
 		
 		//PageMenu 만들기
 		String pageMenu = Paging.getPaging("board_list.do", 

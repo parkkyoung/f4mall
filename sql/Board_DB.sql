@@ -63,7 +63,7 @@ select * from information_schema.table_constraints where table_name = 'board';
 
 /*일반글 */
 use f4mall;
-insert into board (m_id,b_name,b_content,b_ip,b_regdate,b_ref,b_step,b_depth) values('admin@f4mall.com','1빠1-0다','1빠라구','111.223.0.22',now(),1,0,0);
+insert into board (m_id,b_name,b_content,b_ip,b_regdate,b_ref,b_step,b_depth) values('admin@f4mall.com','1빠1-0다','1빠라구','111.223.0.22',sysdate(),1,0,0);
 
 use f4mall;
 insert into board (m_id,b_name,b_content,b_ip,b_regdate,b_ref,b_step,b_depth) values('u2','2빠1-1다','2빠라구','111.223.0.22',now(),1,1,0);

@@ -74,11 +74,8 @@ $(document).ready(function(){
 				  buttons: true,
 				}).then((willDelete) =>{
 					if(willDelete) $("#loginPop").modal();
-				});
-			
-		} 
-		
-		
+				});		
+		} 	
 		var c_content = document.getElementById("comment_content").value;
 		if ('${empty user}' != 'true') {
 			if(c_content==''){
@@ -97,17 +94,11 @@ $(document).ready(function(){
 					alert("댓글달기 실패했습니다.");
 					return;
 				}
-				comment_list();
-				
+				comment_list();		
 				$('#comment_content').val("");
-			}
-				  
-			
+			}		
 		});
 	});
-	
-	
-	
 });
 
 </script>
@@ -150,12 +141,14 @@ $(document).ready(function(){
 	
 				<!-- 작성자 or 관리자만 노출 -->
 				<div class="btnBox">
+					<c:if test="${uesr.m_id eq vo.m_id || user.m_id eq 'admin@f4mall.com'}">
 					<button type="button" class="btn btn-danger" onclick="del()">삭제</button>
 					<button type="button" onclick="update()" class="btn btn-primary">수정</button>
+					</c:if>
 					<button type="button" class="btn btn-success" onclick="reply()">답글</button>
 					<button type="button" class="btn btn-info" onclick="location.href='board_list.do?page=${param.page}&search_text=${param.search_text}'">목록</button>
 				</div>
-
+				<!-- //작성자 or 관리자만 노출 -->
 			</div>
 			<!-- //커뮤니티 목록  -->
 		
@@ -170,7 +163,7 @@ $(document).ready(function(){
 				<!-- //댓글쓰기 -->
 				
 				<!-- 댓글목록 -->
-				<div id="board_comment_list"></div>
+				<div id="board_comment_list" class="mt20"></div>
 				<!-- //댓글목록 -->
 			</div>
 			<!-- //댓글 -->

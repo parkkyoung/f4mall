@@ -61,6 +61,7 @@
 		<input type="hidden" name="m_id" value="${user.m_id}">
 
 			<!-- 괄리자만 노출 -->
+			<c:if test="${uesr.m_id eq 'admin@f4mall.com'}">
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">공지사항여부</label>
 				<div class="col-sm-10">
@@ -70,6 +71,7 @@
 					</select>
 				</div>
 			</div>
+			</c:if>
 
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">제목</label>
@@ -83,9 +85,9 @@
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">내용</label>
 				<div class="col-sm-10">
-					<textarea rows="20" class="form-control" name="b_content" id="b_content"></textarea>
-					
+				
 					<!-- ckeditor -->
+					<textarea rows="20" class="form-control" name="b_content" id="b_content"></textarea>	
 					<script>
 						// Replace the <textarea id="editor1"> with a CKEditor
 						// instance, using default configuration.
