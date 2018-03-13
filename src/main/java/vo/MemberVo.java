@@ -2,14 +2,15 @@ package vo;
 
 public class MemberVo {
 
-	int o_no, category_no, material_no, color_no, 
-		sex_no, brand_no, size_no, m_tel;
+	
 
 	String m_id, m_pwd, m_name, m_addr, m_addr_d, 
-		   m_zipcode, m_ip, m_regdate, m_image;
+		   m_zipcode, m_ip, m_regdate, m_image,m_nick;
+	int m_tel,m_grade;
+	
 
-	
-	
+
+
 	// 기본생성자
 	public MemberVo() {
 		// TODO Auto-generated constructor stub
@@ -18,61 +19,7 @@ public class MemberVo {
 	
 	
 	
-	public int getO_no() {
-		return o_no;
-	}
 
-	public void setO_no(int o_no) {
-		this.o_no = o_no;
-	}
-
-	public int getCategory_no() {
-		return category_no;
-	}
-
-	public void setCategory_no(int category_no) {
-		this.category_no = category_no;
-	}
-
-	public int getMaterial_no() {
-		return material_no;
-	}
-
-	public void setMaterial_no(int material_no) {
-		this.material_no = material_no;
-	}
-
-	public int getColor_no() {
-		return color_no;
-	}
-
-	public void setColor_no(int color_no) {
-		this.color_no = color_no;
-	}
-
-	public int getSex_no() {
-		return sex_no;
-	}
-
-	public void setSex_no(int sex_no) {
-		this.sex_no = sex_no;
-	}
-
-	public int getBrand_no() {
-		return brand_no;
-	}
-
-	public void setBrand_no(int brand_no) {
-		this.brand_no = brand_no;
-	}
-
-	public int getSize_no() {
-		return size_no;
-	}
-
-	public void setSize_no(int size_no) {
-		this.size_no = size_no;
-	}
 
 	public int getM_tel() {
 		return m_tel;
@@ -153,5 +100,25 @@ public class MemberVo {
 	public void setM_image(String m_image) {
 		this.m_image = m_image;
 	}
+	
+	
+	public String getM_nick() {
+		return m_nick;
+	}
+
+	public void setM_nick(String m_nick) {
+		this.m_nick = m_nick;
+	}
+
+	public int getM_grade() {
+		return m_grade;
+	}
+
+	public void setM_grade(int m_grade) {
+		this.m_grade = m_grade;
+	}
+
+
+
 
 }

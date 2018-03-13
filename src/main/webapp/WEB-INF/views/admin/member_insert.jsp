@@ -12,29 +12,29 @@
 
 	$(document).ready(function() {
 
-		$('#join_id').keyup(function(event) {
+		$('#admin_id').keyup(function(event) {
 
-			// console.log("----");
-			var join_id = $(this).val();
-			var join_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-			//console.log('id값 ='+id);
-			if (!(join_id_pattern.test(join_id))) {
-				$('#join_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
+			//console.log("----");
+			var m_id = $(this).val();
+			var m_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+			//console.log('id값 ='+insert_id);
+			if (!(admin_id_pattern.test(admin_id))) {
+				$('#admin_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
 				return;
 			}
 
 			//서버로 id전송(Ajax통신)
 			$.ajax({
 				url : 'check_id.do',
-				data : {'join_id' : join_id},
+				data : {'m_id' : m_id},
 				success : function(data) {
 					// data="[{'result':'yes'}]";
 					var json = eval(data);
 					// var json=[{'result':'yes'}];    => 배열이다
 					if (json[0].result == 'yes') {
-						$('#join_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
+						$('#admin_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
 					} else {
-						$('#id_msg').html('이미 사용중인 아이디입니다').css('color', 'red');
+						$('#admin_id_msg').html('이미 사용중인 아이디입니다').css('color', 'red');
 					}
 				}
 			});
@@ -42,46 +42,40 @@
 
 	
 <!--비밀번호 체크-->
-		$('#join_pwd').keyup(function(event) {
+		$('#admin_pwd').keyup(function(event) {
 
 			// 비밀번호 유효성 체크
-			var join_pwd = $(this).val();
-			var join1_pwd = $(this).val();
-			var join_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+			var admin_pwd = $(this).val();
+			var admin1_pwd = $(this).val();
+			var admin_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-			if (!(join_pwd_pattern.test(join_pwd))) {
+			if (!(admin_pwd_pattern.test(admin_pwd))) {
 				
-				$('#join_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
-				$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
+				$('#admin_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
+				$("#admin_pwd").addClass("alert alert-danger").removeClass("alert-success");
 			} else {
 					
-					$('#join_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
-					$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
+					$('#admin_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
+					$("#admin_pwd").addClass("alert alert-success").removeClass("alert-danger");
 				}
 			
 			
 <!--비밀번호 이중체크-->
-			$('#join1_pwd').keyup(function(event) {
+			$('#admin1_pwd').keyup(function(event) {
 				
-				if($('#join1_pwd').val() != $('#join_pwd').val()){
+				if($('#admin1_pwd').val() != $('#admin_pwd').val()){
 					
-					$('#join1_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
-					$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
+					$('#admin1_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
+					$("#admin_pwd").addClass("alert alert-danger").removeClass("alert-success");
 				  }
-					else if($('#join1_pwd').val() == $('#join_pwd').val()){
-						$('#join1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
-						$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
+					else if($('#admin1_pwd').val() == $('#admin_pwd').val()){
+						$('#admin1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
+						$("#admin_pwd").addClass("alert alert-success").removeClass("alert-danger");
 						
 					}
 				});
 			});
 		 });
-
-
-
-
-
-
 
 function findAddress() {
 	new daum.Postcode({
@@ -123,7 +117,61 @@ function findAddress() {
 			document.getElementById('address2').focus();
 		}
 	}).open();
-}
+	
+	
+	function send(f){
+		
+		var admin_id = f.admin_id.value.trim();
+		var admin_pwd = f.admin_pwd.value.trim();
+		var am_name = f.am_name.value.trim();
+		var am_tel = f.am_tel.value.trim();
+		var am_addr = f.am_addr.value.trim();
+		var am_addr_d = f.am_addr_d.value.trim();
+		
+		if(admin_id=''){
+			alert('아이디를 입력하세요')
+			f.insert_id.focus();
+			return;
+		}
+		if(admin_pwd=''){
+			alert('비밀번호를 입력하세요')
+			f.insert_pwd.focus();
+			return;
+		}
+		if(am_name=''){
+			alert('이름를 입력하세요')
+			f.m_name.focus();
+			return;
+		}
+		if(am_tel=''){
+			alert('전화번호를 입력하세요')
+			f.m_tel.focus();
+			return;
+		}
+		if(am_addr=''){
+			alert('주소를 입력하세요')
+			f.m_addr.focus();
+			return;
+		}
+		if(am_addr_d=''){
+			alert('상세주소를 입력하세요')
+			f.m_addr_d.focus();
+			return;
+		}
+		
+		
+		f.action = 'member_insert.do';
+		f.submit();
+		
+		swal({
+			text : "회원가입이 완료되었습니다.",
+			icon : "success",
+		}).then((value) => {
+			location.href = "product_list.do";
+		});
+	  };
+	};
+
 </script>
 
 <!-- Page Content -->
@@ -139,26 +187,30 @@ function findAddress() {
 	<div class="panel-heading">회원등록</div>
 	<div class="panel-body">
 		<form action="" role="form" class="panel-body">
+		<input type="hidden" value="1">
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="form-group">
 						<label for="">ID</label>
-						<input type="text" id=""class="form-control" placeholder="메일 주소" />
+						<input type="text" id="admin_id"class="form-control" placeholder="메일 주소" />
+						<span class="mt5" id="admin_id_msg"></span>
 					</div>
 					<div class="form-group">
 						<label for="">패스워드</label>
-						<input type="password" class="form-control" placeholder="비밀번호" />
+						<input type="password" id="admin_pwd"class="form-control" placeholder="비밀번호" />
+						<span class="mt5" id="admin_pwd_msg"></span>
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호 확인" />
+						<input type="password" id="admin1_pwd"class="form-control" placeholder="비밀번호 확인" />
+						<span class="mt5" id="admin1_pwd_msg"></span>
 					</div>
 					<div class="form-group">
 						<label for="">이름</label>
-						<input type="text" class="form-control" placeholder="이름" />
+						<input type="text" id="am_name"class="form-control" placeholder="이름" />
 					</div>
 					<div class="form-group">
 						<label for="">핸드폰번호</label>
-						<input type="number" class="form-control" placeholder="괄호(-)없이 숫자만 입력" />
+						<input type="number" id="am_tel"class="form-control" placeholder="괄호(-)없이 숫자만 입력" />
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -166,7 +218,7 @@ function findAddress() {
 						<label for="">주소</label>
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" id="addressNumber" class="form-control" placeholder="우편번호" readonly />
+								<input type="text" id="am_addr" class="form-control" placeholder="우편번호" readonly />
 							</div>
 							<div class="col-xs-4">
 								<button type="button" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
@@ -174,10 +226,10 @@ function findAddress() {
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" id="address" class="form-control" placeholder="지번주소" />
+						<input type="text" id="am_zipcode" class="form-control" placeholder="지번주소" />
 					</div>
 					<div class="form-group">
-						<input type="text" id="address2" class="form-control" placeholder="상세주소" />
+						<input type="text" id="am_addr_d" class="form-control" placeholder="상세주소" />
 					</div>
 					<div class="form-group">
 						<label for="">이미지</label>
@@ -186,7 +238,7 @@ function findAddress() {
 				</div>
 				<div class="col-lg-12">
 					<div class="form-group text-right">
-						<button type="button" class="btn btn-primary">회원등록</button>
+						<button type="button" class="btn btn-primary" onclick="send(this.form);">회원등록</button>
 					</div>
 				</div>
 			</div>

@@ -363,7 +363,7 @@
                 <!-- //미 로그인 시에 노출 -->
 				
                 <!-- 관리자 접속시에 노출 -->
-				<c:if test="${ user.m_id eq 'admin@f4mall.com' }">
+				<c:if test="${ user.m_grade eq 1 }">
 				<a href="admin/index.do"><i class="fa fa-wrench fa-w-16"></i></a>
 				</c:if>
 				

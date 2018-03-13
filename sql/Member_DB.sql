@@ -22,8 +22,8 @@ create table member(
 
 
 use f4mall;
-insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel)
-values('admin@f4mall.com','f4mall','°ü¸®ÀÚ','localhost',now(),01012341234)
+insert into member (m_id,m_pwd,m_name,m_nick,m_ip,m_regdate,m_tel)
+values('admin@f4mall.com','f4mall','admin','f4@admin','localhost',now(),01012341234)
 
 
 use f4mall;
