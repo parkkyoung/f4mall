@@ -13,13 +13,6 @@ alter table product drop foreign key fk_o_no -- 포린키 삭제
 use f4mall;
 CREATE TABLE product (
        p_no int primary key auto_increment,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
-       m_id varchar(200),
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
        p_supply varchar(200),
        p_name varchar(200) not null,
        p_content text not null,
