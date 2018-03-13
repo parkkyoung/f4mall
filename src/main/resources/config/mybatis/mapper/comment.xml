@@ -6,14 +6,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="comment_select_list" resultType="vo.CommentVo" parameterType="java.util.Map">
 	
- 	     select bb.* from	
+ 	     select bb.*,m_nick as c_nick from	
 		(
 			select  *,(@rank := @rank +1 ) as no,(select count(*) from b_comment) as cnt
 			from
 			b_comment b,(select @rank :=0) as r
 			where b_no=#{b_no}
 			order by b.c_no desc
-		) bb 
+		) bb left outer join member k on bb.m_id = k.m_id
 		
 	
 	

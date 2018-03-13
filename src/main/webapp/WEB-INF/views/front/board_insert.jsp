@@ -11,8 +11,7 @@
 <!-- //visual -->
 
 <!-- ckeditor -->
-<script
-	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <!-- //ckeditor -->
 
 
@@ -61,16 +60,22 @@
 		<input type="hidden" name="m_id" value="${user.m_id}">
 
 			<!-- 괄리자만 노출 -->
-			<div class="form-group">
-				<label for="" class="col-sm-2 control-label">공지사항여부</label>
-				<div class="col-sm-10">
-					<select name="b_notice" class="form-control">
-						<option value=0 selected>X</option>
-						<option value=1>O</option>
-					</select>
+		   <c:if test="${user.m_grade eq 1}">  
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">공지사항여부</label>
+					<div class="col-sm-10">
+						<select name="b_notice" class="form-control">
+							<option value=0 selected>X</option>
+							<option value=1>O</option>
+						</select>
+					</div>
 				</div>
-			</div>
-
+			</c:if>
+			
+			<c:if test="${user.m_grade ne 1}"> 
+			<input type="hidden" name="b_notice" value="0">
+			</c:if>
+			
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">제목</label>
 				<div class="col-sm-10">
@@ -83,9 +88,9 @@
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">내용</label>
 				<div class="col-sm-10">
-					<textarea rows="20" class="form-control" name="b_content" id="b_content"></textarea>
-					
+				
 					<!-- ckeditor -->
+					<textarea rows="20" class="form-control" name="b_content" id="b_content"></textarea>	
 					<script>
 						// Replace the <textarea id="editor1"> with a CKEditor
 						// instance, using default configuration.
