@@ -3,26 +3,41 @@
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
-
-<!-- 댓글이 없을경우.-->
-<c:if test="${ empty c_list }">
-<div>
-작성된 댓글이 없습니다.
-</div>
-</c:if>
-<!-- //댓글이 없을경우.-->
-
-<!-- 일반 댓글 -->
-<c:forEach var="co"  items="${ c_list }">
-<div   class="comment_style">
-	<div>${co.c_no } 작성자 : ${co.m_id }  작성일자 : ${co.c_regdate} (ip: ${co.c_ip}) <button type="button"   id="delete_comment" class="btn btn-danger">삭제</button></div>
-	<div class="m_id"> ${co.c_content} </div>
+<script type="text/javascript">
+function comment_del(c_no){
 	
-</div>
- </c:forEach>
-<!-- //일반 댓글 -->
 
-</html>
+	if(confirm('댓글을 삭제하시겠습니까?')==false){
+		return;
+	}
+	
+	location.href = 'board_comment_delete.do?c_no='+c_no+'&b_no=${param.b_no}&page=${ param.page }';
+	
+}
+
+</script>
+<!-- 댓글목록 -->
+<input type="hidden" name="page" value="${param.page}">
+<input type="hidden" name="search_text" value="${param.search_text}">
+<table class="table">
+	<tbody>
+		<!-- 댓글이 없을경우.-->
+		<c:if test="${ empty c_list }">
+		</c:if>
+		<!-- //댓글이 없을경우.-->
+		<!-- Loop -->
+		<c:forEach var="co"  items="${ c_list }">
+		<tr>
+			<td class="cImg"><img src="http://placehold.it/50x50" alt="user thumbnail" ></td>
+			<td class="cId">${co.m_id } : ${co.c_no }</td>
+			<td class="cContent">${co.c_content}</td>
+			<td class="cDate">${co.c_regdate}</td>
+			<td class="cIp">${co.c_ip}</td>	
+			<td><button type="button"  class="btn btn-danger" onclick="comment_del('${co.c_no}');">삭제</button></td>
+		</tr>
+		
+		 </c:forEach>
+		<!-- //Loop -->
+	</tbody>
+</table>
+<!-- //댓글목록 -->
