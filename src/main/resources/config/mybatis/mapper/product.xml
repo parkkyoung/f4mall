@@ -10,13 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="product_insert" parameterType="vo.ProductVo">
 	   insert into product(
-	       category_no, material_no, color_no, sex_no,
-	       brand_no, size_no, m_id, p_supply, p_name,
+	       p_supply, p_name,
 	       p_content, p_price, p_sale, p_image_m, p_image_s,
 	       p_pdate, p_country, p_entry
 	   ) values(
-	       #{category_no}, #{material_no}, #{color_no},
-	       #{sex_no}, #{brand_no}, #{size_no}, 'admin@f4mall.com',
 	       #{p_supply}, #{p_name}, #{p_content}, #{p_price},
 	       #{p_sale}, #{p_image_m}, #{p_image_s},
            #{p_pdate}, #{p_country}, now()

@@ -14,6 +14,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet"> <!-- sbadmin -->
 	<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"> <!-- datatables(bootstrap) -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"> <!-- datepicker -->
+	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
@@ -47,8 +48,7 @@
 
 			<ul class="nav navbar-top-links navbar-right">
 				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-				<li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
+				<li><a href="#" onclick="location.href='../front/index.html'"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
 			</ul>
 			<!-- /.navbar-top-links -->
 
@@ -104,106 +104,118 @@
 			<div class="container-fluid">
 
 				<!-- page title -->
-				<h1 class="page-header">상품등록</h1>
+				<h1 class="page-header">주문상세</h1>
 				<!-- //page title -->
-				
-				<!-- 상품등록 -->
-				<div class="panel panel-default">
-					<div class="panel-heading">상품등록</div>
 
-					<!-- 상품등록 -->
+				<!-- 주문정보 -->
+				<div class="panel panel-default">
+					<div class="panel-heading">주문정보</div>
 					<div class="panel-body">
-						<form action="" role="form" class="panel-body">
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label for="">상품명</label>
-										<input type="text" class="form-control" placeholder="상품이름" />
-									</div>
-									<div class="form-group">
-										<label for="">상품설명</label>
-										<textarea class="form-control" rows="5" placeholder="상품설명"></textarea>
-									</div>
-									<div class="form-group">
-										<label for="">상품가격(원)</label>
-										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
-									</div>
-									<div class="form-group">
-										<label for="">할인가(원)</label>
-										<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
-									</div>
-									<div class="form-group">
-										<label for="">공급업체코드</label>
-										<input type="text" class="form-control" placeholder="공급업체코드" />
-									</div>
-									<div class="form-group">
-										<label for="">제조일자</label>
-										<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD">
-									</div>
-									<div class="form-group">
-										<label for="">제조국가</label>
-										<select name="" class="form-control">
-											<option value="">한국</option>
-											<option value="">중국</option>
-											<option value="">일본</option>
-										</select>
-									</div>
+						<table width="100%" class="tableData table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>아이템코드</th>
+									<th>상품코드</th>
+									<th>상품이름</th>
+									<th>수량</th>
+									<th>상품금액</th>
+									<th>할인금액</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Loop -->
+								<tr>
+									<td>0000</td>
+									<td><a href="product_update.html">0000</a></td>
+									<td>나이키신발</td>
+									<td>3</td>
+									<td>30000</td>
+									<td>3000</td>
+								</tr>
+								<!-- //Loop -->
+								<tr>
+									<td>0001</td>
+									<td><a href="product_update.html">0000</a></td>
+									<td>나이키신발</td>
+									<td>3</td>
+									<td>30000</td>
+									<td>3000</td>
+								</tr>
+								<tr>
+									<td>0002</td>
+									<td><a href="product_update.html">0000</a></td>
+									<td>나이키신발</td>
+									<td>3</td>
+									<td>30000</td>
+									<td>3000</td>
+								</tr>
+								<tr>
+									<td>0003</td>
+									<td><a href="product_update.html">0000</a></td>
+									<td>나이키신발</td>
+									<td>3</td>
+									<td>30000</td>
+									<td>3000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //주문정보 -->
+
+				<!-- 배송정보 -->
+				<div class="panel panel-default">
+					<div class="panel-heading">배송정보</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-6 form-horizontal">
+								<div class="form-group">
+									<label class="col-xs-3 control-label">주문코드</label>
+									<div class="col-xs-9"><input type="text" class="form-control" value="0001" readonly /></div>
 								</div>
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label for="">카테고리</label>
-										<select name="" class="form-control">
-											<option value="">runnings</option>
-											<option value="">sneakers</option>
-											<option value="">oxfords</option>
-											<option value="">walkers</option>
-											<option value="">heels</option>
-											<option value="">slippers</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="">재질</label>
-										<input type="text" class="form-control" placeholder="재질" />
-									</div>
-									<div class="form-group">
-										<label for="">색상</label>
-										<input type="text" class="form-control" placeholder="영어 대문자로 대표색상 한가지만 표기(ex : WHITE)" />
-									</div>
-									<div class="form-group">
-										<label for="">성별</label>
-										<div class="radio">
-											<label><input name="" type="radio">남자</label>
-											<label><input name="" type="radio">여자</label>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="">브랜드</label>
-										<input type="text" class="form-control" placeholder="브랜드" />
-									</div>
-									<div class="form-group">
-										<label for="">사이즈</label>
-										<input type="text" class="form-control" placeholder="사이즈" />
-									</div>
-									<div class="form-group">
-										<label for="">이미지 썸네일</label>
-										<input type="file" class="form-control" />
-									</div>
-									<div class="form-group">
-										<label for="">이미지 메인</label>
-										<input type="file" class="form-control" />
-									</div>
+								<div class="form-group">
+									<label class="col-xs-3 control-label">주문날짜</label>
+									<div class="col-xs-9"><input type="text" class="form-control" value="YYYY-MM-DD" readonly /></div>
 								</div>
-								<div class="col-lg-12">
-									<div class="form-group text-right">
-										<button type="button" class="btn btn-primary"">상품등록</button>
+								<div class="form-group">
+									<label class="col-xs-3 control-label">주소</label>
+									<div class="col-xs-9"><textarea class="form-control" rows="3" readonly>경기도 기모시 오지구 지리동 69-74</textarea></div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-3 control-label">기타사항</label>
+									<div class="col-xs-9"><textarea class="form-control" rows="3" readonly>어쩌고저쩌고</textarea></div>
+								</div>
+							</div>
+							<div class="col-lg-6 form-horizontal">
+								<div class="form-group">
+									<label class="col-xs-3 control-label">결제방법</label>
+									<div class="col-xs-9"><input type="text" class="form-control" value="무통장입금" readonly /></div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-3 control-label">결제금액(원)</label>
+									<div class="col-xs-9"><input type="text" class="form-control" value="1500" readonly /></div>
+								</div>
+								<div class="form-group">
+									<label class="col-xs-3 control-label">상태</label>
+									<div class="col-xs-9"><input type="text" class="form-control" value="결제완료" readonly /></div>
+								</div>
+								<div class="form-group text-center">
+									<div>
+										<button type="button" class="btn btn-default">결제대기중</button>
+										<button type="button" class="btn btn-warning">결제완료</button>
+										<button type="button" class="btn btn-primary">배송중</button>
+									</div>
+									<div style="margin-top:10px;">
+										<button type="button" class="btn btn-success">배송완료</button>
+										<button type="button" class="btn btn-danger">주문취소</button>
+										<button type="button" class="btn btn-danger">배송취소</button>
 									</div>
 								</div>
 							</div>
-						</form>
+						</div>
 					</div>
-					<!-- // 상품등록 -->
 				</div>
-				<!-- //상품등록 -->
+				<!-- //배송정보 -->
 			</div>
 			<!-- /.container-fluid -->
 		</div>

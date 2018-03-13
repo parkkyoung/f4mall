@@ -2,7 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@include file="template/header.jsp"%>
 <script>
-function add_cart(p_no){
+function add_cart(f){
+	
+	var i_no = f.i_no.value;
+	var cart_amt = f.cart_amt.value;
+	if(cart_amt==''){
+		alert('수량을 입력해주세요');
+		return;
+	}
 	
 	if('${ empty sessionScope.user }'=='true'){
 		swal({
@@ -12,7 +19,7 @@ function add_cart(p_no){
 			$("#loginPop").modal();
 		})
 	} else {
-		var param = { 'p_no' : p_no, 'm_id' : '${ user.m_id }' };
+		var param = { 'i_no' : i_no, 'm_id' : '${ user.m_id }', 'cart_amt' : cart_amt };
 		$.ajax({
 			url : 'cart_insert.do',
 			data: param,
@@ -99,9 +106,15 @@ function add_cart(p_no){
 									<del>${ vo.p_price }</del><br />
 									<strong>${ vo.p_sale }원</strong>
 								</div>
+								<select style="width:350px" name="i_no" id="i_no">
+										<option>:::옵션을 선택해주세요:::</option>
+									<c:forEach var ="items_list" items="${ items_list }">
+										<option value="${ items_list.i_no }">색상: ${ items_list.color_name }&nbsp&nbsp사이즈: ${ items_list.size_name }  [재고수량: ${ items_list.s_amt }]</option>
+									</c:forEach>
+								</select>
 								<div class="form-group btnBox">
-									<div class="col-xs-4"><input type="number" placeholder="수량" class="form-control text-right" /></div>
-									<div class="col-xs-4"><button type="button" class="btn btn-warning btn-lg btn-block" onclick="add_cart('${ vo.p_no }')"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button></div>
+									<div class="col-xs-4"><input type="number" placeholder="수량" class="form-control text-right" name="cart_amt" id="cart_amt"/></div>
+									<div class="col-xs-4"><button type="button" class="btn btn-warning btn-lg btn-block" onclick="add_cart(this.form);"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button></div>
 									<div class="col-xs-4"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button></div>
 								</div>
 							</form>

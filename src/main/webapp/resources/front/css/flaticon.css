@@ -1,0 +1,70 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 22/06/2016 15:29
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+font-family: Flaticon;
+font-size: 30px;
+font-style: normal;
+}
+
+.flaticon-ballerina-shoe:before { content: "\f100"; }
+.flaticon-boot:before { content: "\f101"; }
+.flaticon-boot-1:before { content: "\f102"; }
+.flaticon-chelsea-boot:before { content: "\f103"; }
+.flaticon-children-slipper:before { content: "\f104"; }
+.flaticon-cowboy-boot:before { content: "\f105"; }
+.flaticon-crocs:before { content: "\f106"; }
+.flaticon-flat-shoe:before { content: "\f107"; }
+.flaticon-flip-flop:before { content: "\f108"; }
+.flaticon-football-shoe:before { content: "\f109"; }
+.flaticon-girls-flat-shoe:before { content: "\f10a"; }
+.flaticon-high-heel:before { content: "\f10b"; }
+.flaticon-high-heel-1:before { content: "\f10c"; }
+.flaticon-high-heel-2:before { content: "\f10d"; }
+.flaticon-high-heel-3:before { content: "\f10e"; }
+.flaticon-high-heel-4:before { content: "\f10f"; }
+.flaticon-high-heel-5:before { content: "\f110"; }
+.flaticon-high-heel-6:before { content: "\f111"; }
+.flaticon-high-heel-7:before { content: "\f112"; }
+.flaticon-hiking-boot:before { content: "\f113"; }
+.flaticon-loafer:before { content: "\f114"; }
+.flaticon-male-shoe:before { content: "\f115"; }
+.flaticon-mary-jane-shoe:before { content: "\f116"; }
+.flaticon-men-boot:before { content: "\f117"; }
+.flaticon-men-loafer:before { content: "\f118"; }
+.flaticon-men-shoe:before { content: "\f119"; }
+.flaticon-sandal:before { content: "\f11a"; }
+.flaticon-sandal-1:before { content: "\f11b"; }
+.flaticon-sandal-2:before { content: "\f11c"; }
+.flaticon-shoe:before { content: "\f11d"; }
+.flaticon-slinkback:before { content: "\f11e"; }
+.flaticon-slip-on:before { content: "\f11f"; }
+.flaticon-slipper:before { content: "\f120"; }
+.flaticon-sneaker:before { content: "\f121"; }
+.flaticon-sneakers:before { content: "\f122"; }
+.flaticon-sport-shoe:before { content: "\f123"; }
+.flaticon-ugg-boot:before { content: "\f124"; }
+.flaticon-wedge:before { content: "\f125"; }
+.flaticon-women-boot:before { content: "\f126"; }
+.flaticon-women-shoe:before { content: "\f127"; }

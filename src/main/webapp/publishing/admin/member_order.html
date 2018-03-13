@@ -14,6 +14,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet"> <!-- sbadmin -->
 	<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"> <!-- datatables(bootstrap) -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"> <!-- datepicker -->
+	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
@@ -47,8 +48,7 @@
 
 			<ul class="nav navbar-top-links navbar-right">
 				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-				<li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
+				<li><a href="#" onclick="location.href='../front/index.html'"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
 			</ul>
 			<!-- /.navbar-top-links -->
 
@@ -114,40 +114,60 @@
 						<table width="100%" class="tableData table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
+									<th>주문코드</th>
 									<th>ID</th>
-									<th>상품코드</th>
-									<th>배송지</th>
-									<th>주문일자</th>
 									<th>결제금액(원)</th>
+									<th>상태</th>
+									<th>주문일자</th>
 								</tr>
 							</thead>
 							<tbody>
 								<!-- Loop -->
 								<tr>
+									<td><a href="member_order_view.html">0000</a></td>
 									<td><a href="member_update.html">hong00@naver.com</a></td>
-									<td><a href="product_update.html">0000</a></td>
-									<td>구로구00</td>
-									<td>18년00</td>
 									<td>10000</td>
+									<td>결제대기중</td>
+									<td>YYYY-MM-DD</td>
 								</tr>
 								<!-- //Loop -->
 								<tr>
+									<td><a href="member_order_view.html">0001</a></td>
 									<td><a href="member_update.html">hong01@naver.com</a></td>
-									<td><a href="product_update.html">0001</a></td>
-									<td>구로구01</td>
-									<td>18년01</td>
 									<td>10001</td>
+									<td style="color:red;">결제완료</td>
+									<td>YYYY-MM-DD</td>
 								</tr>
 								<tr>
+									<td><a href="member_order_view.html">0002</a></td>
 									<td><a href="member_update.html">hong02@naver.com</a></td>
-									<td><a href="product_update.html">0002</a></td>
-									<td>구로구02</td>
-									<td>18년02</td>
 									<td>10002</td>
+									<td style="color:blue;">배송중</td>
+									<td>YYYY-MM-DD</td>
+								</tr>
+								<tr>
+									<td><a href="member_order_view.html">0003</a></td>
+									<td><a href="member_update.html">hong03@naver.com</a></td>
+									<td>10003</td>
+									<td style="color:green">배송완료</td>
+									<td>YYYY-MM-DD</td>
+								</tr>
+								<tr>
+									<td><a href="member_order_view.html">0004</a></td>
+									<td><a href="member_update.html">hong04@naver.com</a></td>
+									<td>10004</td>
+									<td>주문취소</td>
+									<td>YYYY-MM-DD</td>
+								</tr>
+								<tr>
+									<td><a href="member_order_view.html">0005</a></td>
+									<td><a href="member_update.html">hong05@naver.com</a></td>
+									<td>10005</td>
+									<td>배송취소</td>
+									<td>YYYY-MM-DD</td>
 								</tr>
 							</tbody>
 						</table>
-						<!-- /.table-responsive -->
 					</div>
 					<!-- /.panel-body -->
 				</div>

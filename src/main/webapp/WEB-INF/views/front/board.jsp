@@ -4,8 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="template/header.jsp"%>
 
-<!-- script btn_write -->
+
 <script type="text/javascript">
+/* insert btn */
 function insert_form(){
 	//로그인상태 체크
 	/* if ('${ empty user }' == 'true') {
@@ -16,9 +17,26 @@ function insert_form(){
 	//입력폼으로 이동
 	location.href = 'board_insert_form.do?page=${param.page}';
 }
+/*//insert btn */
+function find(){
+	
+	var search_text = document.getElementById("search_text").value;
+	
+	if(search_text==''){
+		swal({
+			text : "검색할 내용을 입력하세요",
+			icon : "error",
+		}).then((value) => {
+			document.getElementById("search_text").focus();
+			return;
+		});
+	} else {
+		location.href="board_list.do?&search_text=" + encodeURIComponent(search_text);
+	}
 
+}
 </script>
-<!-- //script -->
+
 
 <!-- contents -->
 <div id="container">
@@ -33,6 +51,12 @@ function insert_form(){
 	<section class="sub container">
 		<h2 class="hide">커뮤니티 목록</h2>
 
+		<!-- search box -->
+		<div class="searchBox">
+			<input type="text" id="search_text" value="${param.search_text}" placeholder="search"  onkeyup="if (window.event.keyCode == 13) find();"/>
+			<button type="button" name="검색" onclick="find();"><i class="fa fa-search fa-w-16"></i></button>
+		</div>
+		<!-- //search box -->
 		<!-- 커뮤니티 목록  -->
 		<div class="board boardList">
 			<div class="table-reponsive">
@@ -80,7 +104,7 @@ function insert_form(){
 									<td class="blNo mHide"><c:out value="${vo.cnt-vo.no+1}" /></td>
 									
 									<td class="blSubject">
-									<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search=${param.search}&search_text=${param.search_text}">
+									<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search_text=${param.search_text}">
 									<c:forEach begin="1" end="${ vo.b_depth }">&nbsp;&nbsp;</c:forEach>
 									<c:if test="${vo.b_depth !=0 }">
 									<i class="fa fa-share fa-fw fa-flip-vertical"></i>
@@ -109,7 +133,6 @@ function insert_form(){
 				
 
 			</table>
-			<%@ include file="board_search.jsp" %>
 			<div class="btnBox">
 				<!-- <a href="board_insert.html" class="btn btn-primary">글쓰기</a> -->
 				<a onclick="insert_form();" class="btn btn-primary">글쓰기</a>

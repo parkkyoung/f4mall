@@ -193,12 +193,13 @@
 		<div class="mContents">
 			
 			<!-- 개인정보 // 로그인 후에 노출 -->
-			<div class="mList">
+			<div class="mList halfList">
 				<dl>
 					<dt>MY PAGE</dt>
-					<dd><a href=""><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
-					<dd><a href=""><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
-					<dd><a href=""><i class="fa fa-user"></i><div>회원정보</div></a></dd>
+					<dd><button type="button" data-toggle="modal" data-target="#cartPop" class="btnCart on"><i class="fa fa-shopping-cart"></i><div>장바구니<span>3</span></div></button></dd> <!-- script로 0이 아닐경우에 .btnCart에 .on 추가 아니면 .on 삭제 -->
+					<dd><a href="member_orders.html"><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
+					<dd><a href="member.html"><i class="fa fa-user"></i><div>회원정보</div></a></dd>
+					<dd><button type="button"><i class="fa fa-unlock"></i><div>로그아웃</div></button></dd>
 				</dl>
 			</div>
 			<!-- //개인정보 -->
@@ -258,7 +259,7 @@
 					<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button>
 
 					 <!-- 로그인 후에 노출 -->
-					<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
+					<button type="button" title="cart" data-toggle="modal" data-target="#cartPop" class="btnCart on"><i class="fa fa-shopping-cart"></i> <span>3</span> </button> <!-- script로 0이 아닐경우에 .btnCart에 .on 추가 아니면 .on 삭제 -->
 					<a href="member.html" title="user"><i class="fa fa-user"></i></a>
 					<a href="member_orders.html" title="order list"><i class="fa fa-list-alt"></i></a>
 					<button type="button" title="logout"><i class="fa fa-unlock"></i></button>

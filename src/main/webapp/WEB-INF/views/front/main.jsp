@@ -16,23 +16,23 @@
 <section class="main container">
 	<h2 class="hide">메인</h2>
 	<!-- category -->
-	<div class="category">
+	<div class="mainSex">
 		<ul class="row">
 			<li class="col-sm-4 col-xs-12">
 				<a href="">
-					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_category1.jpg" alt="Category MEN" class="wFull" />
+					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_sex1.jpg" alt="Sex MEN" class="wFull" />
 					<span>MEN</span>
 				</a>
 			</li>
 			<li class="col-sm-4 col-xs-12">
 				<a href="">
-					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_category2.jpg" alt="Category Accessory" class="wFull" />
+					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_sex2.jpg" alt="Sex Unisex" class="wFull" />
 					<span>ACCESSORY</span>
 				</a>
 			</li>
 			<li class="col-sm-4 col-xs-12">
 				<a href="">
-					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_category3.jpg" alt="Category Women" class="wFull" />
+					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_sex3.jpg" alt="Sex Women" class="wFull" />
 					<span>WOMEN</span>
 				</a>
 			</li>
@@ -43,7 +43,7 @@
 	<div class="banner mt70"><img src="${ pageContext.request.contextPath }/resources/front/img/img_main_banner1.jpg" alt="banner" class="wFull" /></div>
 
 	<!-- goods list -->
-	<div class="goodsList mt70">
+	<div class="productList mt70">
 		<h3 class="hide">상품 리스트</h3>
 		<ul class="row">
 			<!-- Loop -->
@@ -95,7 +95,7 @@
 	<div class="banner mt70"><img src="${ pageContext.request.contextPath }/resources/front/img/img_main_banner2.jpg" alt="banner" class="wFull" /></div>
 
 	<!-- goods list -->
-	<div class="goodsList mt70">
+	<div class="productList mt70">
 		<h3 class="hide">상품 리스트</h3>
 		<ul class="row">
 			
@@ -145,7 +145,7 @@
 			
 			<li class="col-md-3 col-xs-6">
 				<div class="imgBox">
-					<a href="product_view.do?p_no=${ product.p_no }"><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ product.p_image_m }" alt="상품" class="wFull" /></a>
+					<a href="items_view.do?p_no=${ product.p_no }"><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ product.p_image_m }" alt="상품" class="wFull" /></a>
 					<button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
 				</div>
 				<div class="txtBox">

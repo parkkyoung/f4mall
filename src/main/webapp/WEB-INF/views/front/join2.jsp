@@ -241,8 +241,9 @@
 
 <!-- visual -->
 <section class="subVisual">
-	<img src="http://placehold.it/1200x300" alt="sub visual"
-		class="wFull" />
+    <h2>회원가입</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_member.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_member.jpg" alt="sub visual" class="imgMobile" />
 </section>
 <!-- //visual -->
 
@@ -250,7 +251,6 @@
 <form>
 	<input type="hidden" value="0">
 	<section class="sub container">
-		<h2 class="hide">회원가입</h2>
 		<div class="form-horizontal">
 			<div class="form-group">
 				<label for="id" class="col-sm-4 control-label">ID</label>

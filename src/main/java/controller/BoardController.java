@@ -37,7 +37,7 @@ public class BoardController {
 	 * @return
 	 */
 	@RequestMapping(value="/board_list.do")
-	public String BoardListAction(String search,String search_text,String page,Model model,HttpServletRequest request) {
+	public String BoardListAction(String search_text,String page,Model model,HttpServletRequest request) {
 		
 		int nowPage = 1 ; // 현재 보여질 페이지
 		if(!(page==null || page.isEmpty()) ) {
@@ -50,19 +50,11 @@ public class BoardController {
 		map.put("start", start);
 		map.put("end", end);
 		
-		if(search!=null && !search.equals("all")) {
+		if(search_text !=null) {
 			
-			if(search.equals("m_id_b_name_b_content")) {
-				map.put("m_id", search_text);
-				map.put("b_name", search_text);
-				map.put("b_content", search_text);
-			}else if(search.equals("m_id")) {
-				map.put("m_id", search_text);
-			}else if(search.equals("b_name")) {
-				map.put("b_name", search_text);
-			}else if(search.equals("b_content")) {
-				map.put("b_content", search_text);
-			}
+			map.put("m_id", search_text);
+			map.put("b_name", search_text);
+			map.put("b_content", search_text);
 		}
 		List<BoardVo> list = board_dao.selectList(map);
 		int rowTotal = board_dao.getRowTotal(map);
@@ -70,15 +62,13 @@ public class BoardController {
 		
 		//search_filter만들기
 		String search_filter="";
-		if(search!=null) {				// search=name&search_text=길동
-			search_filter = String.format("search=%s&search_text=%s",
-												 search,		search_text);
-		}
+		/*if(search!=null) {				// search=name&search_text=길동
+			search_filter = String.format("search_text=%s",search_text);
+		}*/
 		
 		//PageMenu 만들기
 		String pageMenu = Paging.getPaging("board_list.do", 
 											nowPage, 
-											search_filter,
 											rowTotal, 
 											common.Constant.Board.BLOCKLIST, 
 											common.Constant.Board.BLOCKPAGE);

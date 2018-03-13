@@ -26,7 +26,7 @@ public class DemandController {
 	}
 	
 	@RequestMapping("/demand_list.do")
-	public String demand_insert(Integer [] p_no, Model model, String m_id, Integer cart_amt){
+	public String demand_insert(Integer [] i_no, Model model, String m_id, Integer cart_amt){
 		
 		int sales_price = demand_dao.selectTotalsales(m_id);
 		
@@ -34,12 +34,14 @@ public class DemandController {
 		List<CartVo> d_list=new ArrayList<CartVo>();
 		Map map = new HashMap();
 		map.put("m_id", m_id);
-		for(int i=0; i < p_no.length; i++){
-			map.put("p_no", p_no[i]);
+		for(int i=0; i < i_no.length; i++){
+			map.put("i_no", i_no[i]);
 			im_list = demand_dao.demand_list(map);
 			d_list.addAll(im_list);
 		}
-
+		
+		System.out.println(d_list);
+		
 		model.addAttribute("sales_price",sales_price);
 		model.addAttribute("d_list",d_list);
 		return "front/demand";

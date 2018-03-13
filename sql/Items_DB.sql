@@ -2,7 +2,10 @@
 show databases;
 
 use f4mall;
-select * from member
+select * from size
+use f4mall;
+update size set size_name='290' where size_no='8';
+--insert into size(size_name) values('ETC');
 --insert into size(size_name) values('XS') -- 데이터 추가
 --alter table e add o_no int -- 필드 추가
 --alter table e change e_count p_no int -- 테이블명 수정

@@ -185,12 +185,13 @@
 		<div class="mContents">
 			
 			<!-- 개인정보 // 로그인 후에 노출 -->
-			<div class="mList">
+			<div class="mList halfList">
 				<dl>
 					<dt>MY PAGE</dt>
-					<dd><a href=""><i class="fa fa-shopping-cart"></i><div>장바구니</div></a></dd>
-					<dd><a href=""><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
-					<dd><a href=""><i class="fa fa-user"></i><div>회원정보</div></a></dd>
+					<dd><button type="button" data-toggle="modal" data-target="#cartPop" class="btnCart on"><i class="fa fa-shopping-cart"></i><div>장바구니<span>3</span></div></button></dd> <!-- script로 0이 아닐경우에 .btnCart에 .on 추가 아니면 .on 삭제 -->
+					<dd><a href="member_orders.html"><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
+					<dd><a href="member.html"><i class="fa fa-user"></i><div>회원정보</div></a></dd>
+					<dd><button type="button"><i class="fa fa-unlock"></i><div>로그아웃</div></button></dd>
 				</dl>
 			</div>
 			<!-- //개인정보 -->
@@ -250,7 +251,7 @@
 					<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button>
 
 					 <!-- 로그인 후에 노출 -->
-					<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
+					<button type="button" title="cart" data-toggle="modal" data-target="#cartPop" class="btnCart on"><i class="fa fa-shopping-cart"></i> <span>3</span> </button> <!-- script로 0이 아닐경우에 .btnCart에 .on 추가 아니면 .on 삭제 -->
 					<a href="member.html" title="user"><i class="fa fa-user"></i></a>
 					<a href="member_orders.html" title="order list"><i class="fa fa-list-alt"></i></a>
 					<button type="button" title="logout"><i class="fa fa-unlock"></i></button>
@@ -312,37 +313,62 @@
 
 						<!-- 옵션 -->
 						<div class="col-sm-6">
-							<form action="" class="productOption form-horizontal">
+							<div class="productOption">
 								<div class="form-group goCategory">
 									<a href="">카테고리명</a>
-									<span>상품번호 : 1234</span>
+									<span>상품코드 : 1234</span>
 								</div>
 								<div class="form-group goTitle">
 									<h3>나이키신발</h3>
 									<div>★★★★★</div>
 								</div>
 								<div class="form-group">
-									<label for="">배송비</label>
-									<div class="mt5">2500원</div>
+									<div class="inBlock ml20">
+										<label for="">브랜드</label>
+										<div class="mt5">NIKE</div>
+									</div>
+									<div class="inBlock ml20">
+										<label for="">성별</label>
+										<div class="mt5">공용</div>
+									</div>
+									<div class="inBlock ml20">
+										<label for="">재질</label>
+										<div class="mt5">가죽</div>
+									</div>
+									<div class="inBlock ml20">
+										<label for="">제조국가</label>
+										<div class="mt5">한국</div>
+									</div>
+									<div class="inBlock ml20">
+										<label for="">제조일자</label>
+										<div class="mt5">2018-03-02</div>
+									</div>
 								</div>
 								<div class="form-group">
-									<label for="">제조일자</label>
-									<div class="mt5">2018-03-02</div>
+									<label for="" class="block">옵션</label>
+									<select class="form-control wAuto right mt5">
+										<option value="">색상 : 화이트 / 사이즈 : 260 / 재고 : 0</option>
+										<option value="">색상 : 화이트 / 사이즈 : 270 / 재고 : 1</option>
+										<option value="">색상 : 블랙 / 사이즈 : 260 / 재고 : 2</option>
+										<option value="">색상 : 블랙 / 사이즈 : 270 / 재고 : 3</option>
+									</select>
 								</div>
 								<div class="form-group">
-									<label for="">제조국가</label>
-									<div class="mt5">한국</div>
+									<label for="" class="block">수량(개)</label>
+									<input type="number" class="form-control wAuto right mt5" placeholder="수량" value="1" />
 								</div>
 								<div class="form-group goPrice">
-									<del>20,000원</del><br />
 									<strong>10,000원</strong>
 								</div>
-								<div class="form-group btnBox">
-									<div class="col-xs-4"><input type="number" placeholder="수량" class="form-control text-right" value="1" /></div>
-									<div class="col-xs-4"><button type="button" class="btn btn-warning btn-lg btn-block"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button></div>
-									<div class="col-xs-4"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href='order.html'"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button></div>
+								<div class="form-group btnBox row">
+									<div class="col-sm-8 col-xs-7">
+										<p>구매는 장바구니를 통해서 가능합니다</p>
+										<p class="mHide">우측 상단 카트 아이콘을 클릭하세요</p>
+										<p class="pHide">좌측 상단 메뉴 아이콘을 클릭하세요</p>
+									</div>
+									<div class="col-sm-4 col-xs-5"><button type="button" class="btn btn-warning btn-block"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button></div>
 								</div>
-							</form>
+							</div>
 						</div>
 						<!-- //옵션 -->
 					</div>

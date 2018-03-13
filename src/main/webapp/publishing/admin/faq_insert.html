@@ -14,6 +14,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/3.3.7+1/css/sb-admin-2.min.css" rel="stylesheet"> <!-- sbadmin -->
 	<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css" rel="stylesheet"> <!-- datatables(bootstrap) -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"> <!-- datepicker -->
+	<link href="css/common.css" rel="stylesheet"> <!-- customizing -->
 
 	<!-- js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- jquery -->
@@ -47,8 +48,7 @@
 
 			<ul class="nav navbar-top-links navbar-right">
 				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-				<li><a href=""><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
+				<li><a href="#" onclick="location.href='../front/index.html'"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
 			</ul>
 			<!-- /.navbar-top-links -->
 
@@ -110,21 +110,19 @@
 				<!-- page contents -->
 				<div class="panel panel-default">
 					<div class="panel-heading">FAQ 등록</div>
-					<div class="panel-body">
-						<form action="" role="form" class="panel-body">
-							<div class="form-group">
-								<label for="">제목</label>
-								<input type="text" class="form-control" placeholder="FAQ 타이틀" />
-							</div>
-							<div class="form-group">
-								<label for="">내용</label>
-								<textarea class="form-control" rows="10" placeholder="FAQ 설명"></textarea>
-							</div>
-							<div class="form-group text-right">
-								<button type="button" class="btn btn-primary">FAQ 등록</button>
-							</div>
-						</form>
-					</div>
+					<form action="" role="form" class="panel-body">
+						<div class="form-group">
+							<label for="">제목</label>
+							<input type="text" class="form-control" placeholder="FAQ 타이틀" />
+						</div>
+						<div class="form-group">
+							<label for="">내용</label>
+							<textarea class="form-control" rows="10" placeholder="FAQ 설명"></textarea>
+						</div>
+						<div class="form-group text-right">
+							<button type="button" class="btn btn-primary">FAQ 등록</button>
+						</div>
+					</form>
 				</div>
 				<!-- //page contents -->
 			</div>
