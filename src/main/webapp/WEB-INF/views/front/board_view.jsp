@@ -141,7 +141,7 @@ $(document).ready(function(){
 	
 				<!-- 작성자 or 관리자만 노출 -->
 				<div class="btnBox">
-					<c:if test="${uesr.m_id eq vo.m_id || user.m_id eq 'admin@f4mall.com'}">
+					<c:if test="${uesr.m_id eq vo.m_id || user.m_grade eq 1}">
 					<button type="button" class="btn btn-danger" onclick="del()">삭제</button>
 					<button type="button" onclick="update()" class="btn btn-primary">수정</button>
 					</c:if>

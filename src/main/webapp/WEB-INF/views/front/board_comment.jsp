@@ -29,7 +29,7 @@ function comment_del(c_no){
 		<c:forEach var="co"  items="${ c_list }">
 		<tr>
 			<td class="cImg"><img src="http://placehold.it/50x50" alt="user thumbnail" ></td>
-			<td class="cId">${co.m_id } : ${co.c_no }</td>
+			<td class="cId">${co.c_nick }</td>
 			<td class="cContent">${co.c_content}</td>
 			<td class="cDate">${co.c_regdate}</td>
 			

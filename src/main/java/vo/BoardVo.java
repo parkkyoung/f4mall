@@ -22,6 +22,13 @@ public class BoardVo {
 	
 	int no; 
 
+	
+	/* member 닉네임 가져오기*/
+	String b_nick;
+	public String getB_nick() {
+		return b_nick;
+	}
+
 	/* 오늘 날짜를 확인.*/
 	String today;
 

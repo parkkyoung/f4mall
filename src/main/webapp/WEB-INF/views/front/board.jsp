@@ -96,12 +96,12 @@ function find(){
 										<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search_text=${param.search_text}">
 										 
 											<!--  NewBoard  -->
-											<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />  [new]</c:if>
+											<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />   ==[NEW]==</c:if>
 											<c:if test="${vo.b_regdateShort ne vo.todayShort }"><c:out value="${vo.b_name}" /></c:if>
 											<!--  //NewBoard  -->
 										</a>
 									</td>
-									<td class="blId"><c:out value="${vo.m_id}" /></td>
+									<td class="blId"><c:out value="${vo.b_nick}" /></td>
 									<td class="blDate mHide"><c:out
 											value="${vo.b_regdateShort}" /></td>
 									<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /></td>
@@ -135,7 +135,7 @@ function find(){
 									</td>
 									
 									
-									<td class="blId"><c:out value="${vo.m_id}" /></td>
+									<td class="blId"><c:out value="${vo.b_nick}" /></td>
 									<td class="blDate mHide"><c:out
 											value="${vo.b_regdateShort}" /></td>
 									<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /> ( <c:out value="${vo.listCount}"/> )</td>
