@@ -3,6 +3,26 @@
 
 <%@include file="template/header.jsp" %>
 
+<script>
+// 상품삭제
+function productDelete(p_no){
+	swal({
+		text : "정말 삭제하시겠습니까?",
+		icon : "info",
+		buttons : true
+	}).then((willDelete) =>{
+		swal({
+			text : "삭제되었습니다.",
+			icon : "succsess"
+		}).then((value) =>{
+			location.href='product_delete.do?p_no='+p_no;
+		});
+	});
+};
+</script>
+
+
+
 <!-- page title -->
 <h1 class="page-header">상품목록</h1>
 <!-- //page title -->
@@ -30,7 +50,7 @@
 					<td><c:out value="${list.p_sale}" /></td>
 					<td><c:out value="${list.p_price}" /></td>
                     <td><c:out value="${list.p_entry}" /></td>
-                    <td><button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button></td>
+                    <td><button type="button" class="btn btn-danger btn-sm" onclick="productDelete(<c:out value="${list.p_no}" />);">삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>

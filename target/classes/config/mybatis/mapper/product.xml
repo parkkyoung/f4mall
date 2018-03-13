@@ -3,11 +3,23 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="">
-
+    
+    <!-- 상품목록 -->
 	<select id="product_list" resultType="vo.ProductVo">
 		select * from product
 	</select>
-
+    
+    <!-- p_no 기준으로 한 상품 -->
+    <select id="product_view" parameterType="int" resultType="vo.ProductVo">
+        select * from product where p_no = #{ p_no }
+    </select>
+	
+	<!-- 최신 상품 -->
+	<select id="product_maxno" resultType="int">
+	   select ifnull(max(p_no),0) p_num from product
+	</select>
+    
+    <!-- 상품 등록 -->
 	<insert id="product_insert" parameterType="vo.ProductVo">
 	   insert into product(
 	       p_supply, p_name,
@@ -20,13 +32,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   )
 	</insert>
 	
+	<!-- 상품 수정 -->
+	<update id="product_update" parameterType="vo.ProductVo">
+	   update product set
+	   p_supply=#{p_supply},
+	   p_name=#{p_name},
+	   p_content=#{p_content},
+	   p_price=#{p_price},
+	   p_sale=#{p_sale},
+	   p_image_m=#{p_image_m},
+	   p_image_s=#{p_image_s},
+	   p_pdate=#{p_pdate},
+	   p_country=#{p_country}
+	   where p_no=#{p_no}
+	</update>
+	
+	<!-- 상품 삭제 -->
 	<delete id="product_delete" parameterType="vo.ProductVo">
-		delete from product where p_no = #{ p_no }
+		delete from product where p_no=#{ p_no }
 	</delete>
-
-	<select id="product_view" parameterType="int" resultType="vo.ProductVo">
-		select * from product where p_no = #{ p_no }
-	</select>
 	
 	<!-- 옵션들 -->
     <select id="category" resultType="vo.option.CategoryVo">

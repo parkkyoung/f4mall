@@ -95,67 +95,8 @@
                 </div>
                 <div class="form-group">
                     <label for="">제조국가</label>
-                    <select id="p_country" name="p_country" class="form-control">
-                        <option value="kor" selected>한국</option>
-                        <option value="chi">중국</option>
-                        <option value="jap">일본</option>
-                    </select>
+                    <input type="text" id="p_country" name="p_country"  class="form-control" />
                 </div>
-                
-                
-                
-                
-				<%-- <div class="form-group">
-					<label for="">카테고리</label>
-					<select id="category_no" name="category_no" class="form-control">
-                           <c:forEach var="category" items="${category}">
-                           <option value="<c:out value='${category.category_no}'/>"><c:out value="${category.category_name}"/></option>
-                           </c:forEach>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="">재질</label>
-                       <select id="material_no" name="material_no" class="form-control">
-						<c:forEach var="material" items="${material}">
-                        <option value="<c:out value='${material.material_no}'/>"><c:out value="${material.material_name}"/></option>
-                        </c:forEach>
-                    </select>
-				</div>
-				<div class="form-group">
-					<label for="">성별</label>
-                       <select id="sex_no" name="sex_no" class="form-control">
-                           <c:forEach var="sex" items="${sex}">
-                           <option value="<c:out value='${sex.sex_no}'/>"><c:out value="${sex.sex_name}"/></option>
-                           </c:forEach>
-                       </select>
-				</div>
-				<div class="form-group">
-					<label for="">브랜드</label>
-                       <select id="brand_no" name="brand_no" class="form-control">
-                           <c:forEach var="brand" items="${brand}">
-                           <option value="<c:out value='${brand.brand_no}'/>"><c:out value="${brand.brand_name}"/></option>
-                           </c:forEach>
-                       </select>
-				</div>
-                <div class="form-group">
-                    <label for="">색상</label>
-                       <select id="color_no" name="color_no" class="form-control">
-                           <c:forEach var="color" items="${color}">
-                           <option value="<c:out value='${color.color_no}'/>"><c:out value="${color.color_name}"/></option>
-                           </c:forEach>
-                       </select>
-                </div>
-				<div class="form-group">
-					<label for="">사이즈</label>
-                       <select id="size_no" name="size_no" class="form-control">
-                           <c:forEach var="size" items="${size}">
-                           <option value="<c:out value='${size.size_no}'/>"><c:out value="${size.size_name}"/></option>
-                           </c:forEach>
-                       </select>
-				</div> --%>
-				
-				
-				
 				<div class="form-group">
 					<label for="">이미지 썸네일</label>
 					<input type="file" id="p_image_m" name="p_image_m" class="form-control" />
