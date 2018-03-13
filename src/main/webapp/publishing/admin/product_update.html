@@ -217,7 +217,7 @@
 				
 				<!-- 아이템목록 -->
 				<div class="panel panel-default">
-					<div class="panel-heading">아이템수정</div>
+					<div class="panel-heading">아이템목록</div>
 					<div class="panel-body">
 						<table width="100%" class="tableData table table-striped table-bordered table-hover">
 							<thead>
@@ -227,6 +227,7 @@
 									<th>색상</th>
 									<th>가격(원)</th>
 									<th>할인가격(원)</th>
+									<th>재고수량</th>
 									<th>등록일자</th>
 									<th></th>
 								</tr>
@@ -239,6 +240,7 @@
 									<td>WHITE</td>
 									<td>10000</td>
 									<td>1000</td>
+									<td>100</td>
 									<td>YYYY-MM-DD</td>
 									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
 								</tr>
@@ -249,6 +251,7 @@
 									<td>BLACK</td>
 									<td>20000</td>
 									<td>2000</td>
+									<td>100</td>
 									<td>YYYY-MM-DD</td>
 									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
 								</tr>
@@ -258,6 +261,7 @@
 									<td>WHITE</td>
 									<td>30000</td>
 									<td>3000</td>
+									<td>100</td>
 									<td>YYYY-MM-DD</td>
 									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
 								</tr>
@@ -267,6 +271,7 @@
 									<td>BLACK</td>
 									<td>30000</td>
 									<td>3000</td>
+									<td>100</td>
 									<td>YYYY-MM-DD</td>
 									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
 								</tr>
@@ -283,7 +288,11 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="form-group">
-									<label>아이템코드</label>
+									<label>상품코드</label>
+									<input type="number" class="form-control" value="12345" readonly />
+								</div>
+								<div class="form-group">
+									<label>입고수량</label>
 									<input type="number" class="form-control" />
 								</div>
 								<div class="form-group">
