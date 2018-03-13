@@ -37,9 +37,7 @@ public class ProductDao {
 		// TODO Auto-generated method stub
 		
 		int res = 0;
-		
 		res = sqlSession.insert("product_insert",vo);
-		
 		return res;
 	}
 

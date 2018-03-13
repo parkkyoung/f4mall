@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">공급업체코드</label>
-                        <input type="text" id="p_supply" name="p_supply"  class="form-control" placeholder="공급업체코드" />
+                        <input type="text" id="p_supply" name="p_supply"  class="form-control" placeholder="공급업체코드" value="<c:out value='${vo.p_supply}'/>" />
                     </div>
                     <div class="form-group">
                         <label for="">제조일자</label>

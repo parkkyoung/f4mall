@@ -52,6 +52,12 @@ create table member(
 
 
 
+<<<<<<< HEAD
+use f4mall;
+insert into member (m_id,m_pwd,m_name,m_nick,m_ip,m_regdate,m_tel)
+values('admin@f4mall.com','f4mall','admin','f4@admin','localhost',now(),01012341234)
+=======
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
 
 
 use f4mall;

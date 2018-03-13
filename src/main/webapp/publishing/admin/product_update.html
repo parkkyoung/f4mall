@@ -126,6 +126,162 @@
 									<textarea class="form-control" rows="5" placeholder="상품설명">가나다라마바사</textarea>
 								</div>
 								<div class="form-group">
+									<label for="">상품가격(원)</label>
+									<input type="number" class="form-control" placeholder="숫자만 입력 가능" value="10000" />
+								</div>
+								<div class="form-group">
+									<label for="">할인가(원)</label>
+									<input type="number" class="form-control" placeholder="숫자만 입력 가능" value="5000" />
+								</div>
+								<div class="form-group">
+									<label for="">공급업체코드</label>
+									<input type="text" class="form-control" placeholder="공급업체코드" value="12345" />
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="">등록일자</label>
+									<input type="text" class="form-control" value="YYYY-MM-DD" readonly />
+								</div>
+								<div class="form-group">
+									<label for="">제조일자</label>
+									<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD" value="YYYY-MM-DD">
+								</div>
+								<div class="form-group">
+									<label for="">제조국가</label>
+									<div class="radio">
+										<label><input name="" type="radio" selected>한국</label>
+										<label><input name="" type="radio">중국</label>
+										<label><input name="" type="radio">일본</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="">이미지 썸네일</label>
+									<input type="file" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label for="">이미지 상세</label>
+									<input type="file" class="form-control" />
+									<input type="file" class="form-control" />
+									<input type="file" class="form-control" />
+									<input type="file" class="form-control" />
+									<input type="file" class="form-control" />
+								</div>
+								<div class="form-group text-right">
+									<button type="button" class="btn btn-primary">상품수정</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- //상품수정 -->
+				
+				<!-- 아이템목록 -->
+				<div class="panel panel-default">
+					<div class="panel-heading">아이템목록</div>
+					<div class="panel-body">
+						<table width="100%" class="tableData table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>아이템코드</th>
+									<th>사이즈</th>
+									<th>색상</th>
+									<th>재고수량</th>
+									<th>등록일자</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Loop -->
+								<tr>
+									<td>1111</td>
+									<td>260</td>
+									<td>WHITE</td>
+									<td>100</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
+								</tr>
+								<!-- //Loop -->
+								<tr>
+									<td>2222</td>
+									<td>260</td>
+									<td>BLACK</td>
+									<td>100</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
+								</tr>
+								<tr>
+									<td>3333</td>
+									<td>270</td>
+									<td>WHITE</td>
+									<td>100</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
+								</tr>
+								<tr>
+									<td>4444</td>
+									<td>270</td>
+									<td>BLACK</td>
+									<td>100</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- //아이템목록 -->
+
+				<!-- 아이템등록 -->
+				<div class="panel panel-default">
+					<div class="panel-heading">아이템등록</div>
+					<form class="panel-body">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label>상품코드</label>
+									<input type="number" class="form-control" value="12345" readonly />
+								</div>
+								<div class="form-group">
+									<label>입고수량</label>
+									<input type="number" class="form-control" />
+								</div>
+								<div class="form-group">
+									<label for="">사이즈</label>
+									<div class="checkbox">
+										<label><input name="" type="checkbox" />230</label>
+										<label><input name="" type="checkbox" />235</label>
+										<label><input name="" type="checkbox" />240</label>
+										<label><input name="" type="checkbox" />245</label>
+										<label><input name="" type="checkbox" />250</label>
+										<label><input name="" type="checkbox" />255</label>
+										<label><input name="" type="checkbox" />260</label>
+										<label><input name="" type="checkbox" />265</label>
+										<label><input name="" type="checkbox" />270</label>
+										<label><input name="" type="checkbox" />275</label>
+										<label><input name="" type="checkbox" />280</label>
+										<label><input name="" type="checkbox" />285</label>
+										<label><input name="" type="checkbox" />290</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="">색상</label>
+									<div class="checkbox">
+										<label><input name="" type="checkbox" />ETC</label>
+										<label><input name="" type="checkbox" />WHITE</label>
+										<label><input name="" type="checkbox" />BLACK</label>
+										<label><input name="" type="checkbox" />RED</label>
+										<label><input name="" type="checkbox" />ORANGE</label>
+										<label><input name="" type="checkbox" />YELLOW</label>
+										<label><input name="" type="checkbox" />GREEN</label>
+										<label><input name="" type="checkbox" />BLUE</label>
+										<label><input name="" type="checkbox" />INDIGO</label>
+										<label><input name="" type="checkbox" />PURPLE</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
 									<label for="">카테고리</label>
 									<div class="radio">
 										<label><input name="" type="radio" selected>ETC</label>
@@ -170,163 +326,6 @@
 										<label><input name="" type="radio">철</label>
 										<label><input name="" type="radio">금</label>
 										<label><input name="" type="radio">다이아몬드</label>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="">등록일자</label>
-									<input type="text" class="form-control" value="YYYY-MM-DD" readonly />
-								</div>
-								<div class="form-group">
-									<label for="">공급업체코드</label>
-									<input type="text" class="form-control" placeholder="공급업체코드" value="12345" />
-								</div>
-								<div class="form-group">
-									<label for="">제조일자</label>
-									<input data-provide="datepicker" class="form-control datepicker" placeholder="YYYY-MM-DD" value="YYYY-MM-DD">
-								</div>
-								<div class="form-group">
-									<label for="">제조국가</label>
-									<div class="radio">
-										<label><input name="" type="radio" selected>한국</label>
-										<label><input name="" type="radio">중국</label>
-										<label><input name="" type="radio">일본</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="">이미지 썸네일</label>
-									<input type="file" class="form-control" />
-								</div>
-								<div class="form-group">
-									<label for="">이미지 상세</label>
-									<input type="file" class="form-control" />
-									<input type="file" class="form-control" />
-									<input type="file" class="form-control" />
-									<input type="file" class="form-control" />
-									<input type="file" class="form-control" />
-								</div>
-								<div class="form-group text-right">
-									<button type="button" class="btn btn-primary"">상품등록</button>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<!-- //상품수정 -->
-				
-				<!-- 아이템목록 -->
-				<div class="panel panel-default">
-					<div class="panel-heading">아이템수정</div>
-					<div class="panel-body">
-						<table width="100%" class="tableData table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th>아이템코드</th>
-									<th>사이즈</th>
-									<th>색상</th>
-									<th>가격(원)</th>
-									<th>할인가격(원)</th>
-									<th>등록일자</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<!-- Loop -->
-								<tr>
-									<td>1111</td>
-									<td>260</td>
-									<td>WHITE</td>
-									<td>10000</td>
-									<td>1000</td>
-									<td>YYYY-MM-DD</td>
-									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
-								</tr>
-								<!-- //Loop -->
-								<tr>
-									<td>2222</td>
-									<td>260</td>
-									<td>BLACK</td>
-									<td>20000</td>
-									<td>2000</td>
-									<td>YYYY-MM-DD</td>
-									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
-								</tr>
-								<tr>
-									<td>3333</td>
-									<td>270</td>
-									<td>WHITE</td>
-									<td>30000</td>
-									<td>3000</td>
-									<td>YYYY-MM-DD</td>
-									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
-								</tr>
-								<tr>
-									<td>4444</td>
-									<td>270</td>
-									<td>BLACK</td>
-									<td>30000</td>
-									<td>3000</td>
-									<td>YYYY-MM-DD</td>
-									<td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- //아이템목록 -->
-
-				<!-- 아이템등록 -->
-				<div class="panel panel-default">
-					<div class="panel-heading">아이템등록</div>
-					<form class="panel-body">
-						<div class="row">
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label>아이템코드</label>
-									<input type="number" class="form-control" />
-								</div>
-								<div class="form-group">
-									<label for="">상품가격(원)</label>
-									<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
-								</div>
-								<div class="form-group">
-									<label for="">할인가(원)</label>
-									<input type="number" class="form-control" placeholder="숫자만 입력 가능" />
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group">
-									<label for="">사이즈</label>
-									<div class="checkbox">
-										<label><input name="" type="checkbox" />230</label>
-										<label><input name="" type="checkbox" />235</label>
-										<label><input name="" type="checkbox" />240</label>
-										<label><input name="" type="checkbox" />245</label>
-										<label><input name="" type="checkbox" />250</label>
-										<label><input name="" type="checkbox" />255</label>
-										<label><input name="" type="checkbox" />260</label>
-										<label><input name="" type="checkbox" />265</label>
-										<label><input name="" type="checkbox" />270</label>
-										<label><input name="" type="checkbox" />275</label>
-										<label><input name="" type="checkbox" />280</label>
-										<label><input name="" type="checkbox" />285</label>
-										<label><input name="" type="checkbox" />290</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="">색상</label>
-									<div class="checkbox">
-										<label><input name="" type="checkbox" />ETC</label>
-										<label><input name="" type="checkbox" />WHITE</label>
-										<label><input name="" type="checkbox" />BLACK</label>
-										<label><input name="" type="checkbox" />RED</label>
-										<label><input name="" type="checkbox" />ORANGE</label>
-										<label><input name="" type="checkbox" />YELLOW</label>
-										<label><input name="" type="checkbox" />GREEN</label>
-										<label><input name="" type="checkbox" />BLUE</label>
-										<label><input name="" type="checkbox" />INDIGO</label>
-										<label><input name="" type="checkbox" />PURPLE</label>
 									</div>
 								</div>
 								<div class="form-group text-right">

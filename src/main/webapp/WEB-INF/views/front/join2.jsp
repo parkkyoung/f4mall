@@ -11,29 +11,70 @@
 <script>
 	$(document).ready(function() {
 
-		$('#join_id').keyup(function(event) {
+		$('#m_id1').keyup(function(event) {
 
 			// console.log("----");
-			var join_id = $(this).val();
-			var join_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-			//console.log('id값 ='+id);
-			if (!(join_id_pattern.test(join_id))) {
-				$('#join_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
+			var m_id = $(this).val();
+			var m_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+			//console.log('id값 ='+m_id);
+			if (!(m_id_pattern.test(m_id))) {
+				$('#m_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
 				return;
 			}
 
 			//서버로 id전송(Ajax통신)
 			$.ajax({
 				url : 'check_id.do',
-				data : {'join_id' : join_id},
+				data : {'m_id' : m_id},
 				success : function(data) {
 					// data="[{'result':'yes'}]";
 					var json = eval(data);
 					// var json=[{'result':'yes'}];    => 배열이다
 					if (json[0].result == 'yes') {
-						$('#join_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
+						$('#m_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
 					} else {
-						$('#id_msg').html('이미 사용중인 아이디입니다').css('color', 'red');
+						$('#m_id_msg').html('이미 사용중인 아이디입니다').css('color', 'red');
+					}
+				}
+			});
+		});
+
+		
+		
+<!-- 닉네임중복체크 -->	
+		$('#m_nick').keyup(function(event) {
+
+			// console.log("----");
+			var m_nick = $(this).val();
+			var m_nick_pattern = /^[가-힣a-zA-Z]+$/;
+			//console.log('id값 ='+m_id);
+			if (!(m_nick_pattern.test(m_nick))) {
+				$('#m_nick_msg').html('한글 or 영문으로!').css('color', 'red');
+				return;
+			}
+
+			//서버로 id전송(Ajax통신)
+			$.ajax({
+				url : 'check_nick.do',
+				data : {'m_nick' : m_nick},
+				success : function(data) {
+					// data="[{'result':'yes'}]";
+					var json = eval(data);
+					// var json=[{'result':'yes'}];    => 배열이다
+					if (json[0].result == 'yes') {
+						$('#m_nick_msg').html('사용 가능한 닉네임입니다').css('color', 'blue');
+					} else {
+						$('#m_nick_msg').html('이미 사용중인 닉네임입니다').css('color', 'red');
+					}
+					
+					if (!(m_nick_pattern.test(m_nick))) {
+						
+						$('#m_nick_msg').html('한글이나 영문으로!!.').css('color', 'red');
+						$("#m_nick").addClass("alert alert-danger").removeClass("alert-success");
+					} else {
+							
+							$('#m_nick_msg').html('멋진닉네임이에요!!').css('color', 'blue');
+							$("#m_nick").addClass("alert alert-success").removeClass("alert-danger");
 					}
 				}
 			});
@@ -41,35 +82,35 @@
 
 	
 <!--비밀번호 체크-->
-		$('#join_pwd').keyup(function(event) {
+		$('#m_pwd1').keyup(function(event) {
 
 			// 비밀번호 유효성 체크
-			var join_pwd = $(this).val();
-			var join1_pwd = $(this).val();
-			var join_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+			var m_pwd = $(this).val();
+			var m_pwd = $(this).val();
+			var m_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-			if (!(join_pwd_pattern.test(join_pwd))) {
+			if (!(m_pwd_pattern.test(m_pwd))) {
 				
-				$('#join_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
-				$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
+				$('#m1_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
+				$("#m_pwd1").addClass("alert alert-danger").removeClass("alert-success");
 			} else {
 					
-					$('#join_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
-					$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
+					$('#m1_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
+					$("#m_pwd1").addClass("alert alert-success").removeClass("alert-danger");
 				}
 			
 			
 <!--비밀번호 이중체크-->
-			$('#join1_pwd').keyup(function(event) {
+			$('#m1_pwd').keyup(function(event) {
 				
-				if($('#join1_pwd').val() != $('#join_pwd').val()){
+				if($('#m1_pwd').val() != $('#m_pwd1').val()){
 					
-					$('#join1_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
-					$("#join_pwd").addClass("alert alert-danger").removeClass("alert-success");
+					$('#m1_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
+					$("#m1_pwd").addClass("alert alert-danger").removeClass("alert-success");
 				  }
-					else if($('#join1_pwd').val() == $('#join_pwd').val()){
-						$('#join1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
-						$("#join_pwd").addClass("alert alert-success").removeClass("alert-danger");
+					else if($('#m1_pwd').val() == $('#m_pwd1').val()){
+						$('#m1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
+						$("#m1_pwd").addClass("alert alert-success").removeClass("alert-danger");
 						
 					}
 				});
@@ -124,22 +165,24 @@
 <!--회원가입-->
 	function join(f) {
 
-		var join_id   = f.join_id.value.trim();
-		var join_pwd  = f.join_pwd.value.trim();
-		var m_name 	  = f.m_name.value.trim();
-		var m_zipcode = f.m_zipcode.value.trim();
-		var m_addr    = f.m_addr.value.trim();
-		var m_addr_d  = f.m_addr_d.value.trim();
-		var m_tel 	  = f.m_tel.value.trim();
+		var m_id     	= f.m_id1.value.trim();
+		var m_pwd    	= f.m_pwd1.value.trim();
+		var m_name 	  	= f.m_name.value.trim();
+		var m_nick	  	=f.m_nick.value.trim();
+		//var m_zipcode = f.m_zipcode.value.trim();
+		var m_addr    	= f.m_addr.value.trim();
+		var m_addr_d  	= f.m_addr_d.value.trim();
+		var m_tel 	   	= f.m_tel.value.trim();
+		
 
 		// 값 체크
-		if (join_id == '') {
+		if (m_id == '') {
 			alert('아이디를 입력해주세요');
 			f.m_id.focus();
 			return;
 		}
 
-		if (join_pwd == '' || !(m_pwd_pattern.test(m_pwd))) {
+		if (m_pwd == '') {
 			alert('비밀번호를 확인해주세요');
 			f.m_pwd.focus();
 			return;
@@ -151,7 +194,14 @@
 			f.m_name.focus();
 			return;
 		}
+		
+		if (m_nick == '') {
+			alert('닉네임을 확인해주세요');
+			f.m_nick.focus();
+			return;
+		}
 
+		
 		if (m_zipcode == '') {
 			alert('우편번호를 입력 해주세요');
 			f.m_zipcode.focus();
@@ -199,14 +249,15 @@
 
 <!-- sub contents -->
 <form>
+	<input type="hidden" value="0">
 	<section class="sub container">
 		<div class="form-horizontal">
 			<div class="form-group">
 				<label for="id" class="col-sm-4 control-label">ID</label>
 				<div class="col-sm-6">
-					<input type="text" id="join_id"
+					<input type="text" name="m_id"id="m_id1"
 						class="form-control alert alert-success" placeholder="메일 주소" />
-					<span class="mt5" id="join_id_msg">메일 주소로 작성해주세요</span>
+					<span class="mt5" id="m_id_msg">메일 주소로 작성해주세요</span>
 				</div>
 			</div>
 
@@ -214,15 +265,16 @@
 			<div class="form-group">
 				<label for="pw" class="col-sm-4 control-label">Password</label>
 				<div class="col-sm-4">
-					<input type="password" name="user" id="join_pwd"
+					<input type="password" name="m_pwd" id="m_pwd1"
 						class="form-control" placeholder="비밀번호" />
+						<span class="mt5" id="m_pwd1_msg"></span>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
-					<input type="password" name="check" id="join1_pwd"
+					<input type="password" name="m1_pwd" id="m1_pwd"
 						class="form-control" placeholder="비밀번호 확인" /> 
-						<span class="mt5" id="join1_pwd_msg"></span>
+						<span class="mt5" id="m1_pwd_msg"></span>
 				</div>
 			</div>
 
@@ -231,14 +283,24 @@
 			<div class="form-group">
 				<label for="name" class="col-sm-4 control-label">이름</label>
 				<div class="col-sm-4">
-					<input type="text" id="m_name" class="form-control"
+					<input type="text" id="m_name" name="m_name"class="form-control"
 						placeholder="이름" />
 				</div>
 			</div>
+			
+				<div class="form-group">
+				<label for="nick" class="col-sm-4 control-label">닉네임</label>
+				<div class="col-sm-4">
+					<input type="text" id="m_nick" name="m_nick"class="form-control"
+						placeholder="닉네임" />
+						<span class="mt5" id="m_nick_msg"></span>
+				</div>
+			</div>
+			
 			<div class="form-group">
 				<label for="btnNumber" class="col-sm-4 col-xs-12 control-label">주소</label>
 				<div class="col-sm-4 col-xs-8">
-					<input type="text" id="m_zipcode" class="form-control"
+					<input type="text" id="m_zipcode" name="m_zipcode"class="form-control"
 						placeholder="우편번호" readonly />
 				</div>
 				<div class="col-sm-4 col-xs-4">
@@ -248,20 +310,20 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
-					<input type="text" id="m_addr" class="form-control"
+					<input type="text" id="m_addr" name="m_addr" class="form-control"
 						placeholder="도로명주소" />
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
-					<input type="text" id="m_addr_d" class="form-control"
+					<input type="text" id="m_addr_d" name="m_addr_d"class="form-control"
 						placeholder="상세주소" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber" class="col-sm-4 control-label">핸드폰번호</label>
 				<div class="col-sm-4">
-					<input type="tel" id="m_tel" class="form-control"
+					<input type="tel" id="m_tel" name="m_tel"class="form-control"
 						placeholder="01012345678" />
 					<p class="mt5">괄호(-) 없이 숫자만 입력해주세요</p>
 				</div>
