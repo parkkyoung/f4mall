@@ -203,6 +203,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .c-menu .mContents .brandList .brand09 div {background-position:center -800px;}
 
 /* list */
+.productList li {margin-top:30px;}
 .productList .imgBox {position:relative;overflow:hidden;}
 .productList .imgBox a:after {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0);transition:all 0.3s ease;}
 .productList .imgBox:hover a:after {background:rgba(0, 0, 0, 0.15);}

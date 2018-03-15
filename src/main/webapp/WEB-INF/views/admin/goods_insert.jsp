@@ -9,7 +9,9 @@
 		var p_name = f.p_name.value;
 		var p_content= f.p_content.value;
         var p_price = f.p_price.value;
-		var p_pdate= f.p_pdate.value;
+        var p_pdate= f.p_pdate.value;
+        var p_image_m= document.getElementById("p_image_m").value;
+        var p_image_s= document.getElementById("p_image_s").value;
         
 		if(p_name == ''){
 			swal({
@@ -40,7 +42,21 @@
                 text : "제조일자를 입력해주세요",
                 icon : "error"
             }).then((value) =>{
-            	f.p_pdate.focus();
+                f.p_pdate.focus();
+                return;
+            });
+        } else if(p_image_m == ''){
+            swal({
+                text : "썸네일 이미지를 등록해주세요",
+                icon : "error"
+            }).then((value) =>{
+                return;
+            });
+        } else if(p_image_s == ''){
+            swal({
+                text : "상세 이미지를 등록해주세요",
+                icon : "error"
+            }).then((value) =>{
                 return;
             });
 		} else {
@@ -64,7 +80,7 @@
 	<div class="panel-heading">상품등록</div>
 
 	<!-- form -->
-	<form action="" role="form" class="panel-body">
+	<form action="" role="form" class="panel-body" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="form-group">
@@ -99,15 +115,11 @@
                 </div>
 				<div class="form-group">
 					<label for="">이미지 썸네일</label>
-					<input type="file" id="p_image_m" name="p_image_m" class="form-control" />
+					<input type="file" id="p_image_m" name="p_image" class="form-control" />
 				</div>
 				<div class="form-group">
 					<label for="">이미지 상세</label>
-                    <input type="file" name="p_image_s" class="form-control" />
-                    <input type="file" name="p_image_s" class="form-control" />
-                    <input type="file" name="p_image_s" class="form-control" />
-                    <input type="file" name="p_image_s" class="form-control" />
-                    <input type="file" name="p_image_s" class="form-control" />
+                    <input type="file" id="p_image_s" name="p_image" class="form-control" />
 				</div>
 			</div>
 			<div class="col-lg-12">

@@ -1,11 +1,16 @@
 package controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import dao.ItemsDao;
 import dao.ProductDao;
@@ -20,7 +25,9 @@ import vo.option.SizeVo;
 
 @Controller
 public class ProductController {
-	
+
+	@Autowired
+	ServletContext application;
 	@Autowired
 	ProductDao product_dao;
 	@Autowired
@@ -99,9 +106,42 @@ public class ProductController {
 	 * 어드민 상품등록
 	 * @param vo
 	 * @return
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
 	@RequestMapping("/admin/goods_insert.do")
-	public String product_insert(ProductVo vo,Model model){
+	public String product_insert(ProductVo vo,Model model) throws IllegalStateException, IOException{
+		
+		// 이미지 저장경로
+		String webPath="/resources/upload/";
+		String savePath=application.getRealPath(webPath);
+		
+		int imageIndex=0;
+		for(MultipartFile photo : vo.getP_image()){
+		
+			// 썸네일이미지 업로드된 파일정보
+			//MultipartFile photo1 = vo.getP_image_m();
+			
+			// 썸네일이미지 업로드된 파일이 있으면
+			if(!photo.isEmpty()) {
+				String filename="no_file";
+				//업로드된 화일명 구하기
+				filename = photo.getOriginalFilename();
+				//저장할 화일정보
+				File saveFile = new File(savePath,filename);
+				//이미 동일화일이 존재하냐?
+				if(saveFile.exists()) {
+					long milisec = System.currentTimeMillis();
+					filename = String.format("%d_%s", milisec,filename);
+					saveFile = new File(savePath,filename);
+				}
+				//MultipartResolver의 임시저장소=>복사해온다
+				photo.transferTo(saveFile);
+				if(imageIndex==0) vo.setP_image_m(filename);
+				else vo.setP_image_s(filename);
+				imageIndex++;
+			}
+		}
 		
 		// vo 포장해서 db 삽입
 		int res = product_dao.insert_product(vo);
@@ -155,9 +195,42 @@ public class ProductController {
 	 * @param vo
 	 * @param model
 	 * @return
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 */
 	@RequestMapping("/admin/goods_update.do")
-	public String product_update(ProductVo vo, Model model){
+	public String product_update(ProductVo vo, Model model) throws IllegalStateException, IOException{
+		
+		// 이미지 저장경로
+		String webPath="/resources/upload/";
+		String savePath=application.getRealPath(webPath);
+		
+		int imageIndex=0;
+		for(MultipartFile photo : vo.getP_image()){
+		
+			// 썸네일이미지 업로드된 파일정보
+			//MultipartFile photo1 = vo.getP_image_m();
+			
+			// 썸네일이미지 업로드된 파일이 있으면
+			if(!photo.isEmpty()) {
+				String filename="no_file";
+				//업로드된 화일명 구하기
+				filename = photo.getOriginalFilename();
+				//저장할 화일정보
+				File saveFile = new File(savePath,filename);
+				//이미 동일화일이 존재하냐?
+				if(saveFile.exists()) {
+					long milisec = System.currentTimeMillis();
+					filename = String.format("%d_%s", milisec,filename);
+					saveFile = new File(savePath,filename);
+				}
+				//MultipartResolver의 임시저장소=>복사해온다
+				photo.transferTo(saveFile);
+				if(imageIndex==0) vo.setP_image_m(filename);
+				else vo.setP_image_s(filename);
+				imageIndex++;
+			}
+		}
 		
 		// 수정 vo를 db에 업데이트
 		int res = product_dao.update_product(vo);
