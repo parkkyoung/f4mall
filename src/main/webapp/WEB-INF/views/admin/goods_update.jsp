@@ -69,6 +69,110 @@ function goodsDelete(p_no){
         });
     });
 };
+
+
+//아이템등록
+function itemInsert(f){
+ 
+ var s_no = f.s_no.value;
+ var sizeCheck = false;
+ var colorCheck = false;
+ var categoryCheck = false;
+ var materialCheck = false;
+ var sexCheck = false;
+ var brandCheck = false;
+ 
+ // 사이즈 체크
+ $("input[name='size_no']").each(function(){
+     if($(this).is(":checked") == true) sizeCheck = true;
+ });
+ // 색상 체크
+ $("input[name='color_no']").each(function(){
+     if($(this).is(":checked") == true) colorCheck = true;
+ });
+ // 카테고리 체크
+ $("input[name='category_no']").each(function(){
+     if($(this).is(":checked") == true) categoryCheck = true;
+ });
+ // 재질 체크
+ $("input[name='material_no']").each(function(){
+     if($(this).is(":checked") == true) materialCheck = true;
+ });
+ // 성별 체크
+ $("input[name='sex_no']").each(function(){
+     if($(this).is(":checked") == true) sexCheck = true;
+ });
+ // 브랜드 체크
+ $("input[name='brand_no']").each(function(){
+     if($(this).is(":checked") == true) brandCheck = true;
+ });
+
+ // all check
+ if(s_no == ''){
+     swal({
+         text : "수량을 입력해주세요",
+         icon : "info"
+     }).then((value) =>{
+         f.s_no.focus();
+     });
+ } else if(sizeCheck == false){
+     swal({
+         text : "사이즈를 선택해주세요",
+         icon : "info"
+     });
+ } else if(colorCheck == false){
+     swal({
+         text : "색상를 선택해주세요",
+         icon : "info"
+     });
+ } else if(categoryCheck == false){
+     swal({
+         text : "카테고리를 선택해주세요",
+         icon : "info"
+     });
+ } else if(sexCheck == false){
+     swal({
+         text : "성별을 선택해주세요",
+         icon : "info"
+     });
+ } else if(brandCheck == false){
+     swal({
+         text : "브랜드를 선택해주세요",
+         icon : "info"
+     });
+ } else if(materialCheck == false){
+     swal({
+         text : "재질을 선택해주세요",
+         icon : "info"
+     });
+ } else {
+     swal({
+         text : "아이템등록이 완료되었습니다.",
+         icon : "success"
+     }).then((value) =>{
+         f.action = "items_insert.do";
+         f.submit();
+     });
+ };
+};
+
+//아이템 삭제
+function itemsDelete(i_no, p_no){
+ swal({
+     text : "정말 삭제하시겠습니까?",
+     icon : "info",
+     buttons : true
+ }).then((willDelete) =>{
+     if(willDelete){
+         swal({
+             text : "삭제되었습니다.",
+             icon : "success"
+         }).then((value) =>{
+             location.href = "items_delete.do?i_no="+i_no+"&p_no="+p_no;
+         });
+     };
+ });
+};
 </script>
 
 <!-- page title -->
@@ -150,49 +254,29 @@ function goodsDelete(p_no){
         <table width="100%" class="tableData table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>아이템코드</th>
+                    <th>카테고리</th>
+                    <th>성별</th>
+                    <th>브랜드</th>
+                    <th>재질</th>
                     <th>사이즈</th>
                     <th>색상</th>
                     <th>재고수량</th>
-                    <th>등록일자</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Loop -->
+                <c:forEach var="list" items="${i_list}">
                 <tr>
-                    <td>1111</td>
-                    <td>260</td>
-                    <td>WHITE</td>
-                    <td>100</td>
-                    <td>YYYY-MM-DD</td>
-                    <td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
+                    <td><c:out value="${list.category_name}"/></td>
+                    <td><c:out value="${list.sex_name}"/></td>
+                    <td><c:out value="${list.brand_name}"/></td>
+                    <td><c:out value="${list.material_name}"/></td>
+                    <td><c:out value="${list.size_name}"/></td>
+                    <td><c:out value="${list.color_name}"/></td>
+                    <td>재고수량</td>
+                    <td><button type="button" class="btn btn-danger btn-sm" onclick="itemsDelete(<c:out value='${list.i_no}'/>, <c:out value='${list.p_no}'/>)">삭제</button></td>
                 </tr>
-                <!-- //Loop -->
-                <tr>
-                    <td>2222</td>
-                    <td>260</td>
-                    <td>BLACK</td>
-                    <td>100</td>
-                    <td>YYYY-MM-DD</td>
-                    <td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
-                </tr>
-                <tr>
-                    <td>3333</td>
-                    <td>270</td>
-                    <td>WHITE</td>
-                    <td>100</td>
-                    <td>YYYY-MM-DD</td>
-                    <td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
-                </tr>
-                <tr>
-                    <td>4444</td>
-                    <td>270</td>
-                    <td>BLACK</td>
-                    <td>100</td>
-                    <td>YYYY-MM-DD</td>
-                    <td><button type="button" class="btn btn-danger btn-sm">삭제</button></td>
-                </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>
@@ -203,47 +287,27 @@ function goodsDelete(p_no){
 <div class="panel panel-default">
     <div class="panel-heading">아이템등록</div>
     <form class="panel-body">
+        <input type="hidden" name="p_no" value="${vo.p_no}" />
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label>상품코드</label>
-                    <input type="number" class="form-control" value="12345" readonly />
-                </div>
-                <div class="form-group">
                     <label>입고수량</label>
-                    <input type="number" class="form-control" />
+                    <input type="number" id="s_no" name="s_no" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label for="">사이즈</label>
                     <div class="checkbox">
-                        <label><input name="" type="checkbox" />230</label>
-                        <label><input name="" type="checkbox" />235</label>
-                        <label><input name="" type="checkbox" />240</label>
-                        <label><input name="" type="checkbox" />245</label>
-                        <label><input name="" type="checkbox" />250</label>
-                        <label><input name="" type="checkbox" />255</label>
-                        <label><input name="" type="checkbox" />260</label>
-                        <label><input name="" type="checkbox" />265</label>
-                        <label><input name="" type="checkbox" />270</label>
-                        <label><input name="" type="checkbox" />275</label>
-                        <label><input name="" type="checkbox" />280</label>
-                        <label><input name="" type="checkbox" />285</label>
-                        <label><input name="" type="checkbox" />290</label>
+                        <c:forEach var="size" items="${size}">
+                        <label><input name="size_no" type="checkbox" value="${size.size_no}" />${size.size_name}</label>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">색상</label>
                     <div class="checkbox">
-                        <label><input name="" type="checkbox" />ETC</label>
-                        <label><input name="" type="checkbox" />WHITE</label>
-                        <label><input name="" type="checkbox" />BLACK</label>
-                        <label><input name="" type="checkbox" />RED</label>
-                        <label><input name="" type="checkbox" />ORANGE</label>
-                        <label><input name="" type="checkbox" />YELLOW</label>
-                        <label><input name="" type="checkbox" />GREEN</label>
-                        <label><input name="" type="checkbox" />BLUE</label>
-                        <label><input name="" type="checkbox" />INDIGO</label>
-                        <label><input name="" type="checkbox" />PURPLE</label>
+                        <c:forEach var="color" items="${color}">
+                        <label><input name="color_no" type="checkbox" value="${color.color_no}" />${color.color_name}</label>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -251,52 +315,37 @@ function goodsDelete(p_no){
                 <div class="form-group">
                     <label for="">카테고리</label>
                     <div class="radio">
-                        <label><input name="" type="radio" selected>ETC</label>
-                        <label><input name="" type="radio">running</label>
-                        <label><input name="" type="radio">sneakers</label>
-                        <label><input name="" type="radio">oxfords</label>
-                        <label><input name="" type="radio">walkers</label>
-                        <label><input name="" type="radio">heels</label>
-                        <label><input name="" type="radio">slippers</label>
+                        <c:forEach var="category" items="${category}">
+                        <label><input name="category_no" type="radio" value="${category.category_no}" />${category.category_name}</label>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">성별</label>
                     <div class="radio">
-                        <label><input name="" type="radio" selected>공용</label>
-                        <label><input name="" type="radio">남자</label>
-                        <label><input name="" type="radio">여자</label>
+                        <c:forEach var="sex" items="${sex}">
+                        <label><input name="sex_no" type="radio" value="${sex.sex_no}" />${sex.sex_name}</label>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">브랜드</label>
                     <div class="radio">
-                        <label><input name="" type="radio" selected>ETC</label>
-                        <label><input name="" type="radio">NIKE</label>
-                        <label><input name="" type="radio">ADIDAS</label>
-                        <label><input name="" type="radio">NEWBALANCE</label>
-                        <label><input name="" type="radio">SODA</label>
-                        <label><input name="" type="radio">FERRAGAMO</label>
-                        <label><input name="" type="radio">KUMKANG</label>
-                        <label><input name="" type="radio">CHRISTIAN LOUBOUTIN</label>
-                        <label><input name="" type="radio">ELCANTO</label>
-                        <label><input name="" type="radio">RACHELCOX</label>
+                        <c:forEach var="brand" items="${brand}">
+                        <label><input name="brand_no" type="radio" value="${brand.brand_no}" />${brand.brand_name}</label>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="">재질</label>
                     <div class="radio">
-                        <label><input name="" type="radio" selected>기타</label>
-                        <label><input name="" type="radio">가죽</label>
-                        <label><input name="" type="radio">면</label>
-                        <label><input name="" type="radio">플라스틱</label>
-                        <label><input name="" type="radio">철</label>
-                        <label><input name="" type="radio">금</label>
-                        <label><input name="" type="radio">다이아몬드</label>
+                        <c:forEach var="material" items="${material}">
+                        <label><input name="material_no" type="radio" value="${material.material_no}" />${material.material_name}</label>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="form-group text-right">
-                    <button type="button" class="btn btn-primary">아이템등록</button>
+                    <button type="button" class="btn btn-primary" onclick="itemInsert(this.form);">아이템등록</button>
                 </div>
             </div>
         </div>

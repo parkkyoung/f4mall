@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.ItemsDao;
 import dao.ProductDao;
+import vo.ItemsVo;
 import vo.ProductVo;
 import vo.option.BrandVo;
 import vo.option.CategoryVo;
@@ -21,11 +23,12 @@ public class ProductController {
 	
 	@Autowired
 	ProductDao product_dao;
+	@Autowired
+	ItemsDao items_dao;
 	
 	public ProductController() {
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	/**
 	 * 프론트 상품목록
@@ -61,8 +64,7 @@ public class ProductController {
 	@RequestMapping("/admin/goods_list.do")
 	public String product_list_admin(Model model){
 		
-		// vo 포장
-		ProductVo vo = new ProductVo();
+		// 상품 리스트에 포장
 		List<ProductVo> p_list = product_dao.select_list();
 		model.addAttribute("p_list", p_list);
 		
@@ -70,7 +72,7 @@ public class ProductController {
 	}
 	
 	/**
-	 * 어드민 등록 폼
+	 * 어드민 상품등록 폼
 	 * @param model
 	 * @return
 	 */
@@ -83,7 +85,7 @@ public class ProductController {
 	
 	
 	/**
-	 * 어드민 등록
+	 * 어드민 상품등록
 	 * @param vo
 	 * @return
 	 */
@@ -110,8 +112,17 @@ public class ProductController {
 	@RequestMapping("/admin/goods_update_form.do")
 	public String product_update_form(Model model,int p_no){
 
-		// 옵션별 포린 리스트 불러오기
-		/*List<CategoryVo> category = product_dao.category();
+		// 기존 값들을 뿌려줄 vo 포장
+		ProductVo vo = new ProductVo();
+		vo = product_dao.select_one(p_no);
+		model.addAttribute("vo", vo);
+		
+		// 아이템 리스트에 포장
+		List<ItemsVo> i_list = items_dao.select_list(p_no);
+		model.addAttribute("i_list", i_list);
+		
+		// 아이템 등록용 옵션 포린 리스트 포장
+		List<CategoryVo> category = product_dao.category();
 		List<MaterialVo> material = product_dao.material();
 		List<ColorVo> color = product_dao.color();
 		List<SexVo> sex = product_dao.sex();
@@ -123,18 +134,13 @@ public class ProductController {
 		model.addAttribute("color", color);
 		model.addAttribute("sex", sex);
 		model.addAttribute("brand", brand);
-		model.addAttribute("size", size);*/
-		
-		// 기존 값들을 뿌려줄 vo 포장
-		ProductVo vo = new ProductVo();
-		vo = product_dao.select_one(p_no);
-		model.addAttribute("vo", vo);
+		model.addAttribute("size", size);
 		
 		return common.ShortCut.Admin.ADMIN_VIEW_PATH+"goods_update";
 	}
 	
 	/**
-	 * 상품 수정
+	 * 어드민 상품수정
 	 * @param vo
 	 * @param model
 	 * @return
@@ -167,7 +173,4 @@ public class ProductController {
 		// 리스트 페이지로 이동
 		return "redirect:goods_list.do";
 	}
-	
-	
-	
 }

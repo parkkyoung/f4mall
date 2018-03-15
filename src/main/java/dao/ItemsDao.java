@@ -20,6 +20,29 @@ public class ItemsDao {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * 아이템 목록
+	 * @return
+	 */
+	public List<ItemsVo> select_list(int p_no) {
+		// TODO Auto-generated method stub
+		List<ItemsVo> list = null;
+		list = sqlSession.selectList("items_list", p_no);
+		return list;
+	}
+	
+	/**
+	 * 아이템 삭제
+	 * @param i_no
+	 * @return
+	 */
+	public int delete_items(int i_no) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		res = sqlSession.delete("items_delete", i_no);
+		return 0;
+	}
+
 	public ProductVo select_one_view(Integer p_no) {
 		// TODO Auto-generated method stub
 		ProductVo vo = null;
@@ -36,6 +59,13 @@ public class ItemsDao {
 		list = sqlSession.selectList("items_view",p_no);
 		
 		return list;
+	}
+
+	public int insert_items(ItemsVo vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		res = sqlSession.insert("items_insert",vo);
+		return res;
 	}
 	
 	

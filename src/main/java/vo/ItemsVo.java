@@ -1,11 +1,68 @@
 package vo;
 
 public class ItemsVo {
-	int i_no, p_no, category_no, material_no,
-	color_no, sex_no, brand_no, size_no, stock_amt;
-	
+
 	public ItemsVo() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	int i_no, p_no, category_no, material_no, color_no, sex_no, brand_no, size_no, s_no;
+	String p_name, category_name, material_name, color_name, sex_name, brand_name, size_name;
+	
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
+
+	public String getMaterial_name() {
+		return material_name;
+	}
+
+	public void setMaterial_name(String material_name) {
+		this.material_name = material_name;
+	}
+
+	public String getColor_name() {
+		return color_name;
+	}
+
+	public void setColor_name(String color_name) {
+		this.color_name = color_name;
+	}
+
+	public String getSex_name() {
+		return sex_name;
+	}
+
+	public void setSex_name(String sex_name) {
+		this.sex_name = sex_name;
+	}
+
+	public String getBrand_name() {
+		return brand_name;
+	}
+
+	public void setBrand_name(String brand_name) {
+		this.brand_name = brand_name;
+	}
+
+	public String getSize_name() {
+		return size_name;
+	}
+
+	public void setSize_name(String size_name) {
+		this.size_name = size_name;
+	}
+
+	public String getP_name() {
+		return p_name;
+	}
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 
 	public int getI_no() {
@@ -72,12 +129,12 @@ public class ItemsVo {
 		this.size_no = size_no;
 	}
 
-	public int getStock_amt() {
-		return stock_amt;
+	public int getS_no() {
+		return s_no;
 	}
 
-	public void setStock_amt(int stock_amt) {
-		this.stock_amt = stock_amt;
+	public void setS_no(int s_no) {
+		this.s_no = s_no;
 	}
 	
 	
