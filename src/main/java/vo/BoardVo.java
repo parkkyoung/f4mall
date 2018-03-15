@@ -19,7 +19,41 @@ public class BoardVo {
 	int b_step;
 	int b_depth;
 	
+	
 	int no; 
+
+	
+	/* member 닉네임 가져오기*/
+	String b_nick;
+	public String getB_nick() {
+		return b_nick;
+	}
+
+	/* 오늘 날짜를 확인.*/
+	String today;
+
+	public String getToday() {
+		return today;
+	}
+	
+	/* 오늘 날짜 년-월-일 단축*/
+	String todayShort;
+	
+
+	public String getTodayShort() {
+		
+		String str = getToday().substring(0,10);
+		
+		return str;
+	}
+
+	/* 각 게시물 댓글 갯수*/
+	int listCount;
+	
+	public int getListCount() {
+		return listCount;
+	}
+	/*//각 게시물 댓글 갯수*/
 
 	int cnt;
 	
@@ -33,14 +67,12 @@ public class BoardVo {
 		return cnt;
 	}
 
-	/* regdate값 월-일로 변환*/
+	/* 작성일 년-월-일로 변환*/
 	String b_regdateShort;
-	
-	
 	
 	public String getB_regdateShort() {
 		
-		String str = getB_regdate().substring(5);
+		String str = getB_regdate().substring(0, 10);
 		return str;
 	}
 	public BoardVo(int b_no, String m_id, String b_name, String b_content, String b_ip,int b_readhit, String b_regdate,

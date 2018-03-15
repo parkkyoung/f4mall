@@ -1,9 +1,11 @@
 package dao;
 
 import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import vo.MemberVo;
 
 
@@ -53,5 +55,13 @@ public class MemberDao {
 		return res;
 	}
 	
+	public int member_update(MemberVo vo){
+		
+		int res = 0;
+		
+		res = sqlSession.update("member_update",vo);
+		
+		return res;
+	} 
 	
 }
