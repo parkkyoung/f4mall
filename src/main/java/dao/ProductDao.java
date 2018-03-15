@@ -71,6 +71,18 @@ public class ProductDao {
 	}
 	
 	/**
+	 * 검색한 상품 목록
+	 * @param find_product_txt
+	 * @return
+	 */
+	public List<ProductVo> product_find_list(String p_name) {
+		// TODO Auto-generated method stub
+		List<ProductVo> list = null;
+		list = sqlSession.selectList("product_find_list", p_name);
+		return list;
+	}
+	
+	/**
 	 * 상품 1개 뽑기
 	 * @param p_no
 	 * @return

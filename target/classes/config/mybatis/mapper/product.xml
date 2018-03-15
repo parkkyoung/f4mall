@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <!-- 상품목록 -->
 	<select id="product_list" resultType="vo.ProductVo">
-		select * from product
+		select * from product order by p_no desc
 	</select>
     
     <!-- 카테고리별 목록 -->
@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                from items i inner join product p on i.p_no = p.p_no
                    where category_no=
                        (select category_no from category where category_name=#{category_name})
+                             order by p_no desc
     </select>
     
     <!-- 성별 목록 -->
@@ -27,6 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                from items i inner join product p on i.p_no = p.p_no
                    where sex_no=
                        (select sex_no from sex where sex_name=#{sex_name})
+                             order by p_no desc
     </select>
     
     <!-- 브랜드별 목록 -->
@@ -37,6 +39,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                from items i inner join product p on i.p_no = p.p_no
                    where brand_no=
                        (select brand_no from brand where brand_name=#{brand_name})
+                             order by p_no desc
+    </select>
+    
+    <!-- 검색한 상품 목록 -->
+    <select id="product_find_list" resultType="vo.ProductVo" parameterType="String">
+        select * from product where p_name like '%${p_name}%' order by p_no desc
     </select>
     
     <!-- p_no 기준으로 한 상품 -->

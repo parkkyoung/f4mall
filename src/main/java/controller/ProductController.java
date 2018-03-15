@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dao.ItemsDao;
 import dao.ProductDao;
+import vo.FaqVo;
 import vo.ItemsVo;
 import vo.ProductVo;
 import vo.option.BrandVo;
@@ -43,21 +44,19 @@ public class ProductController {
 	 * @return
 	 */
 	@RequestMapping("/product_list.do")
-	public String product_list(Model model, String category_name,String sex_name, String brand_name){
+	public String product_list(Model model, String category_name,String sex_name, String brand_name, String p_name){
 		
 		// List 포장
 		List<ProductVo> p_list;
 		
 		// 필터링해서 검색할 때
-		if(category_name != null){
-			p_list = product_dao.product_category_list(category_name);
-		} else if(sex_name != null){
-			p_list = product_dao.product_sex_list(sex_name);
-		} else if(brand_name != null){
-			p_list = product_dao.product_brand_list(brand_name);
-		} else {
-			p_list = product_dao.product_list();
-		}
+		if(category_name != null) p_list = product_dao.product_category_list(category_name); // 카테고리별
+		else if(sex_name != null) p_list = product_dao.product_sex_list(sex_name); // 성별
+		else if(brand_name != null) p_list = product_dao.product_brand_list(brand_name); // 브랜드별
+		// 검색했을때
+		else if(p_name != null) p_list = product_dao.product_find_list(p_name);
+		// 아무것도 없을 때
+		else p_list = product_dao.product_list();
 		
 		model.addAttribute("p_list", p_list);
 		
