@@ -37,7 +37,7 @@ public class MemberController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/member_list.do")
+	@RequestMapping(value="/member_list.do")
 	public String list(Model model){
 		
 		List<MemberVo> m_list = member_dao.select_list();
@@ -56,7 +56,7 @@ public class MemberController {
 	 * @param pwd
 	 * @return
 	 */
-	@RequestMapping("/check_id.do")
+	@RequestMapping(value="/check_id.do")
 	@ResponseBody
 	public String check_id(Model model,String m_id,String pwd){
 		
@@ -80,7 +80,7 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping("/check_nick.do")
+	@RequestMapping(value="/check_nick.do")
 	@ResponseBody
 	public String check_nick(Model model,String m_nick){
 		
@@ -109,7 +109,7 @@ public class MemberController {
 	/**
 	 * @return
 	 */
-	@RequestMapping("/member_join_clause.do")
+	@RequestMapping(value="/member_join_clause.do")
 	public String member_join_clause(){
 		
 		return ShortCut.Front.VIEW_PATH + "join";
@@ -120,7 +120,7 @@ public class MemberController {
 	/**
 	 * @return
 	 */
-	@RequestMapping("/member_join_form.do")
+	@RequestMapping(value="/member_join_form.do")
 	public String member_join_form(){
 		
 		return ShortCut.Front.VIEW_PATH +"join2";
@@ -130,7 +130,7 @@ public class MemberController {
 	/**
 	 * @return
 	 */
-	@RequestMapping("/member_insert.do")
+	@RequestMapping(value="/member_insert.do")
 	public String insert_id(MemberVo vo){
 		
 		String m_ip = request.getRemoteAddr();
@@ -143,9 +143,43 @@ public class MemberController {
 	
 	
 	
-	@RequestMapping("/admin/check_id.do")
+
+	
+	//관리자회원가입 폼
+	/**
+	 * @return
+	 */
+	@RequestMapping(value="/admin/member_insert_form.do")
+	public String admin_insert_form(){
+		
+		return ShortCut.Admin.ADMIN_VIEW_PATH + "member_insert";
+	}
+	
+	/**
+	 * @param vo
+	 * @return
+	 */
+	@RequestMapping(value="/admin/member_insert.do")
+	public String admin_insert_id(MemberVo vo){
+		
+		String m_ip = request.getRemoteAddr();
+		vo.setM_ip(m_ip);
+		
+		int res = member_dao.insert_id(vo);
+		
+		return "redirect:goods_list.do";
+	}
+	
+	
+	/**
+	 * @param model
+	 * @param m_id
+	 * @param pwd
+	 * @return
+	 */
+	@RequestMapping(value="/admin/check_id.do")
 	@ResponseBody
-	public String admin_check_id(Model model,String m_id,String m_pwd){
+	public String admin_check_id(Model model,String m_id,String pwd){
 		
 		// ID체크
 		MemberVo vo = member_dao.selectOne(m_id);
@@ -167,17 +201,55 @@ public class MemberController {
 	}
 	
 	
-	//관리자회원가입 폼
 	/**
+	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/admin/member_insert_form.do")
-	public String admin_insert_form(){
+	@RequestMapping(value="/admin/member_list.do")
+	public String m_list(Model model){
 		
-		return ShortCut.Admin.ADMIN_VIEW_PATH + "member_insert";
+		List<MemberVo> m_list = member_dao.select_list();
+		
+		model.addAttribute("m_list", m_list);
+		
+		return ShortCut.Admin.ADMIN_VIEW_PATH + "member";
+		
 	}
 	
-
+	
+	/**
+	 * @param vo
+	 * @param model
+	 * @param m_id
+	 * @return
+	 */
+	@RequestMapping(value="/admin/member_update_form.do")
+	public String ad_update(MemberVo vo,Model model, String m_id){
+		
+		vo = member_dao.selectOne(m_id);
+		
+		model.addAttribute("vo",vo);
+		
+		return ShortCut.Admin.ADMIN_VIEW_PATH + "member_update";
+	}
+	
+	
+	/**
+	 * @param vo
+	 * @return
+	 */
+	@RequestMapping(value="/admin/member_update.do")
+	public String adm_update(MemberVo vo){
+		
+		String m_ip = request.getRemoteAddr();
+		
+		vo.setM_ip(m_ip);
+		
+		int res = member_dao.member_update(vo);
+		
+		return "redirect:/admin/member_list.do";
+	}
+	
 	
 	
 	/**

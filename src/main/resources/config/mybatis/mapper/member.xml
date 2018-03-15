@@ -27,6 +27,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
+	<!-- 회원정보수정 -->
+	<update id="member_update" parameterType="vo.MemberVo">
+		update member set 
+						  
+						  m_ip		=#{ m_ip },
+						  m_pwd	    =#{ m_pwd },
+						  m_name	=#{ m_name },
+						  m_nick	=#{ m_nick },
+						  m_tel 	=#{ m_tel },
+						  m_regdate =now(),
+		                  m_addr	=#{ m_addr },
+		                  m_addr_d  = #{ m_addr_d },
+		                  m_zipcode =#{ m_zipcode }
+		                  
+		where m_id=#{ m_id }
+	</update>
 	
 	
 
