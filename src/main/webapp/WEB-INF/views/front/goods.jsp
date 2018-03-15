@@ -4,9 +4,34 @@
 
 <!-- visual -->
 <section class="subVisual">
-    <h2>상품목록</h2>
+    
+    <%-- 카테고리별 --%>
+    <c:if test="${not empty param.category_name}">
+    <h2><c:out value="${param.category_name}"/></h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_<c:out value='${param.category_name}'/>.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_<c:out value='${param.category_name}'/>.jpg" alt="sub visual" class="imgMobile" />
+    </c:if>
+    
+    <%-- 성별 --%>
+    <c:if test="${not empty param.sex_name}">
+    <h2><c:out value="${param.sex_name}"/></h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_<c:out value='${param.sex_name}'/>.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_<c:out value='${param.sex_name}'/>.jpg" alt="sub visual" class="imgMobile" />
+    </c:if>
+    
+    <%-- 브랜드별 --%>
+    <c:if test="${not empty param.brand_name}">
+    <h2><c:out value="${param.brand_name}"/></h2>
     <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_default.jpg" alt="sub visual" class="imgPc" />
     <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_default.jpg" alt="sub visual" class="imgMobile" />
+    </c:if>
+    
+    <%-- 이 외 기본 --%>
+    <c:if test="${empty param.category_name and empty param.sex_name and empty param.brand_name}">
+    <h2>SHOES</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_default.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_default.jpg" alt="sub visual" class="imgMobile" />
+    </c:if>
 </section>
 <!-- //visual -->
 

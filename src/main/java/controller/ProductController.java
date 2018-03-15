@@ -36,11 +36,22 @@ public class ProductController {
 	 * @return
 	 */
 	@RequestMapping("/product_list.do")
-	public String product_list(Model model){
+	public String product_list(Model model, String category_name,String sex_name, String brand_name){
 		
-		// vo 포장
-		ProductVo vo = new ProductVo();
-		List<ProductVo> p_list = product_dao.select_list();
+		// List 포장
+		List<ProductVo> p_list;
+		
+		// 필터링해서 검색할 때
+		if(category_name != null){
+			p_list = product_dao.product_category_list(category_name);
+		} else if(sex_name != null){
+			p_list = product_dao.product_sex_list(sex_name);
+		} else if(brand_name != null){
+			p_list = product_dao.product_brand_list(brand_name);
+		} else {
+			p_list = product_dao.product_list();
+		}
+		
 		model.addAttribute("p_list", p_list);
 		
 		return common.ShortCut.Front.VIEW_PATH+"goods";
@@ -65,7 +76,7 @@ public class ProductController {
 	public String product_list_admin(Model model){
 		
 		// 상품 리스트에 포장
-		List<ProductVo> p_list = product_dao.select_list();
+		List<ProductVo> p_list = product_dao.product_list();
 		model.addAttribute("p_list", p_list);
 		
 		return common.ShortCut.Admin.ADMIN_VIEW_PATH+"goods";

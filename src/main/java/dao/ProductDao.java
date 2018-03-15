@@ -28,9 +28,45 @@ public class ProductDao {
 	 * 상품목록
 	 * @return
 	 */
-	public List<ProductVo> select_list(){
+	public List<ProductVo> product_list(){
 		List<ProductVo> list = null;
 		list = sqlSession.selectList("product_list");
+		return list;
+	}
+	
+	/**
+	 * 카테고리별 리스트
+	 * @param category
+	 * @return
+	 */
+	public List<ProductVo> product_category_list(String category_name) {
+		// TODO Auto-generated method stub
+		List<ProductVo> list = null;
+		list = sqlSession.selectList("product_category_list", category_name);
+		return list;
+	}
+	
+	/**
+	 * 성별 리스트
+	 * @param category
+	 * @return
+	 */
+	public List<ProductVo> product_sex_list(String sex_name) {
+		// TODO Auto-generated method stub
+		List<ProductVo> list = null;
+		list = sqlSession.selectList("product_sex_list", sex_name);
+		return list;
+	}
+	
+	/**
+	 * 브랜드별 리스트
+	 * @param category
+	 * @return
+	 */
+	public List<ProductVo> product_brand_list(String brand_name) {
+		// TODO Auto-generated method stub
+		List<ProductVo> list = null;
+		list = sqlSession.selectList("product_brand_list", brand_name);
 		return list;
 	}
 	

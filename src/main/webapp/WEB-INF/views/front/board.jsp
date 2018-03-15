@@ -5,6 +5,25 @@
 <%@ page import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"%>
 
 <script type="text/javascript">
+
+$(function() {
+    // 게시판 리스트 말줄임
+    var blSubjectWidth = 0;
+    function blSubjectEllipsis() {
+        if ($(window).width() > 767) {
+            blSubjectWidth = $(".boardList").width() * 0.5 - 20;
+            $(".blSubject a").css("width", blSubjectWidth);
+        } else {
+            blSubjectWidth = $(".boardList").width() * 0.7 - 20;
+            $(".blSubject a").css("width", blSubjectWidth);
+        }
+    }
+    ;
+    blSubjectEllipsis();
+    $(window).resize(function() {
+        blSubjectEllipsis();
+    });
+});
 /* insert btn */
 function insert_form(){
 	//로그인상태 체크

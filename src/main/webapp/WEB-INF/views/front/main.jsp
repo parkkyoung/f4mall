@@ -19,19 +19,19 @@
 	<div class="mainSex">
 		<ul class="row">
 			<li class="col-sm-4 col-xs-12">
-				<a href="">
+				<a href="product_list.do?sex_name=men">
 					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_sex1.jpg" alt="Sex MEN" class="wFull" />
 					<span>MEN</span>
 				</a>
 			</li>
 			<li class="col-sm-4 col-xs-12">
-				<a href="">
+				<a href="product_list.do?sex_name=unisex">
 					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_sex2.jpg" alt="Sex Unisex" class="wFull" />
-					<span>ACCESSORY</span>
+					<span>UNISEX</span>
 				</a>
 			</li>
 			<li class="col-sm-4 col-xs-12">
-				<a href="">
+				<a href="product_list.do?sex_name=women">
 					<img src="${ pageContext.request.contextPath }/resources/front/img/img_main_sex3.jpg" alt="Sex Women" class="wFull" />
 					<span>WOMEN</span>
 				</a>

@@ -9,6 +9,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product
 	</select>
     
+    <!-- 카테고리별 목록 -->
+    <select id="product_category_list" resultType="vo.ProductVo" parameterType="String">
+        select distinct
+           p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price,
+           p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry
+               from items i inner join product p on i.p_no = p.p_no
+                   where category_no=
+                       (select category_no from category where category_name=#{category_name})
+    </select>
+    
+    <!-- 성별 목록 -->
+    <select id="product_sex_list" resultType="vo.ProductVo" parameterType="String">
+        select distinct
+           p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price,
+           p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry
+               from items i inner join product p on i.p_no = p.p_no
+                   where sex_no=
+                       (select sex_no from sex where sex_name=#{sex_name})
+    </select>
+    
+    <!-- 브랜드별 목록 -->
+    <select id="product_brand_list" resultType="vo.ProductVo" parameterType="String">
+        select distinct
+           p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price,
+           p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry
+               from items i inner join product p on i.p_no = p.p_no
+                   where brand_no=
+                       (select brand_no from brand where brand_name=#{brand_name})
+    </select>
+    
     <!-- p_no 기준으로 한 상품 -->
     <select id="product_view" parameterType="int" resultType="vo.ProductVo">
         select * from product where p_no = #{ p_no }
