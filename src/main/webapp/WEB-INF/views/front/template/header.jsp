@@ -30,64 +30,79 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-<!-- page script -->
 <script>
-	// 로그인
-	function login(f) {
-		var m_id = f.m_id.value;
-		var m_pwd = f.m_pwd.value;
 
-		if (m_id == '') {
-			alert('아이디를 입력하세요');
-			f.m_id.focus();
-			return;
-		}
-		if (m_pwd == '') {
-			alert('비밀번호를 입력하세요');
-			f.m_pwd.focus();
-			return;
-		}
+// 로그인
+function login(f) {
+	var m_id = f.m_id.value;
+	var m_pwd = f.m_pwd.value;
 
-		$.ajax({
-			url : 'login.do',
-			data : {
-				'm_id' : m_id,
-				'm_pwd' : m_pwd
-			},
-			success : function(data) {
-				var json = eval(data);
-				if (json[0].result == 'yes') {
-					swal({
-						text : "로그인 성공.",
-						icon : "success",
-					}).then((value) => {
-						location.href = '';
-					});
-				} else if (json[0].result == 'id_fail') {
-					alert('아이디가 틀립니다');
-					f.m_id.focus();
-				} else if (json[0].result == 'pwd_fail') {
-					alert('비밀번호가 틀립니다');
-					f.m_pwd.focus();
-				} else if (json[0].result == 'no') {
-					alert('로그인 오류(다시 입력해주세요)');
-					f.m_id.focus();
-				}
-
-			}
-		});
+	if (m_id == '') {
+		alert('아이디를 입력하세요');
+		f.m_id.focus();
+		return;
 	}
-	
-	// 로그아웃
-	function logout(){
-		swal({
-			text : "로그아웃 하시겠습니까?",
-			icon : "info",
-			buttons : true
-		}).then((willLogout) => {
-			if(willLogout) location.href='logout.do';
-		});
-	};
+	if (m_pwd == '') {
+		alert('비밀번호를 입력하세요');
+		f.m_pwd.focus();
+		return;
+	}
+
+	$.ajax({
+		url : 'login.do',
+		data : {
+			'm_id' : m_id,
+			'm_pwd' : m_pwd
+		},
+		success : function(data) {
+			var json = eval(data);
+			if (json[0].result == 'yes') {
+				swal({
+					text : "로그인 성공.",
+					icon : "success",
+				}).then((value) => {
+					location.href = '';
+				});
+			} else if (json[0].result == 'id_fail') {
+				alert('아이디가 틀립니다');
+				f.m_id.focus();
+			} else if (json[0].result == 'pwd_fail') {
+				alert('비밀번호가 틀립니다');
+				f.m_pwd.focus();
+			} else if (json[0].result == 'no') {
+				alert('로그인 오류(다시 입력해주세요)');
+				f.m_id.focus();
+			}
+
+		}
+	});
+}
+
+// 로그아웃
+function logout(){
+	swal({
+		text : "로그아웃 하시겠습니까?",
+		icon : "info",
+		buttons : true
+	}).then((willLogout) => {
+		if(willLogout) location.href='logout.do';
+	});
+};
+
+// 상품 search
+function findProduct(){
+    var p_name = $("#p_name").val();
+    
+    if(p_name == ''){
+        swal({
+            text : "검색할 내용을 입력하세요",
+            icon : "error",
+        }).then((value) => {
+        	$("#p_name").focus();
+            return;
+        });
+    } else location.href='product_list.do?p_name='+encodeURIComponent(p_name);
+}
 </script>
 </head>
 <body>
@@ -312,8 +327,8 @@
 				<a href="index.do" title="HOME">F4 Mall</a>
 			</h1>
 			<div class="util">
-				<input type="text" class="textSerch" />
-				<button type="button" class="btnSerch">
+				<input type="text" id="p_name" class="textSerch" onkeyup="if(window.event.keyCode == 13) findProduct();" />
+				<button type="button" class="btnSerch" onclick="findProduct();">
 					<i class="fa fa-search fa-w-16"></i>
 				</button>
 				
