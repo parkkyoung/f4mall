@@ -1,9 +1,9 @@
 package vo;
 
 public class DemandVo {
-	int o_no, cart_no, p_no, o_amt, o_tel;
-	String m_id, o_addr, o_addr_d, o_zipcode, o_regdate,
-	o_payment, o_remarks;
+	int o_no, i_no, o_amt, o_tel, o_pay_amt;
+	String m_id, o_addr, o_addr_d, o_zipcode, 
+	o_regdate, o_payment, o_remarks, o_name;
 	
 	public DemandVo() {
 		// TODO Auto-generated constructor stub
@@ -15,22 +15,6 @@ public class DemandVo {
 
 	public void setO_no(int o_no) {
 		this.o_no = o_no;
-	}
-
-	public int getCart_no() {
-		return cart_no;
-	}
-
-	public void setCart_no(int cart_no) {
-		this.cart_no = cart_no;
-	}
-
-	public int getP_no() {
-		return p_no;
-	}
-
-	public void setP_no(int p_no) {
-		this.p_no = p_no;
 	}
 
 	public int getO_amt() {
@@ -103,6 +87,30 @@ public class DemandVo {
 
 	public void setO_remarks(String o_remarks) {
 		this.o_remarks = o_remarks;
+	}
+
+	public int getI_no() {
+		return i_no;
+	}
+
+	public void setI_no(int i_no) {
+		this.i_no = i_no;
+	}
+
+	public String getO_name() {
+		return o_name;
+	}
+
+	public void setO_name(String o_name) {
+		this.o_name = o_name;
+	}
+
+	public int getO_pay_amt() {
+		return o_pay_amt;
+	}
+
+	public void setO_pay_amt(int o_pay_amt) {
+		this.o_pay_amt = o_pay_amt;
 	}
 	
 	

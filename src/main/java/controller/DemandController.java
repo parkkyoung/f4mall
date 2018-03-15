@@ -40,19 +40,22 @@ public class DemandController {
 			d_list.addAll(im_list);
 		}
 		
-		System.out.println(d_list);
-		
 		model.addAttribute("sales_price",sales_price);
 		model.addAttribute("d_list",d_list);
 		return "front/demand";
 	}
 	
 	@RequestMapping("/demand_insert.do")
-	public String demand_insert(CartVo vo){
+	public String demand_insert(DemandVo vo, Integer [] cart_amt, Integer [] i_no){
 		int res = 0;
 		
-		res = demand_dao.demand_insert(vo);
+		for(int i=0; i<i_no.length; i++){
+			vo.setI_no(i_no[i]);
+			int o_amt = cart_amt[i];
+			vo.setO_amt(o_amt);
+			res = demand_dao.demand_insert(vo);
+		}
 		
-		return "";
+		return "front/main";
 	}
 }

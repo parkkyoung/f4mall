@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="template/header.jsp" %>
+<%@taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 
 <!-- page title -->
 <h1 class="page-header">주문목록</h1>
@@ -22,6 +24,7 @@
 			</thead>
 			<tbody>
 				<!-- Loop -->
+				<c:forEach var="" items="">
 				<tr>
 					<td><a href="member_update.html">hong00@naver.com</a></td>
 					<td>0000</td>
@@ -29,21 +32,7 @@
 					<td>18년00</td>
 					<td>10000</td>
 				</tr>
-				<!-- //Loop -->
-				<tr>
-					<td><a href="member_update.html">hong01@naver.com</a></td>
-					<td>0001</td>
-					<td>구로구01</td>
-					<td>18년01</td>
-					<td>10001</td>
-				</tr>
-				<tr>
-					<td><a href="member_update.html">hong02@naver.com</a></td>
-					<td>0002</td>
-					<td>구로구02</td>
-					<td>18년02</td>
-					<td>10002</td>
-				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 		<!-- /.table-responsive -->

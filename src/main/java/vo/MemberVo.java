@@ -6,7 +6,9 @@ public class MemberVo {
 
 	String m_id, m_pwd, m_name, m_addr, m_addr_d, 
 		   m_zipcode, m_ip, m_regdate, m_image,m_nick;
-	int m_tel,m_grade;
+	
+	String m_tel;
+	int m_grade;
 	
 
 
@@ -17,17 +19,18 @@ public class MemberVo {
 	}
 
 	
-	
-	
 
-
-	public int getM_tel() {
+	public String getM_tel() {
 		return m_tel;
 	}
 
-	public void setM_tel(int m_tel) {
+
+
+	public void setM_tel(String m_tel) {
 		this.m_tel = m_tel;
 	}
+
+
 
 	public String getM_id() {
 		return m_id;
