@@ -55,7 +55,7 @@ select * from demand;
 -- on delete cascade 옵션 => 참조하는 부모테이블의 column이 삭제되면 자식 테이블의 column도 모두 삭제하라
 
 use f4mall;
-alter table demand drop foreign key fk_m1_id
+alter table demand drop foreign key fk_oi_no
 
 --장바구니번호
 use f4mall;
@@ -72,8 +72,11 @@ use f4mall;
 alter table demand add constraint
 	fk_m1_id FOREIGN KEY (m_id) REFERENCES member(m_id) on delete cascade;
 
-
-
+use f4mall;
+alter table demand
+add CONSTRAINT `fk_oi_no` 
+FOREIGN KEY (`i_no`) REFERENCES `items` (`i_no`)
+on delete cascade
 
 
 

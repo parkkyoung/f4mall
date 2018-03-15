@@ -9,21 +9,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 select bbb.* from 
 	 (
 		(
-	     select bb.* from	
+	     select bb.*,m_nick as b_nick from	
 			(
-					select  *,0 as no,(select count(*) from board where b_notice = 1) as cnt
+					select  *,0 as no,(select count(*) from board where b_notice = 1) as cnt,(select count(*) from board x inner join b_comment z on x.b_no = z.b_no where x.b_no=b.b_no) as listCount ,(sysdate()) as today
 				from
 				board b,(select @rank :=0) as r
 				where b_notice = 1 
 				order by b.b_ref desc,b.b_step asc 
 	            limit 3
-			) bb
+			) bb left outer join member k on bb.m_id = k.m_id
 		)
 	union
 		(
-	    select bb.* from	
+	    select bb.*,m_nick as b_nick from	
 			(
-				select  *,(@rank := @rank +1 ) as no,(select count(*) from board where b_notice != 1) as cnt
+				select  *,(@rank := @rank +1 ) as no,(select count(*) from board where b_notice != 1) as cnt,(select count(*) from board x inner join b_comment z on x.b_no = z.b_no where x.b_no=b.b_no) as listCount,(sysdate()) as today
 				from
 				(select * from board where b_notice != 1) b,(select @rank :=0) as r
 		
@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 				</trim>
 			order by b.b_ref desc,b.b_step asc
-			) bb
+			) bb left outer join member k on bb.m_id = k.m_id
 			
 		where bb.no between #{start} and #{end} 
 		)
@@ -90,7 +90,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{b_name},
 		#{b_content},
 		#{b_ip},
-		now(),
+		sysdate(),
 		#{b_notice},
 		(select b.* from (select max(b_no)+1 from board) b),
 		#{b_step},

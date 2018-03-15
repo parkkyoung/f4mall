@@ -10,9 +10,11 @@ public class CommentVo {
 	String c_regdate;
 	
 	
-	
-	
-	
+	/* ¸â¹ö´Ð³×ÀÓ°¡Á®¿À±â*/
+	String c_nick;
+	public String getC_nick() {
+		return c_nick;
+	}
 	
 	/* ´ñ±Û ÃÑ °¹¼ö*/
 	int cnt;
