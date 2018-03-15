@@ -66,7 +66,7 @@ use f4mall;
 select sum(sale_total) as sales_price from cart_view where m_id='kimbongsung@hotmail.com'
 
 use f4mall;
-alter table cart drop foreign key fk_memid
+alter table demand drop foreign key fk_p1_no
 
 use f4mall;
 update cart set cart_amt = 3 where m_id= 'kimbongsung@hotmail.com' and p_no='1'

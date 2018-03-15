@@ -6,7 +6,7 @@ use f4mall;
 CREATE TABLE warehousing(
 
 	w_no 	  bigint primary key auto_increment, --입고번호
-	p_no 	  int not null,						 --상품코드
+	i_no 	  int not null,						 --아이템코드
 	w_amt 	  int not null,						 --입고수량
 	w_regdate date not null						 --입고일자
 )
@@ -32,7 +32,7 @@ use f4mall;
 CREATE TABLE stock(
 
 	s_no      bigint primary key auto_increment, --재고번호
-	p_no      int not null,				         --상품코드
+	i_no      int not null,				         --상품코드
 	s_amt     int not null,						 --재고수량
 	s_regdate date not null						 --재고일자
 )
@@ -57,7 +57,7 @@ use f4mall;
 CREATE TABLE release1(
 
 	r_no      bigint primary key auto_increment, --재고번호
-	p_no      int not null,						 --상품코드
+	i_no      int not null,						 --상품코드
 	o_no      int not null,                      --주문코드
 	r_amt     int not null,						 --출고수량
 	r_regdate date not null						 --출고일자

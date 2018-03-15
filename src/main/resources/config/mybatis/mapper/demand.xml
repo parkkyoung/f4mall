@@ -12,8 +12,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select sum(sale_total) as sales_price from cart_view where m_id=#{ m_id }
 </select>
 
-<insert id="demand_insert" parameterType="vo.CartVo">
-
+<insert id="demand_insert" parameterType="vo.DemandVo">
+	insert into demand (i_no, m_id, o_amt, o_addr, o_addr_d, o_zipcode,
+						o_tel, o_regdate, o_payment, o_remarks,
+						o_pay_amt, o_name)
+				values(#{ i_no }, #{ m_id }, #{ o_amt }, #{ o_addr }, #{ o_addr_d },
+					   #{ o_zipcode }, #{ o_tel }, now(), #{ o_payment },
+					   #{ o_remarks }, #{ o_pay_amt }, #{ o_name }
+						)
 </insert>
 
 </mapper>

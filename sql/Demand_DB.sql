@@ -4,9 +4,8 @@
 
 USE f4mall;
 CREATE TABLE demand(
-	o_serial  INT PRIMARY KEY AUTO_INCREMENT  /*주문일련번호*/
-	o_no      INT, 							  /*주문코드 -> 카트번호*/
-	p_no 	  INT NOT NULL,					  /*상품코드*/
+	o_no      INT primary key auto_increment, /*주문코드 -> 카트번호*/
+	i_no	  int,
 	m_id	  VARCHAR(200) NOT NULL,		  /*회원아이디*/
 	o_amt	  INT NOT NULL,					  /*구매수량 -> cart_amt*/
 	o_addr    VARCHAR(200) NOT NULL,		  /*배송지 주소*/
@@ -15,9 +14,25 @@ CREATE TABLE demand(
 	o_tel	  INT NOT NULL,					  /*배송지 연락처*/
 	o_regdate DATE NOT NULL,				  /*주문일자*/
 	o_payment VARCHAR(200) NOT NULL,		  /*결제방법*/
-	o_remarks TEXT							  /*기타사항*/
-	o_price   int 							  /*결재금액*/
+	o_remarks TEXT,							  /*기타사항*/
+	o_pay_amt int,
+	o_name varchar(100)
 );
+
+use f4mall;
+alter table demand add constraint fk_oi_no foreign key (i_no) references items(i_no) 
+
+use f4mall;
+alter table demand add constraint fk_om_id foreign key (m_id) references member(m_id)
+
+use f4mall;
+insert into demand (i_no, m_id, o_amt, o_addr, o_add_d, 
+					o_zipcode, o_tel, o_regdate, 
+					o_payment, o_remarks, o_pay_amt, 
+					o_name) 
+			values(1,'kimbongsung@hotmail.com',3,'서울시 송파구 잠실동','롯데타워 58층','111-111',01012341234,now(),'무통장결제',
+			'부재시 경비실에 맡겨주세요', 329000,'김봉성')
+					
 
 use f4mall;
 create view order_view as

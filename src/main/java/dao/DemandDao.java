@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.CartVo;
+import vo.DemandVo;
 import vo.MemberVo;
 
 @Repository
@@ -42,7 +43,7 @@ public class DemandDao {
 	}
 
 
-	public int demand_insert(CartVo vo) {
+	public int demand_insert(DemandVo vo) {
 		// TODO Auto-generated method stub
 		int res = 0;
 		
