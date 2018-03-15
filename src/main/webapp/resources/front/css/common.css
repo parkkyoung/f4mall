@@ -126,6 +126,10 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #header .head .util .textSerch {padding:5px 2px;width:60px;vertical-align: bottom;border:0;border-bottom:1px solid #ccc;transition:all 0.3s ease;}
 #header .head .util .textSerch:hover,
 #header .head .util .textSerch:focus {width:120px;border-bottom:1px solid #999;}
+#header .head .util .btnCart {position:relative;}
+#header .head .util .btnCart span {display:block;position:absolute;top:-5px;right:-5px;width:0;height:0;line-height:16px;font-size:10px;color:white;border-radius:100%;opacity:0.7;background:white;transition:all 0.3s ease;}
+#header .head .util .btnCart.on span {width:16px;height:16px;background:red;}
+#header .head .util .btnCart:hover span {opacity: 1;}
 #header .gnb {position:absolute;top:60px;left:15px;z-index:100;padding:10px 0;width:100%;background:white;transition:opacity 0.3s ease;}
 #header .gnb.on {position:fixed;top:0;left:0;padding:10px 15px;opacity:0.6;border-bottom:1px solid #ddd;}
 #header .gnb.on:hover {opacity:1;}
@@ -191,6 +195,9 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .c-menu .mContents .halfList dl dd {width:50%;}
 .c-menu .mContents .halfList dl dd>* i {font-size:32px;}
 .c-menu .mContents .halfList dl dd>* div {font-size:14px;}
+.c-menu .mContents .halfList .btnCart {position:relative;}
+.c-menu .mContents .halfList .btnCart span {display:none;position:absolute;top:20px;right:40px;width:18px;height:18px;line-height:18px;vertical-align: top;font-size:12px;color:white;border-radius:100%;background:red;}
+.c-menu .mContents .halfList .btnCart.on span {display:inline-block;}
 .c-menu .mContents .brandList div {padding-top:35px;background:url("../img/bg_brand.png") no-repeat;}
 .c-menu .mContents .brandList .brand01 div {background-position:center top;}
 .c-menu .mContents .brandList .brand02 div {background-position:center -100px;}
@@ -261,12 +268,11 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .product .productOption {text-align:right;}
 .product .productOption .form-group {margin-bottom:18px;padding-top:18px;overflow:hidden;border-top:1px solid #f2f2f2;}
 .product .productOption .form-group h3 {font-size:32px;}
-.product .productOption .form-group.goCategory {padding-top:0;overflow:hidden;border-top:0;}
-.product .productOption .form-group.goCategory a {float:left;font-size:24px;}
+.product .productOption .form-group.goCategory {padding-top:10px;overflow:hidden;text-align:right;border-top:0;}
+.product .productOption .form-group.goCategory div {float:left;font-size:16px;}
 .product .productOption .form-group.goCategory span {float:right;padding-top:8px;}
 .product .productOption .form-group.goTitle {overflow:hidden;}
 .product .productOption .form-group.goTitle h3 {float:right;}
-.product .productOption .form-group.goTitle div {float:left;font-size:24px;}
 .product .productOption .form-group.goPrice strong {font-size:32px;}
 .product .productOption .form-group.btnBox {padding-top:20px;border-top:1px solid #aaa;}
 .product .productOption .form-group.btnBox input[type="number"] {margin-top:6px;}

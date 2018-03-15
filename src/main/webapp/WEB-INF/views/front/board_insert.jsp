@@ -3,20 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="template/header.jsp"%>
 
-
-<!-- visual -->
-<section class="subVisual">
-	<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
-</section>
-<!-- //visual -->
-
 <!-- ckeditor -->
 <script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <!-- //ckeditor -->
-
-
 <script type="text/javascript">
-
 
 	function send(f) {
 
@@ -43,23 +33,25 @@
 	}
 </script>
 
+<!-- visual -->
+<section class="subVisual">
+    <h2>COMMUNITY</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_board.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_board.jpg" alt="sub visual" class="imgMobile" />
+</section>
+<!-- //visual -->
 
 
 <!-- sub contents -->
 <section class="sub container">
-	<h2 class="hide">커뮤니티 등록</h2>
-
 	<!-- 커뮤니티 등록  -->
 	<div class="board boardInsert">
-		
-
-
 		<form name="f" action="board_insert.do" class="form-horizontal widthM"
 			method="post" id="insertBoardFrm" enctype="multipart/form-data">
 		<input type="hidden" name="page" value="${param.page }"> 
 		<input type="hidden" name="m_id" value="${user.m_id}">
 
-			<!-- 괄리자만 노출 -->
+			<!-- 관리자만 노출 -->
 		   <c:if test="${user.m_grade eq 1}">  
 				<div class="form-group">
 					<label for="" class="col-sm-2 control-label">공지사항여부</label>
@@ -83,7 +75,6 @@
 						placeholder="게시글 제목" />
 				</div>
 			</div>
-
 
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">내용</label>
@@ -122,7 +113,6 @@
 			<div class="form-group btnBox">
 				<a href="board_list.do?page=${param.page}" class="btn btn-default">취소</a>
 				<button type="button" onclick="send(this.form); return false;" class="btn btn-primary" >등록</button>
-
 			</div>
 		</form>
 	</div>

@@ -3,21 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="template/header.jsp"%>
 
-
-<!-- visual -->
-<section class="subVisual">
-	<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
-</section>
-<!-- //visual -->
-
 <!-- ckeditor -->
 <script
 	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 <!-- //ckeditor -->
 
-
 <script type="text/javascript">
-
 
 	function send(f) {
 
@@ -26,8 +17,6 @@
 		var b_notice = f.b_notice.value;
 		var b_content = CKEDITOR.instances.b_content.getData();
 		
-
-
 		if (b_name = "") {
 			alert("제목을 입력해주세요.");
 			f.b_name.focus();
@@ -40,21 +29,23 @@
 		}
 
 		f.submit();
-
 	}
 </script>
 
+<!-- visual -->
+<section class="subVisual">
+    <h2>COMMUNITY</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_board.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_board.jpg" alt="sub visual" class="imgMobile" />
+</section>
+<!-- //visual -->
 
 
 <!-- sub contents -->
 <section class="sub container">
-	<h2 class="hide">커뮤니티 답변 등록</h2>
 
 	<!-- 커뮤니티 등록  -->
 	<div class="board boardInsert">
-		
-
-
 		<form name="f" action="board_reply.do" class="form-horizontal widthM"
 			method="post" id="insertBoardFrm" enctype="multipart/form-data">
 		<input type="hidden" name="page" value="${param.page }"> 

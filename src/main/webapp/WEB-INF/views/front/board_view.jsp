@@ -102,75 +102,71 @@ $(document).ready(function(){
 });
 
 </script>
-	<!-- contents -->
-	<div id="container">
-		<!-- visual -->
-		<section class="subVisual">
-			<h2>커뮤니티</h2>
-			<img src="${ pageContext.request.contextPath }/fornt/img/visual/bg_visual_pc_board.jpg" alt="sub visual" class="imgPc" />
-			<img src="${ pageContext.request.contextPath }/front/img/visual/bg_visual_mobile_board.jpg" alt="sub visual" class="imgMobile" />
-		</section>
-		<!-- //visual -->
-		
-		<!--  parameter -->
-		<input type="hidden" name="url" value="${ param.url}">
-		<input type="hidden" name="page" value="${param.page}"> 
-		<input type="hidden" name="search" value="${param.search}"> 
-		<input type="hidden" name="search_text" value="${param.search_text}">
-		<!--  //parameter -->	
-	
-		<!-- sub contents -->
-		<section class="sub container">
-			<h2 class="hide">커뮤니티 상세</h2>
-		
-			<!-- 커뮤니티 목록  -->
-			<div class="board boardView">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3>${vo.b_name}</h3>
-						<span>작성자 : ${vo.m_id}</span>
-						<span>IP : ${vo.b_ip}</span>
-						<span>조회 : ${vo.b_readhit }</span>
-						<span>댓글 : 123</span>
-						<span>작성일 : ${vo.b_regdate }</span>
-					</div>
-					<div class="panel-body">
-						${vo.b_content }
-					</div>
-				</div>
-	
-				<!-- 작성자 or 관리자만 노출 -->
-				<div class="btnBox">
-					<c:if test="${uesr.m_id eq vo.m_id || user.m_grade eq 1}">
-					<button type="button" class="btn btn-danger" onclick="del()">삭제</button>
-					<button type="button" onclick="update()" class="btn btn-primary">수정</button>
-					</c:if>
-					<button type="button" class="btn btn-success" onclick="reply()">답글</button>
-					<button type="button" class="btn btn-info" onclick="location.href='board_list.do?page=${param.page}&search_text=${param.search_text}'">목록</button>
-				</div>
-				<!-- //작성자 or 관리자만 노출 -->
-			</div>
-			<!-- //커뮤니티 목록  -->
-		
-			<!-- 댓글 -->
-			<div class="comments">
-			
-				<!-- 댓글쓰기 -->
-				<div class="commentsInsert row">
-					<div class="col-sm-10 col-xs-9"><textarea id="comment_content" class="form-control" rows="3" placeholder="댓글을 입력해주세요"></textarea></div>
-					<div class="col-sm-2 col-xs-3"><button id="comment_bt_insert" type="button" class="btn btn-primary btn-block">작성</button></div>	
-				</div>
-				<!-- //댓글쓰기 -->
-				
-				<!-- 댓글목록 -->
-				<div id="board_comment_list" class="mt20"></div>
-				<!-- //댓글목록 -->
-			</div>
-			<!-- //댓글 -->
-		</section>
-		<!-- //sub contents -->
-	</div>
-	<!-- //contents -->
-		
 
+<!-- visual -->
+<section class="subVisual">
+    <h2>COMMUNITY</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_board.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_board.jpg" alt="sub visual" class="imgMobile" />
+</section>
+<!-- //visual -->
+		
+<!--  parameter -->
+<input type="hidden" name="url" value="${ param.url}">
+<input type="hidden" name="page" value="${param.page}"> 
+<input type="hidden" name="search" value="${param.search}"> 
+<input type="hidden" name="search_text" value="${param.search_text}">
+<!--  //parameter -->	
+
+<!-- sub contents -->
+<section class="sub container">
+	<h2 class="hide">커뮤니티 상세</h2>
+
+	<!-- 커뮤니티 목록  -->
+	<div class="board boardView">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>${vo.b_name}</h3>
+				<span>작성자 : ${vo.m_id}</span>
+				<span>IP : ${vo.b_ip}</span>
+				<span>조회 : ${vo.b_readhit }</span>
+				<span>댓글 : 123</span>
+				<span>작성일 : ${vo.b_regdate }</span>
+			</div>
+			<div class="panel-body">
+				${vo.b_content }
+			</div>
+		</div>
+
+		<!-- 작성자 or 관리자만 노출 -->
+		<div class="btnBox">
+			<c:if test="${uesr.m_id eq vo.m_id || user.m_grade eq 1}">
+			<button type="button" class="btn btn-danger" onclick="del()">삭제</button>
+			<button type="button" onclick="update()" class="btn btn-primary">수정</button>
+			</c:if>
+			<button type="button" class="btn btn-success" onclick="reply()">답글</button>
+			<button type="button" class="btn btn-info" onclick="location.href='board_list.do?page=${param.page}&search_text=${param.search_text}'">목록</button>
+		</div>
+		<!-- //작성자 or 관리자만 노출 -->
+	</div>
+	<!-- //커뮤니티 목록  -->
+
+	<!-- 댓글 -->
+	<div class="comments">
+	
+		<!-- 댓글쓰기 -->
+		<div class="commentsInsert row">
+			<div class="col-sm-10 col-xs-9"><textarea id="comment_content" class="form-control" rows="3" placeholder="댓글을 입력해주세요"></textarea></div>
+			<div class="col-sm-2 col-xs-3"><button id="comment_bt_insert" type="button" class="btn btn-primary btn-block">작성</button></div>	
+		</div>
+		<!-- //댓글쓰기 -->
+		
+		<!-- 댓글목록 -->
+		<div id="board_comment_list" class="mt20"></div>
+		<!-- //댓글목록 -->
+	</div>
+	<!-- //댓글 -->
+</section>
+<!-- //sub contents -->
+		
 <%@ include file="template/footer.jsp" %>
