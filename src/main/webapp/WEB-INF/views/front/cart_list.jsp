@@ -12,7 +12,7 @@ function demand_list(f){
 	var checked=false;
 	
 	if(f.i_no.length==undefined){
-		checked = f.p_no.checked;
+		checked = f.i_no.checked;
 	}else{
 		for(var i=0; i<f.i_no.length; i++){
 			if(f.i_no[i].checked){
