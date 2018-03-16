@@ -3,6 +3,27 @@
 
 <%@include file="template/header.jsp" %>
 
+
+<script>
+
+function checkConfirm(){
+	var checkCount = 0;
+	var checkNum = $("input[name='termsCheck']").length;
+	
+	$("input[name='termsCheck']").each(function(){
+		if($(this).is(":checked") == true) checkCount++;
+	});
+	
+	if(checkCount != checkNum){
+		swal({
+			text : "약관에 동의해주시기 바랍니다.",
+			icon : "info"
+		});
+	} else location.href="/f4mall/member_join_form.do";
+}
+
+</script>
+
 	<!-- 이용약관 popup -->
 	<div class="modal fade" id="termsPop1" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog">
@@ -78,24 +99,24 @@
 		</div>
 		<div class="form-group mt20">
 			<div class="col-sm-12">
-				<label><input type="checkbox" class="checkMember" data-target="checkTerms"> 이용약관</label>
+				<label><input type="checkbox" name="termsCheck" class="checkMember" data-target="checkTerms"> 이용약관</label>
 				<button type="button" class="btn btn-default ml10" data-toggle="modal" data-target="#termsPop1">내용보기</button>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-12">
-				<label><input type="checkbox" class="checkMember" data-target="checkTerms"> 개인정보 수집 및 이용 안내</label>
+				<label><input type="checkbox" name="termsCheck" class="checkMember" data-target="checkTerms"> 개인정보 수집 및 이용 안내</label>
 				<button type="button" class="btn btn-default ml10" data-toggle="modal" data-target="#termsPop2">내용보기</button>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-12">
-				<label><input type="checkbox" class="checkMember" data-target="checkTerms"> 개인정보 처리위탁</label>
+				<label><input type="checkbox" name="termsCheck" class="checkMember" data-target="checkTerms"> 개인정보 처리위탁</label>
 				<button type="button" class="btn btn-default ml10" data-toggle="modal" data-target="#termsPop3">내용보기</button>
 			</div>
 		</div>
 		<div class="form-group btnBox">
-			<a href="member_join_form.do" class="btn btn-primary btn-lg">다음</a>
+			<a class="btn btn-primary btn-lg" onclick="checkConfirm();">다음</a>
 		</div>
 	</div>
 </section>

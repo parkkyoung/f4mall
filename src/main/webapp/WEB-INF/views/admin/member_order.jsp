@@ -19,20 +19,22 @@
 					<th>상품코드</th>
 					<th>배송지</th>
 					<th>주문일자</th>
+					<th>상태</th>
 					<th>결제금액(원)</th>
 				</tr>
 			</thead>
 			<tbody>
 				<!-- Loop -->
-				<c:forEach var="" items="">
+				<c:forEach var="mo_list" items="${mo_list }">
 				<tr>
-					<td><a href="member_update.html">hong00@naver.com</a></td>
-					<td>0000</td>
-					<td>구로구00</td>
-					<td>18년00</td>
-					<td>10000</td>
+					<td><c:out value="${mo_list.m_id }"/></a></td>
+					<td><c:out value="${mo_list.i_no }"/></td>
+					<td><c:out value="${mo_list.o_addr }"/></td>
+					<td><c:out value="${mo_list.o_regdate }"/></td>
+					<td>결제완료</td>
+					<td><c:out value="${mo_list.o_pay_amt }"/></td>
 				</tr>
-				</c:forEach>
+			</c:forEach>
 			</tbody>
 		</table>
 		<!-- /.table-responsive -->
