@@ -108,8 +108,8 @@ function add_cart(f){
 								</div>
 								<select style="width:350px" name="i_no" id="i_no">
 										<option>:::옵션을 선택해주세요:::</option>
-									<c:forEach var ="items_list" items="${ items_list }">
-										<option value="${ items_list.i_no }">색상: ${ items_list.color_name }&nbsp&nbsp사이즈: ${ items_list.size_name }  [재고수량: ${ items_list.s_amt }]</option>
+									<c:forEach var ="items_option" items="${ items_option }">
+										<option value="${ items_option.i_no }">색상: ${ items_option.color_name }&nbsp&nbsp사이즈: ${ items_list.size_name }  [재고수량: ${ items_option.s_amt }]</option>
 									</c:forEach>
 								</select>
 								<div class="form-group btnBox">

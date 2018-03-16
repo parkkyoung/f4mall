@@ -22,13 +22,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         delete from items where i_no=#{i_no}
     </delete>
 
-	<!-- <select id="select_product" parameterType="int" resultType="vo.ProductVo">
+	<select id="select_product" parameterType="int" resultType="vo.ProductVo">
 		select * from product where p_no = #{ p_no }
 	</select>
 	
-	<select id="items_view" parameterType="int" resultType="vo.ItemsViewVo">
+	<select id="items_option" parameterType="int" resultType="vo.ItemsViewVo">
 		select * from items_view where p_no = #{ p_no }
-	</select> -->
+	</select>
 
 </mapper>
 

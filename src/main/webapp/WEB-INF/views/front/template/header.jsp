@@ -143,18 +143,20 @@
                         </thead>
                         <tbody>
                             <!-- Loop -->
+                            <c:forEach var="header_cart" items="${ header_cart_list }">
                             <tr>
                                 <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
-                                <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
-                                <td><a href="">나이키후드집업</a></td>
-                                <td><input type="number" value="1" class="form-control inBlock text-center" /></td>
-                                <td class="mHide"><del>50,000</del>원</td>
-                                <td><strong class="ftRed">20,000원</strong></td>
-                                <td class="mHide">YYYY-MM-DD</td>
+                                <td class="mHide"><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ header_cart.p_image_m }" alt="" /></a></td>
+                                <td><a href="">${ header_cart.p_name }</a></td>
+                                <td><input type="number" value="${ header_cart.cart_amt }" class="form-control inBlock text-center" /></td>
+                                <td class="mHide"><del>${ header_cart.p_price }</del>원</td>
+                                <td><strong class="ftRed">${ header_cart.p_sale }원</strong></td>
+                                <td class="mHide">${ header_cart.cart_regdate }</td>
                                 <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
                             </tr>
+                            </c:forEach>
                             <!-- //Loop -->
-                            <tr>
+                            <!-- <tr>
                                 <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
                                 <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
                                 <td><a href="">나이키신발</a></td>
@@ -163,7 +165,7 @@
                                 <td><strong class="ftRed">10,000원</strong></td>
                                 <td class="mHide">YYYY-MM-DD</td>
                                 <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
