@@ -2,6 +2,15 @@ use f4mall;
 select * from items
 
 use f4mall;
+    select distinct p.p_no, p.p_name from
+        items i inner join product p on i.p_no = p.p_no
+            where category_no=
+                (select category_no from category where category_name='running')
+
+           
+use f4mall;
+select * from product
+use f4mall;
 create table items(
 	i_no int primary key auto_increment,
 	p_no int,

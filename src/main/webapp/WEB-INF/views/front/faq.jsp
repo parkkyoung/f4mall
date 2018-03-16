@@ -13,7 +13,7 @@ function findFaq(){
 			text : "검색할 내용을 입력하세요",
 			icon : "error",
 		}).then((value) => {
-			find_faq_txt.focus();
+			$("#findFaqTxt").focus();
 			return;
 		});
 	} else {
@@ -21,6 +21,7 @@ function findFaq(){
 	}
 }
 </script>
+
 <!-- visual -->
 <section class="subVisual">
     <h2>FAQ</h2>
@@ -33,7 +34,7 @@ function findFaq(){
 <section class="sub container">
     <!-- search box -->
     <div class="searchBox">
-        <input type="text" id="findFaqTxt" placeholder="search" value="${ param.find_faq_txt }" onkeyup="if (window.event.keyCode == 13) findFaq();" />
+        <input type="text" id="findFaqTxt" placeholder="search" value="${ param.find_faq_txt }" onkeyup="if(window.event.keyCode == 13) findFaq();" />
         <button type="button" onclick="findFaq();"><i class="fa fa-search fa-w-16"></i></button>
     </div>
     <!-- //search box -->
@@ -60,4 +61,5 @@ function findFaq(){
     <!-- //FAQ  -->
 </section>
 <!-- //sub contents -->
+
 <%@include file= "template/footer.jsp"%>

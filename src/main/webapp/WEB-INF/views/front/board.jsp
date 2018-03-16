@@ -5,6 +5,25 @@
 <%@ page import="java.sql.*,java.text.SimpleDateFormat,java.util.Date"%>
 
 <script type="text/javascript">
+
+$(function() {
+    // 게시판 리스트 말줄임
+    var blSubjectWidth = 0;
+    function blSubjectEllipsis() {
+        if ($(window).width() > 767) {
+            blSubjectWidth = $(".boardList").width() * 0.5 - 20;
+            $(".blSubject a").css("width", blSubjectWidth);
+        } else {
+            blSubjectWidth = $(".boardList").width() * 0.7 - 20;
+            $(".blSubject a").css("width", blSubjectWidth);
+        }
+    }
+    ;
+    blSubjectEllipsis();
+    $(window).resize(function() {
+        blSubjectEllipsis();
+    });
+});
 /* insert btn */
 function insert_form(){
 	//로그인상태 체크
@@ -44,125 +63,121 @@ function find(){
 }
 </script>
 
+<!-- visual -->
+<section class="subVisual">
+    <h2>COMMUNITY</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_board.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_board.jpg" alt="sub visual" class="imgMobile" />
+</section>
+<!-- //visual -->
 
-<!-- contents -->
-<div id="container">
+<!-- sub contents -->
+<section class="sub container">
+	<h2 class="hide">커뮤니티 목록</h2>
 
-	<!-- visual -->
-	<section class="subVisual">
-		<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
-	</section>
-	<!-- //visual -->
-
-	<!-- sub contents -->
-	<section class="sub container">
-		<h2 class="hide">커뮤니티 목록</h2>
-
-		<!-- search box -->
-		<div class="searchBox">
-			<input type="text" id="search_text" value="${param.search_text}" placeholder="search"  onkeyup="if (window.event.keyCode == 13) find();"/>
-			<button type="button" name="검색" onclick="find();"><i class="fa fa-search fa-w-16"></i></button>
-		</div>
-		<!-- //search box -->
-		<!-- 커뮤니티 목록  -->
-		<div class="board boardList">
-			<div class="table-reponsive">
-				<table class="table table-hover">
-					<thead>
+	<!-- search box -->
+	<div class="searchBox">
+		<input type="text" id="search_text" value="${param.search_text}" placeholder="search"  onkeyup="if (window.event.keyCode == 13) find();"/>
+		<button type="button" name="검색" onclick="find();"><i class="fa fa-search fa-w-16"></i></button>
+	</div>
+	<!-- //search box -->
+	<!-- 커뮤니티 목록  -->
+	<div class="board boardList">
+		<div class="table-reponsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th class="blNo mHide">No</th>
+						<th class="blSubject">제목</th>
+						<th class="blId">ID</th>
+						<th class="blDatem mHide">작성일</th>
+						<th class="blViewing mHide">조회수(댓글수)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- 게시글 없을경우 -->
+					<c:if test="${empty list }">
 						<tr>
-							<th class="blNo mHide">No</th>
-							<th class="blSubject">제목</th>
-							<th class="blId">ID</th>
-							<th class="blDatem mHide">작성일</th>
-							<th class="blViewing mHide">조회수(댓글수)</th>
+							<td>현재 등록된 글이 없습니다.</td>
 						</tr>
-					</thead>
-					<tbody>
-						<!-- 게시글 없을경우 -->
-						<c:if test="${empty list }">
-							<tr>
-								<td>현재 등록된 글이 없습니다.</td>
+					</c:if>
+					<!-- //게시글 없을경우 -->
+					
+					<!-- 공지사항 Loop -->
+					<c:forEach var="vo" items="${list}">
+						<c:if test="${vo.b_notice eq 1 }">
+							<tr class="active">
+								<td class="blNo mHide">공지</td>
+								<td class="blSubject">
+								
+									<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search_text=${param.search_text}">
+									 
+										<!--  NewBoard  -->
+										<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />   ==[NEW]==</c:if>
+										<c:if test="${vo.b_regdateShort ne vo.todayShort }"><c:out value="${vo.b_name}" /></c:if>
+										<!--  //NewBoard  -->
+									</a>
+								</td>
+								<td class="blId"><c:out value="${vo.b_nick}" /></td>
+								<td class="blDate mHide"><c:out
+										value="${vo.b_regdateShort}" /></td>
+								<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /></td>
 							</tr>
 						</c:if>
-						<!-- //게시글 없을경우 -->
-						
-						<!-- 공지사항 Loop -->
-						<c:forEach var="vo" items="${list}">
-							<c:if test="${vo.b_notice eq 1 }">
-								<tr class="active">
-									<td class="blNo mHide">공지</td>
-									<td class="blSubject">
-									
-										<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search_text=${param.search_text}">
-										 
-											<!--  NewBoard  -->
-											<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />   ==[NEW]==</c:if>
-											<c:if test="${vo.b_regdateShort ne vo.todayShort }"><c:out value="${vo.b_name}" /></c:if>
-											<!--  //NewBoard  -->
-										</a>
-									</td>
-									<td class="blId"><c:out value="${vo.b_nick}" /></td>
-									<td class="blDate mHide"><c:out
-											value="${vo.b_regdateShort}" /></td>
-									<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /></td>
-								</tr>
-							</c:if>
-						
-						<!-- //공지사항 Loop -->
+					
+					<!-- //공지사항 Loop -->
 
-						<!-- 일반글 Loop -->
+					<!-- 일반글 Loop -->
 
-							<c:if test="${vo.b_notice eq 0 }">
-								<tr>
-									<td class="blNo mHide"><c:out value="${vo.cnt-vo.no+1}" /></td>
-									
-									<td class="blSubject">
-										<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search_text=${param.search_text}">
+						<c:if test="${vo.b_notice eq 0 }">
+							<tr>
+								<td class="blNo mHide"><c:out value="${vo.cnt-vo.no+1}" /></td>
+								
+								<td class="blSubject">
+									<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search_text=${param.search_text}">
 
-											<!-- Depth  -->
-											<c:forEach begin="1" end="${ vo.b_depth }">&nbsp;&nbsp;</c:forEach>
-											<c:if test="${vo.b_depth !=0 }">
-											<i class="fa fa-share fa-fw fa-flip-vertical"></i>
-											</c:if> 
-											<!-- //Depth  -->
-											
-											<!--  NewBoard  -->
-											<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />  ==[NEW]==</c:if>
-											<c:if test="${vo.b_regdateShort ne vo.todayShort }"><c:out value="${vo.b_name}" /></c:if>
-											<!--  //NewBoard  -->
+										<!-- Depth  -->
+										<c:forEach begin="1" end="${ vo.b_depth }">&nbsp;&nbsp;</c:forEach>
+										<c:if test="${vo.b_depth !=0 }">
+										<i class="fa fa-share fa-fw fa-flip-vertical"></i>
+										</c:if> 
+										<!-- //Depth  -->
+										
+										<!--  NewBoard  -->
+										<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />  ==[NEW]==</c:if>
+										<c:if test="${vo.b_regdateShort ne vo.todayShort }"><c:out value="${vo.b_name}" /></c:if>
+										<!--  //NewBoard  -->
 
-										</a>
-									</td>
-									
-									
-									<td class="blId"><c:out value="${vo.b_nick}" /></td>
-									<td class="blDate mHide"><c:out
-											value="${vo.b_regdateShort}" /></td>
-									<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /> ( <c:out value="${vo.listCount}"/> )</td>
-								</tr>
-							</c:if>
-						</c:forEach>
-						<!-- //일반글 Loop -->
-					</tbody>
-				</table>
-			</div>
-			
-			<!-- page table  -->
-			<table class="tCenter">
-				<tr>
-					<td>${pageMenu}</td>
-				</tr>
+									</a>
+								</td>
+								
+								
+								<td class="blId"><c:out value="${vo.b_nick}" /></td>
+								<td class="blDate mHide"><c:out
+										value="${vo.b_regdateShort}" /></td>
+								<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /> ( <c:out value="${vo.listCount}"/> )</td>
+							</tr>
+						</c:if>
+					</c:forEach>
+					<!-- //일반글 Loop -->
+				</tbody>
 			</table>
-			<!-- //page table  -->
-			
-			<div class="btnBox">
-				<a onclick="insert_form();" class="btn btn-primary">글쓰기</a>
-			</div>
 		</div>
-		<!-- //커뮤니티 목록  -->
-	</section>
-	<!-- //sub contents -->
-</div>
-<!-- //contents -->
+		
+		<!-- page table  -->
+		<table class="tCenter">
+			<tr>
+				<td>${pageMenu}</td>
+			</tr>
+		</table>
+		<!-- //page table  -->
+		
+		<div class="btnBox">
+			<a onclick="insert_form();" class="btn btn-primary">글쓰기</a>
+		</div>
+	</div>
+	<!-- //커뮤니티 목록  -->
+</section>
+<!-- //sub contents -->
 <%@ include file="template/footer.jsp"%>
 <!-- /*	//2018년3월7일(seo) 	*/-->

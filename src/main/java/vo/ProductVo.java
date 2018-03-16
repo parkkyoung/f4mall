@@ -1,49 +1,68 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductVo {
-	int p_no, category_no,
-		material_no, color_no, sex_no, brand_no,
-		size_no;
-	String m_id,p_supply,p_name,p_content;
-	int p_price,p_sale;
-	String p_image_m,p_image_s,p_pdate,
-	p_country,p_entry;
+	int p_no, p_price, p_sale;
+	String p_supply, p_name, p_content, p_pdate,
+	p_country, p_entry;
 	
-	public int getColor_no() {
-		return color_no;
-	}
-
-	public void setColor_no(int color_no) {
-		this.color_no = color_no;
-	}
-
-	public int getBrand_no() {
-		return brand_no;
-	}
-
-	public void setBrand_no(int brand_no) {
-		this.brand_no = brand_no;
-	}
-
-	public int getSize_no() {
-		return size_no;
-	}
-
-	public void setSize_no(int size_no) {
-		this.size_no = size_no;
-	}
-
-	public int getMaterial_no() {
-		return material_no;
-	}
-
-	public void setMaterial_no(int material_no) {
-		this.material_no = material_no;
-	}
+	MultipartFile [] p_image;
 	
+	String p_image_m,p_image_s;
+
 	public ProductVo() {
 		// TODO Auto-generated constructor stub
 	}
+
+	
+	
+	
+	public String getP_image_m() {
+		return p_image_m;
+	}
+
+
+
+
+
+	public void setP_image_m(String p_image_m) {
+		this.p_image_m = p_image_m;
+	}
+
+
+
+
+
+	public String getP_image_s() {
+		return p_image_s;
+	}
+
+
+
+
+
+	public void setP_image_s(String p_image_s) {
+		this.p_image_s = p_image_s;
+	}
+
+
+
+
+
+	public MultipartFile[] getP_image() {
+		return p_image;
+	}
+
+
+
+
+	public void setP_image(MultipartFile[] p_image) {
+		this.p_image = p_image;
+	}
+
+
+
 
 	public int getP_no() {
 		return p_no;
@@ -51,30 +70,6 @@ public class ProductVo {
 
 	public void setP_no(int p_no) {
 		this.p_no = p_no;
-	}
-
-	public int getCategory_no() {
-		return category_no;
-	}
-
-	public void setCategory_no(int category_no) {
-		this.category_no = category_no;
-	}
-
-	public int getSex_no() {
-		return sex_no;
-	}
-
-	public void setSex_no(int sex_no) {
-		this.sex_no = sex_no;
-	}
-
-	public String getM_id() {
-		return m_id;
-	}
-
-	public void setM_id(String m_id) {
-		this.m_id = m_id;
 	}
 
 	public String getP_supply() {
@@ -115,22 +110,6 @@ public class ProductVo {
 
 	public void setP_sale(int p_sale) {
 		this.p_sale = p_sale;
-	}
-
-	public String getP_image_m() {
-		return p_image_m;
-	}
-
-	public void setP_image_m(String p_image_m) {
-		this.p_image_m = p_image_m;
-	}
-
-	public String getP_image_s() {
-		return p_image_s;
-	}
-
-	public void setP_image_s(String p_image_s) {
-		this.p_image_s = p_image_s;
 	}
 
 	public String getP_pdate() {

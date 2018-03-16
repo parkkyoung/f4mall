@@ -210,6 +210,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .c-menu .mContents .brandList .brand09 div {background-position:center -800px;}
 
 /* list */
+.productList li {margin-top:30px;}
 .productList .imgBox {position:relative;overflow:hidden;}
 .productList .imgBox a:after {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0);transition:all 0.3s ease;}
 .productList .imgBox:hover a:after {background:rgba(0, 0, 0, 0.15);}
@@ -247,12 +248,12 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 /* 비주얼 */
 .subVisual {position:relative;}
 .subVisual:before {content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0, 0, 0, 0.3);}
-.subVisual h2 {position:absolute;top:50%;left:50%;margin:-50px 0 0 -150px;width:300px;height:100px;line-height:100px;text-align:center;font-size:48px;color:white;border-top:2px solid white;border-bottom:2px solid white;}
+.subVisual h2 {position:absolute;top:50%;left:50%;margin:-50px 0 0 -150px;width:300px;height:100px;line-height:96px;text-align:center;font-size:48px;color:white;text-transform:uppercase;border-top:2px solid white;border-bottom:2px solid white;}
 .subVisual img {width:100%;}
 .subVisual .imgMobile {display:none;}
 @media(max-width:767px){
-	.subVisual h2 {margin:-25px 0 0 -100px;width:200px;height:50px;line-height:50px;font-size:26px;}
-	.subVisual .imgPc {display:none;}
+	.subVisual h2 {margin:-25px 0 0 -100px;width:200px;height:50px;line-height:46px;font-size:26px;}
+    .subVisual .imgPc {display:none;}
 	.subVisual .imgMobile {display:block;}
 }
 
@@ -267,12 +268,10 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .product .productOption {text-align:right;}
 .product .productOption .form-group {margin-bottom:18px;padding-top:18px;overflow:hidden;border-top:1px solid #f2f2f2;}
 .product .productOption .form-group h3 {font-size:32px;}
-.product .productOption .form-group.goCategory {padding-top:0;overflow:hidden;border-top:0;}
-.product .productOption .form-group.goCategory a {float:left;font-size:24px;}
-.product .productOption .form-group.goCategory span {float:right;padding-top:8px;}
+.product .productOption .form-group.goCategory {padding-top:10px;overflow:hidden;text-align:right;border-top:0;}
+.product .productOption .form-group.goCategory div {float:left;font-size:16px;}
 .product .productOption .form-group.goTitle {overflow:hidden;}
 .product .productOption .form-group.goTitle h3 {float:right;}
-.product .productOption .form-group.goTitle div {float:left;font-size:24px;}
 .product .productOption .form-group.goPrice strong {font-size:32px;}
 .product .productOption .form-group.btnBox {padding-top:20px;border-top:1px solid #aaa;}
 .product .productOption .form-group.btnBox input[type="number"] {margin-top:6px;}
