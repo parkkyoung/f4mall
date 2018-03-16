@@ -233,7 +233,7 @@
 			text : "회원가입이 완료되었습니다.",
 			icon : "success",
 		}).then((value) => {
-			location.href = "product_list.do";
+			location.href = "index.do";
 		});
 	};
 	

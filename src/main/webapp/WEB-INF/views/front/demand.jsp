@@ -6,6 +6,32 @@
 
 <script>
 function demand_insert(f){
+	var m_zipcode = f.addressNumber.value;
+	var m_addr = f.address.value;
+	var m_addr_d = f.address2.value;
+	var o_tel = f.cellphone.value;
+	
+	if(m_zipcode ==''){
+		alert('우편번호를 입력해주세요');
+		f.addressNumber.focus();
+		return;
+	}
+	if(m_addr == ''){
+		alert('지번주소를 입력해주세요');
+		f.address.focus();
+		return;
+	}
+	if(m_addr_d == ''){
+		alert('상세주소를 입력해주세요');
+		f.address2.focus();
+		return;
+	}
+	if(o_tel == ''){
+		alert('연락처를 입력해주세요');
+		f.cellphone.focus();
+		return;
+	}
+	
 	f.action="demand_insert.do";
 	f.submit();
 }
@@ -96,7 +122,7 @@ function demand_insert(f){
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label">배송지 연락처</label>
-						<div class="col-lg-3"><input type="text" placeholder="숫자만 기입" class="form-control" value="${ user.m_tel }" name="o_tel"/></div>
+						<div class="col-lg-3"><input type="text" placeholder="숫자만 기입" class="form-control" value="${ user.m_tel }" name="o_tel" id="cellphone"/></div>
 					</div>
 
 					<div class="form-group">

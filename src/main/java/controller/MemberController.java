@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import common.ShortCut;
 import dao.MemberDao;
+import vo.DemandVo;
 import vo.MemberVo;
 
 
@@ -248,6 +249,26 @@ public class MemberController {
 
 		return "redirect:/admin/member_list.do";
 	}
+	
+	//주문목록
+	/**
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/admin/member_order.do")
+	public String member_order_form(Model model){
+		
+		List<DemandVo> mo_list = member_dao.molist();
+		
+		model.addAttribute("mo_list", mo_list);
+		
+		return "admin/member_order";
+	}
+	
+	
+	
+	
+	
 
 	// 로그인체크
 	/**

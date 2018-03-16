@@ -44,7 +44,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where m_id=#{ m_id }
 	</update>
 	
-	
+	<select id="mo_list" resultType="vo.DemandVo">
+		select * from demand
+	</select>
 
 	
 </mapper>
