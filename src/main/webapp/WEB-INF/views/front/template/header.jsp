@@ -7,8 +7,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi">
+<meta name="keyword" content="f4mall, f4, mall, shop, shopping, shoes, running, runnings, sneaker, sneakers, oxford, oxfords, walker, walkers, heel, heels, slipper, slippers, nike, adidas, newbalance, soda, ferragamo, kumkang, christian louboutin, elcato, rachelcox, 신발, 슈즈, 런닝, 런닝화, 운동화, 구두, 남자구두, 여자구두, 컨버스, 컨버스화, 샌들, 슬리퍼">
 <title>F4 Mall</title>
 
 <!-- css -->
@@ -139,18 +139,20 @@ function findProduct(){
                         </thead>
                         <tbody>
                             <!-- Loop -->
+                            <c:forEach var="header_cart" items="${ header_cart_list }">
                             <tr>
                                 <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
-                                <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
-                                <td><a href="">나이키후드집업</a></td>
-                                <td><input type="number" value="1" class="form-control inBlock text-center" /></td>
-                                <td class="mHide"><del>50,000</del>원</td>
-                                <td><strong class="ftRed">20,000원</strong></td>
-                                <td class="mHide">YYYY-MM-DD</td>
+                                <td class="mHide"><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ header_cart.p_image_m }" alt="" /></a></td>
+                                <td><a href="">${ header_cart.p_name }</a></td>
+                                <td><input type="number" value="${ header_cart.cart_amt }" class="form-control inBlock text-center" /></td>
+                                <td class="mHide"><del>${ header_cart.p_price }</del>원</td>
+                                <td><strong class="ftRed">${ header_cart.p_sale }원</strong></td>
+                                <td class="mHide">${ header_cart.cart_regdate }</td>
                                 <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
                             </tr>
+                            </c:forEach>
                             <!-- //Loop -->
-                            <tr>
+                            <!-- <tr>
                                 <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
                                 <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
                                 <td><a href="">나이키신발</a></td>
@@ -159,7 +161,7 @@ function findProduct(){
                                 <td><strong class="ftRed">10,000원</strong></td>
                                 <td class="mHide">YYYY-MM-DD</td>
                                 <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>

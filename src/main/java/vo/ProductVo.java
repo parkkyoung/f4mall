@@ -4,7 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ProductVo {
 	int p_no, p_price, p_sale;
-	String p_supply, p_name, p_content, p_pdate,
+	String p_supply, p_content, p_pdate,p_name,
 	p_country, p_entry;
 	
 	MultipartFile [] p_image;
@@ -22,6 +22,21 @@ public class ProductVo {
 		return p_image_m;
 	}
 
+
+	
+
+
+
+	public String getP_name() {
+		return p_name;
+	}
+
+
+
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
 
 
 
@@ -80,13 +95,7 @@ public class ProductVo {
 		this.p_supply = p_supply;
 	}
 
-	public String getP_name() {
-		return p_name;
-	}
-
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
-	}
+	
 
 	public String getP_content() {
 		return p_content;
