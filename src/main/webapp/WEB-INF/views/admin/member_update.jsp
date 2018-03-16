@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="template/header.jsp"%>
 
@@ -8,9 +7,7 @@
 
 <script>
 
-
 	$(document).ready(function() {
-
 
 		<!--비밀번호 체크-->
 		$('#mm_pwd').keyup(function(event) {
@@ -90,17 +87,17 @@
 			}
 		}).open();
 	}
-	
-	
+
+
 	function send_update(f) {
 		
-		var m_id 	  = f.mm_id.value.trim();
-		var m_pwd 	  = f.mm_pwd.value.trim();
-		var m_name 	  = f.mm_name.value.trim();
-		var m_nick	  = f.mm_nick.value.trim();
-		var m_tel 	  = f.mm_tel.value.trim();
-		var m_addr 	  = f.mm_addr.value.trim();
-		var m_addr_d  = f.mm_addr_d.value.trim();
+		var m_id 		 = f.mm_id.value.trim();
+		var m_pwd 		 = f.mm_pwd.value.trim();
+		var m_name 		 = f.mm_name.value.trim();
+		var m_nick 		 = f.mm_nick.value.trim();
+		var m_tel 	     = f.mm_tel.value.trim();
+		var m_addr       = f.mm_addr.value.trim();
+		var m_addr_d     = f.mm_addr_d.value.trim();
 		/* var m_zipcode = f.mm_zipcode.value.trim(); */
 
 		if (m_id == '') {
@@ -114,13 +111,13 @@
 			f.m_pwd.focus();
 			return;
 		}
-		
+
 		if (m_name == '') {
 			alert('이름을 입력하세요');
 			f.m_name.focus();
 			return;
 		}
-		
+
 		if (m_nick == '') {
 			alert('닉네임을 입력하세요');
 			f.m_nick.focus();
@@ -132,22 +129,22 @@
 			f.m_addr.focus();
 			return;
 		}
-		
+
 		if (m_addr_d == '') {
 			alert('상세주소를 입력하세요');
 			f.m_addr_d.focus();
 			return;
 		}
-		
-	/* 	if (m_zipcode == '') {
-			alert('우편번호를 입력하세요');
-			return;
-		} */
-		
+
+		/* 	if (m_zipcode == '') {
+				alert('우편번호를 입력하세요');
+				return;
+			} */
+
 
 		f.action = 'member_update.do';
-		f.submit(); 
-		
+		f.submit();
+
 		swal({
 			text : "정보수정이 완료되었습니다.",
 			icon : "success",
@@ -155,6 +152,7 @@
 			location.href = "member_list.do";
 		});
 	};
+	
 </script>
 
 <!-- page title -->
@@ -169,52 +167,59 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="form-group">
-						<label for="">IP</label> <input type="text" class="form-control"
-							placeholder="아이피 주소" value="${user.m_ip }" readonly />
+						<label for="">IP</label> 
+						<input type="text" class="form-control" placeholder="아이피 주소" value="${user.m_ip }" readonly />
 					</div>
 					<div class="form-group">
-						<label for="">ID</label> <input type="text" name="m_id" id="mm_id"
-							class="form-control" placeholder="메일 주소" value="${user.m_id }" readonly />
+						<label for="">ID</label> 
+						<input type="text" name="m_id" id="mm_id" class="form-control" placeholder="메일 주소" value="${user.m_id }" readonly />
 					</div>
 					<div class="form-group">
-						<label for="">패스워드</label> <input type="password" name="m_pwd"
-							id="mm_pwd" class="form-control" placeholder="비밀번호"value="${user.m_pwd }" />
+						<label for="">패스워드</label> 
+						<input type="password" name="m_pwd" id="mm_pwd" class="form-control" placeholder="비밀번호" value="${user.m_pwd }" /> 
 							<span class="mt5" id="mm_pwd_msg"></span>
 					</div>
 					<div class="form-group">
-						<input type="password" id="mm1_pwd" class="form-control"placeholder="비밀번호 확인" value="" />
+						<input type="password" id="mm1_pwd" class="form-control" placeholder="비밀번호 확인" value="" /> 
 						<span class="mt5" id="mm1_pwd_msg"></span>
 					</div>
 					<div class="form-group">
 						<label for="">이름</label> <input type="text" name="m_name"
-							id="mm_name" class="form-control" placeholder="이름"value="${user.m_name }" />
+							id="mm_name" class="form-control" placeholder="이름"
+							value="${user.m_name }" />
 					</div>
 					<div class="form-group">
 						<label for="">닉네임</label> <input type="text" name="m_nick"
-							id="mm_nick" class="form-control" placeholder="닉네임"value="${user.m_nick }" />
+							id="mm_nick" class="form-control" placeholder="닉네임"
+							value="${user.m_nick }" />
 					</div>
 					<div class="form-group">
-						<label for="">핸드폰번호</label> <input type="number" name="m_tel"id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력"
+						<label for="">핸드폰번호</label> <input type="number" name="m_tel"
+							id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력"
 							value="${user.m_tel }" />
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="form-group">
-						<label for="">가입일자</label> <input type="text" class="form-control"placeholder="YYYY-MM-DD" value="${user.m_regdate }" readonly>
+						<label for="">가입일자</label> <input type="text" class="form-control"
+							placeholder="YYYY-MM-DD" value="${user.m_regdate }" readonly>
 					</div>
 					<div class="form-group">
 						<label for="">주소</label>
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" name="m_zipcode"id="mm_zipcode" class="form-control"placeholder="우편번호" value="" readonly />
+								<input type="text" name="m_zipcode" id="mm_zipcode"
+									class="form-control" placeholder="우편번호" value="" readonly />
 							</div>
 							<div class="col-xs-4">
-								<button type="button" class="btn btn-warning"onclick="findAddress()">주소찾기</button>
+								<button type="button" class="btn btn-warning"
+									onclick="findAddress()">주소찾기</button>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" name="m_addr" id="mm_addr" class="form-control"placeholder="지번주소" value="${user.m_addr }" />
+						<input type="text" name="m_addr" id="mm_addr" class="form-control"
+							placeholder="지번주소" value="${user.m_addr }" />
 					</div>
 					<div class="form-group">
 						<input type="text" name="m_addr_d" id="mm_addr_d"
@@ -226,14 +231,10 @@
 				</div>
 				<div class="col-lg-12">
 					<div class="form-group text-right" float="rigth">
-						<button type="button" class="btn btn-primary" onclick="send_update(this.form); return false;">회원수정</button>
-					</div>
-					<div class="col-lg-12">
-					<div class="form-group text-right" float="rigth">
-						<button type="button" class="btn btn-primary"onclick="location.href='/f4mall/admin/member_list.do'">취소</button>
+						<button type="button" class="btn btn-primary"
+							onclick="send_update(this.form); return false;">회원수정</button>
 					</div>
 				</div>
-			</div>
 		</form>
 	</div>
 </div>

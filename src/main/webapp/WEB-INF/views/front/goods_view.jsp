@@ -4,8 +4,8 @@
 <script>
 function add_cart(f){
 	
-	var i_no = f.i_no.value;
-	var cart_amt = f.cart_amt.value;
+	var i_no = f.i_no.value();
+	var cart_amt = f.cart_amt.value();
 	if(cart_amt==''){
 		alert('수량을 입력해주세요');
 		return;

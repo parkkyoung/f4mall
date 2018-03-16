@@ -16,10 +16,8 @@
 
 		$('#admin_id').keyup(function(event) {
 
-			//console.log("----");
 			var m_id = $(this).val();
 			var m_id_pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-			//console.log('id값 ='+insert_id);
 			if (!(m_id_pattern.test(m_id))) {
 				$('#admin_id_msg').html('이메일형식을 입력해주세요.').css('color', 'red');
 				return;
@@ -27,7 +25,7 @@
 
 			//서버로 id전송(Ajax통신)
 			$.ajax({
-				url : 'check_id.do',
+				url  : 'check_id.do',
 				data : { 'm_id' : m_id },
 				success : function(data) {
 					// data="[{'result':'yes'}]";
@@ -119,20 +117,20 @@
 				document.getElementById('address2').focus();
 			}
 		}).open();
+	};
 
-	}
-	;
-
+	
 	function member_Insert(f) {
-		var m_id 	 = f.m_id.value.trim();
-		var m_pwd 	 = f.m_pwd.value.trim();
-		var m_name	 = f.m_name.value.trim();
-		var m_nick	 = f.m_nick.value.trim();
+		s
+		var m_id     = f.m_id.value.trim();
+		var m_pwd    = f.m_pwd.value.trim();
+		var m_name   = f.m_name.value.trim();
+		var m_nick   = f.m_nick.value.trim();
 		var m_tel 	 = f.m_tel.value.trim();
-		var m_addr 	 = f.m_addr.value.trim();
+		var m_addr   = f.m_addr.value.trim();
 		var m_addr_d = f.m_addr_d.value.trim();
 		var m_grade  = f.m_grade.value.trim();
-		
+
 		if (m_id == '') {
 			alert('아이디를 입력하세요')
 			f.m_id.focus();
@@ -163,7 +161,7 @@
 			alert('주소를 입력하세요')
 			f.m_addr.focus();
 			return;
-		} 
+		}
 		if (m_addr_d == '') {
 			alert('상세주소를 입력하세요')
 			f.m_addr_d.focus();
@@ -175,7 +173,6 @@
 			return;
 		}
 
-		
 		f.action = 'member_insert.do';
 		f.submit();
 
@@ -186,6 +183,7 @@
 			location.href = "product_list.do";
 		});
 	};
+	
 </script>
 
 <!-- page title -->
@@ -196,34 +194,34 @@
 <div class="panel panel-default">
 	<div class="panel-heading">회원등록</div>
 	<div class="panel-body">
-		<form  role="form" class="panel-body">
+		<form role="form" class="panel-body">
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="form-group">
-						<label for="">ID</label> <input type="text" name="m_id"
-							id="admin_id" class="form-control" placeholder="메일 주소" /> <span
-							class="mt5" id="admin_id_msg"></span>
+						<label for="">ID</label> 
+						<input type="text" name="m_id" id="admin_id" class="form-control" placeholder="메일 주소" /> 
+						<span class="mt5" id="admin_id_msg"></span>
 					</div>
 					<div class="form-group">
-						<label for="">패스워드</label> <input type="password" name="m_pwd"
-							id="admin_pwd" class="form-control" placeholder="비밀번호" /> <span
-							class="mt5" id="admin_pwd_msg"></span>
+						<label for="">패스워드</label> 
+						<input type="password" name="m_pwd" id="admin_pwd" class="form-control" placeholder="비밀번호" /> 
+						<span class="mt5" id="admin_pwd_msg"></span>
 					</div>
 					<div class="form-group">
-						<input type="password" id="admin1_pwd" class="form-control"
-							placeholder="비밀번호 확인" /> <span class="mt5" id="admin1_pwd_msg"></span>
+						<input type="password" id="admin1_pwd" class="form-control" placeholder="비밀번호 확인" /> 
+							<span class="mt5" id="admin1_pwd_msg"></span>
 					</div>
 					<div class="form-group">
-						<label for="">이름</label> <input type="text" name="m_name"
-							id="m_name" class="form-control" placeholder="이름" />
+						<label for="">이름</label> 
+						<input type="text" name="m_name" id="m_name" class="form-control" placeholder="이름" />
 					</div>
 					<div class="form-group">
-						<label for="">닉네임</label> <input type="text" name="m_nick"
-							class="form-control" id="m_nick" placeholder="닉네임" />
+						<label for="">닉네임</label> 
+						<input type="text" name="m_nick" class="form-control" id="m_nick" placeholder="닉네임" />
 					</div>
 					<div class="form-group">
-						<label for="">핸드폰번호</label> <input type="number" name="m_tel"
-							id="m_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력" />
+						<label for="">핸드폰번호</label> 
+						<input type="number" name="m_tel" id="m_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력" />
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -231,34 +229,33 @@
 						<label for="">주소</label>
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" name="m_addr" id="m_addr"
-									class="form-control" placeholder="우편번호" readonly />
+								<input type="text" name="m_addr" id="m_addr" class="form-control" placeholder="우편번호" readonly />
 							</div>
 							<div class="col-xs-4">
-								<button type="button" class="btn btn-warning"
-									onclick="findAddress()">주소찾기</button>
+								<button type="button" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
 							</div>
 						</div>
 					</div>
+					
 					<div class="form-group">
-						<input type="text" name="m_zipcode" id="m_zipcode"
-							class="form-control" placeholder="지번주소" />
+						<input type="text" name="m_zipcode" id="m_zipcode" class="form-control" placeholder="지번주소" />
 					</div>
+					
 					<div class="form-group">
-						<input type="text" name="m_addr_d" id="m_addr_d"
-							class="form-control" placeholder="상세주소" />
+						<input type="text" name="m_addr_d" id="m_addr_d" class="form-control" placeholder="상세주소" />
 					</div>
+					
 					<div class="form-group">
-						<label for="">이미지</label> <input type="file" class="form-control" />
+						<label for="">이미지</label> 
+						<input type="file" class="form-control" />
 					</div>
 
 					<div class="form-group">
 						<label for="">관리자등록여부</label> 
-						<select name="m_grade" id="m_grade"
-							class="form-control">
+						<select name="m_grade" id="m_grade" class="form-control">
 							<option value="" selected>::관리자등록여부선택::</option>
 							<option value="0">일반회원</option>
-							<option value="1" >관리자회원</option>
+							<option value="1">관리자회원</option>
 						</select>
 					</div>
 				</div>

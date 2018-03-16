@@ -269,7 +269,7 @@ function findProduct(){
             <dl>
                 <dt>MY PAGE</dt>
                 <dd><button type="button" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i><div>장바구니</div></button></dd>
-                <dd><a href="member_orders.do"><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
+                <dd><a href="member_order.do"><i class="fa fa-list-alt"></i><div>주문내역</div></a></dd>
                 <dd><a href="member.do"><i class="fa fa-user"></i><div>회원정보</div></a></dd>
                 <dd><button type="button" onclick="logout();"><i class="fa fa-unlock"></i><div>로그아웃</div></button></dd>
             </dl>
