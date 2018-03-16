@@ -46,7 +46,7 @@
         <h3 class="hide">NIKE</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list01 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list01 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -69,7 +69,7 @@
         <h3 class="hide">ADIDAS</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list02 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list02 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -92,7 +92,7 @@
         <h3 class="hide">NEWBALANCE</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list03 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list03 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -115,7 +115,7 @@
         <h3 class="hide">SODA</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list04 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list04 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -138,7 +138,7 @@
         <h3 class="hide">FERRAGAMO</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list05 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list05 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -161,7 +161,7 @@
         <h3 class="hide">KUMKANG</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list06 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list06 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -184,7 +184,7 @@
         <h3 class="hide">CHRISTIAN LOUBOUTIN</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list07 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list07 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -207,7 +207,7 @@
         <h3 class="hide">ELCANTO</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list08 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list08 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
@@ -230,7 +230,7 @@
         <h3 class="hide">RACHELCOX</h3>
         <ul class="row">
         
-            <c:forEach var="list" items="${ list09 }" begin="1" end="4">
+            <c:forEach var="list" items="${ list09 }" begin="0" end="3">
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>

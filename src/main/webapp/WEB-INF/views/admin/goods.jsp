@@ -11,12 +11,14 @@ function productDelete(p_no){
 		icon : "info",
 		buttons : true
 	}).then((willDelete) =>{
-		swal({
-			text : "삭제되었습니다.",
-			icon : "succsess"
-		}).then((value) =>{
-			location.href='product_delete.do?p_no='+p_no;
-		});
+		if(willDelete){
+			swal({
+				text : "삭제되었습니다.",
+				icon : "succsess"
+			}).then((value) =>{
+				location.href='product_delete.do?p_no='+p_no;
+			});
+        }
 	});
 };
 
@@ -115,7 +117,7 @@ function itemInsert(f){
 
 // 아이템 삭제
 function itemsDelete(i_no, p_no){
-	swal({
+    swal({
 		text : "정말 삭제하시겠습니까?",
 		icon : "info",
 		buttons : true

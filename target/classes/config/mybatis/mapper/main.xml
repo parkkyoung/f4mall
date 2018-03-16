@@ -11,38 +11,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
            p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry
                from items i inner join product p on i.p_no = p.p_no
                    where brand_no=1
+                        order by p_no desc
     </select>
     <select id="list02" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=2
+                        order by p_no desc
     </select>
     <select id="list03" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=3
+                        order by p_no desc
     </select>
     <select id="list04" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=4
+                        order by p_no desc
     </select>
     <select id="list05" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=5
+                        order by p_no desc
     </select>
     <select id="list06" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=6
+                        order by p_no desc
     </select>
     <select id="list07" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=7
+                        order by p_no desc
     </select>
     <select id="list08" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=8
+                        order by p_no desc
     </select>
     <select id="list09" resultType="vo.ProductVo">
         select distinct p.p_no, p.p_supply, p.p_name, p.p_content, p.p_price, p.p_sale, p.p_image_m, p.p_image_s, p.p_pdate, p.p_country, p.p_entry from items i inner join product p on i.p_no = p.p_no where
                brand_no=9
+                        order by p_no desc
     </select>
 
 </mapper>

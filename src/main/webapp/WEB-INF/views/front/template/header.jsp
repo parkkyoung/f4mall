@@ -205,8 +205,7 @@ function findProduct(){
 								<div class="form-group">
 									<label for="loginPw" class="col-sm-2 col-xs-3 control-label">Password</label>
 									<div class="col-sm-10 col-xs-9">
-										<input type="password" class="form-control" id="m_pwd"
-											name="m_pwd" placeholder="Password" value="f4mall" />
+										<input type="password" class="form-control" id="m_pwd" name="m_pwd" placeholder="Password" value="f4mall" onkeyup="if(window.event.keyCode == 13) login(this.form);" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -228,8 +227,7 @@ function findProduct(){
 						<a href="member_join_clause.do" class="btn btn-warning">Join
 							us</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary"
-							onclick="login(this.form);">Login</button>
+						<button type="button" class="btn btn-primary" onclick="login(this.form);">Login</button>
 					</div>
                     <!-- //팝업 footer -->
                     
@@ -280,8 +278,8 @@ function findProduct(){
 		</c:if>
 		<!-- //개인정보 -->
 
-		<!-- category -->
-		<div class="mList">
+        <!-- category -->
+        <div class="mList">
             <dl>
                 <dt>CATEGORY</dt>
                 <dd><a href="product_list.do?category_name=runnings"><i class="flaticon-sneaker"></i><div>RUNNINGS</div></a></dd>
@@ -290,12 +288,20 @@ function findProduct(){
                 <dd><a href="product_list.do?category_name=walkers"><i class="flaticon-hiking-boot"></i><div>WALKERS</div></a></dd>
                 <dd><a href="product_list.do?category_name=heels"><i class="flaticon-high-heel-3"></i><div>HEELS</div></a></dd>
                 <dd><a href="product_list.do?category_name=slippers"><i class="flaticon-sandal"></i><div>SLIPPERS</div></a></dd>
+            </dl>
+        </div>
+        <!-- //category -->
+
+        <!-- sex -->
+        <div class="mList">
+            <dl>
+                <dt>SEX</dt>
                 <dd><a href="product_list.do?sex_name=men"><i class="flaticon-football-shoe"></i><div>MEN</div></a></dd>
                 <dd><a href="product_list.do?sex_name=unisex"><i class="flaticon-ugg-boot"></i><div>UNISEX</div></a></dd>
                 <dd><a href="product_list.do?sex_name=women"><i class="flaticon-girls-flat-shoe"></i><div>WOMEN</div></a></dd>
             </dl>
         </div>
-		<!-- //category -->
+        <!-- //sex -->
 
 		<!-- brand -->
 		<div class="mList brandList">
@@ -340,14 +346,13 @@ function findProduct(){
 			<button type="button" class="btnGnb">메뉴</button>
 			<h1><a href="index.do" title="HOME"><img src="${ pageContext.request.contextPath }/resources/front/img/img_logo.png" alt="F4MALL" /></a></h1>
 			<div class="util">
-				<input type="text" id="p_name" class="textSerch" onkeyup="if(window.event.keyCode == 13) findProduct();" />
+				<input type="text" id="p_name" class="textSerch" placeholder="SEARCH.." onkeyup="if(window.event.keyCode == 13) findProduct();" />
 				<button type="button" class="btnSerch" onclick="findProduct();"><i class="fa fa-search fa-w-16"></i></button>
 				
                 <%-- 로그인 후에 노출 --%>
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
-				<%-- <a href="cart_view.do?m_id=${ user.m_id }" title="cart"><i class="fa fa-shopping-cart"></i></a> --%>
-				<a href="member.do" title="user"><i class="fa fa-user"></i></a>
+				<a href="member.html" title="user" class="btnMember"><img src="http://placehold.it/30x30" alt="user thumbnail" class="wFull" /></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<%-- //로그인 후에 노출 --%>
