@@ -1,6 +1,8 @@
 
 use f4mall;
+select * from product where p_name like '%³ªÀÌÅ°%'  order by p_no desc
 select * from product;
+--select * from product where p_name like concat('%',#{ p_name},'%') order by p_no desc
 =======
 
 use f4mall;

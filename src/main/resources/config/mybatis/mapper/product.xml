@@ -43,13 +43,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
     <!-- 검색한 상품 목록 -->
-    <select id="product_find_list" resultType="vo.ProductVo" parameterType="String">
-        select * from product where p_name like '%${p_name}%' order by p_no desc
-    </select>
+   <select id="product_find_list" parameterType="String" resultType="vo.ProductVo">
+        select * from product where p_name like concat('%',#{ p_name},'%') order by p_no desc
+   </select>
     
     <!-- p_no 기준으로 한 상품 -->
     <select id="product_view" parameterType="int" resultType="vo.ProductVo">
-        select * from product where p_no = #{ p_no }
+        select * from product where p_no = #{ p_no } order by p_no desc
     </select>
 	
 	<!-- 최신 상품 -->

@@ -26,8 +26,15 @@
     <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_default.jpg" alt="sub visual" class="imgMobile" />
     </c:if>
     
+    <%-- 검색별 --%>
+    <c:if test="${not empty param.p_name}">
+    <h2><c:out value="${param.p_name}"/></h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_default.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_default.jpg" alt="sub visual" class="imgMobile" />
+    </c:if>
+    
     <%-- 이 외 기본 --%>
-    <c:if test="${empty param.category_name and empty param.sex_name and empty param.brand_name}">
+    <c:if test="${empty param.category_name and empty param.sex_name and empty param.brand_name and empty param.p_name}">
     <h2>SHOES</h2>
     <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_default.jpg" alt="sub visual" class="imgPc" />
     <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_default.jpg" alt="sub visual" class="imgMobile" />
@@ -42,7 +49,16 @@
 		<h3 class="hide">상품 리스트</h3>
 		<ul class="row">
 		
-			<c:forEach var="list" items="${p_list}">
+            <%-- 리스트가 없을 경우 --%>
+            <c:if test="${empty p_list}">
+            <div class="productEmpty">
+                <strong>검색결과가 없어요 ㅠ 혹시 런닝화는 어떠세요?</strong>
+                <a href="product_list.do?category_name=runnings" class="btn btn-primary">보러가기</a>
+            </div>
+            </c:if>
+            
+            <%-- 리스트가 있을 경우 --%>
+            <c:forEach var="list" items="${p_list}">
 			<li class="col-md-3 col-xs-6">
 				<div class="imgBox">
 					<a href="goods_view.html"><img src="${ pageContext.request.contextPath }/resources/upload/<c:out value="${list.p_image_m}" />" alt="상품" class="wFull" /></a>

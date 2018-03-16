@@ -52,11 +52,11 @@ public class ItemsDao {
 		return vo;
 	}
 
-	public List<ItemsViewVo> items_list(Integer p_no) {
+	public List<ItemsViewVo> items_option(Integer p_no) {
 		// TODO Auto-generated method stub
 		List<ItemsViewVo> list = null;
 		
-		list = sqlSession.selectList("items_view",p_no);
+		list = sqlSession.selectList("items_option",p_no);
 		
 		return list;
 	}
