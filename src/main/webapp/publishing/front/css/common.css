@@ -121,7 +121,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #header .head h1 {float:left;}
 #header .head .util {float:right;}
 #header .head .util>* {margin-left:5px;}
-#header .head .util .fa {font-size:26px;transition:all 0.2s ease;}
+#header .head .util .fa {font-size:30px;transition:all 0.2s ease;}
 #header .head .util .fa:hover {color:#ec971f;}
 #header .head .util .textSerch {padding:5px 2px;width:60px;vertical-align: bottom;border:0;border-bottom:1px solid #ccc;transition:all 0.3s ease;}
 #header .head .util .textSerch:hover,
@@ -130,6 +130,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #header .head .util .btnCart span {display:block;position:absolute;top:-5px;right:-5px;width:0;height:0;line-height:16px;font-size:10px;color:white;border-radius:100%;opacity:0.7;background:white;transition:all 0.3s ease;}
 #header .head .util .btnCart.on span {width:16px;height:16px;background:red;}
 #header .head .util .btnCart:hover span {opacity: 1;}
+#header .head .util .btnMember {display:inline-block;width:30px;height:30px;overflow:hidden;vertical-align: top;border-radius:100%;}
 #header .gnb {position:absolute;top:60px;left:15px;z-index:100;padding:10px 0;width:100%;background:white;transition:opacity 0.3s ease;}
 #header .gnb.on {position:fixed;top:0;left:0;padding:10px 15px;opacity:0.6;border-bottom:1px solid #ddd;}
 #header .gnb.on:hover {opacity:1;}
@@ -152,7 +153,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #footer .foot h4 {padding-bottom:10px;font-size:16px;}
 #footer .footAbout p {margin-top:10px;}
 #footer .footAbout .snsBox {margin-top:5px;overflow:hidden;}
-#footer .footAbout .snsBox a {display:block;float:left;margin-right:20px;font-size:24px;}
+#footer .footAbout .snsBox button {display:block;float:left;margin-right:20px;font-size:24px;}
 #footer .footInfo dt {padding-bottom:10px;font-size:16px;}
 #footer .footInfo dd a {display:inline-block;position:relative;margin-top:5px;font-size:14px;}
 #footer .footInfo dd a:before {content:"";display:block;position:absolute;bottom:0;left:0;width:0;height:1px;background:black;transition:all 0.3s ease;}
