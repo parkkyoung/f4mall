@@ -172,6 +172,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 	#header .head .util,
 	#header .gnb {display:none;}
 	#container {padding-top:60px;}
+	#footer .footInfo {display:none;}
 }
 
 /* gnb */
@@ -208,6 +209,9 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .c-menu .mContents .brandList .brand07 div {background-position:center -600px;}
 .c-menu .mContents .brandList .brand08 div {background-position:center -700px;}
 .c-menu .mContents .brandList .brand09 div {background-position:center -800px;}
+.c-menu .mContents .serviceList dl dd a {padding-top:20px;}
+.c-menu .mContents .serviceList dl dd div {margin-top:8px;}
+.c-menu .mContents .serviceList dl dd .fa-users {color:#ec971f;}
 
 /* list */
 .productList li {margin-top:30px;}
@@ -224,6 +228,10 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .productList .txtBox span {display:block;margin-top:3px;font-size:16px;color:#449d44;}
 .productList .productEmpty {text-align:center;}
 .productList .productEmpty strong {display:inline-block;margin-right:10px;line-height:34px;vertical-align:top;font-size:20px;}
+@media(max-width:767px){
+	.productList .imgBox button {top:10px;background:#ec971f;}
+	.productList .imgBox button i {color:white;}
+}
 
 /* searchbox */
 .searchBox {text-align:right;}
