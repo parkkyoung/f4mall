@@ -12,6 +12,7 @@
 <title>F4 Mall</title>
 
 <!-- css -->
+<link href="${ pageContext.request.contextPath }/resources/front/img/favicon.ico" rel="shortcut icon"> <!-- favicon -->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
 <link href="${ pageContext.request.contextPath }/resources/front/css/flaticon.css" rel="stylesheet"> <!-- flaticon -->
@@ -312,6 +313,18 @@ function findProduct(){
             </dl>
         </div>
 		<!-- //brand -->
+		
+		<!-- service -->
+		<div class="mList serviceList">
+		    <dl>
+		        <dt>SERVICE</dt>
+		        <dd><a href="profile.do"><i class="fa fa-users"></i><div>PROFILE</div></a></dd>
+		        <dd><a href="board_list.do"><i class="fa fa-comments"></i><div>COMMUNITY</div></a></dd>
+		        <dd><a href="faq.do"><i class="fa fa-question-circle"></i><div>FAQ</div></a></dd>
+		    </dl>
+		</div>
+		<!-- //service -->
+
 	</div>
 	</nav>
 	<!-- //모바일 gnb -->
@@ -325,14 +338,10 @@ function findProduct(){
 
 		<div class="head">
 			<button type="button" class="btnGnb">메뉴</button>
-			<h1>
-				<a href="index.do" title="HOME">F4 Mall</a>
-			</h1>
+			<h1><a href="index.do" title="HOME"><img src="${ pageContext.request.contextPath }/resources/front/img/img_logo.png" alt="F4MALL" /></a></h1>
 			<div class="util">
 				<input type="text" id="p_name" class="textSerch" onkeyup="if(window.event.keyCode == 13) findProduct();" />
-				<button type="button" class="btnSerch" onclick="findProduct();">
-					<i class="fa fa-search fa-w-16"></i>
-				</button>
+				<button type="button" class="btnSerch" onclick="findProduct();"><i class="fa fa-search fa-w-16"></i></button>
 				
                 <%-- 로그인 후에 노출 --%>
 				<c:if test="${ not empty user }">

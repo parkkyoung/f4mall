@@ -62,6 +62,7 @@ use f4mall;
 select * from category
 
 use f4mall;
+update brand set brand_name='rachelcox' where brand_no='9';
 update sex set sex_name='unisex' where sex_no=3
 -- 네임 수정
 alter table category change e_count p_no int -- 테이블명 수정
