@@ -40,7 +40,7 @@ public class IndexController {
 	@RequestMapping("/index.do")
 	public String main(Model model){
 		
-		List<ProductVo> p_list = product_dao.select_list();
+		List<ProductVo> p_list = product_dao.product_list();
 		
 		model.addAttribute("p_list",p_list);
 		

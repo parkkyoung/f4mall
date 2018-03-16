@@ -30,83 +30,79 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-<!-- page script -->
 <script>
-	$(function() {
-		// 게시판 리스트 말줄임
-		var blSubjectWidth = 0;
-		function blSubjectEllipsis() {
-			if ($(window).width() > 767) {
-				blSubjectWidth = $(".boardList").width() * 0.5 - 20;
-				$(".blSubject a").css("width", blSubjectWidth);
-			} else {
-				blSubjectWidth = $(".boardList").width() * 0.7 - 20;
-				$(".blSubject a").css("width", blSubjectWidth);
-			}
-		}
-		;
-		blSubjectEllipsis();
-		$(window).resize(function() {
-			blSubjectEllipsis();
-		});
-	});
-    
-	// 로그인
-	function login(f) {
-		var m_id = f.m_id.value;
-		var m_pwd = f.m_pwd.value;
 
-		if (m_id == '') {
-			alert('아이디를 입력하세요');
-			f.m_id.focus();
-			return;
-		}
-		if (m_pwd == '') {
-			alert('비밀번호를 입력하세요');
-			f.m_pwd.focus();
-			return;
-		}
+// 로그인
+function login(f) {
+	var m_id = f.m_id.value;
+	var m_pwd = f.m_pwd.value;
 
-		$.ajax({
-			url : 'login.do',
-			data : {
-				'm_id' : m_id,
-				'm_pwd' : m_pwd
-			},
-			success : function(data) {
-				var json = eval(data);
-				if (json[0].result == 'yes') {
-					swal({
-						text : "로그인 성공.",
-						icon : "success",
-					}).then((value) => {
-						location.href = '';
-					});
-				} else if (json[0].result == 'id_fail') {
-					alert('아이디가 틀립니다');
-					f.m_id.focus();
-				} else if (json[0].result == 'pwd_fail') {
-					alert('비밀번호가 틀립니다');
-					f.m_pwd.focus();
-				} else if (json[0].result == 'no') {
-					alert('로그인 오류(다시 입력해주세요)');
-					f.m_id.focus();
-				}
-
-			}
-		});
+	if (m_id == '') {
+		alert('아이디를 입력하세요');
+		f.m_id.focus();
+		return;
 	}
-	
-	// 로그아웃
-	function logout(){
-		swal({
-			text : "로그아웃 하시겠습니까?",
-			icon : "info",
-			buttons : true
-		}).then((willLogout) => {
-			if(willLogout) location.href='logout.do';
-		});
-	};
+	if (m_pwd == '') {
+		alert('비밀번호를 입력하세요');
+		f.m_pwd.focus();
+		return;
+	}
+
+	$.ajax({
+		url : 'login.do',
+		data : {
+			'm_id' : m_id,
+			'm_pwd' : m_pwd
+		},
+		success : function(data) {
+			var json = eval(data);
+			if (json[0].result == 'yes') {
+				swal({
+					text : "로그인 성공.",
+					icon : "success",
+				}).then((value) => {
+					location.href = '';
+				});
+			} else if (json[0].result == 'id_fail') {
+				alert('아이디가 틀립니다');
+				f.m_id.focus();
+			} else if (json[0].result == 'pwd_fail') {
+				alert('비밀번호가 틀립니다');
+				f.m_pwd.focus();
+			} else if (json[0].result == 'no') {
+				alert('로그인 오류(다시 입력해주세요)');
+				f.m_id.focus();
+			}
+
+		}
+	});
+}
+
+// 로그아웃
+function logout(){
+	swal({
+		text : "로그아웃 하시겠습니까?",
+		icon : "info",
+		buttons : true
+	}).then((willLogout) => {
+		if(willLogout) location.href='logout.do';
+	});
+};
+
+// 상품 search
+function findProduct(){
+    var p_name = $("#p_name").val();
+    
+    if(p_name == ''){
+        swal({
+            text : "검색할 내용을 입력하세요",
+            icon : "error",
+        }).then((value) => {
+        	$("#p_name").focus();
+            return;
+        });
+    } else location.href='product_list.do?p_name='+encodeURIComponent(p_name);
+}
 </script>
 </head>
 <body>
@@ -177,12 +173,15 @@
     </div>
     <!-- //cart popup -->
 
-	<!-- Login popup -->
+    <!-- Login popup // 로그인이 안되어 있을 경우에만 출력 -->
+    <c:if test="${ empty user }">
 	<form>
 		<div class="modal fade" id="loginPop" tabindex="-1" role="dialog"
 			aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
+				
+				    <!-- 팝업 header -->
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
@@ -190,23 +189,23 @@
 						</button>
 						<h4 class="modal-title">Login</h4>
 					</div>
+                    <!-- //팝업 header -->
+					
+					<!-- 팝업 contents -->
 					<div class="modal-body">
 						<div class="form-horizontal">
-
-							<!-- 로그인이 안되어 있을 경우에만 출력 -->
-							<c:if test="${ empty user }">
 								<div class="form-group">
 									<label for="loginId" class="col-sm-2 col-xs-3 control-label">Email</label>
 									<div class="col-sm-10 col-xs-9">
 										<input type="email" class="form-control" id="m_id" name="m_id"
-											placeholder="Email" value="">
+											placeholder="Email" value="admin@f4mall.com" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="loginPw" class="col-sm-2 col-xs-3 control-label">Password</label>
 									<div class="col-sm-10 col-xs-9">
 										<input type="password" class="form-control" id="m_pwd"
-											name="m_pwd" placeholder="Password" value="">
+											name="m_pwd" placeholder="Password" value="f4mall" />
 									</div>
 								</div>
 								<div class="form-group">
@@ -216,10 +215,11 @@
 										</div>
 									</div>
 								</div>
-							</c:if>
-
 						</div>
 					</div>
+                    <!-- //팝업 contents -->
+                    
+                    <!-- 팝업 footer -->
 					<div class="modal-footer">
 						<p>관리자 계정</p>
 						<p>admin@f4mall.com</p>
@@ -230,11 +230,13 @@
 						<button type="button" class="btn btn-primary"
 							onclick="login(this.form);">Login</button>
 					</div>
+                    <!-- //팝업 footer -->
+                    
 				</div>
 			</div>
 		</div>
 	</form>
-
+    </c:if>
 	<!-- //Login popup -->
 
 	<!-- 모바일 gnb -->
@@ -281,15 +283,15 @@
 		<div class="mList">
             <dl>
                 <dt>CATEGORY</dt>
-                <dd><a href="product_list.do"><i class="flaticon-sneaker"></i><div>RUNNINGS</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-sport-shoe"></i><div>SNEAKERS</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-men-shoe"></i><div>OXFORDS</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-hiking-boot"></i><div>WALKERS</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-high-heel-3"></i><div>HEELS</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-sandal"></i><div>SLIPPERS</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-football-shoe"></i><div>MEN</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-ugg-boot"></i><div>UNISEX</div></a></dd>
-                <dd><a href="product_list.do"><i class="flaticon-girls-flat-shoe"></i><div>WOMEN</div></a></dd>
+                <dd><a href="product_list.do?category_name=runnings"><i class="flaticon-sneaker"></i><div>RUNNINGS</div></a></dd>
+                <dd><a href="product_list.do?category_name=sneakers"><i class="flaticon-sport-shoe"></i><div>SNEAKERS</div></a></dd>
+                <dd><a href="product_list.do?category_name=oxfords"><i class="flaticon-men-shoe"></i><div>OXFORDS</div></a></dd>
+                <dd><a href="product_list.do?category_name=walkers"><i class="flaticon-hiking-boot"></i><div>WALKERS</div></a></dd>
+                <dd><a href="product_list.do?category_name=heels"><i class="flaticon-high-heel-3"></i><div>HEELS</div></a></dd>
+                <dd><a href="product_list.do?category_name=slippers"><i class="flaticon-sandal"></i><div>SLIPPERS</div></a></dd>
+                <dd><a href="product_list.do?sex_name=men"><i class="flaticon-football-shoe"></i><div>MEN</div></a></dd>
+                <dd><a href="product_list.do?sex_name=unisex"><i class="flaticon-ugg-boot"></i><div>UNISEX</div></a></dd>
+                <dd><a href="product_list.do?sex_name=women"><i class="flaticon-girls-flat-shoe"></i><div>WOMEN</div></a></dd>
             </dl>
         </div>
 		<!-- //category -->
@@ -298,24 +300,23 @@
 		<div class="mList brandList">
             <dl>
                 <dt>BRAND</dt>
-                <dd class="brand01"><a href="product_list.do"><div>NIKE</div></a></dd>
-                <dd class="brand02"><a href="product_list.do"><div>ADIDAS</div></a></dd>
-                <dd class="brand03"><a href="product_list.do"><div>NEWBALANCE</div></a></dd>
-                <dd class="brand04"><a href="product_list.do"><div>SODA</div></a></dd>
-                <dd class="brand05"><a href="product_list.do"><div>FERRAGAMO</div></a></dd>
-                <dd class="brand06"><a href="product_list.do"><div>KUMKANG</div></a></dd>
-                <dd class="brand07"><a href="product_list.do"><div>CHRISTIAN LOUBOUTIN</div></a></dd>
-                <dd class="brand08"><a href="product_list.do"><div>ELCANTO</div></a></dd>
-                <dd class="brand09"><a href="product_list.do"><div>RACHELCOX</div></a></dd>
+                <dd class="brand01"><a href="product_list.do?brand_name=nike"><div>NIKE</div></a></dd>
+                <dd class="brand02"><a href="product_list.do?brand_name=adidas"><div>ADIDAS</div></a></dd>
+                <dd class="brand03"><a href="product_list.do?brand_name=newbalance"><div>NEWBALANCE</div></a></dd>
+                <dd class="brand04"><a href="product_list.do?brand_name=soda"><div>SODA</div></a></dd>
+                <dd class="brand05"><a href="product_list.do?brand_name=ferragamo"><div>FERRAGAMO</div></a></dd>
+                <dd class="brand06"><a href="product_list.do?brand_name=kumkang"><div>KUMKANG</div></a></dd>
+                <dd class="brand07"><a href="product_list.do?brand_name=christian louboutin"><div>CHRISTIAN LOUBOUTIN</div></a></dd>
+                <dd class="brand08"><a href="product_list.do?brand_name=elcanto"><div>ELCANTO</div></a></dd>
+                <dd class="brand09"><a href="product_list.do?brand_name=rachelcox"><div>RACHELCOX</div></a></dd>
             </dl>
         </div>
 		<!-- //brand -->
 	</div>
 	</nav>
 	<!-- //모바일 gnb -->
-
-	<div id="c-mask" class="c-mask"></div>
-	<!-- /c-mask -->
+    
+	<div id="c-mask" class="c-mask"></div> <!-- 모바일 메뉴 블라인드 -->
 
 	<div id="wrap" class="o-wrapper">
 
@@ -328,30 +329,31 @@
 				<a href="index.do" title="HOME">F4 Mall</a>
 			</h1>
 			<div class="util">
-				<input type="text" class="textSerch" />
-				<button type="button" class="btnSerch">
+				<input type="text" id="p_name" class="textSerch" onkeyup="if(window.event.keyCode == 13) findProduct();" />
+				<button type="button" class="btnSerch" onclick="findProduct();">
 					<i class="fa fa-search fa-w-16"></i>
 				</button>
 				
-                <!-- 로그인 후에 노출 -->
+                <%-- 로그인 후에 노출 --%>
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
 				<%-- <a href="cart_view.do?m_id=${ user.m_id }" title="cart"><i class="fa fa-shopping-cart"></i></a> --%>
 				<a href="member.do" title="user"><i class="fa fa-user"></i></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
-				<!-- 로그인 후에 노출 -->
+				<%-- //로그인 후에 노출 --%>
 				
-                <!-- 미 로그인 시에 노출 -->
+                <%-- 미 로그인 시에 노출 --%>
                 <c:if test="${ empty user }">
 				<button type="button" title="login" data-toggle="modal" data-target="#loginPop"><i class="fa fa-lock"></i></button>
 				</c:if>
-                <!-- //미 로그인 시에 노출 -->
+                <%-- //미 로그인 시에 노출 --%>
 				
-                <!-- 관리자 접속시에 노출 -->
+                <%-- 관리자 접속시에 노출 --%>
 				<c:if test="${ user.m_grade eq 1 }">
 				<a href="admin/index.do"><i class="fa fa-wrench fa-w-16"></i></a>
 				</c:if>
+                <%-- //관리자 접속시에 노출 --%>
 				
 			</div>
 		</div>
@@ -359,12 +361,12 @@
 		<!-- pc gnb --> 
 		<nav class="gnb">
 		<ul>
-			<li><a href="product_list.do">OUTER</a></li>
-			<li><a href="product_list.do">SHIRTS</a></li>
-			<li><a href="product_list.do">JEANS</a></li>
-			<li><a href="product_list.do">SHOES</a></li>
-			<li><a href="product_list.do">ACCESSORIES</a></li>
-			<li><a href="product_list.do">CHILDE</a></li>
+			<li><a href="product_list.do?category_name=runnings">RUNNINGS</a></li>
+			<li><a href="product_list.do?category_name=sneakers">SNEAKERS</a></li>
+			<li><a href="product_list.do?category_name=oxfords">OXFORDS</a></li>
+			<li><a href="product_list.do?category_name=walkers">WALKERS</a></li>
+			<li><a href="product_list.do?category_name=heels">HEELS</a></li>
+			<li><a href="product_list.do?category_name=slippers">SLIPPERS</a></li>
 			<li class="active"><a href="profile.do">PROFILE</a></li>
             <li><a href="board_list.do">COMMUNITY</a></li>
             <li><a href="faq.do">FAQ</a></li>

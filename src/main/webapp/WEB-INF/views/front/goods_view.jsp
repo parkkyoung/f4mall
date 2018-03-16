@@ -54,68 +54,56 @@ function add_cart(f){
 				<h2 class="hide">상품상세</h2>
 
 				<!-- 상품 상세 -->
-				<div class="goods">
+				<div class="product">
 
 					<!-- 상품 head -->
 					<div class="row">
 
-						<!-- 캐러셀 -->
+						<!-- 상품 이미지 -->
 						<div class="col-sm-6">
-							<div id="carousel" class="carousel slide" data-ride="carousel">
-
-								<!-- 캐러셀 인디케이터 -->
-								<ol class="carousel-indicators">
-									<li data-target="#carousel" data-slide-to="0" class="active"></li>
-									<li data-target="#carousel" data-slide-to="1"></li>
-								</ol>
-
-								<!-- 캐러셀 -->
-								<div class="carousel-inner" role="listbox">
-									<div class="item active"><img src="http://placehold.it/555x555" alt="" class="wFull" /></div>
-									<div class="item"><img src="http://placehold.it/555x555" alt="" class="wFull" /></div>
-								</div>
-
-							</div>
+                            <img src="${ pageContext.request.contextPath }/resources/upload/<c:out value="${vo.p_image_s}" />" alt="상품" class="wFull" />
 						</div>
-						<!-- //캐러셀 -->
+						<!-- //상품 이미지 -->
 
 						<!-- 옵션 -->
 						<div class="col-sm-6">
-							<form action="" class="goodsOption form-horizontal">
+							<form action="" class="productOption">
 								<div class="form-group goCategory">
-									<a href="">카테고리명</a>
+                                    <div>★★★★★</div>
 									<span>상품번호 : ${ vo.p_no }</span>
 								</div>
 								<div class="form-group goTitle">
 									<h3>${ vo.p_name }</h3>
-									<div>★★★★★</div>
 								</div>
 								<div class="form-group">
-									<label for="">배송비</label>
-									<div class="mt5">2500원</div>
+                                    <div class="inBlock ml20">
+                                       <label>제조국가</label>
+                                       <div class="mt5">${ vo.p_country }</div>
+                                    </div>
+                                    <div class="inBlock ml20">
+                                       <label>제조일자</label>
+                                       <div class="mt5">${ vo.p_pdate }</div>
+                                    </div>
 								</div>
-								<div class="form-group">
-									<label for="">제조일자</label>
-									<div class="mt5">${ vo.p_pdate }</div>
-								</div>
-								<div class="form-group">
-									<label for="">제조국가</label>
-									<div class="mt5">${ vo.p_country }</div>
-								</div>
+                                <div class="form-group">
+                                    <label class="block">옵션</label>
+                                    <select class="form-control wAuto right mt5">
+                                        <c:forEach var ="items_list" items="${ items_list }">
+                                        <option value="${ items_list.i_no }">색상: ${ items_list.color_name } / 사이즈: ${ items_list.size_name } / 재고수량: ${ items_list.s_amt }개</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="block">수량(개)</label>
+                                    <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" value="1" />
+                                </div>
 								<div class="form-group goPrice">
-									<del>${ vo.p_price }</del><br />
-									<strong>${ vo.p_sale }원</strong>
+									<del>${ vo.p_price }</del>
+									<strong class="ml20">${ vo.p_sale }원</strong>
 								</div>
-								<select style="width:350px" name="i_no" id="i_no">
-										<option>:::옵션을 선택해주세요:::</option>
-									<c:forEach var ="items_option" items="${ items_option }">
-										<option value="${ items_option.i_no }">색상: ${ items_option.color_name }&nbsp&nbsp사이즈: ${ items_list.size_name }  [재고수량: ${ items_option.s_amt }]</option>
-									</c:forEach>
-								</select>
 								<div class="form-group btnBox">
-									<div class="col-xs-4"><input type="number" placeholder="수량" class="form-control text-right" name="cart_amt" id="cart_amt"/></div>
-									<div class="col-xs-4"><button type="button" class="btn btn-warning btn-lg btn-block" onclick="add_cart(this.form);"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button></div>
-									<div class="col-xs-4"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button></div>
+								    <button type="button" class="btn btn-warning" onclick="add_cart(this.form);"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button>
+								    <button type="button" class="btn btn-primary"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
 								</div>
 							</form>
 						</div>

@@ -1,4 +1,5 @@
-
+use f4mall;
+select * from demand
 
 -- 주문테이블
 

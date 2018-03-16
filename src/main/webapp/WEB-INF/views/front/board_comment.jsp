@@ -4,15 +4,13 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
+
 function comment_del(c_no){
 	
-
 	if(confirm('댓글을 삭제하시겠습니까?')==false){
 		return;
 	}
-	
 	location.href = 'board_comment_delete.do?c_no='+c_no+'&b_no=${param.b_no}&page=${ param.page }';
-	
 }
 
 </script>

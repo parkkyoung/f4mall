@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@include file="template/header.jsp" %>
+
 <!-- visual -->
 <section class="subVisual">
-	<img src="${ pageContext.request.contextPath }/resources/front/img/img_f4.jpg" alt="sub visual" class="wFull" />
+    <h2>PROFILE</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_default.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_default.jpg" alt="sub visual" class="imgMobile" />
 </section>
 <!-- //visual -->
 
@@ -52,7 +54,7 @@
 
 		<!-- 덕원 -->
 		<div class="box">
-			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile02.jpg" alt="chopin" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile02.jpg" alt="duck" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>DUCK</dt>
@@ -81,7 +83,7 @@
 
 		<!-- 훈철 -->
 		<div class="box">
-			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile03.jpg" alt="chopin" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile03.jpg" alt="hoon" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>HOON</dt>
@@ -110,7 +112,7 @@
 
 		<!-- 봉성 -->
 		<div class="box">
-			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile04.jpg" alt="chopin" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile04.jpg" alt="bbong" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>BBONG</dt>

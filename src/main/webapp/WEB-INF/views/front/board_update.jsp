@@ -32,93 +32,87 @@ function send(f){
 }
 </script>
 
+<!-- visual -->
+<section class="subVisual">
+    <h2>COMMUNITY</h2>
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_board.jpg" alt="sub visual" class="imgPc" />
+    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_board.jpg" alt="sub visual" class="imgMobile" />
+</section>
+<!-- //visual -->
 
-		<!-- contents -->
-		<div id="container">
-			
-			<!-- visual -->
-			<section class="subVisual">
-				<img src="http://placehold.it/1200x300" alt="sub visual" class="wFull" />
-			</section>
-			<!-- //visual -->
-			
-			<!-- sub contents -->
-			<section class="sub container">
-				<h2 class="hide">커뮤니티 수정</h2>
-				
-				<!-- 커뮤니티 수정  -->
-				<div class="board boardInsert">
-					
-					<form name="f" action="board_update.do?page=${param.page}&search=${param.search}&search_text=${param.search_text}" class="form-horizontal widthM">
-					<input type="hidden" name="m_id" value="${user.m_id}">
-					<input type="hidden" name="b_no" value="${param.b_no}">
-					<input type="hidden" name="page" value="${param.page }">
-					<input type="hidden" name="search" value="${param.search }">
-					<input type="hidden" name="search_text" value="${param.search_text }">
-						<!-- 괄리자만 노출 -->
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">공지사항여부</label>
-							<div class="col-sm-10">
-								<select class="form-control">
-									<option value="" selected>X</option>
-									<option value="">O</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">작성자 ID</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" value="${user.m_id}" readonly="readonly" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">제목</label>
-							<div class="col-sm-10">
-								<input name="b_name" value="${vo.b_name}" type="text" class="form-control" placeholder="게시글 제목" />
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-2 control-label">내용</label>
-							<div class="col-sm-10">
-								<textarea name="b_content" rows="20" class="form-control">${vo.b_content}</textarea>
-										<script>
-										// Replace the <textarea id="editor1"> with a CKEditor
-										// instance, using default configuration.
-										CKEDITOR
-												.replace(
-														'b_content',
-														{
-															filebrowserUploadUrl : '${pageContext.request.contextPath}/ckeditorImageUpload.do'
-														});
-					
-										CKEDITOR.on('dialogDefinition', function(ev) {
-											var dialogName = ev.data.name;
-											var dialogDefinition = ev.data.definition;
-					
-											switch (dialogName) {
-											case 'image': //Image Properties dialog
-												//dialogDefinition.removeContents('info');
-												dialogDefinition.removeContents('Link');
-												dialogDefinition.removeContents('advanced');
-												break;
-											}
-										});
-									</script>
-							</div>
-						</div>
-						<div class="form-group btnBox">
-							<a href="board_list.do?page=${param.page}&search=${param.search}&search_text=${param.search_text}" class="btn btn-default">취소</a>
-							<button type="button" onclick='send(this.form); return false;' class="btn btn-primary" >수정</button>
-						</div>
-					</form>
+<!-- sub contents -->
+<section class="sub container">
+	<h2 class="hide">커뮤니티 수정</h2>
+	
+	<!-- 커뮤니티 수정  -->
+	<div class="board boardInsert">
+		
+		<form name="f" action="board_update.do?page=${param.page}&search=${param.search}&search_text=${param.search_text}" class="form-horizontal widthM">
+		<input type="hidden" name="m_id" value="${user.m_id}">
+		<input type="hidden" name="b_no" value="${param.b_no}">
+		<input type="hidden" name="page" value="${param.page }">
+		<input type="hidden" name="search" value="${param.search }">
+		<input type="hidden" name="search_text" value="${param.search_text }">
+			<!-- 괄리자만 노출 -->
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">공지사항여부</label>
+				<div class="col-sm-10">
+					<select class="form-control">
+						<option value="" selected>X</option>
+						<option value="">O</option>
+					</select>
 				</div>
-				<!-- //커뮤니티 수정  -->
-			</section>
-			<!-- //sub contents -->
-		</div>
-		<!-- //contents -->
+			</div>
 
-		<%@ include file="template/footer.jsp" %>
-</body>
-</html>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">작성자 ID</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" value="${user.m_id}" readonly="readonly" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">제목</label>
+				<div class="col-sm-10">
+					<input name="b_name" value="${vo.b_name}" type="text" class="form-control" placeholder="게시글 제목" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">내용</label>
+				<div class="col-sm-10">
+					<textarea name="b_content" rows="20" class="form-control">${vo.b_content}</textarea>
+							<script>
+							// Replace the <textarea id="editor1"> with a CKEditor
+							// instance, using default configuration.
+							CKEDITOR
+									.replace(
+											'b_content',
+											{
+												filebrowserUploadUrl : '${pageContext.request.contextPath}/ckeditorImageUpload.do'
+											});
+		
+							CKEDITOR.on('dialogDefinition', function(ev) {
+								var dialogName = ev.data.name;
+								var dialogDefinition = ev.data.definition;
+		
+								switch (dialogName) {
+								case 'image': //Image Properties dialog
+									//dialogDefinition.removeContents('info');
+									dialogDefinition.removeContents('Link');
+									dialogDefinition.removeContents('advanced');
+									break;
+								}
+							});
+						</script>
+				</div>
+			</div>
+			<div class="form-group btnBox">
+				<a href="board_list.do?page=${param.page}&search=${param.search}&search_text=${param.search_text}" class="btn btn-default">취소</a>
+				<button type="button" onclick='send(this.form); return false;' class="btn btn-primary" >수정</button>
+			</div>
+		</form>
+	</div>
+	<!-- //커뮤니티 수정  -->
+</section>
+<!-- //sub contents -->
+
+<%@ include file="template/footer.jsp" %>
