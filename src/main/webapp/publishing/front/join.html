@@ -7,6 +7,7 @@
 	<title>F4 Mall</title>
 
 	<!-- css -->
+	<link href="img/favicon.ico" rel="shortcut icon"> <!-- favicon -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> <!-- font-awesome -->
 	<link href="css/flaticon.css" rel="stylesheet"> <!-- flaticon -->
@@ -224,12 +225,20 @@
 					<dd><a href="product.html"><i class="flaticon-hiking-boot"></i><div>WALKERS</div></a></dd>
 					<dd><a href="product.html"><i class="flaticon-high-heel-3"></i><div>HEELS</div></a></dd>
 					<dd><a href="product.html"><i class="flaticon-sandal"></i><div>SLIPPERS</div></a></dd>
+				</dl>
+			</div>
+			<!-- //category -->
+			
+			<!-- sex -->
+			<div class="mList">
+				<dl>
+					<dt>SEX</dt>
 					<dd><a href="product.html"><i class="flaticon-football-shoe"></i><div>MEN</div></a></dd>
 					<dd><a href="product.html"><i class="flaticon-ugg-boot"></i><div>UNISEX</div></a></dd>
 					<dd><a href="product.html"><i class="flaticon-girls-flat-shoe"></i><div>WOMEN</div></a></dd>
 				</dl>
 			</div>
-			<!-- //category -->
+			<!-- //sex -->
 			
 			<!-- brand -->
 			<div class="mList brandList">
@@ -247,6 +256,17 @@
 				</dl>
 			</div>
 			<!-- //brand -->
+
+			<!-- service -->
+			<div class="mList serviceList">
+				<dl>
+					<dt>SERVICE</dt>
+					<dd><a href="profile.html"><i class="fa fa-users"></i><div>PROFILE</div></a></dd>
+					<dd><a href="board.html"><i class="fa fa-comments"></i><div>COMMUNITY</div></a></dd>
+					<dd><a href="faq.html"><i class="fa fa-question-circle"></i><div>FAQ</div></a></dd>
+				</dl>
+			</div>
+			<!-- //service -->
 		</div>
 	</nav>
 	<!-- //모바일 gnb -->
@@ -260,7 +280,7 @@
 
 			<div class="head">
 				<button type="button" class="btnGnb">메뉴</button>
-				<h1><a href="index.html" title="HOME">F4 Mall</a></h1>
+				<h1><a href="index.html" title="HOME"><img src="img/img_logo.png" alt="F4MALL" /></a></h1>
 				<div class="util">
 					<input type="text" class="textSerch" placeholder="search" />
 					<button type="button" class="btnSerch"><i class="fa fa-search fa-w-16"></i></button>
@@ -270,8 +290,8 @@
 
 					 <!-- 로그인 후에 노출 -->
 					<button type="button" title="cart" data-toggle="modal" data-target="#cartPop" class="btnCart on"><i class="fa fa-shopping-cart"></i> <span>3</span> </button> <!-- script로 0이 아닐경우에 .btnCart에 .on 추가 아니면 .on 삭제 -->
-					<a href="member.html" title="user"><i class="fa fa-user"></i></a>
 					<a href="member_orders.html" title="order list"><i class="fa fa-list-alt"></i></a>
+					<a href="member.html" title="user" class="btnMember"><img src="http://placehold.it/30x30" alt="user thumbnail" class="wFull" /></a>
 					<button type="button" title="logout"><i class="fa fa-unlock"></i></button>
 
 					<a href="../admin/index.html"><i class="fa fa-wrench fa-w-16"></i></a> <!-- 관리자 접속시에 노출 -->
@@ -348,28 +368,28 @@
 			<div class="foot">
 				<div class="row">
 					<!-- about us & sns -->
-					<div class="footAbout mt40 col-lg-3 col-md-6 col-sm-12">
-						<h3>F4 Mall</h3>
+					<div class="footAbout mt40 col-lg-4 col-md-6 col-sm-12">
+						<h3><a href="index.html" title="HOME"><img src="img/img_logo.png" alt="F4MALL" /></a></h3>
 						<p>고구려는 부여의 왕자라 전해지는 고주몽이 건국하였다. 부여와의 투쟁 속에서 성장하였고, 산간지대에 위치한 고구려의 지리적 사정으로 인한 부족한 식량 사정과 부족한 논밭 문제를 해결하기 위해 주변의 비옥한 영토를 정복하는 적극적인 정복 활동과 대규모 정복전쟁을 벌였다. 중국 사서에서는 약탈로 인해 신나라 왕망의 분노를...</p>
 						<div class="snsBox">
-							<a href=""><i class="fa fa-twitter"></i></a>
-							<a href=""><i class="fa fa-facebook"></i></a>
-							<a href=""><i class="fa fa-pinterest"></i></a>
-							<a href=""><i class="fa fa-instagram"></i></a>
+							<button type="button" onclick="swal('준비중입니다.')"><i class="fa fa-twitter"></i></button>
+							<button type="button" onclick="swal('준비중입니다.')"><i class="fa fa-facebook"></i></button>
+							<button type="button" onclick="swal('준비중입니다.')"><i class="fa fa-pinterest"></i></button>
+							<button type="button" onclick="swal('준비중입니다.')"><i class="fa fa-instagram"></i></button>
 						</div>
 					</div>
 					<!-- //about us & sns -->
 
 					<!-- category -->
-					<div class="footInfo mt40 col-lg-3 col-md-6 col-sm-12">
+					<div class="footInfo mt40 col-lg-2 col-md-6 col-sm-12">
 						<dl>
 							<dt>CATEGORY</dt>
-							<dd><a href="product.html">OUTER</a></dd>
-							<dd><a href="product.html">SHIRTS</a></dd>
-							<dd><a href="product.html">JEANS</a></dd>
-							<dd><a href="product.html">SHOES</a></dd>
-							<dd><a href="product.html">ACCESSORIES</a></dd>
-							<dd><a href="product.html">CHILDE</a></dd>
+							<dd><a href="product.html">RUNNINGS</a></dd>
+							<dd><a href="product.html">SNEAKERS</a></dd>
+							<dd><a href="product.html">OXFORDS</a></dd>
+							<dd><a href="product.html">WALKERS</a></dd>
+							<dd><a href="product.html">HEELS</a></dd>
+							<dd><a href="product.html">SLIPPERS</a></dd>
 						</dl>
 					</div>
 					<!-- //category -->
