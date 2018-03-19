@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@include file="template/header.jsp" %>
+<%@include file="template/header.jsp"%>
 
 <!-- page script -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -9,6 +9,7 @@
 
 <!--아이디 체크-->
 <script>
+
 	$(document).ready(function() {
 
 		$('#m_id1').keyup(function(event) {
@@ -25,7 +26,7 @@
 			//서버로 id전송(Ajax통신)
 			$.ajax({
 				url : 'check_id.do',
-				data : {'m_id' : m_id},
+				data : { 'm_id' : m_id },
 				success : function(data) {
 					// data="[{'result':'yes'}]";
 					var json = eval(data);
@@ -39,24 +40,22 @@
 			});
 		});
 
-		
-		
-<!-- 닉네임중복체크 -->	
+
+		<!-- 닉네임중복체크 -->
 		$('#m_nick').keyup(function(event) {
 
-			// console.log("----");
+			
 			var m_nick = $(this).val();
 			var m_nick_pattern = /^[가-힣a-zA-Z]+$/;
-			//console.log('id값 ='+m_id);
 			if (!(m_nick_pattern.test(m_nick))) {
 				$('#m_nick_msg').html('한글 or 영문으로!').css('color', 'red');
 				return;
 			}
 
-			//서버로 id전송(Ajax통신)
+			//서버로 m_nick전송(Ajax통신)
 			$.ajax({
 				url : 'check_nick.do',
-				data : {'m_nick' : m_nick},
+				data : { 'm_nick' : m_nick },
 				success : function(data) {
 					// data="[{'result':'yes'}]";
 					var json = eval(data);
@@ -66,22 +65,22 @@
 					} else {
 						$('#m_nick_msg').html('이미 사용중인 닉네임입니다').css('color', 'red');
 					}
-					
+
 					if (!(m_nick_pattern.test(m_nick))) {
-						
+
 						$('#m_nick_msg').html('한글이나 영문으로!!.').css('color', 'red');
 						$("#m_nick").addClass("alert alert-danger").removeClass("alert-success");
 					} else {
-							
-							$('#m_nick_msg').html('멋진닉네임이에요!!').css('color', 'blue');
-							$("#m_nick").addClass("alert alert-success").removeClass("alert-danger");
+
+						$('#m_nick_msg').html('멋진닉네임이에요!!').css('color', 'blue');
+						$("#m_nick").addClass("alert alert-success").removeClass("alert-danger");
 					}
 				}
 			});
 		});
 
-	
-<!--비밀번호 체크-->
+
+		<!--비밀번호 체크-->
 		$('#m_pwd1').keyup(function(event) {
 
 			// 비밀번호 유효성 체크
@@ -90,35 +89,34 @@
 			var m_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
 			if (!(m_pwd_pattern.test(m_pwd))) {
-				
+
 				$('#m1_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
 				$("#m_pwd1").addClass("alert alert-danger").removeClass("alert-success");
 			} else {
-					
-					$('#m1_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
-					$("#m_pwd1").addClass("alert alert-success").removeClass("alert-danger");
-				}
-			
-			
-<!--비밀번호 이중체크-->
+
+				$('#m1_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
+				$("#m_pwd1").addClass("alert alert-success").removeClass("alert-danger");
+			}
+
+
+			<!--비밀번호 이중체크-->
 			$('#m1_pwd').keyup(function(event) {
-				
-				if($('#m1_pwd').val() != $('#m_pwd1').val()){
-					
+
+				if ($('#m1_pwd').val() != $('#m_pwd1').val()) {
+
 					$('#m1_pwd_msg').html('비밀번호가 틀립니다').css('color', 'red');
 					$("#m1_pwd").addClass("alert alert-danger").removeClass("alert-success");
-				  }
-					else if($('#m1_pwd').val() == $('#m_pwd1').val()){
-						$('#m1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
-						$("#m1_pwd").addClass("alert alert-success").removeClass("alert-danger");
-						
-					}
-				});
-			});
-		 });
+				} else if ($('#m1_pwd').val() == $('#m_pwd1').val()) {
+					$('#m1_pwd_msg').html('비밀번호 일치').css('color', 'blue');
+					$("#m1_pwd").addClass("alert alert-success").removeClass("alert-danger");
 
-	
-<!-- 다음 우편 -->
+				}
+			});
+		});
+	});
+
+
+	<!-- 다음 우편 -->
 	function findAddress() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -161,19 +159,19 @@
 		}).open();
 	}
 
-	
-<!--회원가입-->
-	function join(f) {
 
-		var m_id     	= f.m_id1.value.trim();
-		var m_pwd    	= f.m_pwd1.value.trim();
-		var m_name 	  	= f.m_name.value.trim();
-		var m_nick	  	=f.m_nick.value.trim();
-		//var m_zipcode = f.m_zipcode.value.trim();
-		var m_addr    	= f.m_addr.value.trim();
-		var m_addr_d  	= f.m_addr_d.value.trim();
-		var m_tel 	   	= f.m_tel.value.trim();
+	<!--회원가입-->
+	function join(f) {
 		
+		var m_id 		= f.m_id1.value.trim();
+		var m_pwd 		= f.m_pwd1.value.trim();
+		var m_name 	    = f.m_name.value.trim();
+		var m_nick 	    = f.m_nick.value.trim();
+		//var m_zipcode = f.m_zipcode.value.trim();
+		var m_addr 		= f.m_addr.value.trim();
+		var m_addr_d 	= f.m_addr_d.value.trim();
+		var m_tel 		= f.m_tel.value.trim();
+
 
 		// 값 체크
 		if (m_id == '') {
@@ -194,14 +192,14 @@
 			f.m_name.focus();
 			return;
 		}
-		
+
 		if (m_nick == '') {
 			alert('닉네임을 확인해주세요');
 			f.m_nick.focus();
 			return;
 		}
 
-		
+
 		if (m_zipcode == '') {
 			alert('우편번호를 입력 해주세요');
 			f.m_zipcode.focus();
@@ -225,10 +223,10 @@
 			f.m_tel.focus();
 			return;
 		}
-		
+
 		f.action = 'member_insert.do';
 		f.submit();
-		
+
 		swal({
 			text : "회원가입이 완료되었습니다.",
 			icon : "success",
@@ -241,9 +239,11 @@
 
 <!-- visual -->
 <section class="subVisual">
-    <h2>회원가입</h2>
-    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_member.jpg" alt="sub visual" class="imgPc" />
-    <img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_member.jpg" alt="sub visual" class="imgMobile" />
+	<h2>회원가입</h2>
+	<img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_member.jpg" 
+	     alt="sub visual" class="imgPc" /> 
+	<img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_member.jpg" 
+	     alt="sub visual" class="imgMobile" />
 </section>
 <!-- //visual -->
 
@@ -255,8 +255,7 @@
 			<div class="form-group">
 				<label for="id" class="col-sm-4 control-label">ID</label>
 				<div class="col-sm-6">
-					<input type="text" name="m_id"id="m_id1"
-						class="form-control alert alert-success" placeholder="메일 주소" />
+					<input type="text" name="m_id" id="m_id1" class="form-control alert alert-success" placeholder="메일 주소" /> 
 					<span class="mt5" id="m_id_msg">메일 주소로 작성해주세요</span>
 				</div>
 			</div>
@@ -265,74 +264,62 @@
 			<div class="form-group">
 				<label for="pw" class="col-sm-4 control-label">Password</label>
 				<div class="col-sm-4">
-					<input type="password" name="m_pwd" id="m_pwd1"
-						class="form-control" placeholder="비밀번호" />
+					<input type="password" name="m_pwd" id="m_pwd1" class="form-control" placeholder="비밀번호" /> 
 						<span class="mt5" id="m_pwd1_msg"></span>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
-					<input type="password" name="m1_pwd" id="m1_pwd"
-						class="form-control" placeholder="비밀번호 확인" /> 
+					<input type="password" name="m1_pwd" id="m1_pwd" class="form-control" placeholder="비밀번호 확인" /> 
 						<span class="mt5" id="m1_pwd_msg"></span>
 				</div>
 			</div>
-
-
-
-			<div class="form-group">
+				<div class="form-group">
 				<label for="name" class="col-sm-4 control-label">이름</label>
 				<div class="col-sm-4">
-					<input type="text" id="m_name" name="m_name"class="form-control"
-						placeholder="이름" />
+					<input type="text" id="m_name" name="m_name" class="form-control" placeholder="이름" />
 				</div>
 			</div>
-			
-				<div class="form-group">
+
+			<div class="form-group">
 				<label for="nick" class="col-sm-4 control-label">닉네임</label>
 				<div class="col-sm-4">
-					<input type="text" id="m_nick" name="m_nick"class="form-control"
-						placeholder="닉네임" />
-						<span class="mt5" id="m_nick_msg"></span>
+					<input type="text" id="m_nick" name="m_nick" class="form-control" placeholder="닉네임" /> 
+					<span class="mt5" id="m_nick_msg"></span>
 				</div>
 			</div>
-			
+
 			<div class="form-group">
 				<label for="btnNumber" class="col-sm-4 col-xs-12 control-label">주소</label>
 				<div class="col-sm-4 col-xs-8">
-					<input type="text" id="m_zipcode" name="m_zipcode"class="form-control"
-						placeholder="우편번호" readonly />
+					<input type="text" id="m_zipcode" name="m_zipcode" class="form-control" placeholder="우편번호" readonly />
 				</div>
 				<div class="col-sm-4 col-xs-4">
-					<button type="button" id="btnNumber" class="btn btn-warning"
-						onclick="findAddress()">주소찾기</button>
+					<button type="button" id="btnNumber" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
-					<input type="text" id="m_addr" name="m_addr" class="form-control"
-						placeholder="도로명주소" />
+					<input type="text" id="m_addr" name="m_addr" class="form-control" placeholder="도로명주소" />
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
-					<input type="text" id="m_addr_d" name="m_addr_d"class="form-control"
-						placeholder="상세주소" />
+					<input type="text" id="m_addr_d" name="m_addr_d" class="form-control" placeholder="상세주소" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber" class="col-sm-4 control-label">핸드폰번호</label>
 				<div class="col-sm-4">
-					<input type="tel" id="m_tel" name="m_tel"class="form-control"
-						placeholder="01012345678" />
+					<input type="tel" id="m_tel" name="m_tel" class="form-control" placeholder="01012345678" />
 					<p class="mt5">괄호(-) 없이 숫자만 입력해주세요</p>
 				</div>
 			</div>
 			<div class="form-group btnBox">
 				<button type="button" class="btn btn-primary btn-lg" onclick="join(this.form);">회원가입</button>
 			</div>
-	</div>
-</section>
+		</div>
+	</section>
 </form>
 <!-- //sub contents -->
-<%@include file="template/footer.jsp" %>
+<%@include file="template/footer.jsp"%>
