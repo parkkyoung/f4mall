@@ -352,7 +352,7 @@ function findProduct(){
                 <%-- 로그인 후에 노출 --%>
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
-				<a href="member.html" title="user" class="btnMember"><img src="http://placehold.it/30x30" alt="user thumbnail" class="wFull" /></a>
+				<a href="member.do" title="user" class="btnMember"><img src="http://placehold.it/30x30" alt="user thumbnail" class="wFull" /></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<%-- //로그인 후에 노출 --%>
