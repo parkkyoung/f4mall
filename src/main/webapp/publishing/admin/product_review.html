@@ -49,7 +49,6 @@
 			<ul class="nav navbar-top-links navbar-right">
 				<li><a href="../front/index.html"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
 				<li><a href="#" onclick="location.href='../front/index.html'"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
 			</ul>
 			<!-- /.navbar-top-links -->
 
@@ -106,74 +105,67 @@
 			<div class="container-fluid">
 
 				<!-- page title -->
-				<h1 class="page-header">FAQ 목록</h1>
+				<h1 class="page-header">상품평</h1>
 				<!-- //page title -->
 
 				<!-- page contents -->
 				<div class="panel panel-default">
-					<div class="panel-heading">FAQ 목록</div>
 					<div class="panel-body">
-						<div class="panel-group">
-							
-							<!--faq 컨텐츠의 아이디와 faq 타이틀의 href에 해당 faq 넘버를 삽입 -->
-							<!-- Loop -->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title clearfix">
-										<a data-toggle="collapse" href="#faq01" class="pTitle pull-left">faq 타이틀입니다.</a>
-										<div class="pull-right">
-											<div class="pDate">YYYY-MM-DD</div>
-											<a href="faq_update.html" class="btn btn-warning">수정</a>
-											<button class="btn btn-danger">삭제</button>
-										</div>
-									</h4>
-								</div>
-								<div id="faq01" class="collapse">
-									<div class="panel-body">
-										<p>faq 컨텐츠입니다.</p>
-									</div>
-								</div>
-							</div>
-							<!-- //Loop -->
+						
+						<!-- 상품평 리스트 -->
+						<table width="100%" class="tableData table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th>상품코드</th>
+									<th>회원ID</th>
+									<th>상품평점</th>
+									<th>상품평타이틀</th>
+									<th>등록일자</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Loop -->
+								<tr>
+									<td><a href="product_update.html">0000</a></td>
+									<td><a href="member_update.html">hong@naver.com</a></td>
+									<td>★</td>
+									<td class="text-left">제품 넘모 멋쪄!</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger">삭제</button></td>
+								</tr>
+								<!-- //Loop -->
+								<tr>
+									<td><a href="product_update.html">0001</a></td>
+									<td><a href="member_update.html">hong1@naver.com</a></td>
+									<td>★★★★★</td>
+									<td class="text-left">배송하는데 한달걸리는거 실화냐?</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger">삭제</button></td>
+								</tr>
+								<tr>
+									<td><a href="product_update.html">0002</a></td>
+									<td><a href="member_update.html">hong2@naver.com</a></td>
+									<td>★★★★★</td>
+									<td class="text-left">졸라 구리네요</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger">삭제</button></td>
+								</tr>
+								<tr>
+									<td><a href="product_update.html">0003</a></td>
+									<td><a href="member_update.html">hong3@naver.com</a></td>
+									<td>★★★★★</td>
+									<td class="text-left">우와 이게 신발이야 고무신이야</td>
+									<td>YYYY-MM-DD</td>
+									<td><button type="button" class="btn btn-danger">삭제</button></td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- //상품평 리스트 -->
 
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title clearfix">
-										<a data-toggle="collapse" href="#faq02" class="pTitle pull-left">faq 타이틀입니다.2</a>
-										<div class="pull-right">
-											<div class="pDate">YYYY-MM-DD</div>
-											<a href="faq_update.html" class="btn btn-warning">수정</a>
-											<button class="btn btn-danger">삭제</button>
-										</div>
-									</h4>
-								</div>
-								<div id="faq02" class="collapse">
-									<div class="panel-body">
-										faq 컨텐츠입니다.
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title clearfix">
-										<a data-toggle="collapse" href="#faq03" class="pTitle pull-left">faq 타이틀입니다.3</a>
-										<div class="pull-right">
-											<div class="pDate">YYYY-MM-DD</div>
-											<a href="faq_update.html" class="btn btn-warning">수정</a>
-											<button class="btn btn-danger">삭제</button>
-										</div>
-									</h4>
-								</div>
-								<div id="faq03" class="collapse in">
-									<div class="panel-body">상품평 컨텐츠입니다.</div>
-								</div>
-							</div>
-
-						</div>
 					</div>
 				</div>
 				<!-- //page contents -->
-
 			</div>
 			<!-- /.container-fluid -->
 		</div>
