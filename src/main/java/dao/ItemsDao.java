@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import vo.ItemsEvalVo;
 import vo.ItemsViewVo;
 import vo.ItemsVo;
 import vo.ProductVo;
@@ -52,7 +53,7 @@ public class ItemsDao {
 		return vo;
 	}
 
-	public List<ItemsViewVo> items_option(Integer p_no) {
+	public List<ItemsViewVo> select_option(Integer p_no) {
 		// TODO Auto-generated method stub
 		List<ItemsViewVo> list = null;
 		
@@ -66,6 +67,13 @@ public class ItemsDao {
 		int res = 0;
 		res = sqlSession.insert("items_insert",vo);
 		return res;
+	}
+
+	public List<ItemsEvalVo> select_eval(Integer p_no) {
+		// TODO Auto-generated method stub
+		List<ItemsEvalVo> list = null;
+		list = sqlSession.selectList("items_eval",p_no);
+		return list;
 	}
 	
 	

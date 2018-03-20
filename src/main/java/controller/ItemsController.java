@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.ItemsDao;
 import vo.ItemsArrayVo;
+import vo.ItemsEvalVo;
 import vo.ItemsViewVo;
 import vo.ItemsVo;
 import vo.ProductVo;
@@ -74,9 +75,11 @@ public class ItemsController {
 	public String items_view(Integer p_no, Model model){
 		
 		ProductVo vo = items_dao.select_one_view(p_no);
-		List<ItemsViewVo> items_option = items_dao.items_option(p_no);
+		List<ItemsEvalVo> items_eval = items_dao.select_eval(p_no);
+		List<ItemsViewVo> items_option = items_dao.select_option(p_no);
 		
 		model.addAttribute("vo",vo);
+		model.addAttribute("items_eval",items_eval);
 		model.addAttribute("items_option",items_option);
 		
 		return "front/goods_view";

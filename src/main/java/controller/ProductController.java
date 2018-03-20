@@ -201,7 +201,7 @@ public class ProductController {
 	public String product_update(ProductVo vo, Model model) throws IllegalStateException, IOException{
 		
 		// 이미지 저장경로
-		String webPath="/resources/upload/";
+		String webPath="/resources/upload";
 		String savePath=application.getRealPath(webPath);
 		
 		int imageIndex=0;
