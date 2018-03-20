@@ -27,9 +27,10 @@ public class BoardController {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	// 게시글 리스트.
 	/**
 	 * 
-	 * @param search
 	 * @param search_text
 	 * @param page
 	 * @param model
@@ -84,6 +85,8 @@ public class BoardController {
 		return common.ShortCut.Front.VIEW_PATH+"board_insert";
 		
 	}
+	
+	// 게시글 삽입
 	/**
 	 * 
 	 * @param vo
@@ -92,7 +95,6 @@ public class BoardController {
 	 * @param request
 	 * @return
 	 */
-	/* Board.xml에 m_id 입력 sql문이 있는게 차후에 지워야한다. */
 	@RequestMapping(value="/board_insert.do")
 	public String BoardInsertAction(BoardVo vo,String page,Model model,HttpServletRequest request) {
 		
@@ -106,6 +108,15 @@ public class BoardController {
 		return "redirect:board_list.do";
 	}
 	
+	
+	//게시글 내용
+	/**
+	 * 
+	 * @param model
+	 * @param vo
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/board_view.do")
 	public String BoardViewAction(Model model,BoardVo vo,HttpServletRequest request) {
 		int b_no = vo.getB_no();
@@ -126,6 +137,15 @@ public class BoardController {
 		
 		return common.ShortCut.Front.VIEW_PATH+"board_view";
 	}
+	
+	//게시글 삭제
+	/**
+	 * 
+	 * @param vo
+	 * @param page
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/board_delete.do")
 	public String BoardDeleteAction(BoardVo vo,String page,Model model) {
 		
@@ -137,6 +157,14 @@ public class BoardController {
 		
 		return "redirect:board_list.do";
 	}
+	
+	//게시글 업데이트 폼
+	/**
+	 * 
+	 * @param vo
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/board_update_form.do")
 	public String BoardUpdateFormAction(BoardVo vo,Model model) {
 		
@@ -148,6 +176,19 @@ public class BoardController {
 		
 		return common.ShortCut.Front.VIEW_PATH+"board_update";
 	}
+	
+	//게시글 업데이트
+	/**
+	 * 
+	 * @param vo
+	 * @param model
+	 * @param request
+	 * @param page
+	 * @param search
+	 * @param search_text
+	 * @return
+	 * @throws IOException
+	 */
 	@RequestMapping(value="/board_update.do")
 	public String BoardUpdateAction(BoardVo vo,Model model,HttpServletRequest request,String page,String search,String search_text) throws IOException {
 		
@@ -161,11 +202,27 @@ public class BoardController {
 		
 		return "redirect:board_list.do";
 	}
+	
+	//답글 폼
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value="/board_reply_form.do")
 	public String BoardReplyFormAction() {
 		
 		return common.ShortCut.Front.VIEW_PATH+"board_reply";
 	}
+	
+	//답글
+	/**
+	 * 
+	 * @param model
+	 * @param page
+	 * @param vo
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/board_reply.do")
 	public String BoardReplyAction(Model model,Integer page,BoardVo vo,HttpServletRequest request) {
 		int b_no = vo.getB_no();

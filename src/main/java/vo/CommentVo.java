@@ -10,6 +10,8 @@ public class CommentVo {
 	String c_regdate;
 	
 	
+	/**************************** VO 내부로만 사용 ***********************************/
+	
 	/* 멤버닉네임가져오기*/
 	String c_nick;
 	public String getC_nick() {
@@ -30,7 +32,7 @@ public class CommentVo {
 	}
 	
 	
-	
+	/**************************** VO 내부로만 사용 END***********************************/
 	
 	
 	public int getC_no() {

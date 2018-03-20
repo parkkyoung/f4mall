@@ -22,26 +22,38 @@ public class CommentController {
 	@Autowired
 	CommentDao comment_dao;
 	
-	
-	@RequestMapping("/board_comment_list.do")
+	//´ñ±Û ¸®½ºÆ® Ãâ·Â
+	/**
+	 * 
+	 * @param vo
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/board_comment_list.do")
 	public String CommentListAction(CommentVo vo,Model model,HttpServletRequest request) {
-		
-		
+			
 		//int c_no= vo.getC_no();
 		int b_no= vo.getB_no();
 		Map map = new HashMap();	
 		map.put("b_no",b_no);
 
 		// ´ñ±Û¸ñ·Ï Á¶È¸
-		List<CommentVo> c_list = comment_dao.selectList(map);
+		List<CommentVo> c_list = comment_dao.selectList(map);	
 		
-		
-		model.addAttribute("c_list", c_list);
-		
+		model.addAttribute("c_list", c_list);	
 		
 		return common.ShortCut.Front.VIEW_PATH+"board_comment";
 	}
-	@RequestMapping("/board_comment_insert.do")
+	
+	//´ñ±Û »ðÀÔ
+	/**
+	 * 
+	 * @param vo
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value="/board_comment_insert.do")
 	@ResponseBody
 	public String CommentInsertAction(CommentVo vo,HttpServletRequest request) {
 		
@@ -57,17 +69,23 @@ public class CommentController {
 		
 		return resultStr;
 	}
-	@RequestMapping("/board_comment_delete.do")
+	
+	//´ñ±Û »èÁ¦
+	/**
+	 * 
+	 * @param vo
+	 * @param model
+	 * @param page
+	 * @return
+	 */
+	@RequestMapping(value="/board_comment_delete.do")
 	public String CommentDeleteAction(CommentVo vo,Model model,Integer page) {
 		int c_no = vo.getC_no();
-		
-		
+			
 		int res= comment_dao.delete(c_no);
 		
 		model.addAttribute("b_no",vo.getB_no());
 		model.addAttribute("page",page);
-		
-		
 		
 		
 		return "redirect:board_view.do";
