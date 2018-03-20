@@ -121,7 +121,7 @@
 
 	
 	function member_Insert(f) {
-		s
+		
 		var m_id     = f.m_id.value.trim();
 		var m_pwd    = f.m_pwd.value.trim();
 		var m_name   = f.m_name.value.trim();
@@ -209,7 +209,7 @@
 					</div>
 					<div class="form-group">
 						<input type="password" id="admin1_pwd" class="form-control" placeholder="비밀번호 확인" /> 
-							<span class="mt5" id="admin1_pwd_msg"></span>
+						<span class="mt5" id="admin1_pwd_msg"></span>
 					</div>
 					<div class="form-group">
 						<label for="">이름</label> 
@@ -263,7 +263,7 @@
 				<div class="col-lg-12">
 					<div class="form-group text-right">
 						<button type="button" class="btn btn-primary"
-							onclick="member_Insert(this.form); return false;">회원등록</button>
+							 onclick="member_Insert(this.form); return false;">회원등록</button>
 					</div>
 				</div>
 			</div>

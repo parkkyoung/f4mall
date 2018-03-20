@@ -82,6 +82,7 @@
 								<li><a href="product.html">상품목록</a></li>
 								<li><a href="product_insert.html">상품등록</a></li>
 								<li><a href="product_stock.html">상품입출고</a></li>
+								<li><a href="product_review.html">상품평</a></li>
 							</ul>
 						</li>
 						<li>
@@ -102,23 +103,189 @@
 		<!-- Page Content -->
 		<div id="page-wrapper">
 			<div class="container-fluid">
+				
+				<!-- Morris Charts JavaScript -->
+				<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+				<script src="js/morris-data.js"></script>
 
 				<!-- page title -->
 				<h1 class="page-header">Dashboard</h1>
 				<!-- //page title -->
 
-				<!-- page contents -->
+				<!-- Notification -->
 				<div class="panel panel-default">
-					<div class="panel-heading">페이지 타이틀</div>
+
+					<div class="panel-heading"><i class="fa fa-bell fa-fw"></i> 알림</div>
 					<div class="panel-body">
-						페이지 컨텐츠
+						<div class="row">
+							<div class="col-lg-3 col-md-6">
+								<div class="panel panel-yellow">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-shopping-cart fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<div class="huge">124</div>
+												<div>New Orders!</div>
+											</div>
+										</div>
+									</div>
+									<a href="member_order.html">
+										<div class="panel-footer">
+											<span class="pull-left">View Details</span>
+											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+											<div class="clearfix"></div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="panel panel-primary">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-comments fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<div class="huge">26</div>
+												<div>New Comments!</div>
+											</div>
+										</div>
+									</div>
+									<a href="product_review.html">
+										<div class="panel-footer">
+											<span class="pull-left">View Details</span>
+											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+											<div class="clearfix"></div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="panel panel-green">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-users fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<div class="huge">12</div>
+												<div>New Member!</div>
+											</div>
+										</div>
+									</div>
+									<a href="member.html">
+										<div class="panel-footer">
+											<span class="pull-left">View Details</span>
+											<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+											<div class="clearfix"></div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-6">
+								<div class="panel panel-red">
+									<div class="panel-heading">
+										<div class="row">
+											<div class="col-xs-3">
+												<i class="fa fa-eye fa-5x"></i>
+											</div>
+											<div class="col-xs-9 text-right">
+												<div class="huge">13</div>
+												<div>Today Visit!</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- //Notification -->
+				
+				<!-- 게시판 단어 그래프 -->
+				<div class="panel panel-default">
+					<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 게시판에 언급된 단어 통계</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-4"><div id="graph_word01"></div></div>
+							<div class="col-md-4"><div id="graph_word02"></div></div>
+							<div class="col-md-4"><div id="graph_word03"></div></div>
+						</div>
 					</div>
 				</div>
-				<!-- //page contents -->
+				<!-- //게시판 단어 그래프 -->
+				
+				<!-- 지역별 그래프 -->
+				<div class="panel panel-default">
+					<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 지역별 주문 통계</div>
+					<div class="panel-body">
+						<div id="graph_addr"></div>
+					</div>
+				</div>
+				<!-- //지역별 그래프 -->
+				
+				<!-- 카테고리별 그래프 -->
+				<div class="panel panel-default">
+					<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 카테고리별 판매 통계</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-5">
+								<h3>전체 판매량</h3>
+								<div id="graph_category01"></div>
+							</div>
+							<div class="col-md-7">
+								<h3>기간별 판매량</h3>
+								<div id="graph_category02"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //카테고리별 그래프 -->
+				
+				<!-- 브랜드별 그래프 -->
+				<div class="panel panel-default">
+					<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 브랜드별 판매 통계</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-5">
+								<h3>전체 판매량</h3>
+								<div id="graph_brand01"></div>
+							</div>
+							<div class="col-md-7">
+								<h3>기간별 판매량</h3>
+								<div id="graph_brand02"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //브랜드별 그래프 -->
+				
+				<!-- 성별 그래프 -->
+				<div class="panel panel-default">
+					<div class="panel-heading"><i class="fa fa-bar-chart-o fa-fw"></i> 성별 판매 통계</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-5">
+								<h3>전체 판매량</h3>
+								<div id="graph_sex01"></div>
+							</div>
+							<div class="col-md-7">
+								<h3>기간별 판매량</h3>
+								<div id="graph_sex02"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //성별 그래프 -->
+	
 			</div>
-			<!-- /.container-fluid -->
 		</div>
-		<!-- /#page-wrapper -->
+		<!-- //Page Content -->
 	</div>
 	<!-- /#wrapper -->
 </body>

@@ -1,7 +1,7 @@
 package vo;
 
 public class BoardVo {
-	/*	2018년3월7일(seo) 	*/
+	
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
 		
@@ -19,6 +19,8 @@ public class BoardVo {
 	int b_step;
 	int b_depth;
 	
+	
+	/**************************** VO 내부로만 사용*************************************/
 	
 	int no; 
 
@@ -75,6 +77,9 @@ public class BoardVo {
 		String str = getB_regdate().substring(0, 10);
 		return str;
 	}
+	
+	/**************************** VO 내부로만 사용 END***********************************/
+	
 	public BoardVo(int b_no, String m_id, String b_name, String b_content, String b_ip,int b_readhit, String b_regdate,
 			int b_notice, int b_ref, int b_step, int b_depth) {
 		super();
@@ -193,6 +198,5 @@ public class BoardVo {
 	public void setB_depth(int b_depth) {
 		this.b_depth = b_depth;
 	}
-	/*	//2018년3월7일(seo) 	*/
 	
 }

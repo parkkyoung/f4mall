@@ -172,67 +172,69 @@
 					</div>
 					<div class="form-group">
 						<label for="">ID</label> 
-						<input type="text" name="m_id" id="mm_id" class="form-control" placeholder="메일 주소" value="${user.m_id }" readonly />
+						<input type="text" name="m_id" id="mm_id" class="form-control" placeholder="메일 주소" 
+						      value="${user.m_id }" readonly />
 					</div>
 					<div class="form-group">
 						<label for="">패스워드</label> 
-						<input type="password" name="m_pwd" id="mm_pwd" class="form-control" placeholder="비밀번호" value="${user.m_pwd }" /> 
-							<span class="mt5" id="mm_pwd_msg"></span>
+						<input type="password" name="m_pwd" id="mm_pwd" class="form-control" placeholder="비밀번호" 
+						      value="${user.m_pwd }" /> 
+						<span class="mt5" id="mm_pwd_msg"></span>
 					</div>
 					<div class="form-group">
 						<input type="password" id="mm1_pwd" class="form-control" placeholder="비밀번호 확인" value="" /> 
 						<span class="mt5" id="mm1_pwd_msg"></span>
 					</div>
 					<div class="form-group">
-						<label for="">이름</label> <input type="text" name="m_name"
-							id="mm_name" class="form-control" placeholder="이름"
-							value="${user.m_name }" />
+						<label for="">이름</label> 
+						<input type="text" name="m_name" id="mm_name" class="form-control" placeholder="이름" 
+						      value="${user.m_name }" />
 					</div>
 					<div class="form-group">
-						<label for="">닉네임</label> <input type="text" name="m_nick"
-							id="mm_nick" class="form-control" placeholder="닉네임"
-							value="${user.m_nick }" />
+						<label for="">닉네임</label> 
+						<input type="text" name="m_nick" id="mm_nick" class="form-control" placeholder="닉네임" 
+						      value="${user.m_nick }" />
 					</div>
 					<div class="form-group">
-						<label for="">핸드폰번호</label> <input type="number" name="m_tel"
-							id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력"
-							value="${user.m_tel }" />
+						<label for="">핸드폰번호</label> 
+						<input type="number" name="m_tel" id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력" 
+						      value="${user.m_tel }" />
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="form-group">
-						<label for="">가입일자</label> <input type="text" class="form-control"
-							placeholder="YYYY-MM-DD" value="${user.m_regdate }" readonly>
+						<label for="">가입일자</label> 
+						<input type="text" class="form-control" placeholder="YYYY-MM-DD" value="${user.m_regdate }" readonly>
 					</div>
 					<div class="form-group">
 						<label for="">주소</label>
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" name="m_zipcode" id="mm_zipcode"
-									class="form-control" placeholder="우편번호" value="" readonly />
+								<input type="text" name="m_zipcode" id="mm_zipcode" class="form-control" placeholder="우편번호" 
+								      value="" readonly />
 							</div>
 							<div class="col-xs-4">
-								<button type="button" class="btn btn-warning"
-									onclick="findAddress()">주소찾기</button>
+								<button type="button" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" name="m_addr" id="mm_addr" class="form-control"
-							placeholder="지번주소" value="${user.m_addr }" />
+						<input type="text" name="m_addr" id="mm_addr" class="form-control" placeholder="지번주소" 
+						      value="${user.m_addr }" />
 					</div>
 					<div class="form-group">
-						<input type="text" name="m_addr_d" id="mm_addr_d"
-							class="form-control" placeholder="상세주소" value="${user.m_addr_d }" />
+						<input type="text" name="m_addr_d" id="mm_addr_d" class="form-control" placeholder="상세주소" 
+						      value="${user.m_addr_d }" />
 					</div>
 					<div class="form-group">
-						<label for="">이미지</label> <input type="file" class="form-control" />
+						<label for="">이미지</label> 
+						<input type="file" class="form-control" />
 					</div>
 				</div>
 				<div class="col-lg-12">
 					<div class="form-group text-right" float="rigth">
-						<button type="button" class="btn btn-primary"
-							onclick="send_update(this.form); return false;">회원수정</button>
+						<button type="button" class="btn btn-primary" 
+						     onclick="send_update(this.form); return false;">회원수정</button>
 					</div>
 				</div>
 		</form>

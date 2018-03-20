@@ -95,14 +95,14 @@
 
 	<!--회원수정-->
 	function join(f) {
-		var m_id = f.m_id1.value.trim();
-		var m_pwd = f.m_pwd1.value.trim();
-		var m_name = f.m_name.value.trim();
-		var m_nick = f.m_nick.value.trim();
+		var m_id 		= f.m_id1.value.trim();
+		var m_pwd 		= f.m_pwd1.value.trim();
+		var m_name		= f.m_name.value.trim();
+		var m_nick 		= f.m_nick.value.trim();
 		//var m_zipcode = f.m_zipcode.value.trim();
-		var m_addr = f.m_addr.value.trim();
-		var m_addr_d = f.m_addr_d.value.trim();
-		var m_tel = f.m_tel.value.trim();
+		var m_addr 		= f.m_addr.value.trim();
+		var m_addr_d 	= f.m_addr_d.value.trim();
+		var m_tel 		= f.m_tel.value.trim();
 
 
 		// 값 체크
@@ -146,18 +146,17 @@
 		}).then((value) => {
 			location.href = "index.do";
 		});
-	}
-	;
+	};
+	
 </script>
 
 <!-- visual -->
 <section class="subVisual">
 	<h2>회원수정</h2>
-	<img
-		src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_member.jpg"
-		alt="sub visual" class="imgPc" /> <img
-		src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_member.jpg"
-		alt="sub visual" class="imgMobile" />
+	<img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_pc_member.jpg" 
+	     alt="sub visual" class="imgPc" /> 
+	<img src="${ pageContext.request.contextPath }/resources/front/img/visual/bg_visual_mobile_member.jpg" 
+	     alt="sub visual" class="imgMobile" />
 </section>
 <!-- //visual -->
 
@@ -170,9 +169,8 @@
 				<label for="id" class="col-sm-4 control-label">ID</label>
 				<div class="col-sm-6">
 					<input type="text" name="m_id" id="m_id1"
-						class="form-control alert alert-success" value="${user.m_id }"
-						placeholder="메일 주소" readonly /> <span class="mt5" id="m_id_msg">메일
-						주소로 작성해주세요</span>
+						  class="form-control alert alert-success" value="${user.m_id }" placeholder="메일 주소" readonly /> 
+						<span class="mt5" id="m_id_msg">메일주소로 작성해주세요</span>
 				</div>
 			</div>
 
@@ -181,23 +179,22 @@
 				<label for="pw" class="col-sm-4 control-label">Password</label>
 				<div class="col-sm-4">
 					<input type="password" name="m_pwd" id="m_pwd1"
-						class="form-control" placeholder="변경 할 비밀번호" /> <span class="mt5"
-						id="m_pwd1_msg"></span>
+						  class="form-control" placeholder="변경 할 비밀번호" /> 
+						  <span class="mt5" id="m_pwd1_msg"></span>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
 					<input type="password" name="m1_pwd" id="m1_pwd"
-						class="form-control" placeholder="비밀번호 확인" /> <span class="mt5"
-						id="m1_pwd_msg"></span>
+						  class="form-control" placeholder="비밀번호 확인" /> 
+						<span class="mt5" id="m1_pwd_msg"></span>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="name" class="col-sm-4 control-label">이름</label>
 				<div class="col-sm-4">
-					<input type="text" id="m_name" name="m_name" class="form-control"
-						value="${user.m_name }" placeholder="이름" readonly />
+					<input type="text" id="m_name" name="m_name" class="form-control" value="${user.m_name }" placeholder="이름" readonly />
 				</div>
 			</div>
 
@@ -205,8 +202,8 @@
 				<label for="nick" class="col-sm-4 control-label">닉네임</label>
 				<div class="col-sm-4">
 					<input type="text" id="m_nick" name="m_nick" class="form-control"
-						value="${user.m_nick }" placeholder="닉네임" readonly /> <span
-						class="mt5" id="m_nick_msg"></span>
+						  value="${user.m_nick }" placeholder="닉네임" readonly /> 
+						<span class="mt5" id="m_nick_msg"></span>
 				</div>
 			</div>
 
@@ -214,36 +211,31 @@
 				<label for="btnNumber" class="col-sm-4 col-xs-12 control-label">주소</label>
 				<div class="col-sm-4 col-xs-8">
 					<input type="text" id="m_zipcode" name="m_zipcode"
-						class="form-control" placeholder="우편번호" readonly />
+						  class="form-control" placeholder="우편번호" readonly />
 				</div>
 				<div class="col-sm-4 col-xs-4">
-					<button type="button" id="btnNumber" class="btn btn-warning"
-						onclick="findAddress()">주소찾기</button>
+					<button type="button" id="btnNumber" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
-					<input type="text" id="m_addr" name="m_addr" class="form-control"
-						placeholder="도로명주소" />
+					<input type="text" id="m_addr" name="m_addr" class="form-control" placeholder="도로명주소" />
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-6">
-					<input type="text" id="m_addr_d" name="m_addr_d"
-						class="form-control" placeholder="상세주소" />
+					<input type="text" id="m_addr_d" name="m_addr_d" class="form-control" placeholder="상세주소" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber" class="col-sm-4 control-label">핸드폰번호</label>
 				<div class="col-sm-4">
-					<input type="tel" id="m_tel" name="m_tel" class="form-control"
-						placeholder="01012345678" />
+					<input type="tel" id="m_tel" name="m_tel" class="form-control" placeholder="" />
 					<p class="mt5">괄호(-) 없이 숫자만 입력해주세요</p>
 				</div>
 			</div>
 			<div class="form-group btnBox">
-				<button type="button" class="btn btn-primary btn-lg"
-					onclick="join(this.form);">회원수정</button>
+				<button type="button" class="btn btn-primary btn-lg" onclick="join(this.form);">회원수정</button>
 			</div>
 	</section>
 </form>

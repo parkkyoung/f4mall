@@ -1,5 +1,3 @@
-/*	2018년3월7일(seo) 	*/
-
 
 show databases;
 
@@ -113,5 +111,3 @@ delete from board;
 
 use f4mall;
 select * from information_schema.table_constraints where table_name = 'demand';
-
-/*	//2018년3월7일(seo) 	*/
