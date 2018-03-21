@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.BoardVo;
-import vo.MemberVo;
 
-/*	2018년3월7일(seo) 	*/
 @Repository("board_dao")
 public class BoardDao {
 	
@@ -24,14 +22,12 @@ public class BoardDao {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
+	// 조건별 페이지 리스트
 	/**
 	 * 
 	 * @param map
 	 * @return
 	 */
-	// 조건별 페이지 리스트
 	public List<BoardVo> selectList(Map map) {
 		// TODO Auto-generated method stub
 		List<BoardVo> list = null;
@@ -42,13 +38,12 @@ public class BoardDao {
 		return list;
 	}
 	
-	
+	// 검색제목을 넣은 map의 레코드수 구하기
 	/**
 	 * 
 	 * @param map
 	 * @return
 	 */
-	// 검색제목을 넣은 map의 레코드수 구하기
 	public int getRowTotal(Map map) {
 		// TODO Auto-generated method stub
 		
@@ -60,13 +55,12 @@ public class BoardDao {
 
 	}
 	
-	
+	// 게시판 입력	
 	/**
 	 * 
 	 * @param vo
 	 * @return
 	 */
-	// 게시판 입력
 	public int insert(BoardVo vo) {
 		// TODO Auto-generated method stub
 		int res = 0 ;
@@ -75,15 +69,13 @@ public class BoardDao {
 		
 		return res;
 	}
-/*	//2018년3월7일(seo) 	*/
-
-
+	
+	// b_no로 게시글 가져오기.
 	/**
 	 * 
 	 * @param b_no
 	 * @return
 	 */
-	// b_no로 게시글 가져오기.
 	public BoardVo selectOne(int b_no) {
 		// TODO Auto-generated method stub
 		
@@ -94,13 +86,12 @@ public class BoardDao {
 		return vo;
 	}
 
-
+	// 조회수 증가
 	/**
 	 * 
 	 * @param b_no
 	 * @return
 	 */
-	// 조회수 증가
 	public int updateHit(int b_no) {
 		// TODO Auto-generated method stub
 		int res = 0;
@@ -110,7 +101,12 @@ public class BoardDao {
 		return res;
 	}	
 	
-	//삭제
+	//게시글 삭제
+	/**
+	 * 
+	 * @param b_no
+	 * @return
+	 */
 	public int delete(int b_no) {
 		// TODO Auto-generated method stub
 		int res =0;
@@ -119,9 +115,13 @@ public class BoardDao {
 		
 		return res;
 	}
-
-
-	//수정
+	
+	//게시글 수정
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
 	public int update(BoardVo vo) {
 		// TODO Auto-generated method stub
 		int res = 0;
@@ -132,7 +132,12 @@ public class BoardDao {
 	}
 
 
-
+	//게시글 순서
+	/**
+	 * 
+	 * @param baseVo
+	 * @return
+	 */
 	public int update_step(BoardVo baseVo) {
 		// TODO Auto-generated method stub
 		int res = 0;
@@ -142,8 +147,12 @@ public class BoardDao {
 		return res;
 	}
 
-
-
+	//게시글 답변
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
 	public int reply(BoardVo vo) {
 		// TODO Auto-generated method stub
 		int res=0;

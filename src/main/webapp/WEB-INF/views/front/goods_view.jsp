@@ -88,8 +88,8 @@ function add_cart(f){
                                 <div class="form-group">
                                     <label class="block">옵션</label>
                                     <select class="form-control wAuto right mt5">
-                                        <c:forEach var ="items_list" items="${ items_list }">
-                                        <option value="${ items_list.i_no }">색상: ${ items_list.color_name } / 사이즈: ${ items_list.size_name } / 재고수량: ${ items_list.s_amt }개</option>
+                                        <c:forEach var ="items_option" items="${ items_option }">
+                                        <option value="${ items_option.i_no }">색상: ${ items_option.color_name } / 사이즈: ${ items_list.size_name } / 재고수량: ${ items_list.s_amt }개</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -123,25 +123,32 @@ function add_cart(f){
 						<h3 class="hide">상품평</h3>
 
 						<!-- 상품평 컨텐츠의 아이디와 상품평 타이틀의 href에 해당 상품평 넘버를 삽입 -->
+						
+						
 						<!-- Loop -->
+						<c:forEach var="items_eval" items="items_eval">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<div class="panel-title">
 									<h4 class="pull-left">
-										<a data-toggle="collapse" href="#gReview01" class="block">상품평 타이틀입니다.</a>
-										<small>작성자</small>
+										<a data-toggle="collapse" href="#gReview01" class="block">${ items_eval.eval_title }</a>
+										<small>${ eval.m_id }</small>
 									</h4>
+									<c:if test="${ user.m_id } == ${ items_eval.m_id }">
 									<button class="btn btn-outline btn-warning pull-right" data-toggle="modal" data-target="#reviewPop">수정</button> <!-- 등록자 or 관리자만 노출 -->
-									<div class="pull-right">2018-03-01</div>
+									</c:if>
+									<div class="pull-right">${ items_eval.eval_regdate }</div>
 								</div>
 							</div>
 							<div id="gReview01" class="collapse">
 								<div class="panel-body">
-									<p>상품평 컨텐츠입니다.</p>
+									<p>${ items_eval.eval_content }</p>
 								</div>
 							</div>
 						</div>
+						</c:forEach>
 						<!-- //Loop -->
+<!-- 
 
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -150,7 +157,7 @@ function add_cart(f){
 										<a data-toggle="collapse" href="#gReview02" class="block">상품평 타이틀입니다.2</a>
 										<small>작성자2</small>
 									</h4>
-									<button class="btn btn-outline btn-warning pull-right" data-toggle="modal" data-target="#reviewPop">수정</button> <!-- 등록자 or 관리자만 노출 -->
+									<button class="btn btn-outline btn-warning pull-right" data-toggle="modal" data-target="#reviewPop">수정</button> 등록자 or 관리자만 노출
 									<div class="pull-right">2018-03-01</div>
 								</div>
 							</div>
@@ -167,7 +174,7 @@ function add_cart(f){
 										<a data-toggle="collapse" href="#gReview03" class="block">상품평 타이틀입니다.3</a>
 										<small>작성자3</small>
 									</h4>
-									<button class="btn btn-outline btn-warning pull-right" data-toggle="modal" data-target="#reviewPop">수정</button> <!-- 등록자 or 관리자만 노출 -->
+									<button class="btn btn-outline btn-warning pull-right" data-toggle="modal" data-target="#reviewPop">수정</button> 등록자 or 관리자만 노출
 									<div class="pull-right">2018-03-01</div>
 								</div>
 							</div>
@@ -178,7 +185,7 @@ function add_cart(f){
 							</div>
 						</div>
 
-					</div>
+					</div> -->
 					<!-- //상품평 -->
 				</div>
 				<!-- //상품 상세 -->
