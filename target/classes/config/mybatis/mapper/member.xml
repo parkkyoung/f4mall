@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						  m_tel 	=#{ m_tel },
 						  m_regdate =now(),
 		                  m_addr	=#{ m_addr },
-		                  m_addr_d  = #{ m_addr_d },
+		                  m_addr_d  =#{ m_addr_d },
 		                  m_zipcode =#{ m_zipcode }
 		                  m_image   =#{ m_image }
 		                  

@@ -1,9 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%@include file="template/header.jsp"%>
-
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <!-- page script -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+
 
 <script>
 
@@ -13,11 +16,11 @@
 		$('#mm_pwd').keyup(function(event) {
 
 			// 비밀번호 유효성 체크
-			var m_pwd = $(this).val();
-			var m_pwd = $(this).val();
-			var m_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+			var mm_pwd = $(this).val();
+			var mm1_pwd = $(this).val();
+			var mm_pwd_pattern = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
 
-			if (!(m_pwd_pattern.test(m_pwd))) {
+			if (!(mm_pwd_pattern.test(mm_pwd))) {
 
 				$('#mm_pwd_msg').html('영문, 숫자 혼합하여 6~20자리 이내.').css('color', 'red');
 				$("#mm_pwd").addClass("alert alert-danger").removeClass("alert-success");
@@ -42,9 +45,45 @@
 				}
 			});
 		});
-	});
+	
 
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
 
+				reader.onload = function(e) {
+					$('#image_section').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+		$("#mm_image").change(function() {
+			readURL(this);
+		});
+	
+		
+	 	 function image_update(){
+		     	
+	 		 	var m_image = $(this).val();
+	 		 		
+		         $.ajax({
+						url  : 'check_image.do',
+						data : { 'm_image' : m_image },
+						success : function(data) {
+							// data="[{'result':'yes'}]";
+							var json = eval(data);
+							// var json=[{'result':'yes'}];    => 배열이다
+							if (json[0].result == 'yes') {
+								$('#admin_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
+							}
+						  }
+						}
+					}); 
+				});
+		     
+		     
 	<!-- 다음 우편 -->
 	function findAddress() {
 		new daum.Postcode({
@@ -90,15 +129,14 @@
 
 
 	function send_update(f) {
-		
-		var m_id 		 = f.mm_id.value.trim();
-		var m_pwd 		 = f.mm_pwd.value.trim();
-		var m_name 		 = f.mm_name.value.trim();
-		var m_nick 		 = f.mm_nick.value.trim();
-		var m_tel 	     = f.mm_tel.value.trim();
-		var m_addr       = f.mm_addr.value.trim();
-		var m_addr_d     = f.mm_addr_d.value.trim();
-		var m_image      = f.mm_image.value;
+		var m_id = f.mm_id.value.trim();
+		var m_pwd = f.mm_pwd.value.trim();
+		var m_name = f.mm_name.value.trim();
+		var m_nick = f.mm_nick.value.trim();
+		var m_tel = f.mm_tel.value.trim();
+		var m_addr = f.mm_addr.value.trim();
+		var m_addr_d = f.mm_addr_d.value.trim();
+		/* var m_image      = f.mm_image.value; */
 		/* var m_zipcode = f.mm_zipcode.value.trim(); */
 
 		if (m_id == '') {
@@ -152,8 +190,8 @@
 		}).then((value) => {
 			location.href = "member_list.do";
 		});
-	};
-	
+	}
+	;
 </script>
 
 <!-- page title -->
@@ -169,76 +207,68 @@
 				<div class="col-lg-6">
 					<div class="form-group">
 						<label for="">IP</label> 
-						<input type="text" class="form-control" placeholder="아이피 주소" value="${user.m_ip }" readonly />
+						<input type="text" class="form-control"placeholder="아이피 주소" value="${user.m_ip }" readonly />
 					</div>
 					<div class="form-group">
 						<label for="">ID</label> 
-						<input type="text" name="m_id" id="mm_id" class="form-control" placeholder="메일 주소" 
-						      value="${user.m_id }" readonly />
+						<input type="text" name="m_id" id="mm_id"class="form-control" placeholder="메일 주소" value="${user.m_id }"readonly />
 					</div>
 					<div class="form-group">
 						<label for="">패스워드</label> 
-						<input type="password" name="m_pwd" id="mm_pwd" class="form-control" placeholder="비밀번호" 
-						      value="${user.m_pwd }" /> 
+						<input type="password" name="m_pwd" id="mm_pwd" class="form-control" placeholder="비밀번호"value="${user.m_pwd }" /> 
 						<span class="mt5" id="mm_pwd_msg"></span>
 					</div>
 					<div class="form-group">
-						<input type="password" id="mm1_pwd" class="form-control" placeholder="비밀번호 확인" value="" /> 
+						<input type="password" id="mm1_pwd" class="form-control"placeholder="비밀번호 확인" value="" /> 
 						<span class="mt5" id="mm1_pwd_msg"></span>
 					</div>
 					<div class="form-group">
 						<label for="">이름</label> 
-						<input type="text" name="m_name" id="mm_name" class="form-control" placeholder="이름" 
-						      value="${user.m_name }" />
+						<input type="text" name="m_name"id="mm_name" class="form-control" placeholder="이름"value="${user.m_name }" />
 					</div>
 					<div class="form-group">
 						<label for="">닉네임</label> 
-						<input type="text" name="m_nick" id="mm_nick" class="form-control" placeholder="닉네임" 
-						      value="${user.m_nick }" />
+						<input type="text" name="m_nick"id="mm_nick" class="form-control" placeholder="닉네임"value="${user.m_nick }" />
 					</div>
 					<div class="form-group">
 						<label for="">핸드폰번호</label> 
-						<input type="number" name="m_tel" id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력" 
-						      value="${user.m_tel }" />
+						<input type="number" name="m_tel"id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력"value="${user.m_tel }" />
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="form-group">
-						<label for="">가입일자</label> 
-						<input type="text" class="form-control" placeholder="YYYY-MM-DD" value="${user.m_regdate }" readonly>
+						<label for="">가입일자</label> <input type="text" class="form-control"placeholder="YYYY-MM-DD" value="${user.m_regdate }" readonly>
 					</div>
 					<div class="form-group">
 						<label for="">주소</label>
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" name="m_zipcode" id="mm_zipcode" class="form-control" placeholder="우편번호" 
-								      value="" readonly />
+								<input type="text" name="m_zipcode" id="mm_zipcode"class="form-control" placeholder="우편번호" value="" readonly />
 							</div>
 							<div class="col-xs-4">
-								<button type="button" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
+								<button type="button" class="btn btn-warning"onclick="findAddress()">주소찾기</button>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="text" name="m_addr" id="mm_addr" class="form-control" placeholder="지번주소" 
-						      value="${user.m_addr }" />
+						<input type="text" name="m_addr" id="mm_addr" class="form-control"placeholder="지번주소" value="${user.m_addr }" />
 					</div>
 					<div class="form-group">
-						<input type="text" name="m_addr_d" id="mm_addr_d" class="form-control" placeholder="상세주소" 
-						      value="${user.m_addr_d }" />
+						<input type="text" name="m_addr_d" id="mm_addr_d"class="form-control" placeholder="상세주소" value="${user.m_addr_d }" />
 					</div>
 					<div class="form-group">
 						<label for="">이미지</label> 
-						<input type="file" id="mm_image" name="m_image" value="" class="form-control" />
+						<input type='file' id="mm_image"name="m_image" value="" class="form-control" /> 
+						<img id="image_section" width="100" src="${ pageContext.request.contextPath }/resources/upload/${ user.m_image }"alt="your image" />
+						<button type="button" id="uploadbutton" class="btn btn-primary" onclick="image_update();">이미지수정</button>
 					</div>
-				</div>
-				<div class="col-lg-12">
-					<div class="form-group text-right" float="rigth">
-						<button type="button" class="btn btn-primary" 
-						     onclick="send_update(this.form); return false;">회원수정</button>
 					</div>
-				</div>
-		</form>
+					<div class="col-lg-12">
+						<div class="form-group text-right" float="rigth">
+							<button type="button" class="btn btn-primary" onclick="send_update(this.form); return false;">회원수정</button>
+						</div>
+					</div>
+			</form>
 	</div>
 </div>
 <!-- //회원상세 -->
