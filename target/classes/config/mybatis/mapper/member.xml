@@ -22,8 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원가입 -->
 	<insert id="insert_id" parameterType="vo.MemberVo">
-		insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel,m_zipcode,m_addr,m_addr_d,m_grade,m_nick) values(#{ m_id },
-							#{m_pwd},#{m_name},#{m_ip},now(),#{m_tel},#{m_zipcode},#{m_addr},#{m_addr_d},#{m_grade},#{m_nick})
+		insert into member (m_id,m_pwd,m_name,m_ip,m_regdate,m_tel,m_zipcode,m_addr,m_addr_d,m_grade,m_nick,m_image_m) values(#{ m_id },
+							#{m_pwd},#{m_name},#{m_ip},now(),#{m_tel},#{m_zipcode},#{m_addr},#{m_addr_d},#{m_grade},#{m_nick},#{m_image_m})
 	</insert>
 	
 	
@@ -40,6 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		                  m_addr	=#{ m_addr },
 		                  m_addr_d  = #{ m_addr_d },
 		                  m_zipcode =#{ m_zipcode }
+		                  m_image   =#{ m_image }
 		                  
 		where m_id=#{ m_id }
 	</update>

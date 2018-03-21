@@ -26,7 +26,7 @@ function comment_del(c_no){
 		<!-- Loop -->
 		<c:forEach var="co"  items="${ c_list }">
 		<tr>
-			<td class="cImg"><img src="http://placehold.it/50x50" alt="user thumbnail" ></td>
+			<td class="cImg"><img src="" alt="user thumbnail" ></td>
 			<td class="cId">${co.c_nick }</td>
 			<td class="cContent">${co.c_content}</td>
 			<td class="cDate">${co.c_regdate}</td>
@@ -35,16 +35,16 @@ function comment_del(c_no){
 			<!-- 관리자나 작성자가 아니면 삭제 불가 -->
 			<c:choose>
 			<c:when test="${user.m_id eq co.m_id || user.m_id eq 'admin@f4mall.com' }">
-			<td class="cIp">${co.c_ip} &nbsp;
+			<td class="cIp"><c:out value="${co.c_ip}" /> &nbsp;
 			<button type="button"  class="btn btn-danger" onclick="comment_del('${co.c_no}');">삭제</button></td>
 			</c:when>
 			
 			<c:when test="${uesr.m_id ne co.m_id}">
-			<td class="cIp" colspan="2">${co.c_ip}</td>	
+			<td class="cIp" colspan="2"><c:out value="${co.c_ip}"/></td>	
 			</c:when>
 			
 			<c:otherwise>
-			<td class="cIp" colspan="2">${co.c_ip}</td>	
+			<td class="cIp" colspan="2"><c:out value="${co.c_ip}"/></td>	
 			</c:otherwise>
 			
 			</c:choose>

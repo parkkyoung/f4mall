@@ -53,7 +53,8 @@ inner join product as p on p.p_no = i.p_no
 inner join color as col on col.color_no = i.color_no
 inner join size as size on size.size_no = i.size_no
 
-
+use f4mall;
+select * from stock_view_inv;
 
 use f4mall;
 alter table stock_inv add constraint fk_svi_no foreign key (i_no)

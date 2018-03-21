@@ -110,11 +110,11 @@
 				}
 
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
-				document.getElementById('addressNumber').value = data.zonecode; //5자리 새우편번호 사용
-				document.getElementById('address').value = fullAddr;
+				document.getElementById('m_zipcode').value = data.zonecode; //5자리 새우편번호 사용
+				document.getElementById('m_addr').value = fullAddr;
 
 				// 커서를 상세주소 필드로 이동한다.
-				document.getElementById('address2').focus();
+				document.getElementById('m_addr_d').focus();
 			}
 		}).open();
 	};
@@ -127,9 +127,10 @@
 		var m_name   = f.m_name.value.trim();
 		var m_nick   = f.m_nick.value.trim();
 		var m_tel 	 = f.m_tel.value.trim();
-		var m_addr   = f.m_addr.value.trim();
-		var m_addr_d = f.m_addr_d.value.trim();
+		/* var m_addr   = f.m_addr.value.trim();*/
+		/*var m_addr_d = f.m_addr_d.value.trim(); */
 		var m_grade  = f.m_grade.value.trim();
+		var m_image  = f.m_image.value;
 
 		if (m_id == '') {
 			alert('아이디를 입력하세요')
@@ -194,7 +195,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">회원등록</div>
 	<div class="panel-body">
-		<form role="form" class="panel-body">
+		<form action="member_insert.do" role="form" class="panel-body" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="form-group">
@@ -246,8 +247,8 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="">이미지</label> 
-						<input type="file" class="form-control" />
+						<label for="">이미지(30x30)</label> 
+						<input type="file" id="m_image" name="m_image_m" class="form-control"/>
 					</div>
 
 					<div class="form-group">

@@ -121,7 +121,7 @@ function find(){
 								<td class="blId"><c:out value="${vo.b_nick}" /></td>
 								<td class="blDate mHide"><c:out
 										value="${vo.b_regdateShort}" /></td>
-								<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /></td>
+								<td class="blViewing mHide"><c:out value="${vo.b_readhit}" />( <c:out value="${vo.listCount}"/> )</td>
 							</tr>
 						</c:if>
 					
@@ -180,4 +180,3 @@ function find(){
 </section>
 <!-- //sub contents -->
 <%@ include file="template/footer.jsp"%>
-<!-- /*	//2018년3월7일(seo) 	*/-->
