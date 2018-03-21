@@ -9,6 +9,12 @@
 * @Modified date: -
 * @Modified content : -
 * ================================================================================= */
+.block {display:block;}
 
 table th,
 table td {text-align:center;vertical-align: middle !important;}
+
+/* faq */
+.panel .pTitle {padding-top:8px;}
+.panel .pTitle a {color:#333;}
+.panel .pDate {display:inline-block;margin-right:10px;padding-top:8px;}

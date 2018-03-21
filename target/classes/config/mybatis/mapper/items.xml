@@ -29,6 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="items_option" parameterType="int" resultType="vo.ItemsViewVo">
 		select * from items_view where p_no = #{ p_no }
 	</select>
+	
+	<select id="items_eval" parameterType="int" resultType="vo.ItemsEvalVo">
+		select * from product_eval where p_no = p_no
+	</select>
 
 </mapper>
 
