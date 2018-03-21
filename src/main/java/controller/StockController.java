@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.ItemsDao;
 import dao.stockdao.StockDao;
 import service.StockService;
 import vo.StockVo;
@@ -16,13 +17,16 @@ public class StockController {
 	
 	@Autowired
 	StockService stock_service;
+	@Autowired
+	ItemsDao items_dao;
 	
 	@RequestMapping("/admin/goods_stock_form.do")
-	public String goods_stock_form(Model model){
+	public String goods_stock_form(Model model, Integer i_no){
 		
 		Map map =null;
 		map = stock_service.select_list();
 		
+		model.addAttribute("item_no",i_no);
 		model.addAttribute("map",map);
 		
 		return"admin/goods_stock";

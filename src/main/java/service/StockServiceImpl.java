@@ -44,8 +44,9 @@ public class StockServiceImpl implements StockService{
 		res = stock_dao_in.insert(vo);
 		
 		StockVo inv_vo = stock_dao_inv.select_one(vo.getI_no());
+		System.out.println(inv_vo);
 		if(inv_vo==null){
-			res = stock_dao_inv.insert(inv_vo);
+			res = stock_dao_inv.insert(vo);
 		}else{
 			int amt = inv_vo.getS_amt() + vo.getS_amt();
 			inv_vo.setS_amt(amt);

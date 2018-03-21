@@ -20,6 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into stock_in (s_amt,s_regdate,i_no) values (#{ s_amt }, #{ s_regdate }, #{ i_no })
 	</insert>
 	
+	<insert id="insert_inv_stock" parameterType="vo.StockVo">
+		insert into stock_inv (s_amt,s_regdate,i_no) values (#{ s_amt }, #{ s_regdate }, #{ i_no })
+	</insert>
+	
 	<insert id="insert_out_stock" parameterType="vo.StockVo">
 		insert into stock_out (s_amt,s_regdate,i_no) values (#{ s_amt }, #{ s_regdate }, #{ i_no })
 	</insert>
