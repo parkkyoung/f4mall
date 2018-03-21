@@ -15,12 +15,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="demand_insert" parameterType="vo.DemandVo">
 	insert into demand (i_no, m_id, o_amt, o_addr, o_addr_d, o_zipcode,
 						o_tel, o_regdate, o_payment, o_remarks,
-						o_pay_amt, o_name)
+						o_pay_amt, o_name, o_status)
 				values(#{ i_no }, #{ m_id }, #{ o_amt }, #{ o_addr }, #{ o_addr_d },
 					   #{ o_zipcode }, #{ o_tel }, now(), #{ o_payment },
-					   #{ o_remarks }, #{ o_pay_amt }, #{ o_name }
+					   #{ o_remarks }, #{ o_pay_amt }, #{ o_name },0
 						)
 </insert>
+
+<select id="demand_eval_list" parameterType="java.lang.String" resultType="vo.DemandVo">
+	select * from demand where m_id= #{ m_id } and o_status = 0
+</select>
 
 </mapper>
 

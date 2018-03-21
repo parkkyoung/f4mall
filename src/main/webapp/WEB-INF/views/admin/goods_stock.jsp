@@ -134,7 +134,7 @@ function stock_out(f){
 				<form action="" role="form" class="panel-body">
 					<div class="form-group">
 						<label for="">상품코드</label>
-						<input type="text" class="form-control" placeholder="상품코드" name="i_no" id="in_ino"/>
+						<input type="text" class="form-control" placeholder="상품코드" name="i_no" id="in_ino" value="${ item_no }"/>
 					</div>
 					<div class="form-group">
 						<label for="">입고수량</label>

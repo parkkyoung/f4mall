@@ -15,7 +15,7 @@ use f4mall;
 drop table product_eval
 
 use f4mall;
-select * from product_eval
+select * from product_eval where m_id = 'admin@f4mall.com' and o_status = 0
 
 use f4mall;
 alter table product_eval add constraint fk_pep_no foreign key

@@ -22,6 +22,13 @@ public class BoardVo {
 	
 	/**************************** VO 내부로만 사용*************************************/
 	
+	/* memeber의 m_image 가져오기 [mapper xml참고]*/
+	String b_image;
+	
+	public String getB_image() {
+		return b_image;
+	}
+	
 	int no; 
 
 	
@@ -80,8 +87,11 @@ public class BoardVo {
 	
 	/**************************** VO 내부로만 사용 END***********************************/
 	
+	
+	
+	
 	public BoardVo(int b_no, String m_id, String b_name, String b_content, String b_ip,int b_readhit, String b_regdate,
-			int b_notice, int b_ref, int b_step, int b_depth) {
+			int b_notice, int b_ref, int b_step, int b_depth, int listCount) {
 		super();
 		this.b_no = b_no;
 		this.m_id = m_id;
@@ -94,10 +104,11 @@ public class BoardVo {
 		this.b_ref = b_ref;
 		this.b_step = b_step;
 		this.b_depth = b_depth;
+		this.listCount = listCount;
 	}
 	
 	public BoardVo(int b_no, String m_id, String b_name, String b_content, String b_ip, String b_regdate,
-			int b_notice, int b_ref) {
+			int b_notice, int b_ref, int listCount) {
 		super();
 		this.b_no = b_no;
 		this.m_id = m_id;
@@ -107,9 +118,10 @@ public class BoardVo {
 		this.b_regdate = b_regdate;
 		this.b_notice = b_notice;
 		this.b_ref = b_ref;
+		this.listCount=listCount;
 	}
 	
-	public BoardVo(String m_id, String b_name, String b_content, String b_ip, String b_regdate, int b_notice) {
+	public BoardVo(String m_id, String b_name, String b_content, String b_ip, String b_regdate, int b_notice, int listCount) {
 		super();
 		this.m_id = m_id;
 		this.b_name = b_name;
@@ -117,11 +129,12 @@ public class BoardVo {
 		this.b_ip = b_ip;
 		this.b_regdate = b_regdate;
 		this.b_notice = b_notice;
+		this.listCount = listCount;
 	}
 	
 	
 	public BoardVo(int b_no, String m_id, String b_name, String b_content, String b_ip, String b_regdate,
-			int b_notice) {
+			int b_notice, int listCount) {
 		super();
 		this.b_no = b_no;
 		this.m_id = m_id;
@@ -130,6 +143,7 @@ public class BoardVo {
 		this.b_ip = b_ip;
 		this.b_regdate = b_regdate;
 		this.b_notice = b_notice;
+		this.listCount = listCount;
 	}
 
 	public int getB_no() {

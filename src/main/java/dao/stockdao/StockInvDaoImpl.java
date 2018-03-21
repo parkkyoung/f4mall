@@ -29,17 +29,21 @@ public class StockInvDaoImpl implements StockDao{
 	}
 	
 	@Override
-	public int insert(StockVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public int update(StockVo vo) {
+	public int insert(StockVo inv_vo) {
 		// TODO Auto-generated method stub
 		int res = 0;
 		
-		res = sqlSession.update("update_inv_stock",vo);
+		res = sqlSession.insert("insert_inv_stock",inv_vo);
+		
+		return res;
+	}
+	
+	@Override
+	public int update(StockVo inv_vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.update("update_inv_stock",inv_vo);
 		
 		return res;
 	}

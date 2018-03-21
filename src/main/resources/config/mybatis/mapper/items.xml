@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="items_insert" parameterType="vo.ItemsVo">
         insert into items(
             p_no, category_no, material_no, color_no,
-            sex_no, brand_no, size_no, s_no
+            sex_no, brand_no, size_no
         ) values(
             #{p_no}, #{category_no}, #{material_no}, #{color_no},
-            #{sex_no}, #{brand_no}, #{size_no}, #{s_no}
+            #{sex_no}, #{brand_no}, #{size_no}
         )
     </insert>
     

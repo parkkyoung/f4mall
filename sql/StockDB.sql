@@ -1,3 +1,5 @@
+use f4mall;
+select * from stock_inv
 
 use f4mall;
 create table stock_in (

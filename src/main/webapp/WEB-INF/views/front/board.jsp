@@ -113,7 +113,7 @@ function find(){
 									<a href="board_view.do?b_no=${vo.b_no}&page=${empty param.page ? 1 : param.page}&search_text=${param.search_text}">
 									 
 										<!--  NewBoard  -->
-										<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />   ==[NEW]==</c:if>
+										<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" /> <img alt="" src="${pageContext.request.contextPath }/resources/front/img/new.jpg"></c:if>
 										<c:if test="${vo.b_regdateShort ne vo.todayShort }"><c:out value="${vo.b_name}" /></c:if>
 										<!--  //NewBoard  -->
 									</a>
@@ -121,7 +121,7 @@ function find(){
 								<td class="blId"><c:out value="${vo.b_nick}" /></td>
 								<td class="blDate mHide"><c:out
 										value="${vo.b_regdateShort}" /></td>
-								<td class="blViewing mHide"><c:out value="${vo.b_readhit}" /></td>
+								<td class="blViewing mHide"><c:out value="${vo.b_readhit}" />( <c:out value="${vo.listCount}"/> )</td>
 							</tr>
 						</c:if>
 					
@@ -144,7 +144,7 @@ function find(){
 										<!-- //Depth  -->
 										
 										<!--  NewBoard  -->
-										<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />  ==[NEW]==</c:if>
+										<c:if test="${vo.b_regdateShort eq vo.todayShort }"><c:out value="${vo.b_name}" />  <img style="margin-top: 4px" src="${pageContext.request.contextPath }/resources/front/img/new.jpg"></c:if>
 										<c:if test="${vo.b_regdateShort ne vo.todayShort }"><c:out value="${vo.b_name}" /></c:if>
 										<!--  //NewBoard  -->
 
@@ -180,4 +180,3 @@ function find(){
 </section>
 <!-- //sub contents -->
 <%@ include file="template/footer.jsp"%>
-<!-- /*	//2018년3월7일(seo) 	*/-->

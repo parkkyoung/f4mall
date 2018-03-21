@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+    
+    <!-- 최근 한달 회원가입 멤버 수 -->
+    <select id="count_member" resultType="int">
+        select count(*) from member
+            where date(m_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                and  date(now())
+    </select>
+    <!-- 최근 한달 주문 수 -->
+    <select id="count_demand" resultType="int">
+        select count(*) from demand
+            where date(o_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                and  date(now())
+    </select>
+    <!-- 최근 한달 상품평 수 -->
+    <select id="count_eval" resultType="int">
+        <!-- 임시데이터로 상품평 테이블 만들면 수정하세요 -->
+        select count(*) from member
+            where date(m_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                and  date(now())
+        <!-- select count(*) from eval
+            where date(eval_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                and  date(now()) -->
+    </select>
+    <!-- 최근 한달 상품등록 수 -->
+    <select id="count_product" resultType="int">
+		select count(*) from product
+		    where date(p_entry)  between date(subdate(now(), INTERVAL 30 DAY)) 
+		        and  date(now())
+    </select>
+    
+    
+    <!-- 카테고리별 주문 통계 -->
+    <select id="count_category01" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.category_no=1 then 1 end) as 'count01',
+            count(case when i.category_no=2 then 1 end) as 'count02',
+            count(case when i.category_no=3 then 1 end) as 'count03',
+            count(case when i.category_no=4 then 1 end) as 'count04',
+            count(case when i.category_no=5 then 1 end) as 'count05',
+            count(case when i.category_no=6 then 1 end) as 'count06'
+                from demand d
+                    join items i on d.i_no = i.i_no
+    </select>
+    <!-- 카테고리별 최근 주간 주문 통계 -->
+    <select id="count_category02" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.category_no=1 then 1 end) as 'count01',
+            count(case when i.category_no=2 then 1 end) as 'count02',
+            count(case when i.category_no=3 then 1 end) as 'count03',
+            count(case when i.category_no=4 then 1 end) as 'count04',
+            count(case when i.category_no=5 then 1 end) as 'count05',
+            count(case when i.category_no=6 then 1 end) as 'count06'
+                from demand d
+                    join items i on d.i_no = i.i_no
+                        where date(d.o_regdate)  between date(subdate(now(), INTERVAL 7 DAY)) 
+                            and  date(now())
+    </select>
+    <!-- 카테고리별 최근 월간 주문 통계 -->
+    <select id="count_category03" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.category_no=1 then 1 end) as 'count01',
+            count(case when i.category_no=2 then 1 end) as 'count02',
+            count(case when i.category_no=3 then 1 end) as 'count03',
+            count(case when i.category_no=4 then 1 end) as 'count04',
+            count(case when i.category_no=5 then 1 end) as 'count05',
+            count(case when i.category_no=6 then 1 end) as 'count06'
+                from demand d
+                    join items i on d.i_no = i.i_no
+                        where date(d.o_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                            and  date(now())
+    </select>
+    
+    
+    <!-- 성별 주문 통계 -->
+    <select id="count_sex01" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.sex_no=1 then 1 end) as 'count01',
+            count(case when i.sex_no=2 then 1 end) as 'count02',
+            count(case when i.sex_no=3 then 1 end) as 'count03'
+                from demand d
+                    join items i on d.i_no = i.i_no
+    </select>
+    <!-- 성별 최근 주간 주문 통계 -->
+    <select id="count_sex02" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.sex_no=1 then 1 end) as 'count01',
+            count(case when i.sex_no=2 then 1 end) as 'count02',
+            count(case when i.sex_no=3 then 1 end) as 'count03'
+                from demand d
+                    join items i on d.i_no = i.i_no
+                        where date(d.o_regdate)  between date(subdate(now(), INTERVAL 7 DAY)) 
+                            and  date(now())
+    </select>
+    <!-- 성별 최근 월간 주문 통계 -->
+    <select id="count_sex03" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.sex_no=1 then 1 end) as 'count01',
+            count(case when i.sex_no=2 then 1 end) as 'count02',
+            count(case when i.sex_no=3 then 1 end) as 'count03'
+                from demand d
+                    join items i on d.i_no = i.i_no
+                        where date(d.o_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                            and  date(now())
+    </select>
+    
+    
+    <!-- 브랜드별 주문 통계 -->
+    <select id="count_brand01" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.brand_no=1 then 1 end) as 'count01',
+            count(case when i.brand_no=2 then 1 end) as 'count02',
+            count(case when i.brand_no=3 then 1 end) as 'count03',
+            count(case when i.brand_no=4 then 1 end) as 'count04',
+            count(case when i.brand_no=5 then 1 end) as 'count05',
+            count(case when i.brand_no=6 then 1 end) as 'count06',
+            count(case when i.brand_no=7 then 1 end) as 'count07',
+            count(case when i.brand_no=8 then 1 end) as 'count08',
+            count(case when i.brand_no=9 then 1 end) as 'count09'
+                from demand d
+                    join items i on d.i_no = i.i_no
+    </select>
+    <!-- 브랜드별 최근 주간 주문 통계 -->
+    <select id="count_brand02" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.brand_no=1 then 1 end) as 'count01',
+            count(case when i.brand_no=2 then 1 end) as 'count02',
+            count(case when i.brand_no=3 then 1 end) as 'count03',
+            count(case when i.brand_no=4 then 1 end) as 'count04',
+            count(case when i.brand_no=5 then 1 end) as 'count05',
+            count(case when i.brand_no=6 then 1 end) as 'count06',
+            count(case when i.brand_no=7 then 1 end) as 'count07',
+            count(case when i.brand_no=8 then 1 end) as 'count08',
+            count(case when i.brand_no=9 then 1 end) as 'count09'
+                from demand d
+                    join items i on d.i_no = i.i_no
+                        where date(d.o_regdate)  between date(subdate(now(), INTERVAL 7 DAY)) 
+                            and  date(now())
+    </select>
+    <!-- 브랜드별 최근 월간 주문 통계 -->
+    <select id="count_brand03" resultType="vo.graph.GraphCategoryVo">
+        select
+            count(case when i.brand_no=1 then 1 end) as 'count01',
+            count(case when i.brand_no=2 then 1 end) as 'count02',
+            count(case when i.brand_no=3 then 1 end) as 'count03',
+            count(case when i.brand_no=4 then 1 end) as 'count04',
+            count(case when i.brand_no=5 then 1 end) as 'count05',
+            count(case when i.brand_no=6 then 1 end) as 'count06',
+            count(case when i.brand_no=7 then 1 end) as 'count07',
+            count(case when i.brand_no=8 then 1 end) as 'count08',
+            count(case when i.brand_no=9 then 1 end) as 'count09'
+                from demand d
+                    join items i on d.i_no = i.i_no
+                        where date(d.o_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                            and  date(now())
+    </select>
+    
+    
+    <!-- 지역별 최근 1달 통계 -->
+    <select id="count_addr01" resultType="vo.graph.GraphAddrVo">
+        select
+            count(case when o_zipcode between '00%' and '10%' then 1 end) as 'count_seoul',
+            count(case when o_zipcode between '10%' and '24%' then 1 end) as 'count_gyeonggi',
+            count(case when o_zipcode between '24%' and '27%' then 1 end) as 'count_gangwon',
+            count(case when o_zipcode between '27%' and '36%' then 1 end) as 'count_chungcheong',
+            count(case when o_zipcode between '36%' and '54%' then 1 end) as 'count_gyeongsang',
+            count(case when o_zipcode between '54%' and '63%' then 1 end) as 'count_jeolla',
+            count(case when o_zipcode like '63%' then 1 end) as 'count_jeju'
+                from demand
+                        where date(o_regdate)  between date(subdate(now(), INTERVAL 30 DAY)) 
+                            and  date(now())
+    </select>
+    <!-- 지역별 이전달 통계 -->
+    <select id="count_addr02" resultType="vo.graph.GraphAddrVo">
+        select
+            count(case when o_zipcode between '00%' and '10%' then 1 end) as 'count_seoul',
+            count(case when o_zipcode between '10%' and '24%' then 1 end) as 'count_gyeonggi',
+            count(case when o_zipcode between '24%' and '27%' then 1 end) as 'count_gangwon',
+            count(case when o_zipcode between '27%' and '36%' then 1 end) as 'count_chungcheong',
+            count(case when o_zipcode between '36%' and '54%' then 1 end) as 'count_gyeongsang',
+            count(case when o_zipcode between '54%' and '63%' then 1 end) as 'count_jeolla',
+            count(case when o_zipcode like '63%' then 1 end) as 'count_jeju'
+                from demand
+                        where date(o_regdate)  between date(subdate(now(), INTERVAL 60 DAY)) 
+                            and  date(subdate(now(), INTERVAL 30 DAY)) 
+    </select>
+    <!-- 지역별 최근 전전달 통계 -->
+    <select id="count_addr03" resultType="vo.graph.GraphAddrVo">
+        select
+            count(case when o_zipcode between '00%' and '10%' then 1 end) as 'count_seoul',
+            count(case when o_zipcode between '10%' and '24%' then 1 end) as 'count_gyeonggi',
+            count(case when o_zipcode between '24%' and '27%' then 1 end) as 'count_gangwon',
+            count(case when o_zipcode between '27%' and '36%' then 1 end) as 'count_chungcheong',
+            count(case when o_zipcode between '36%' and '54%' then 1 end) as 'count_gyeongsang',
+            count(case when o_zipcode between '54%' and '63%' then 1 end) as 'count_jeolla',
+            count(case when o_zipcode like '63%' then 1 end) as 'count_jeju'
+                from demand
+                        where date(o_regdate)  between date(subdate(now(), INTERVAL 90 DAY)) 
+                            and  date(subdate(now(), INTERVAL 60 DAY)) 
+    </select>
+    
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

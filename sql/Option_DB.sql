@@ -62,10 +62,11 @@ use f4mall;
 select * from category
 
 use f4mall;
+select * from items
+alter table items change s_no s_amt int -- 테이블명 수정
 update brand set brand_name='rachelcox' where brand_no='9';
 update sex set sex_name='unisex' where sex_no=3
 -- 네임 수정
-alter table category change e_count p_no int -- 테이블명 수정
 insert into size(size_name) values('290') -- 데이터 추가
 --update size set size_name='290' where size_no='8';
 --insert into size(size_name) values('ETC');

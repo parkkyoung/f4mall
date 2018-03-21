@@ -1,5 +1,5 @@
 use f4mall;
-select * from items
+select * from items_view
 
 use f4mall;
 select * from product
@@ -55,8 +55,7 @@ select
     co.color_name,
     se.sex_name,
     b.brand_name,
-    si.size_name,
-    i.s_no
+    si.size_name
 from items as i
 inner join product as p on i.p_no = p.p_no
 inner join category as ca on i.category_no = ca.category_no
@@ -65,6 +64,7 @@ inner join color as co on i.color_no = co.color_no
 inner join sex as se on i.sex_no = se.sex_no
 inner join brand as b on i.brand_no = b.brand_no
 inner join size as si on i.size_no = si.size_no
+
 
 use f4mall;
 select * from items_list
