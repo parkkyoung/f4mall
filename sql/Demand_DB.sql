@@ -1,5 +1,5 @@
 use f4mall;
-select * from demand
+select * from demand where m_id = 'admin@f4mall.com' and o_status = 0
 
 -- 주문테이블
 

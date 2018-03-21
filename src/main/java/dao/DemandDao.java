@@ -1,5 +1,7 @@
 package dao;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +52,16 @@ public class DemandDao {
 		res = sqlSession.insert("demand_insert",vo);
 		
 		return res;
+	}
+
+
+	public List<DemandVo> demand_eval(String m_id) {
+		// TODO Auto-generated method stub
+		List<DemandVo> list = null;
+		
+		list= sqlSession.selectList("demand_eval_list",m_id);
+		
+		return list;
 	}
 	
 	
