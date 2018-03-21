@@ -162,7 +162,7 @@ $(document).ready(function(){
 		<!-- //댓글쓰기 -->
 		
 		<!-- 댓글목록 -->
-		<div id="board_comment_list" class="mt20"></div>
+		<div id="board_comment_list" class="comments"></div>
 		<!-- //댓글목록 -->
 	</div>
 	<!-- //댓글 -->
