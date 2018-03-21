@@ -1,4 +1,7 @@
+
 use f4mall;
+select * from faq
+
 create table faq(
     f_no bigint primary key auto_increment,    /*FAQ번호PK*/
     m_id varchar(200) not null,                         /*회원아이디FK*/
