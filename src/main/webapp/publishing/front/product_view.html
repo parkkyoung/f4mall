@@ -106,16 +106,16 @@
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 col-xs-3 control-label">내용</label>
-							<div class="col-sm-10 col-xs-9"><textarea class="form-control" rows="5" placeholder="상품평 내용">상품평 내용이 삽입됩니다.</textarea></div>
+							<div class="col-sm-10 col-xs-9"><textarea class="form-control" rows="3" placeholder="상품평 내용">상품평 내용이 삽입됩니다.</textarea></div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-sm-2 col-xs-3 control-label">별점</label>
 							<div class="starRating mt5 col-sm-10 col-xs-9">
-								<label for="star01" class="on">★</label><input type="radio" id="star01" name="star" value="1" />
-								<label for="star02" class="on">★</label><input type="radio" id="star02" name="star" value="2" />
-								<label for="star03" class="on">★</label><input type="radio" id="star03" name="star" value="3" checked />
-								<label for="star04">★</label><input type="radio" id="star04" name="star" value="4" />
-								<label for="star05">★</label><input type="radio" id="star05" name="star" value="5" />
+								<label for="star06" class="on">★</label><input type="radio" id="star06" name="star" value="1" />
+								<label for="star07" class="on">★</label><input type="radio" id="star07" name="star" value="2" />
+								<label for="star08" class="on">★</label><input type="radio" id="star08" name="star" value="3" checked />
+								<label for="star09">★</label><input type="radio" id="star09" name="star" value="4" />
+								<label for="star10">★</label><input type="radio" id="star10" name="star" value="5" />
 							</div>
 						</div>
 					</div>
@@ -365,13 +365,9 @@
 								<div class="form-group goPrice">
 									<strong>10,000원</strong>
 								</div>
-								<div class="form-group btnBox row">
-									<div class="col-sm-8 col-xs-7">
-										<p>구매는 장바구니를 통해서 가능합니다</p>
-										<p class="mHide">우측 상단 카트 아이콘을 클릭하세요</p>
-										<p class="pHide">좌측 상단 메뉴 아이콘을 클릭하세요</p>
-									</div>
-									<div class="col-sm-4 col-xs-5"><button type="button" class="btn btn-warning btn-block"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button></div>
+								<div class="form-group btnBox">
+									<button type="button" class="btn btn-warning"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button>
+									<button type="button" class="btn btn-primary"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
 								</div>
 							</div>
 						</div>
@@ -381,9 +377,32 @@
 
 					<!-- 상품설명 -->
 					<div class="mt40">
-						<img src="http://placehold.it/1300x5000" alt="" class="wFull" />
+						<img src="http://placehold.it/1300x2000" alt="" class="wFull" />
 					</div>
 					<!-- //상품설명 -->
+
+					<!-- 상품등록 -->
+					<div class="mt40">
+						<div class="form-group">
+							<div class="starRating mt5">
+								<label for="star01" class="on">★</label><input type="radio" id="star01" name="star" value="1" />
+								<label for="star02" class="on">★</label><input type="radio" id="star02" name="star" value="2" />
+								<label for="star03" class="on">★</label><input type="radio" id="star03" name="star" value="3" checked />
+								<label for="star04">★</label><input type="radio" id="star04" name="star" value="4" />
+								<label for="star05">★</label><input type="radio" id="star05" name="star" value="5" />
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="상품평 제목" />
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" rows="5" placeholder="상품평 내용"></textarea>
+						</div>
+						<div class="form-group btnBox">
+							<button type="button" class="btn btn-primary">상품평 등록</button>
+						</div>
+					</div>
+					<!-- //상품등록 -->
 
 					<!-- 상품평 -->
 					<div class="panel-group">
