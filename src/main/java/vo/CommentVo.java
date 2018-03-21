@@ -12,6 +12,14 @@ public class CommentVo {
 	
 	/**************************** VO 내부로만 사용 ***********************************/
 	
+	/*멤버 이미지 가져오기. [mapper xml참고]*/
+	
+	String c_image;
+	
+	public String getC_image() {
+		return c_image;
+	}
+
 	/* 멤버닉네임가져오기*/
 	String c_nick;
 	public String getC_nick() {

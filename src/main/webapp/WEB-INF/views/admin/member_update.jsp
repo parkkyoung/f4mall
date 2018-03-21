@@ -98,6 +98,7 @@
 		var m_tel 	     = f.mm_tel.value.trim();
 		var m_addr       = f.mm_addr.value.trim();
 		var m_addr_d     = f.mm_addr_d.value.trim();
+		var m_image      = f.mm_image.value;
 		/* var m_zipcode = f.mm_zipcode.value.trim(); */
 
 		if (m_id == '') {
@@ -163,7 +164,7 @@
 <div class="panel panel-default">
 	<div class="panel-heading">회원상세</div>
 	<div class="panel-body">
-		<form action="" role="form" class="panel-body">
+		<form action="member_insert.do" role="form" class="panel-body" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="form-group">
@@ -228,7 +229,7 @@
 					</div>
 					<div class="form-group">
 						<label for="">이미지</label> 
-						<input type="file" class="form-control" />
+						<input type="file" id="mm_image" name="m_image" value="" class="form-control" />
 					</div>
 				</div>
 				<div class="col-lg-12">

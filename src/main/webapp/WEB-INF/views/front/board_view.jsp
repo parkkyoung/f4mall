@@ -126,12 +126,12 @@ $(document).ready(function(){
 	<div class="board boardView">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3>${vo.b_name}</h3>
-				<span>작성자 : ${vo.m_id}</span>
-				<span>IP : ${vo.b_ip}</span>
-				<span>조회 : ${vo.b_readhit }</span>
-				<span>댓글 : 123</span>
-				<span>작성일 : ${vo.b_regdate }</span>
+				<h3><c:out value="${vo.b_name}"/></h3>
+				<span>작성자 : <c:out value="${vo.m_id}"/></span>
+				<span>IP : <c:out value="${vo.b_ip}"/></span>
+				<span>조회 : <c:out value="${vo.b_readhit }"/></span>
+				<span>댓글 : <c:out value="${vo.listCount }"/></span>
+				<span>작성일 : <c:out value="${vo.b_regdate }"/></span>
 			</div>
 			<div class="panel-body">
 				${vo.b_content }

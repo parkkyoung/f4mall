@@ -13,7 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.CartDao;
+<<<<<<< HEAD
 import dao.DemandDao;
+=======
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 import dao.GraphDao;
 import dao.MainDao;
 import dao.ProductDao;
@@ -40,9 +43,12 @@ public class IndexController {
 	CartDao cart_dao;
 	
 	@Autowired
+<<<<<<< HEAD
 	DemandDao demand_dao;
 	
 	@Autowired
+=======
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 	GraphDao graph_dao;
 	
 	public IndexController() {

@@ -95,8 +95,6 @@ function goodsDelete(p_no){
 //아이템등록
 function itemInsert(f){
  
-
- var s_amt = f.s_amt.value;
  var sizeCheck = false;
  var colorCheck = false;
  var categoryCheck = false;

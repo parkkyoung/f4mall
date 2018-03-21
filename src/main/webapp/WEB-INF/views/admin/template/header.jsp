@@ -85,6 +85,7 @@
                                 <li><a href="goods_list.do">상품목록</a></li>
                                 <li><a href="goods_insert_form.do">상품등록</a></li>
                                 <li><a href="goods_stock_form.do">상품입출고</a></li>
+                                <li><a href="goods_review.do">상품평</a></li>
                             </ul>
                         </li>
                         <li>
