@@ -29,7 +29,6 @@ public class ItemsController {
 		
 		ItemsVo vo = new ItemsVo();
 		vo.setP_no(avo.getP_no());
-		vo.setS_no(avo.getS_no());
 		vo.setCategory_no(avo.getCategory_no());
 		vo.setSex_no(avo.getSex_no());
 		vo.setBrand_no(avo.getBrand_no());

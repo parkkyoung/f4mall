@@ -4,8 +4,8 @@
 <script>
 function add_cart(f){
 	
-	var i_no = f.i_no.value();
-	var cart_amt = f.cart_amt.value();
+	var i_no = f.i_no.value;
+	var cart_amt = f.cart_amt.value;
 	if(cart_amt==''){
 		alert('수량을 입력해주세요');
 		return;
@@ -30,6 +30,12 @@ function add_cart(f){
 					swal({
 						text : "이미 장바구니에 있는 상품입니다. 장바구니 목록으로 이동하시겠습니까?.",
 						icon : "error",
+						buttons : true,
+						dangerMode: true,
+					}).then((willMove) =>{
+						if(willMove){
+							location.href = 'cart_view.do?m_id=${ user.m_id }';
+						}
 					});
 					return;
 				}
@@ -87,15 +93,15 @@ function add_cart(f){
 								</div>
                                 <div class="form-group">
                                     <label class="block">옵션</label>
-                                    <select class="form-control wAuto right mt5">
+                                    <select class="form-control wAuto right mt5"  id="i_no" name="i_no">
                                         <c:forEach var ="items_option" items="${ items_option }">
-                                        <option value="${ items_option.i_no }">색상: ${ items_option.color_name } / 사이즈: ${ items_list.size_name } / 재고수량: ${ items_list.s_amt }개</option>
+                                        <option value="${ items_option.i_no }">색상: ${ items_option.color_name } / 사이즈: ${ items_option.size_name } / 재고수량: ${ items_option.s_amt }개</option>
                                         </c:forEach>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="block">수량(개)</label>
-                                    <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" value="1" />
+                                    <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" value="1" id="cart_amt" name="cart_amt"/>
                                 </div>
 								<div class="form-group goPrice">
 									<del>${ vo.p_price }</del>
@@ -125,7 +131,7 @@ function add_cart(f){
 						<!-- 상품평 컨텐츠의 아이디와 상품평 타이틀의 href에 해당 상품평 넘버를 삽입 -->
 						
 						
-						<!-- Loop -->
+						<%-- <!-- Loop -->
 						<c:forEach var="items_eval" items="items_eval">
 						<div class="panel panel-default">
 							<div class="panel-heading">
@@ -146,7 +152,7 @@ function add_cart(f){
 								</div>
 							</div>
 						</div>
-						</c:forEach>
+						</c:forEach> --%>
 						<!-- //Loop -->
 <!-- 
 

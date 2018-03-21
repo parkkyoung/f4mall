@@ -2,12 +2,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="template/header.jsp" %>
 
+<!-- ckeditor -->
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<!-- //ckeditor -->
+
+
 <script>
 // 상품수정
 function goodsUpdate(f){
     
     var p_name = f.p_name.value;
-    var p_content= f.p_content.value;
+    var p_content= CKEDITOR.instances.p_content.getData();
     var p_price = f.p_price.value;
     var p_pdate= f.p_pdate.value;
     var p_image_m= document.getElementById("p_image_m").value;
@@ -90,7 +95,8 @@ function goodsDelete(p_no){
 //아이템등록
 function itemInsert(f){
  
- var s_no = f.s_no.value;
+
+ var s_amt = f.s_amt.value;
  var sizeCheck = false;
  var colorCheck = false;
  var categoryCheck = false;
@@ -124,14 +130,8 @@ function itemInsert(f){
  });
 
  // all check
- if(s_no == ''){
-     swal({
-         text : "수량을 입력해주세요",
-         icon : "info"
-     }).then((value) =>{
-         f.s_no.focus();
-     });
- } else if(sizeCheck == false){
+
+ if(sizeCheck == false){
      swal({
          text : "사이즈를 선택해주세요",
          icon : "info"
@@ -211,7 +211,33 @@ function itemsDelete(i_no, p_no){
                 </div>
                 <div class="form-group">
                     <label for="">상품설명</label>
-                    <textarea id="p_content" name="p_content" class="form-control" rows="5" placeholder="상품설명"><c:out value='${vo.p_content}'/></textarea>
+                    <!-- ckeditor -->
+					<textarea rows="8" class="form-control" name="p_content" id="p_content"placeholder="상품설명"><c:out value='${vo.p_content}'/></textarea>	
+					<script>
+						// Replace the <textarea id="editor1"> with a CKEditor
+						// instance, using default configuration.
+						CKEDITOR
+							.replace(
+								'p_content',
+								{
+									filebrowserUploadUrl : '${pageContext.request.contextPath}/ckeditorImageUpload.do'
+								});
+					
+						CKEDITOR.on('dialogDefinition', function(ev) {
+							var dialogName = ev.data.name;
+							var dialogDefinition = ev.data.definition;
+					
+							switch (dialogName) {
+							case 'image': //Image Properties dialog
+								//dialogDefinition.removeContents('info');
+								dialogDefinition.removeContents('Link');
+								dialogDefinition.removeContents('advanced');
+								break;
+							}
+						});
+					</script>
+					<!-- //ckeditor -->
+                    
                 </div>
                 <div class="form-group">
                     <label for="">상품가격(원)</label>
@@ -266,6 +292,7 @@ function itemsDelete(i_no, p_no){
         <table width="100%" class="tableData table table-striped table-bordered table-hover">
             <thead>
                 <tr>
+                	<th>상품번호</th>
                     <th>카테고리</th>
                     <th>성별</th>
                     <th>브랜드</th>
@@ -279,13 +306,14 @@ function itemsDelete(i_no, p_no){
             <tbody>
                 <c:forEach var="list" items="${i_list}">
                 <tr>
+                	<td><c:out value="${list.i_no}"/></td>
                     <td><c:out value="${list.category_name}"/></td>
                     <td><c:out value="${list.sex_name}"/></td>
                     <td><c:out value="${list.brand_name}"/></td>
                     <td><c:out value="${list.material_name}"/></td>
                     <td><c:out value="${list.size_name}"/></td>
                     <td><c:out value="${list.color_name}"/></td>
-                    <td>재고수량</td>
+                    <td><input type="button" value="재고등록" onclick="location.href='goods_stock_form.do?i_no=${ list.i_no }'"></td>
                     <td><button type="button" class="btn btn-danger btn-sm" onclick="itemsDelete(<c:out value='${list.i_no}'/>, <c:out value='${list.p_no}'/>)">삭제</button></td>
                 </tr>
                 </c:forEach>
@@ -303,10 +331,6 @@ function itemsDelete(i_no, p_no){
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label>입고수량</label>
-                    <input type="number" id="s_no" name="s_no" class="form-control" />
-                </div>
-                <div class="form-group">
                     <label for="">사이즈</label>
                     <div class="checkbox">
                         <c:forEach var="size" items="${size}">
@@ -319,6 +343,14 @@ function itemsDelete(i_no, p_no){
                     <div class="checkbox">
                         <c:forEach var="color" items="${color}">
                         <label><input name="color_no" type="checkbox" value="${color.color_no}" />${color.color_name}</label>
+                        </c:forEach>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">브랜드</label>
+                    <div class="radio">
+                        <c:forEach var="brand" items="${brand}">
+                        <label><input name="brand_no" type="radio" value="${brand.brand_no}" />${brand.brand_name}</label>
                         </c:forEach>
                     </div>
                 </div>
@@ -340,14 +372,7 @@ function itemsDelete(i_no, p_no){
                         </c:forEach>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="">브랜드</label>
-                    <div class="radio">
-                        <c:forEach var="brand" items="${brand}">
-                        <label><input name="brand_no" type="radio" value="${brand.brand_no}" />${brand.brand_name}</label>
-                        </c:forEach>
-                    </div>
-                </div>
+                
                 <div class="form-group">
                     <label for="">재질</label>
                     <div class="radio">
