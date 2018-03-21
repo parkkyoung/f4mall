@@ -238,6 +238,54 @@ function findProduct(){
     </c:if>
 	<!-- //Login popup -->
 
+	<%-- <!-- review popup -->
+	<c:if test="${ not empty user && not empty demand_eval }">
+	<div class="modal fade" id="reviewPop" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">상품평 등록</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label for="" class="col-sm-2 col-xs-3 control-label"></label>
+							<div class="col-sm-10 col-xs-9"><input type="text" class="form-control" placeholder="상품평 제목" value="상품평 제목" /></div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 col-xs-3 control-label">내용</label>
+							<div class="col-sm-10 col-xs-9"><textarea class="form-control" rows="5" placeholder="상품평 내용">상품평 내용이 삽입됩니다.</textarea></div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-2 col-xs-3 control-label">별점</label>
+							<div class="starRating mt5 col-sm-10 col-xs-9">
+								<label for="star01" class="on">★</label><input type="radio" id="star01" name="star" value="1" />
+								<label for="star02" class="on">★</label><input type="radio" id="star02" name="star" value="2" />
+								<label for="star03" class="on">★</label><input type="radio" id="star03" name="star" value="3" />
+								<label for="star04">★</label><input type="radio" id="star04" name="star" value="4" />
+								<label for="star05">★</label><input type="radio" id="star05" name="star" value="5" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">수정</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</c:if>
+	<!-- //review popup -->
+	
+	<script>
+	$(function(){
+		$("#reviewPop").modal();
+	})
+	</script> --%>
+
+
 	<!-- 모바일 gnb -->
 	<nav id="c-menu--push-left" class="c-menu c-menu--push-left">
 	<h3 class="hide">모바일 메뉴</h3>
@@ -254,7 +302,7 @@ function findProduct(){
 	<c:if test="${ not empty user }">	
 	<div class="mHead">
 		<div class="imgBox">
-			<img src="http://placehold.it/50x50" alt="profile" class="wFull" />
+			<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
 		</div>
 		<div class="txtBox">
 			<strong>[${ user.m_name }]</strong>님 어서오세요!
@@ -352,7 +400,8 @@ function findProduct(){
                 <%-- 로그인 후에 노출 --%>
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
-				<a href="member.do" title="user" class="btnMember"><img src="http://placehold.it/30x30" alt="user thumbnail" class="wFull" /></a>
+				<a href="member.do" title="user" class="btnMember">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<%-- //로그인 후에 노출 --%>
