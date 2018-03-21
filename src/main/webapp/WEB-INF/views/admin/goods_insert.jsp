@@ -2,12 +2,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="template/header.jsp" %>
 
+<!-- ckeditor -->
+<script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<!-- //ckeditor -->
+
 <!-- page script -->
 <script>
 	function goodsInsert(f){
 		
 		var p_name = f.p_name.value;
-		var p_content= f.p_content.value;
+		var p_content= CKEDITOR.instances.p_content.getData();
         var p_price = f.p_price.value;
         var p_pdate= f.p_pdate.value;
         var p_image_m= document.getElementById("p_image_m").value;
@@ -89,7 +93,31 @@
 				</div>
 				<div class="form-group">
 					<label for="">상품설명</label>
-					<textarea id="p_content" name="p_content" class="form-control" rows="5" placeholder="상품설명"></textarea>
+					<textarea rows="8" class="form-control" name="p_content" id="p_content"placeholder="상품설명"><c:out value='${vo.p_content}'/></textarea>	
+					<script>
+						// Replace the <textarea id="editor1"> with a CKEditor
+						// instance, using default configuration.
+						CKEDITOR
+							.replace(
+								'p_content',
+								{
+									filebrowserUploadUrl : '${pageContext.request.contextPath}/ckeditorImageUpload.do'
+								});
+					
+						CKEDITOR.on('dialogDefinition', function(ev) {
+							var dialogName = ev.data.name;
+							var dialogDefinition = ev.data.definition;
+					
+							switch (dialogName) {
+							case 'image': //Image Properties dialog
+								//dialogDefinition.removeContents('info');
+								dialogDefinition.removeContents('Link');
+								dialogDefinition.removeContents('advanced');
+								break;
+							}
+						});
+					</script>
+					<!-- //ckeditor -->
 				</div>
 				<div class="form-group">
 					<label for="">상품가격(원)</label>

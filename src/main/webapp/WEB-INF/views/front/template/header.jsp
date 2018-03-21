@@ -254,7 +254,7 @@ function findProduct(){
 	<c:if test="${ not empty user }">	
 	<div class="mHead">
 		<div class="imgBox">
-			<img src="http://placehold.it/50x50" alt="profile" class="wFull" />
+			<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
 		</div>
 		<div class="txtBox">
 			<strong>[${ user.m_name }]</strong>님 어서오세요!
@@ -352,7 +352,8 @@ function findProduct(){
                 <%-- 로그인 후에 노출 --%>
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
-				<a href="member.do" title="user" class="btnMember"><img src="http://placehold.it/30x30" alt="user thumbnail" class="wFull" /></a>
+				<a href="member.do" title="user" class="btnMember">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a>
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<%-- //로그인 후에 노출 --%>

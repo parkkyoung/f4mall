@@ -1,18 +1,37 @@
 package vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberVo {
 
-	String m_id, m_pwd, m_name, m_addr, m_addr_d, m_zipcode, m_ip, m_regdate, m_image, m_nick, m_tel;
+	String m_id, m_pwd, m_name, m_addr, m_addr_d, m_zipcode, m_ip, m_regdate, m_nick, m_tel;
+	MultipartFile m_image_m; //실제 업로드 되는 이미지
+	String m_image;			 //이미지 filename
 	int m_grade;
-	
-	
 
 	// 기본생성자
 	public MemberVo() {
 		// TODO Auto-generated constructor stub
 	}
+
 	
 	
+	public MultipartFile getM_image_m() {
+		return m_image_m;
+	}
+
+	public void setM_image_m(MultipartFile m_image_m) {
+		this.m_image_m = m_image_m;
+	}
+
+	public String getM_image() {
+		return m_image;
+	}
+
+	public void setM_image(String m_image) {
+		this.m_image = m_image;
+	}
+
 	public String getM_tel() {
 		return m_tel;
 	}
@@ -83,14 +102,6 @@ public class MemberVo {
 
 	public void setM_regdate(String m_regdate) {
 		this.m_regdate = m_regdate;
-	}
-
-	public String getM_image() {
-		return m_image;
-	}
-
-	public void setM_image(String m_image) {
-		this.m_image = m_image;
 	}
 
 	public String getM_nick() {
