@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import common.ShortCut;
+import dao.CartDao;
 import dao.MemberDao;
+import vo.CartVo;
 import vo.DemandVo;
 import vo.MemberVo;
 
@@ -28,6 +30,9 @@ public class MemberController {
 
 	@Autowired
 	MemberDao member_dao;
+	
+	@Autowired
+	CartDao cart_dao;
 
 	@Autowired
 	HttpServletRequest request;
@@ -388,7 +393,11 @@ public class MemberController {
 		session.setAttribute("user", user);
 		result = "yes";
 		resultStr = String.format("[{'result':'%s'}]", result);
-
+		
+		// 카트 세션 저장
+		List<CartVo> cart_list = cart_dao.select_list(user.getM_id());
+		session.setAttribute("header_cart_list",cart_list);
+		
 		return resultStr;
 
 	}
@@ -404,9 +413,11 @@ public class MemberController {
 	public String logout(MemberVo vo) {
 
 		System.out.println("로그아웃");
-
+		
+		// 세션 삭제
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
+		session.removeAttribute("header_cart_list");
 		
 		String result = "yes";
 		String resultStr = "";
