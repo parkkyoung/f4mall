@@ -34,7 +34,16 @@
 						<td><c:out value="${mo_list.i_no }" /></td>
 						<td><c:out value="${mo_list.o_addr }" /></td>
 						<td><c:out value="${mo_list.o_regdate }" /></td>
-						<td>결제완료</td>
+						<!-- 주문상태 -->
+						<td>	
+							<!-- 0 = 결제대기, 1 = 결제완료, 2 = 배송중, 3 = 배송완료, 4 = 주문취소, 5 = 배송취소-->
+							<c:choose>
+							<c:when test="${mo_list.o_status eq 0}"><span style='color:#0100FF'>결제완료</span></c:when>
+							<c:otherwise><span style='color:#FF1212'>주문오류</span></c:otherwise>
+							</c:choose>		
+						</td>
+						<!-- //주문상태 -->
+						
 						<td><c:out value="${mo_list.o_pay_amt }" /></td>
 					</tr>
 				</c:forEach>
