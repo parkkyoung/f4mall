@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="comment_select_list" resultType="vo.CommentVo" parameterType="java.util.Map">
 	
- 	     select bb.*,m_nick as c_nick from	
+ 	     select bb.*,m_nick as c_nick,m_image as c_image from	
 		(
 			select  *,(@rank := @rank +1 ) as no,(select count(*) from b_comment) as cnt
 			from

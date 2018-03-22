@@ -67,6 +67,7 @@
 			<c:if test="${user.m_grade ne 1}"> 
 			<input type="hidden" name="b_notice" value="0">
 			</c:if>
+			<!--// 관리자만 노출 -->
 			
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">제목</label>

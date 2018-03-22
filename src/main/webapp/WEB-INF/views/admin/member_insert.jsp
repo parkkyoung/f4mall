@@ -147,7 +147,7 @@
 		var m_addr   = f.m_addr.value.trim();
 		var m_addr_d = f.m_addr_d.value.trim();
 		var m_grade  = f.m_grade.value.trim();
-		var m_image  = f.m_image.value;
+		var m_image  = f.m_image_m.value;
 
 		if (m_id == '') {
 			alert('아이디를 입력하세요')
