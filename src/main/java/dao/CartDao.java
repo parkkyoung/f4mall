@@ -37,11 +37,11 @@ public class CartDao {
 		return c_list;
 	}
 
-	public int cart_delete(CartVo vo) {
+	public int cart_delete(int cart_no) {
 		// TODO Auto-generated method stub
 		int res = 0;
 		
-		res = sqlSession.delete("delete_cart",vo);
+		res = sqlSession.delete("delete_cart",cart_no);
 		
 		return res;
 	}
