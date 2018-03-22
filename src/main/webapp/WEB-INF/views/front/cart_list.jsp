@@ -32,7 +32,7 @@ function demand_list(f){
 	f.submit();
 	
 	
-}
+} 
 
 function update_cart(i_no,cart_amt_i_no){
 	location.href="update_cart.do?i_no=" + i_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_i_no).value;
@@ -46,6 +46,7 @@ function update_cart(i_no,cart_amt_i_no){
 </section>
 <!-- //visual -->
 
+<<<<<<< HEAD
 <!-- sub contents -->
 <section class="sub container">
 	<h2 class="hide">장바구니</h2>
@@ -79,6 +80,53 @@ function update_cart(i_no,cart_amt_i_no){
 						      <input type="number" value="${ cart.cart_amt }" id="cart_amt_${ cart.i_no }" class="form-control inBlock w50 text-center" /><br>
 						      <input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ cart.i_no }','cart_amt_${ cart.i_no }'); return false;">
 						</td>
+=======
+				<!-- 장바구니 -->
+				<form>
+				<input type="hidden" name="m_id" value="${ user.m_id }">
+				<div class="orderList table-reponsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th><input type="checkbox" class="checkController" data-controller="checkAll"></th>
+								<th>상품이미지</th>
+								<th>상품이름</th>
+								<th>수량</th>
+								<th>상품금액</th>
+								<th>할인금액</th>
+								<th>담은날</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
+							<tbody>
+								<!-- Loop -->
+								
+							<c:forEach var="cart" items="${ c_view }">
+				               
+								<tr>
+									<td><input type="checkbox" class="checkMember" data-target="checkAll" name="i_no" id="i_no" value="${ cart.i_no }"></td>
+									<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ cart.p_image_m }" alt="" /></a></td>
+									<td><a href="">${ cart.p_name }</a><br>
+												[${ cart.color_name }] ,${ cart.size_name }</td>
+									<td><input type="number" value="${ cart.cart_amt }" id="cart_amt_${ cart.i_no }" class="form-control inBlock w50 text-center" /><br>
+									
+									<!-- 수정버튼 -->
+									<input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ cart.i_no }','cart_amt_${ cart.i_no }'); return false;"></td>
+									
+																	
+									<td><del>${ cart.p_price }</del>원</td>
+									<td><strong class="ftRed">${ cart.p_sale }원</strong></td>
+									<td>${ cart.cart_regdate }</td>
+									<td><button type="button" class="btn btn-danger" onclick="location.href='delete_cart.do?cart_no=${ cart.cart_no }&m_id=${ cart.m_id }'">삭제</button></td>
+								</tr>
+								
+							</c:forEach>
+							</tbody>
+						</table>
+						<div class="btnBox">
+							<button type="button" class="btn btn-primary" onclick="demand_list(this.form);return false;">구매하기</button>
+						</div>
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
 						
 						<td><del>${ cart.p_price }</del>원</td>
 						<td><strong class="ftRed">${ cart.p_sale }원</strong></td>

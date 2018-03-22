@@ -85,11 +85,8 @@ public class ItemsController {
 	}
 	
 	@RequestMapping("items_view.do")
-	public String items_view(Integer p_no, Model model){
+	public String items_view(Integer p_no, Model model, String m_id){
 		
-		HttpSession session = request.getSession();
-		MemberVo user = (MemberVo)session.getAttribute("user");
-		String m_id = user.getM_id();
 		Map map = new HashMap();
 		map.put("m_id", m_id);
 		map.put("p_no", p_no);

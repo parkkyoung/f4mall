@@ -78,6 +78,7 @@ public class IndexController {
 		model.addAttribute("list08", list08);
 		model.addAttribute("list09", list09);
 		
+
 		return "front/main";
 	}
 	
