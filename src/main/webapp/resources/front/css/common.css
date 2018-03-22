@@ -4,7 +4,7 @@
 * -----------------------------------------------------------------------
 * @Author : Park, Kyoung Min (rudals0731@naver.com)
 * @File Name: common.css
-* @Create Date: 2018-02-20
+* @Create Date: 2018-02-26
 * @Modifier: -
 * @Modified date: -
 * @Modified content : -
@@ -356,6 +356,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .boardView .panel-heading h3 {padding-bottom:3px;}
 .boardView .panel-heading span {display:inline-block;margin-right:15px;}
 .boardView .panel-body {min-height:500px;}
+.boardView .panel-body img {max-width:100%;height:auto !important;}
 @media(max-width:767px){ .boardView .panel-body {min-height:300px;} }
 
 /* 댓글 */
