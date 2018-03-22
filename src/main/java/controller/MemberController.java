@@ -19,6 +19,8 @@ import vo.MemberVo;
 
 
 
+
+
 //Member Controller
 @Controller
 public class MemberController {
@@ -37,6 +39,7 @@ public class MemberController {
 	}
 
 	
+	
 	/**
 	 * 회원목록
 	 * @param model
@@ -53,6 +56,7 @@ public class MemberController {
 
 	}
 
+	
 	
 	/**
 	 * 일반회원 아이디체크
@@ -78,6 +82,7 @@ public class MemberController {
 	}
 
 	
+	
 	/**
 	 * 닉네임중복체크
 	 * @param model
@@ -101,6 +106,7 @@ public class MemberController {
 	}
 
 	
+	
 	/**
 	 * 일반회원가입 이용약관페이지
 	 * @return
@@ -112,6 +118,7 @@ public class MemberController {
 	}
 
 	
+	
 	/**
 	 * 일반회원가입 폼
 	 * @return
@@ -121,6 +128,7 @@ public class MemberController {
 
 		return ShortCut.Front.VIEW_PATH + "join2";
 	}
+
 	
 	
 	/**
@@ -128,16 +136,43 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping(value = "/member_insert.do")
-	public String insert_id(MemberVo vo) {
+	public String insert_id(MemberVo vo) throws IllegalStateException, IOException {
 
 		String m_ip = request.getRemoteAddr();
 		vo.setM_ip(m_ip);
+
+		// 이미지 저장경로 / 회원의 이미지 파일 1개
+		String webPath = "resources/upload/";
+		String savePath = application.getRealPath(webPath);
+
+		MultipartFile photo = vo.getM_image_m();
+
+		String filename = "no_file";
+		// 썸네일이미지 업로드된 파일이 있으면
+		if (!photo.isEmpty()) {
+
+			// 업로드된 화일명 구하기
+			filename = photo.getOriginalFilename();
+			// 저장할 화일정보
+			File saveFile = new File(savePath, filename);
+			// 이미 동일화일이 존재하냐?
+			if (saveFile.exists()) {
+				long milisec = System.currentTimeMillis();
+				filename = String.format("%d_%s", milisec, filename);
+				saveFile = new File(savePath, filename);
+			}
+			// MultipartResolver의 임시저장소=>복사해온다
+			photo.transferTo(saveFile);
+		}
+
+		vo.setM_image(filename);
 
 		int res = member_dao.insert_id(vo);
 
 		return "redirect:product_list.do";
 	}
 
+	
 	
 	/**
 	 * 일반회원수정폼
@@ -149,6 +184,7 @@ public class MemberController {
 		return ShortCut.Front.VIEW_PATH + "member";
 	}
 
+	
 	
 	/**
 	 * 일반회원수정
@@ -168,8 +204,9 @@ public class MemberController {
 	}
 
 	
+	
 	/**
-	 * 관리자 회원목록
+	 * 관리자 회원목록 
 	 * @param model
 	 * @return
 	 */
@@ -184,6 +221,7 @@ public class MemberController {
 
 	}
 
+	
 	
 	/**
 	 * 관리자 아이디체크
@@ -207,10 +245,11 @@ public class MemberController {
 
 		return resultStr;
 	}
+
 	
 	
 	/**
-	 * 관리자회원가입 
+	 * 관리자회원가입
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/member_insert_form.do")
@@ -219,6 +258,7 @@ public class MemberController {
 		return ShortCut.Admin.ADMIN_VIEW_PATH + "member_insert";
 	}
 
+	
 	
 	/**
 	 * 관리자 회원가입
@@ -235,13 +275,12 @@ public class MemberController {
 		String webPath = "resources/upload/";
 		String savePath = application.getRealPath(webPath);
 
-		
 		MultipartFile photo = vo.getM_image_m();
 
 		String filename = "no_file";
 		// 썸네일이미지 업로드된 파일이 있으면
 		if (!photo.isEmpty()) {
-			
+
 			// 업로드된 화일명 구하기
 			filename = photo.getOriginalFilename();
 			// 저장할 화일정보
@@ -255,15 +294,15 @@ public class MemberController {
 			// MultipartResolver의 임시저장소=>복사해온다
 			photo.transferTo(saveFile);
 		}
-		
-		vo.setM_image(filename);
 
+		vo.setM_image(filename);
 
 		int res = member_dao.insert_id(vo);
 
 		return "redirect:goods_list.do";
 	}
 
+	
 	
 	/**
 	 * 회원정보 수정폼
@@ -283,23 +322,25 @@ public class MemberController {
 	}
 
 	
+	
 	/**
 	 * 회원정보 수정
 	 * @param vo
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/member_update.do")
-	public String adm_update(MemberVo vo)throws IllegalStateException, IOException {
+	public String adm_update(MemberVo vo) throws IllegalStateException, IOException {
 
 		String m_ip = request.getRemoteAddr();
 
 		vo.setM_ip(m_ip);
-		
+
 		int res = member_dao.member_update(vo);
 
 		return "redirect:/admin/member_list.do";
 	}
 
+	
 	
 	/**
 	 * 주문목록
@@ -315,41 +356,8 @@ public class MemberController {
 
 		return "admin/member_order";
 	}
+
 	
-	
-	@RequestMapping("/check_image.do")
-	public String image_check(MemberVo vo) throws IllegalStateException, IOException {
-		
-			// 이미지 저장경로 / 회원의 이미지 파일 1개
-			String webPath = "resources/upload/";
-			String savePath = application.getRealPath(webPath);
-
-			
-			MultipartFile photo = vo.getM_image_m();
-
-			String filename = "no_file";
-			// 썸네일이미지 업로드된 파일이 있으면
-			if (!photo.isEmpty()) {
-				
-				// 업로드된 화일명 구하기
-				filename = photo.getOriginalFilename();
-				// 저장할 화일정보
-				File saveFile = new File(savePath, filename);
-				// 이미 동일화일이 존재하냐?
-				if (saveFile.exists()) {
-					long milisec = System.currentTimeMillis();
-					filename = String.format("%d_%s", milisec, filename);
-					saveFile = new File(savePath, filename);
-				}
-				// MultipartResolver의 임시저장소=>복사해온다
-				photo.transferTo(saveFile);
-			}
-			
-			vo.setM_image(filename);
-			
-			return "redirect:/admin/member_update.do";
-	}
-
 	
 	/**
 	 * 로그인체크
@@ -390,6 +398,7 @@ public class MemberController {
 
 	}
 
+	
 	
 	/**
 	 * 로그아웃체크

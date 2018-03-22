@@ -74,6 +74,23 @@
 				}
 			});
 		});
+		
+		<!--업로드이미지 미리보기-->
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$('#image_section').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+		$("#m_image").change(function() {
+			readURL(this);
+		});
 	});
 
 
@@ -127,8 +144,8 @@
 		var m_name   = f.m_name.value.trim();
 		var m_nick   = f.m_nick.value.trim();
 		var m_tel 	 = f.m_tel.value.trim();
-		/* var m_addr   = f.m_addr.value.trim();*/
-		/*var m_addr_d = f.m_addr_d.value.trim(); */
+		var m_addr   = f.m_addr.value.trim();
+		var m_addr_d = f.m_addr_d.value.trim();
 		var m_grade  = f.m_grade.value.trim();
 		var m_image  = f.m_image.value;
 
@@ -230,7 +247,7 @@
 						<label for="">주소</label>
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" name="m_addr" id="m_addr" class="form-control" placeholder="우편번호" readonly />
+								<input type="text" name="m_zipcode" id="m_zipcode" class="form-control" placeholder="우편번호" readonly />
 							</div>
 							<div class="col-xs-4">
 								<button type="button" class="btn btn-warning" onclick="findAddress()">주소찾기</button>
@@ -239,7 +256,7 @@
 					</div>
 					
 					<div class="form-group">
-						<input type="text" name="m_zipcode" id="m_zipcode" class="form-control" placeholder="지번주소" />
+						<input type="text" name="m_addr" id="m_addr" class="form-control" placeholder="지번주소" />
 					</div>
 					
 					<div class="form-group">
@@ -249,13 +266,13 @@
 					<div class="form-group">
 						<label for="">이미지(30x30)</label> 
 						<input type="file" id="m_image" name="m_image_m" class="form-control"/>
+						<img id="image_section" width="100" src="${ pageContext.request.contextPath }/resources/upload/${ user.m_image }"/>
 					</div>
 
 					<div class="form-group">
 						<label for="">관리자등록여부</label> 
 						<select name="m_grade" id="m_grade" class="form-control">
-							<option value="" selected>::관리자등록여부선택::</option>
-							<option value="0">일반회원</option>
+							<option value="0" selected>일반회원</option>
 							<option value="1">관리자회원</option>
 						</select>
 					</div>
