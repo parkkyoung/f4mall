@@ -25,5 +25,6 @@
         <mapper resource="config/mybatis/mapper/stock.xml" />
         <mapper resource="config/mybatis/mapper/main.xml" />
         <mapper resource="config/mybatis/mapper/graph.xml" />
+        <mapper resource="config/mybatis/mapper/eval.xml" />
 	</mappers>
 </configuration>

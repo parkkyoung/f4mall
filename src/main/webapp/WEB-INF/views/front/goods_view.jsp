@@ -54,6 +54,30 @@ function add_cart(f){
 		});
 	}
 }
+
+function eval_insert(f){
+	var eval_title = f.eval_title.value;
+	var eval_content = f.eval_content.value;
+	var eval_score = f.eval_score.value;
+	
+	if(eval_title ==''){
+		alert('상품평 제목을 입력해주세요')
+		f.eval_title.focus();
+	}
+	if(eval_content==''){
+		alert('상품평 내용을 입력해주세요')
+		f.eval_content.focus();
+	}
+	if(eval_score == ''){
+		alert('상품 별점을 입력해주세요')
+		f.eval_score.focus();
+	}
+	
+	f.action="insert_eval.do";
+	f.submit();
+	
+}
+
 </script>
 			<!-- sub contents -->
 			<section class="sub container">
@@ -129,10 +153,34 @@ function add_cart(f){
 						<h3 class="hide">상품평</h3>
 
 						<!-- 상품평 컨텐츠의 아이디와 상품평 타이틀의 href에 해당 상품평 넘버를 삽입 -->
-						
-						
-						<%-- <!-- Loop -->
-						<c:forEach var="items_eval" items="items_eval">
+				<c:if test="${ not empty possible_eval }">
+				<form action="">
+				<input type="hidden" value="${ vo.p_no }" name="p_no">
+				<input type="hidden" value="${ user.m_id }" name="m_id">
+					<div class="mt40">
+						<div class="form-group">
+							<div class="starRating mt5" id="eval_score" name="eval_score">
+								<label for="star01" class="on">★</label><input type="radio" id="star01" name="star" value="1" />
+								<label for="star02" class="on">★</label><input type="radio" id="star02" name="star" value="2" />
+								<label for="star03" class="on">★</label><input type="radio" id="star03" name="star" value="3" checked />
+								<label for="star04">★</label><input type="radio" id="star04" name="star" value="4" />
+								<label for="star05">★</label><input type="radio" id="star05" name="star" value="5" />
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="상품평 제목" id="eval_title" name="eval_title"/>
+						</div>
+						<div class="form-group">
+							<textarea class="form-control" rows="5" placeholder="상품평 내용" id="eval_content" name="eval_content"></textarea>
+						</div>
+						<div class="form-group btnBox">
+							<button type="button" class="btn btn-primary" onclick="eval_insert(this.form);">상품평 등록</button>
+						</div>
+					</div>
+					</form>
+				</c:if>
+						<!-- Loop -->
+						<c:forEach var="items_eval" items="${ items_eval }">
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<div class="panel-title">
@@ -152,7 +200,7 @@ function add_cart(f){
 								</div>
 							</div>
 						</div>
-						</c:forEach> --%>
+						</c:forEach>
 						<!-- //Loop -->
 <!-- 
 
@@ -191,7 +239,7 @@ function add_cart(f){
 							</div>
 						</div>
 
-					</div> -->
+					</div>
 					<!-- //상품평 -->
 				</div>
 				<!-- //상품 상세 -->

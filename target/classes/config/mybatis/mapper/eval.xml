@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+	
+	<select id="ok_eval" parameterType="java.util.Map" resultType="vo.EvalVo">
+		select * from select_product_eval where m_id = #{ m_id } and o_status = 0 and p_no = #{ p_no }
+	</select>
+	
+	<insert id="insertEval" parameterType="vo.EvalVo">
+		insert into product_eval (p_no,m_id,o_no,eval_score,eval_title,eval_content,eval_ip,eval_regdate)
+		values(#{p_no},#{m_id},#{eval_score},#{eval_title},#{eval_content},#{eval_ip},now())
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

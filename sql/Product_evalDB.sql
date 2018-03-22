@@ -3,7 +3,6 @@ create table product_eval(
 	eval_no int primary key auto_increment,
 	p_no int,
 	m_id varchar(200),
-	o_no int,
 	eval_score int,
 	eval_title varchar(200) not null,
 	eval_content text,
@@ -28,3 +27,17 @@ alter table product_eval add constraint fk_pem_id foreign key
 
 alter table product_eval add constraint fk_peo_no foreign key
 (o_no) references demand(o_no);
+
+use f4mall;
+create view select_product_eval as
+select
+p.p_no, d.o_no, d.m_id, d.o_status
+from items as i 
+inner join product as p on i.p_no = p.p_no
+inner join demand as d on d.i_no = i.i_no
+
+use f4mall;
+select * from select_product_eval where m_id = 'admin@f4mall.com' and o_status = 0 and p_no = 45
+
+use f4mall;
+drop view select_product_eval
