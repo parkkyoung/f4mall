@@ -123,6 +123,43 @@ function findProduct(){
         });
     } else location.href='product_list.do?p_name='+encodeURIComponent(p_name);
 }
+
+function demand_list(f){
+	
+	var checked=false;
+	
+	if(f.i_no.length==undefined){
+		checked = f.i_no.checked;
+	}else{
+		for(var i=0; i<f.i_no.length; i++){
+			if(f.i_no[i].checked){
+				checked = true;
+				break;
+			}
+		}
+	}
+	if(checked == false){
+		alert('주문하실 상품을 입력해주세요.');
+		return;
+	}
+	
+	if(confirm('장바구니에 있는 상품들을 주문하시겠습니까?')==false)return;
+	
+	f.action="demand_list.do";
+	f.submit();
+	
+	
+}
+
+function update_cart(i_no,cart_amt_i_no){
+	//var cart_amt = f.cart_amt.value;
+/*  	alert(i_no + ':' + cart_amt_i_no);
+ 	alert(document.getElementById(cart_amt_i_no).value); */
+// 	alert(cart_amt_p_no);
+// 	var cnt = document.getElementById(cart_amt_p_no).value;
+	location.href="update_cart.do?i_no=" + i_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_i_no).value;
+}
+
 </script>
 </head>
 <body>
@@ -136,6 +173,7 @@ function findProduct(){
 	<!-- //스킵 네비게이션 -->
 	
 	<!-- cart popup -->
+	<form action="">
     <div class="modal fade" id="cartPop" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -159,38 +197,40 @@ function findProduct(){
                         </thead>
                         <tbody>
                             <!-- Loop -->
-                            <c:forEach var="header_cart" items="${ header_cart_list }">
-                            <tr>
-                                <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
-                                <td class="mHide"><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ header_cart.p_image_m }" alt="" /></a></td>
-                                <td><a href="">${ header_cart.p_name }</a></td>
-                                <td><input type="number" value="${ header_cart.cart_amt }" class="form-control inBlock text-center" /></td>
-                                <td class="mHide"><del>${ header_cart.p_price }</del>원</td>
-                                <td><strong class="ftRed">${ header_cart.p_sale }원</strong></td>
-                                <td class="mHide">${ header_cart.cart_regdate }</td>
-                                <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
-                            </tr>
-                            </c:forEach>
+                            
+                            <c:forEach var="cart" items="${ c_view }">
+				               
+								<tr>
+									<td><input type="checkbox" class="checkMember" data-target="checkAll" name="i_no" id="i_no" value="${ cart.i_no }"></td>
+									<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ cart.p_image_m }" alt="" /></a></td>
+									<td><a href="">${ cart.p_name }</a><br>
+												[${ cart.color_name }] ,${ cart.size_name }</td>
+									<td><input type="number" value="${ cart.cart_amt }" id="cart_amt_${ cart.i_no }" class="form-control inBlock w50 text-center" /><br>
+									
+									<!-- 수정버튼 -->
+									<input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ cart.i_no }','cart_amt_${ cart.i_no }'); return false;"></td>
+									
+																	
+									<td><del>${ cart.p_price }</del>원</td>
+									<td><strong class="ftRed">${ cart.p_sale }원</strong></td>
+									<td>${ cart.cart_regdate }</td>
+									<td><button type="button" class="btn btn-danger" onclick="location.href='delete_cart.do?cart_no=${ cart.cart_no }&m_id=${ cart.m_id }'">삭제</button></td>
+								</tr>
+								
+							</c:forEach>
+                            
                             <!-- //Loop -->
-                            <!-- <tr>
-                                <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
-                                <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
-                                <td><a href="">나이키신발</a></td>
-                                <td><input type="number" value="1" class="form-control inBlock text-center" /></td>
-                                <td class="mHide"><del>20,000</del>원</td>
-                                <td><strong class="ftRed">10,000원</strong></td>
-                                <td class="mHide">YYYY-MM-DD</td>
-                                <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
-                            </tr> -->
+                            
                         </tbody>
                     </table>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="location.href='order.html';">구매하기</button>
-                </div>
+                <div class="btnBox">
+							<button type="button" class="btn btn-primary" onclick="demand_list(this.form);return false;">구매하기</button>
+				</div>
             </div>
         </div>
     </div>
+    </form>
     <!-- //cart popup -->
 
     <!-- Login popup // 로그인이 안되어 있을 경우에만 출력 -->

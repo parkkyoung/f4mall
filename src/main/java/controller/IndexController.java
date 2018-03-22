@@ -83,7 +83,7 @@ public class IndexController {
 		MemberVo user = (MemberVo)session.getAttribute("user");
 		if(user!=null){
 			List<CartVo> cart_list = cart_dao.select_list(user.getM_id());
-			model.addAttribute("header_cart_list",cart_list);
+			model.addAttribute("c_view",cart_list);
 			/*model.addAttribute("demand_eval",demand_eval);*/
 		}
 		

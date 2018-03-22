@@ -32,7 +32,7 @@ function demand_list(f){
 	f.submit();
 	
 	
-}
+} 
 
 function update_cart(i_no,cart_amt_i_no){
 	//var cart_amt = f.cart_amt.value;
@@ -96,18 +96,6 @@ function update_cart(i_no,cart_amt_i_no){
 									<td>${ cart.cart_regdate }</td>
 									<td><button type="button" class="btn btn-danger" onclick="location.href='delete_cart.do?cart_no=${ cart.cart_no }&m_id=${ cart.m_id }'">삭제</button></td>
 								</tr>
-							
-								<!-- //Loop -->
-								<!-- <tr>
-									<td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
-									<td><a href=""><img src="http://placehold.it/150x150" alt="" /></a></td>
-									<td><a href="">나이키신발</a></td>
-									<td><input type="number" value="1" class="form-control inBlock w50 text-center" /></td>
-									<td><del>20,000</del>원</td>
-									<td><strong class="ftRed">10,000원</strong></td>
-									<td>YYYY-MM-DD</td>
-									<td><button type="button" class="btn btn-danger">삭제</button></td>
-								</tr> -->
 								
 							</c:forEach>
 							</tbody>
