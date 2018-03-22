@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vo.ItemsEvalVo;
+import vo.EvalVo;
 import vo.ItemsViewVo;
 import vo.ItemsVo;
 import vo.ProductVo;
@@ -69,9 +69,9 @@ public class ItemsDao {
 		return res;
 	}
 
-	public List<ItemsEvalVo> select_eval(Integer p_no) {
+	public List<EvalVo> select_eval(Integer p_no) {
 		// TODO Auto-generated method stub
-		List<ItemsEvalVo> list = null;
+		List<EvalVo> list = null;
 		list = sqlSession.selectList("items_eval",p_no);
 		return list;
 	}

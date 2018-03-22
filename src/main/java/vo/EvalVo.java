@@ -1,12 +1,30 @@
 package vo;
 
-public class ItemsEvalVo {
-	int eval_no, p_no, o_no, eval_score;
+public class EvalVo {
+	int eval_no, p_no, eval_score;
 	String m_id, eval_title, 
 		   eval_content, eval_ip, 
 		   eval_regdate;
+	int i_no, o_status;
 	
-	public ItemsEvalVo() {
+	
+	public int getI_no() {
+		return i_no;
+	}
+
+	public void setI_no(int i_no) {
+		this.i_no = i_no;
+	}
+
+	public int getO_status() {
+		return o_status;
+	}
+
+	public void setO_status(int o_status) {
+		this.o_status = o_status;
+	}
+
+	public EvalVo() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -24,14 +42,6 @@ public class ItemsEvalVo {
 
 	public void setP_no(int p_no) {
 		this.p_no = p_no;
-	}
-
-	public int getO_no() {
-		return o_no;
-	}
-
-	public void setO_no(int o_no) {
-		this.o_no = o_no;
 	}
 
 	public int getEval_score() {

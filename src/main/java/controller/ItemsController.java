@@ -1,17 +1,25 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.EvalDao;
 import dao.ItemsDao;
 import vo.ItemsArrayVo;
-import vo.ItemsEvalVo;
+import vo.DemandVo;
+import vo.EvalVo;
 import vo.ItemsViewVo;
 import vo.ItemsVo;
+import vo.MemberVo;
 import vo.ProductVo;
 
 @Controller
@@ -19,6 +27,12 @@ public class ItemsController {
 	
 	@Autowired
 	ItemsDao items_dao;
+	
+	@Autowired
+	EvalDao eval_dao;
+
+	@Autowired
+	HttpServletRequest request;
 	
 	public ItemsController() {
 		// TODO Auto-generated constructor stub
@@ -73,13 +87,22 @@ public class ItemsController {
 	@RequestMapping("items_view.do")
 	public String items_view(Integer p_no, Model model){
 		
+		HttpSession session = request.getSession();
+		MemberVo user = (MemberVo)session.getAttribute("user");
+		String m_id = user.getM_id();
+		Map map = new HashMap();
+		map.put("m_id", m_id);
+		map.put("p_no", p_no);
+		
 		ProductVo vo = items_dao.select_one_view(p_no);
-		List<ItemsEvalVo> items_eval = items_dao.select_eval(p_no);
+		List<EvalVo> items_eval = items_dao.select_eval(p_no);
 		List<ItemsViewVo> items_option = items_dao.select_option(p_no);
+		List<EvalVo> possible_eval = eval_dao.possible_eval(map);
 		
 		model.addAttribute("vo",vo);
 		model.addAttribute("items_eval",items_eval);
 		model.addAttribute("items_option",items_option);
+		model.addAttribute("possible_eval",possible_eval);
 		
 		return "front/goods_view";
 	}
