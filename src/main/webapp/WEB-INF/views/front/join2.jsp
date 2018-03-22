@@ -189,7 +189,7 @@
 		var m_addr 		= f.m_addr.value.trim();
 		var m_addr_d 	= f.m_addr_d.value.trim();
 		var m_tel 		= f.m_tel.value.trim();
-		var m_image     = f.m_image.value;
+		var m_image     = f.m_image_m.value;
 
 
 		// 값 체크

@@ -128,10 +128,38 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping(value = "/member_insert.do")
-	public String insert_id(MemberVo vo) {
+	public String insert_id(MemberVo vo) throws IllegalStateException, IOException {
 
 		String m_ip = request.getRemoteAddr();
 		vo.setM_ip(m_ip);
+		
+		// 이미지 저장경로 / 회원의 이미지 파일 1개
+		String webPath = "resources/upload/";
+		String savePath = application.getRealPath(webPath);
+
+					
+		MultipartFile photo = vo.getM_image_m();
+
+		String filename = "no_file";
+		// 썸네일이미지 업로드된 파일이 있으면
+		if (!photo.isEmpty()) {
+						
+		// 업로드된 화일명 구하기
+		filename = photo.getOriginalFilename();
+		// 저장할 화일정보
+		File saveFile = new File(savePath, filename);
+		// 이미 동일화일이 존재하냐?
+		if (saveFile.exists()) {
+			long milisec = System.currentTimeMillis();
+			filename = String.format("%d_%s", milisec, filename);
+			saveFile = new File(savePath, filename);
+		}
+		// MultipartResolver의 임시저장소=>복사해온다
+		photo.transferTo(saveFile);
+		
+		}
+					
+		vo.setM_image(filename);
 
 		int res = member_dao.insert_id(vo);
 
@@ -320,32 +348,7 @@ public class MemberController {
 	@RequestMapping("/check_image.do")
 	public String image_check(MemberVo vo) throws IllegalStateException, IOException {
 		
-			// 이미지 저장경로 / 회원의 이미지 파일 1개
-			String webPath = "resources/upload/";
-			String savePath = application.getRealPath(webPath);
-
 			
-			MultipartFile photo = vo.getM_image_m();
-
-			String filename = "no_file";
-			// 썸네일이미지 업로드된 파일이 있으면
-			if (!photo.isEmpty()) {
-				
-				// 업로드된 화일명 구하기
-				filename = photo.getOriginalFilename();
-				// 저장할 화일정보
-				File saveFile = new File(savePath, filename);
-				// 이미 동일화일이 존재하냐?
-				if (saveFile.exists()) {
-					long milisec = System.currentTimeMillis();
-					filename = String.format("%d_%s", milisec, filename);
-					saveFile = new File(savePath, filename);
-				}
-				// MultipartResolver의 임시저장소=>복사해온다
-				photo.transferTo(saveFile);
-			}
-			
-			vo.setM_image(filename);
 			
 			return "redirect:/admin/member_update.do";
 	}
