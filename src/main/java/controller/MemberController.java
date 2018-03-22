@@ -210,7 +210,7 @@ public class MemberController {
 	
 	
 	/**
-	 * 관리자회원가입 
+	 * 관리자회원가입
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/member_insert_form.do")
@@ -241,7 +241,7 @@ public class MemberController {
 		String filename = "no_file";
 		// 썸네일이미지 업로드된 파일이 있으면
 		if (!photo.isEmpty()) {
-			
+
 			// 업로드된 화일명 구하기
 			filename = photo.getOriginalFilename();
 			// 저장할 화일정보
@@ -255,7 +255,7 @@ public class MemberController {
 			// MultipartResolver의 임시저장소=>복사해온다
 			photo.transferTo(saveFile);
 		}
-		
+
 		vo.setM_image(filename);
 
 
@@ -289,7 +289,7 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping(value = "/admin/member_update.do")
-	public String adm_update(MemberVo vo)throws IllegalStateException, IOException {
+	public String adm_update(MemberVo vo) throws IllegalStateException, IOException {
 
 		String m_ip = request.getRemoteAddr();
 
@@ -397,14 +397,19 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("/logout.do")
+	@ResponseBody
 	public String logout(MemberVo vo) {
 
 		System.out.println("로그아웃");
 
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
+		
+		String result = "yes";
+		String resultStr = "";
+		resultStr = String.format("[{'result':'%s'}]", result);
 
-		return "redirect:product_list.do";
+		return resultStr;
 	}
 
 }

@@ -40,11 +40,11 @@ function comment_del(c_no){
 				</c:when>
 				
 				<c:when test="${uesr.m_id ne co.m_id}">
-				<td class="cIp" colspan="2"><c:out value="${co.c_ip}"/></td>	
+				<td class="cIp"><c:out value="${co.c_ip}"/></td>	
 				</c:when>
 				
 				<c:otherwise>
-				<td class="cIp" colspan="2"><c:out value="${co.c_ip}"/></td>	
+				<td class="cIp"><c:out value="${co.c_ip}"/></td>	
 				</c:otherwise>
 				
 				</c:choose>

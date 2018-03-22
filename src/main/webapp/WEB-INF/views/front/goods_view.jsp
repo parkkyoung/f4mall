@@ -143,7 +143,7 @@ function eval_insert(f){
 
 					<!-- 상품설명 -->
 					<div class="mt40">
-						<img src="http://placehold.it/1300x5000" alt="" class="wFull" />
+						${vo.p_content }
 					</div>
 					<!-- //상품설명 -->
 

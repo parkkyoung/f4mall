@@ -113,8 +113,26 @@
 				}
 			});
 		});
-	});
+		
+		
+		<!--업로드이미지 미리보기-->
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
 
+				reader.onload = function(e) {
+					$('#image_section').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+		$("#m_image").change(function() {
+			readURL(this);
+		});
+	});
+	
 
 	<!-- 다음 우편 -->
 	function findAddress() {
@@ -167,10 +185,11 @@
 		var m_pwd 		= f.m_pwd1.value.trim();
 		var m_name 	    = f.m_name.value.trim();
 		var m_nick 	    = f.m_nick.value.trim();
-		//var m_zipcode = f.m_zipcode.value.trim();
+		var m_zipcode = f.m_zipcode.value.trim();
 		var m_addr 		= f.m_addr.value.trim();
 		var m_addr_d 	= f.m_addr_d.value.trim();
 		var m_tel 		= f.m_tel.value.trim();
+		var m_image     = f.m_image.value;
 
 
 		// 값 체크
@@ -248,7 +267,7 @@
 <!-- //visual -->
 
 <!-- sub contents -->
-<form>
+<form method="POST" enctype="multipart/form-data">
 	<input type="hidden" value="0">
 	<section class="sub container">
 		<div class="form-horizontal">
@@ -311,9 +330,13 @@
 			<div class="form-group">
 				<label for="phoneNumber" class="col-sm-4 control-label">핸드폰번호</label>
 				<div class="col-sm-4">
-					<input type="tel" id="m_tel" name="m_tel" class="form-control" placeholder="01012345678" />
-					<p class="mt5">괄호(-) 없이 숫자만 입력해주세요</p>
+					<input type="tel" id="m_tel" name="m_tel" class="form-control" placeholder="괄호(-) 없이 숫자만 입력해주세요" />
 				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-4 control-label">이미지(30x30)</label> 
+				<div class="col-sm-4"><input type="file" id="m_image" name="m_image_m" class="form-control"/></div>
+				<img id="image_section" width="100" src="${ pageContext.request.contextPath }/resources/upload/${ user.m_image }"/>
 			</div>
 			<div class="form-group btnBox">
 				<button type="button" class="btn btn-primary btn-lg" onclick="join(this.form);">회원가입</button>

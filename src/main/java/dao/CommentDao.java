@@ -15,12 +15,25 @@ public class CommentDao {
 	@Autowired
 	SqlSession sqlSession;
 	
+	
+	//´ñ±Û ¸®½ºÆ®
+	/**
+	 * 
+	 * @param map
+	 * @return
+	 */
 	public List<CommentVo> selectList(Map map){
 		List<CommentVo> list = null;
 		list = sqlSession.selectList("comment_select_list",map);
 		return list;
 	}
 
+	//´ñ±Û¼ö È®ÀÎ
+	/**
+	 * 
+	 * @param c_no
+	 * @return
+	 */
 	public int getRowTotal(int c_no) {
 		// TODO Auto-generated method stub
 		int res = 0;
@@ -29,7 +42,13 @@ public class CommentDao {
 		
 		return res;
 	}
-
+	
+	//´ñ±Û»ðÀÔ
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
 	public int insert(CommentVo vo) {
 		// TODO Auto-generated method stub
 		int res =0;
@@ -38,7 +57,13 @@ public class CommentDao {
 		
 		return res;
 	}
-
+	
+	//´ñ±Û »èÁ¦
+	/**
+	 * 
+	 * @param c_no
+	 * @return
+	 */
 	public int delete(int c_no) {
 		// TODO Auto-generated method stub
 		int res =0;

@@ -46,42 +46,7 @@
 			});
 		});
 	
-
-		function readURL(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-
-				reader.onload = function(e) {
-					$('#image_section').attr('src', e.target.result);
-				}
-
-				reader.readAsDataURL(input.files[0]);
-			}
-		}
-
-		$("#mm_image").change(function() {
-			readURL(this);
-		});
-	
-		
-	 	 function image_update(){
-		     	
-	 		 	var m_image = $(this).val();
-	 		 		
-		         $.ajax({
-						url  : 'check_image.do',
-						data : { 'm_image' : m_image },
-						success : function(data) {
-							// data="[{'result':'yes'}]";
-							var json = eval(data);
-							// var json=[{'result':'yes'}];    => 배열이다
-							if (json[0].result == 'yes') {
-								$('#admin_id_msg').html('사용 가능한 아이디입니다').css('color', 'blue');
-							}
-						  }
-						}
-					}); 
-				});
+	});
 		     
 		     
 	<!-- 다음 우편 -->
@@ -129,15 +94,15 @@
 
 
 	function send_update(f) {
-		var m_id = f.mm_id.value.trim();
-		var m_pwd = f.mm_pwd.value.trim();
-		var m_name = f.mm_name.value.trim();
-		var m_nick = f.mm_nick.value.trim();
-		var m_tel = f.mm_tel.value.trim();
-		var m_addr = f.mm_addr.value.trim();
-		var m_addr_d = f.mm_addr_d.value.trim();
-		/* var m_image      = f.mm_image.value; */
-		/* var m_zipcode = f.mm_zipcode.value.trim(); */
+		var m_id      = f.mm_id.value.trim();
+		var m_pwd     = f.mm_pwd.value.trim();
+		var m_name    = f.mm_name.value.trim();
+		var m_nick    = f.mm_nick.value.trim();
+		var m_tel     = f.mm_tel.value.trim();
+		var m_addr    = f.mm_addr.value.trim();
+		var m_addr_d  = f.mm_addr_d.value.trim();
+		/* var m_image   = f.mm_image.value;  */
+		var m_zipcode = f.mm_zipcode.value.trim();
 
 		if (m_id == '') {
 			alert('이름을 입력하세요');
@@ -175,10 +140,10 @@
 			return;
 		}
 
-		/* 	if (m_zipcode == '') {
+		if (m_zipcode == '') {
 				alert('우편번호를 입력하세요');
 				return;
-			} */
+			} 
 
 
 		f.action = 'member_update.do';
@@ -232,7 +197,7 @@
 					</div>
 					<div class="form-group">
 						<label for="">핸드폰번호</label> 
-						<input type="number" name="m_tel"id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력"value="${user.m_tel }" />
+						<input type="number" name="m_tel"id="mm_tel" class="form-control" placeholder="괄호(-)없이 숫자만 입력" value="${user.m_tel }" />
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -255,12 +220,6 @@
 					</div>
 					<div class="form-group">
 						<input type="text" name="m_addr_d" id="mm_addr_d"class="form-control" placeholder="상세주소" value="${user.m_addr_d }" />
-					</div>
-					<div class="form-group">
-						<label for="">이미지</label> 
-						<input type='file' id="mm_image"name="m_image" value="" class="form-control" /> 
-						<img id="image_section" width="100" src="${ pageContext.request.contextPath }/resources/upload/${ user.m_image }"alt="your image" />
-						<button type="button" id="uploadbutton" class="btn btn-primary" onclick="image_update();">이미지수정</button>
 					</div>
 					</div>
 					<div class="col-lg-12">
