@@ -81,26 +81,32 @@ function login(f) {
 
 // 로그아웃
 function logout(){
+	
 	swal({
 		text : "로그아웃 하시겠습니까?",
 		icon : "info",
 		buttons : true
 	}).then((willLogout) => {
-		$.ajax({
-	        url : 'logout.do',
-	        success : function(data) {
-	            var json = eval(data);
-	            if (json[0].result == 'yes') {
-	                swal({
-	                    text : "로그아웃되었습니다.",
-	                    icon : "success",
-	                }).then((value) => {
-	                    location.href = '';
-	                });
-	            }
-	        }
-	    });
-	});
+		
+		if(willLogout){
+			$.ajax({
+		        url : 'logout.do',
+		        success : function(data) {
+		            var json = eval(data);
+		            if (json[0].result == 'yes') {
+		                swal({
+		                    text : "로그아웃되었습니다.",
+		                    icon : "success",
+		                }).then((value) => {
+		                    location.href = '';
+		                });
+		            }
+		        }
+		    }); // end ajax
+        }; // end if
+        
+	}); // end swal
+	
 };
 
 // 상품 search
@@ -234,9 +240,9 @@ function findProduct(){
                     
                     <!-- 팝업 footer -->
 					<div class="modal-footer">
-						<p>관리자 계정</p>
-						<p>admin@f4mall.com</p>
-						<p>f4mall</p>
+						<div class="tLeft">본 페이지는 포트폴리오용 페이지로써<br />어드민 페이지를 확인 하기 위하여<br />어드민 계정으로 접속하여주시기 바랍니다.<br />(접속 후 우측 상단에 몽키스패너 클릭!)</div>
+	                    <p class="tLeft mt10">id : <strong>admin@f4mall.com</strong></p>
+	                    <p class="tLeft">pw : <strong>f4mall</strong></p>
 						<a href="member_join_clause.do" class="btn btn-warning">Join
 							us</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
