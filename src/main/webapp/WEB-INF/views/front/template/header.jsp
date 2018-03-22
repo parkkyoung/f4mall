@@ -86,7 +86,20 @@ function logout(){
 		icon : "info",
 		buttons : true
 	}).then((willLogout) => {
-		if(willLogout) location.href='logout.do';
+		$.ajax({
+	        url : 'logout.do',
+	        success : function(data) {
+	            var json = eval(data);
+	            if (json[0].result == 'yes') {
+	                swal({
+	                    text : "로그아웃되었습니다.",
+	                    icon : "success",
+	                }).then((value) => {
+	                    location.href = '';
+	                });
+	            }
+	        }
+	    });
 	});
 };
 

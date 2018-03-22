@@ -397,14 +397,19 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("/logout.do")
+	@ResponseBody
 	public String logout(MemberVo vo) {
 
 		System.out.println("·Î±×¾Æ¿ô");
 
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
+		
+		String result = "yes";
+		String resultStr = "";
+		resultStr = String.format("[{'result':'%s'}]", result);
 
-		return "redirect:product_list.do";
+		return resultStr;
 	}
 
 }
