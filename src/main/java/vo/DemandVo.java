@@ -1,12 +1,20 @@
 package vo;
 
 public class DemandVo {
-	int o_no, i_no, o_amt, o_tel, o_pay_amt;
+	int o_no, i_no, o_amt, o_tel, o_pay_amt, o_status;
 	String m_id, o_addr, o_addr_d, o_zipcode, 
 	o_regdate, o_payment, o_remarks, o_name;
 	
 	public DemandVo() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getO_status() {
+		return o_status;
+	}
+
+	public void setO_status(int o_status) {
+		this.o_status = o_status;
 	}
 
 	public int getO_no() {
