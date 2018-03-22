@@ -368,7 +368,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .commentsList .cId {width:100px;}
 .commentsList .cContent {text-align:left;}
 .commentsList .cDate {width:100px;}
-.commentsList .cIp {width:100px;}
+.commentsList .cIp {width:175px;}
 @media(max-width:767px){
 	.commentsList .cImg,
 	.commentsList .cDate,

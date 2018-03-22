@@ -63,6 +63,7 @@ function find(){
 }
 </script>
 
+
 <!-- visual -->
 <section class="subVisual">
     <h2>COMMUNITY</h2>
@@ -163,14 +164,14 @@ function find(){
 				</tbody>
 			</table>
 		</div>
-		
-		<!-- page table  -->
-		<table class="tCenter">
-			<tr>
-				<td>${pageMenu}</td>
-			</tr>
-		</table>
-		<!-- //page table  -->
+        <!-- pagenation // java.util.paging -->
+        <nav class="text-center">
+            <ul class="pagination">
+                ${pageMenu}              
+            </ul>
+        </nav>
+        <!-- //pagenation -->
+        
 		
 		<div class="btnBox">
 			<a onclick="insert_form();" class="btn btn-primary">글쓰기</a>
