@@ -67,11 +67,10 @@ inner join size as si on i.size_no = si.size_no
 
 
 use f4mall;
-select * from items_list
+select * from items_view where i_no = 61
 
 use f4mall;
 drop view items_list
-
 
 use f4mall;
 select * from stock
@@ -98,6 +97,8 @@ drop view items_view
 use f4mall;
 select * from items_view where p_no =1;
 
+use f4mall;
+select * from items_view where i_no =1;
 
 use f4mall;
 select * from items_view

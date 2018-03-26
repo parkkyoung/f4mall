@@ -41,3 +41,6 @@ select * from select_product_eval where o_status = 0 and p_no = 44
 
 use f4mall;
 drop view select_product_eval
+
+use f4mall;
+select * from product_eval where p_no = p_no order by eval_no desc

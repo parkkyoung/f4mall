@@ -70,6 +70,6 @@ public class DemandController {
 			}
 		}
 		
-		return "front/main";
+		return "redirect:index.do";
 	}
 }

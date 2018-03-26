@@ -10,7 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.EvalDao;
 import dao.ItemsDao;
@@ -102,6 +104,28 @@ public class ItemsController {
 		model.addAttribute("possible_eval",possible_eval);
 		
 		return "front/goods_view";
+	}
+	
+	@RequestMapping("check_stock.do")
+	@ResponseBody
+	public String check_stock(Integer cart_amt, Integer i_no){
+		
+		String result = "fail";
+		String resultStr = "";
+		ItemsViewVo vo = items_dao.stock_check(i_no);
+		System.out.println(cart_amt);
+		System.out.println(vo.getS_amt());
+		if(vo.getS_amt() < cart_amt){
+			result = "fail";
+			System.out.println("재고수량 부족");
+		}else{
+			result = "success";
+			System.out.println("재고수량 충족");
+		}
+		System.out.println(result);
+		resultStr = String.format("[{'result':'%s'}]", result); 
+		
+		return resultStr;
 	}
 	
 }
