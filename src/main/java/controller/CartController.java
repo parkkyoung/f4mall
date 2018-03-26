@@ -76,6 +76,8 @@ public class CartController {
 	public String delete_cart(int cart_no, HttpServletRequest request){
 		
 		int res = cart_dao.cart_delete(cart_no);
+<<<<<<< HEAD
+=======
 		
 		String resultStr = "";
 		String result = "yes";
@@ -86,6 +88,23 @@ public class CartController {
 		
 		resultStr = String.format("[{'result':'%s'}]", result);
 		return resultStr;
+		
+		/*System.out.println(vo);
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
+		
+		String resultStr = "";
+		String result = "yes";
+		
+<<<<<<< HEAD
+		// 세션 삭제
+		HttpSession session = request.getSession();
+		session.removeAttribute("header_cart_list");
+		
+		resultStr = String.format("[{'result':'%s'}]", result);
+		return resultStr;
+=======
+		return "redirect:cart_view.do?m_id=" + m_id;*/
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 	}
 	
 	@RequestMapping("/update_cart.do")
