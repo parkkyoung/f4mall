@@ -124,7 +124,6 @@ function findProduct(){
     } else location.href='product_list.do?p_name='+encodeURIComponent(p_name);
 }
 
-<<<<<<< HEAD
 //카트 삭제
 function delete_cart(cartNo, mId){
 	
@@ -154,8 +153,6 @@ function delete_cart(cartNo, mId){
 	}); // end swal
 };
 
-=======
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
 function demand_list(f){
 	
 	var checked=false;
@@ -184,11 +181,6 @@ function demand_list(f){
 }
 
 function update_cart(i_no,cart_amt_i_no){
-	//var cart_amt = f.cart_amt.value;
-/*  	alert(i_no + ':' + cart_amt_i_no);
- 	alert(document.getElementById(cart_amt_i_no).value); */
-// 	alert(cart_amt_p_no);
-// 	var cnt = document.getElementById(cart_amt_p_no).value;
 	location.href="update_cart.do?i_no=" + i_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_i_no).value;
 }
 
@@ -228,9 +220,6 @@ function update_cart(i_no,cart_amt_i_no){
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Loop -->
-<<<<<<< HEAD
-                            <%-- 충돌 임시주석
                             <c:forEach var="header_cart" items="${ header_cart_list }">
                             <tr>
                                 <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
@@ -243,59 +232,13 @@ function update_cart(i_no,cart_amt_i_no){
                                 <td><button type="button" class="btn btn-danger btn-xs" onclick="delete_cart(${ header_cart.cart_no }, '${ header_cart.m_id }');">삭제</button></td>
                             </tr>
                             </c:forEach>
-                            --%>
-                            <c:forEach var="cart" items="${ c_view }">
-				               
-								<tr>
-									<td><input type="checkbox" class="checkMember" data-target="checkAll" name="i_no" id="i_no" value="${ cart.i_no }"></td>
-									<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ cart.p_image_m }" alt="" /></a></td>
-									<td><a href="">${ cart.p_name }</a><br>
-												[${ cart.color_name }] ,${ cart.size_name }</td>
-									<td><input type="number" value="${ cart.cart_amt }" id="cart_amt_${ cart.i_no }" class="form-control inBlock w50 text-center" /><br>
-									
-									<!-- 수정버튼 -->
-									<input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ cart.i_no }','cart_amt_${ cart.i_no }'); return false;"></td>
-									
-																	
-									<td><del>${ cart.p_price }</del>원</td>
-									<td><strong class="ftRed">${ cart.p_sale }원</strong></td>
-									<td>${ cart.cart_regdate }</td>
-									<td><button type="button" class="btn btn-danger" onclick="location.href='delete_cart.do?cart_no=${ cart.cart_no }&m_id=${ cart.m_id }'">삭제</button></td>
-								</tr>
-								
-							</c:forEach>
-                            
-=======
-                            
-                            <c:forEach var="cart" items="${ c_view }">
-				               
-								<tr>
-									<td><input type="checkbox" class="checkMember" data-target="checkAll" name="i_no" id="i_no" value="${ cart.i_no }"></td>
-									<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ cart.p_image_m }" alt="" /></a></td>
-									<td><a href="">${ cart.p_name }</a><br>
-												[${ cart.color_name }] ,${ cart.size_name }</td>
-									<td><input type="number" value="${ cart.cart_amt }" id="cart_amt_${ cart.i_no }" class="form-control inBlock w50 text-center" /><br>
-									
-									<!-- 수정버튼 -->
-									<input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ cart.i_no }','cart_amt_${ cart.i_no }'); return false;"></td>
-									
-																	
-									<td><del>${ cart.p_price }</del>원</td>
-									<td><strong class="ftRed">${ cart.p_sale }원</strong></td>
-									<td>${ cart.cart_regdate }</td>
-									<td><button type="button" class="btn btn-danger" onclick="location.href='delete_cart.do?cart_no=${ cart.cart_no }&m_id=${ cart.m_id }'">삭제</button></td>
-								</tr>
-								
-							</c:forEach>
-                            
-                            <!-- //Loop -->
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
-                            
                         </tbody>
                     </table>
                 </div>
-                <div class="btnBox">
-							<button type="button" class="btn btn-primary" onclick="demand_list(this.form);return false;">구매하기</button>
+                <div class="modal-footer">
+	                <div class="btnBox">
+								<button type="button" class="btn btn-primary" onclick="demand_list(this.form);return false;">구매하기</button>
+					</div>
 				</div>
             </div>
         </div>
@@ -366,6 +309,7 @@ function update_cart(i_no,cart_amt_i_no){
 	</form>
     </c:if>
 	<!-- //Login popup -->
+	
 	<!-- 모바일 gnb -->
 	<nav id="c-menu--push-left" class="c-menu c-menu--push-left">
 	<h3 class="hide">모바일 메뉴</h3>
