@@ -78,15 +78,7 @@ public class IndexController {
 		model.addAttribute("list08", list08);
 		model.addAttribute("list09", list09);
 		
-		// 로그인 세션 저장 및 카트 불러오기
-		HttpSession session = request.getSession();
-		MemberVo user = (MemberVo)session.getAttribute("user");
-		if(user!=null){
-			List<CartVo> cart_list = cart_dao.select_list(user.getM_id());
-			model.addAttribute("header_cart_list",cart_list);
-			/*model.addAttribute("demand_eval",demand_eval);*/
-		}
-		
+
 		return "front/main";
 	}
 	

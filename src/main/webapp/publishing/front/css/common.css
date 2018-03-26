@@ -295,6 +295,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 #cartPop th,
 #cartPop td {text-align:center;vertical-align: middle;}
 #cartPop input[type="number"].form-control {width:50px;}
+#cartPop td img {width:70px;height:70px;}
 @media(max-width:767px){
 	#cartPop .modal-body {padding:0;}
 	#cartPop th {padding:8px 4px;font-size:12px;}
@@ -365,6 +366,7 @@ _:-moz-tree-row(hover), input[type="button"] {line-height:normal !important;padd
 .commentsList {text-align:center;}
 .commentsList table tbody td {vertical-align: middle;}
 .commentsList .cImg {width:68px;}
+.commentsList .cImg img {width:50px;height:50px;border-radius:100%;}
 .commentsList .cId {width:100px;}
 .commentsList .cContent {text-align:left;}
 .commentsList .cDate {width:100px;}

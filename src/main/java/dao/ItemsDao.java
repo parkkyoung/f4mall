@@ -75,6 +75,15 @@ public class ItemsDao {
 		list = sqlSession.selectList("items_eval",p_no);
 		return list;
 	}
+
+	public ItemsViewVo stock_check(Integer i_no) {
+		// TODO Auto-generated method stub
+		ItemsViewVo vo =null;
+		
+		vo = sqlSession.selectOne("check_stock",i_no);
+		
+		return vo;
+	}
 	
 	
 	

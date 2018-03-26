@@ -11,15 +11,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.DemandDao;
+import service.StockService;
 import vo.CartVo;
 import vo.DemandVo;
 import vo.MemberVo;
+import vo.StockVo;
 
 @Controller
 public class DemandController {
 	
 	@Autowired
 	DemandDao demand_dao;
+	
+	@Autowired
+	StockService stock_service;
 	
 	public DemandController() {
 		// TODO Auto-generated constructor stub
@@ -54,8 +59,17 @@ public class DemandController {
 			int o_amt = cart_amt[i];
 			vo.setO_amt(o_amt);
 			res = demand_dao.demand_insert(vo);
+			StockVo stock_vo =new StockVo();
+			stock_vo.setI_no(i_no[i]);
+			stock_vo.setS_amt(o_amt);
+			try {
+				res = stock_service.insert_out_stock(stock_vo);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
-		return "front/main";
+		return "redirect:index.do";
 	}
 }

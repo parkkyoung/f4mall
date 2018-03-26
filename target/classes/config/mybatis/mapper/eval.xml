@@ -9,9 +9,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertEval" parameterType="vo.EvalVo">
-		insert into product_eval (p_no,m_id,o_no,eval_score,eval_title,eval_content,eval_ip,eval_regdate)
+		insert into product_eval (p_no,m_id,eval_score,eval_title,eval_content,eval_ip,eval_regdate)
 		values(#{p_no},#{m_id},#{eval_score},#{eval_title},#{eval_content},#{eval_ip},now())
 	</insert>
+	
+	<select id="select_one" parameterType="int" resultType="vo.EvalVo">
+		select * from product_eval where eval_no = #{ eval_no }
+	</select>
 	
 </mapper>
 
