@@ -20,6 +20,28 @@ CREATE TABLE demand(
 	o_name varchar(100)
 );
 
+-- 회원 주문 목록
+use f4mall;
+select * from demand
+    d.o_no, p.p_no, d.o_regdate, d.o_amt, d.o_pay_amt, p.p_image_m, p.p_name, d.o_status
+        from demand d inner join items i on d.i_no = i.i_no
+        inner join product p on i.p_no = p.p_no
+            where m_id = 'admin@f4mall.com' 
+                order by o_no desc
+
+-- 회원 상세
+use f4mall;
+select
+   d.o_status, d.o_pay_amt, d.o_zipcode, d.o_addr, d.o_addr_d, d.o_tel, d.o_pay_amt, d.o_pay_amt,
+   p.p_no, p.p_image_m, p.p_name
+       from demand d inner join items i on d.i_no = i.i_no
+       inner join product p on i.p_no = p.p_no
+           where o_no=26
+                   
+use f4mall;
+select * from demand where o_no=26
+
+
 use f4mall;
 alter table demand add constraint fk_oi_no foreign key (i_no) references items(i_no) 
 

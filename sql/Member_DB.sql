@@ -35,16 +35,14 @@ set m_grade = 1
 where m_id like 'admin@f4mall.com';
 
 
-
-
-
-
 use f4mall;
 drop table member;
 
 use f4mall;
 delete from member;
 	
+    --d.o_no, d.p_no, d.o_regdate, d.o_amt, d.o_pay_amt, p.p_image_m, p.p_name
+    
 /*-- Member_DB sample
 -- Oracle에서 date sysdate / MySQL 에서는 now() 처리
 use f4mall;
@@ -79,5 +77,6 @@ drop table member;
 --테이블 제약조건 확인(foreign key 확인)
 use f4mall;
 select * from information_schema.table_constraints where table_name = 'member';
+
 
 

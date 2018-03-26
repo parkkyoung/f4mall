@@ -5,8 +5,36 @@ public class DemandVo {
 	String m_id, o_addr, o_addr_d, o_zipcode, 
 	o_regdate, o_payment, o_remarks, o_name;
 	
+	// 상품관련
+	int p_no;
+	String p_image_m, p_name;
+	
 	public DemandVo() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
+	public String getP_image_m() {
+		return p_image_m;
+	}
+
+	public void setP_image_m(String p_image_m) {
+		this.p_image_m = p_image_m;
+	}
+
+	public String getP_name() {
+		return p_name;
+	}
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
 	}
 
 	public int getO_status() {

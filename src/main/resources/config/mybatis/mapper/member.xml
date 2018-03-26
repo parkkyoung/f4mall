@@ -45,10 +45,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where m_id=#{ m_id }
 	</update>
 	
+	<!-- 주문 목록 -->
 	<select id="mo_list" resultType="vo.DemandVo">
 		select * from demand
 	</select>
-
+    
+    <!-- 회원 주문 목록 -->
+	<select id="d_list" resultType="vo.DemandVo" parameterType="String">
+		select
+		    d.o_no, p.p_no, d.o_regdate, d.o_amt, d.o_pay_amt, p.p_image_m, p.p_name, d.o_status
+		        from demand d inner join items i on d.i_no = i.i_no
+		        inner join product p on i.p_no = p.p_no
+		            where m_id = #{m_id}
+		                order by o_no desc
+	</select>
+	
+	<!-- 주문 상세 -->
+	<select id="d_one" parameterType="int" resultType="vo.DemandVo">
+	   select
+	       d.o_status, d.o_pay_amt, d.o_zipcode, d.o_addr, d.o_addr_d, d.o_tel, d.o_pay_amt, d.o_pay_amt,
+	       p.p_no, p.p_image_m, p.p_name
+	           from demand d inner join items i on d.i_no = i.i_no
+               inner join product p on i.p_no = p.p_no
+	               where o_no=#{o_no}
+	</select>
+	
+	<!-- 회원 주문 캔슬 -->
+	<update id="d_cancel" parameterType="int">
+	   update demand set o_status = 5 where o_no=#{ o_no }
+	</update>
 	
 </mapper>
 
