@@ -36,6 +36,15 @@ public class EvalDao {
 		
 		return res;
 	}
+
+	public EvalVo select_one(Integer eval_no) {
+		// TODO Auto-generated method stub
+		EvalVo vo = null;
+		
+		vo = sqlSession.selectOne("select_one",eval_no);
+		
+		return vo;
+	}
 	
 	
 }

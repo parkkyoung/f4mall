@@ -26,7 +26,19 @@ function comment_del(c_no){
 			<!-- Loop -->
 			<c:forEach var="co"  items="${ c_list }">
 			<tr>
-				<td class="cImg"><img src="" alt="user thumbnail" ></td>
+				<td class="cImg">
+					<%-- 회원 이미지 화면 --%>
+					<c:if test="${ user.m_image eq 'no_file' }">
+				   
+					<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
+					</c:if>
+					
+					<c:if test="${ user.m_image ne 'no_file' }">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+				
+					</c:if>
+					<%-- //회원 이미지 화면 --%>
+				</td>
 				<td class="cId">${co.c_nick }</td>
 				<td class="cContent">${co.c_content}</td>
 				<td class="cDate text-right">${co.c_regdate}</td>
@@ -34,7 +46,7 @@ function comment_del(c_no){
 				
 				<!-- 관리자나 작성자가 아니면 삭제 불가 -->
 				<c:choose>
-				<c:when test="${user.m_id eq co.m_id || user.m_id eq 'admin@f4mall.com' }">
+				<c:when test="${user.m_id eq co.m_id || user.m_grade eq 1 }">
 				<td class="cIp text-right"><c:out value="${co.c_ip}" /> &nbsp;
 				<button type="button"  class="btn btn-danger" onclick="comment_del('${co.c_no}');">삭제</button></td>
 				</c:when>

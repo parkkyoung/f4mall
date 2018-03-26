@@ -49,6 +49,7 @@ function login(f) {
 		return;
 	}
 
+	
 	$.ajax({
 		url : 'login.do',
 		data : {
@@ -123,8 +124,70 @@ function findProduct(){
         });
     } else location.href='product_list.do?p_name='+encodeURIComponent(p_name);
 }
+
+//카트 삭제
+function delete_cart(cartNo, mId){
+	
+	swal({
+		text : "정말 삭제하시겠습니까?",
+		icon : "danger",
+		buttons : true,
+        dangerMode: true
+	}).then((willDelete) => {
+		if(willDelete){
+			$.ajax({
+                url : 'delete_cart.do',
+                data : { 'cart_no' : cartNo},
+                success : function(data) {
+                    var json = eval(data);
+                    if (json[0].result == 'yes') {
+                        swal({
+                            text : "삭제되었습니다.",
+                            icon : "success",
+                        }).then((value) => {
+                            location.href = '';
+                        });
+                    }
+                }
+            }); // end ajax
+		}; // end if
+	}); // end swal
+};
+
+function demand_list(f){
+	
+	var checked=false;
+	
+	if(f.i_no.length==undefined){
+		checked = f.i_no.checked;
+	}else{
+		for(var i=0; i<f.i_no.length; i++){
+			if(f.i_no[i].checked){
+				checked = true;
+				break;
+			}
+		}
+	}
+	if(checked == false){
+		alert('주문하실 상품을 입력해주세요.');
+		return;
+	}
+	
+	if(confirm('장바구니에 있는 상품들을 주문하시겠습니까?')==false)return;
+	
+	f.action="demand_list.do";
+	f.submit();
+	
+	
+}
+
+function update_cart(i_no,cart_amt_i_no){
+	location.href="update_cart.do?i_no=" + i_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_i_no).value;
+}
+
 </script>
 </head>
+
 <body>
 
 	<!-- 스킵 네비게이션 -->
@@ -136,6 +199,7 @@ function findProduct(){
 	<!-- //스킵 네비게이션 -->
 	
 	<!-- cart popup -->
+	<form action="">
     <div class="modal fade" id="cartPop" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -158,7 +222,6 @@ function findProduct(){
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Loop -->
                             <c:forEach var="header_cart" items="${ header_cart_list }">
                             <tr>
                                 <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
@@ -168,29 +231,21 @@ function findProduct(){
                                 <td class="mHide"><del>${ header_cart.p_price }</del>원</td>
                                 <td><strong class="ftRed">${ header_cart.p_sale }원</strong></td>
                                 <td class="mHide">${ header_cart.cart_regdate }</td>
-                                <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
+                                <td><button type="button" class="btn btn-danger btn-xs" onclick="delete_cart(${ header_cart.cart_no }, '${ header_cart.m_id }');">삭제</button></td>
                             </tr>
                             </c:forEach>
-                            <!-- //Loop -->
-                            <!-- <tr>
-                                <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
-                                <td class="mHide"><a href=""><img src="http://placehold.it/50x50" alt="" /></a></td>
-                                <td><a href="">나이키신발</a></td>
-                                <td><input type="number" value="1" class="form-control inBlock text-center" /></td>
-                                <td class="mHide"><del>20,000</del>원</td>
-                                <td><strong class="ftRed">10,000원</strong></td>
-                                <td class="mHide">YYYY-MM-DD</td>
-                                <td><button type="button" class="btn btn-danger btn-xs">삭제</button></td>
-                            </tr> -->
                         </tbody>
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="location.href='order.html';">구매하기</button>
-                </div>
+	                <div class="btnBox">
+								<button type="button" class="btn btn-primary" onclick="demand_list(this.form);return false;">구매하기</button>
+					</div>
+				</div>
             </div>
         </div>
     </div>
+    </form>
     <!-- //cart popup -->
 
     <!-- Login popup // 로그인이 안되어 있을 경우에만 출력 -->
@@ -256,6 +311,7 @@ function findProduct(){
 	</form>
     </c:if>
 	<!-- //Login popup -->
+	
 	<!-- 모바일 gnb -->
 	<nav id="c-menu--push-left" class="c-menu c-menu--push-left">
 	<h3 class="hide">모바일 메뉴</h3>
@@ -272,7 +328,33 @@ function findProduct(){
 	<c:if test="${ not empty user }">	
 	<div class="mHead">
 		<div class="imgBox">
-			<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+		   
+		    <!-- <script type="text/javascript">
+		       alert('${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg');
+		    </script> -->
+			<!-- 회원 이미지 화면 -->
+			<c:if test="${ user.m_image eq 'no_file' }">
+			   
+				<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
+			</c:if>
+			
+			<c:if test="${ user.m_image ne 'no_file' }">
+				<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+			
+			</c:if>
+			<%-- <c:choose>
+				<c:when test="${ user.m_image eq 'no_file' }">
+					<img src="${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg" alt="profile" class="wFull" />
+				</c:when>
+				
+				<c:when test="${user.m_image ne 'no_file'}">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+				</c:when>
+				<c:otherwise>
+					<img src="${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg"  alt="profile" class="wFull" />
+				</c:otherwise>
+			</c:choose> --%>
+			<!-- //회원 이미지 화면 -->
 		</div>
 		<div class="txtBox">
 			<strong>[${ user.m_name }]</strong>님 어서오세요!
@@ -370,8 +452,23 @@ function findProduct(){
                 <%-- 로그인 후에 노출 --%>
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
+                <a href="member_orders.do?m_id=${user.m_id}" title="order list"><i class="fa fa-list-alt"></i></a>
+				<a href="member.do" title="user" class="btnMember"><img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a>
 				<a href="member.do" title="user" class="btnMember">
-					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a>
+					<%-- 회원 이미지 화면 --%>
+					<c:if test="${ user.m_image eq 'no_file' }">
+				   
+					<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
+					</c:if>
+					
+					<c:if test="${ user.m_image ne 'no_file' }">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+				
+					</c:if>
+					<%-- //회원 이미지 화면 --%>
+					</a>
+						<%-- <img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a> --%>
+						
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<%-- //로그인 후에 노출 --%>

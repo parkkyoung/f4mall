@@ -31,7 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="items_eval" parameterType="int" resultType="vo.EvalVo">
-		select * from product_eval where p_no = p_no
+		select * from product_eval where p_no = #{ p_no } order by eval_no desc
+	</select>
+	
+	<select id="check_stock" parameterType="int" resultType="vo.ItemsViewVo">
+		select * from items_view where i_no = #{ i_no }
 	</select>
 
 </mapper>

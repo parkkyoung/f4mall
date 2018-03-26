@@ -10,7 +10,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.EvalDao;
 import dao.ItemsDao;
@@ -33,6 +35,7 @@ public class ItemsController {
 
 	@Autowired
 	HttpServletRequest request;
+	
 	
 	public ItemsController() {
 		// TODO Auto-generated constructor stub
@@ -85,11 +88,8 @@ public class ItemsController {
 	}
 	
 	@RequestMapping("items_view.do")
-	public String items_view(Integer p_no, Model model){
+	public String items_view(Integer p_no, Model model, String m_id){
 		
-		HttpSession session = request.getSession();
-		MemberVo user = (MemberVo)session.getAttribute("user");
-		String m_id = user.getM_id();
 		Map map = new HashMap();
 		map.put("m_id", m_id);
 		map.put("p_no", p_no);
@@ -105,6 +105,24 @@ public class ItemsController {
 		model.addAttribute("possible_eval",possible_eval);
 		
 		return "front/goods_view";
+	}
+	
+	@RequestMapping("check_stock.do")
+	@ResponseBody
+	public String check_stock(Integer cart_amt, Integer i_no, Model model){
+		
+		String result = "fail";
+		String resultStr = "";
+		ItemsViewVo vo = items_dao.stock_check(i_no);
+		if(vo.getS_amt() < cart_amt){
+			result = "fail";
+		}else{
+			result = "success";
+		}
+		
+		resultStr = String.format("[{'result':'%s'}]", result); 
+		
+		return resultStr;
 	}
 	
 }
