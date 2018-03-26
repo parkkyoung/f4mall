@@ -39,7 +39,44 @@
 				}
 			});
 		});
+		
+		<!-- 닉네임중복체크 -->
+		$('#m_nick').keyup(function(event) {
 
+			var m_nick = $(this).val();
+			var m_nick_pattern = /^[가-힣a-zA-Z]+$/;
+			if (!(m_nick_pattern.test(m_nick))) {
+				$('#m_nick_msg').html('한글 or 영문으로!').css('color', 'red');
+				return;
+			}
+
+			//서버로 m_nick전송(Ajax통신)
+			$.ajax({
+				url : 'check_nick.do',
+				data : { 'm_nick' : m_nick },
+				success : function(data) {
+					// data="[{'result':'yes'}]";
+					var json = eval(data);
+					// var json=[{'result':'yes'}];    => 배열이다
+					if (json[0].result == 'yes') {
+						$('#m_nick_msg').html('사용 가능한 닉네임입니다').css('color', 'blue');
+					} else {
+						$('#m_nick_msg').html('이미 사용중인 닉네임입니다').css('color', 'red');
+					}
+
+					if (!(m_nick_pattern.test(m_nick))) {
+
+						$('#m_nick_msg').html('한글이나 영문으로!!.').css('color', 'red');
+						$("#m_nick").addClass("alert alert-danger").removeClass("alert-success");
+					} else {
+
+						$('#m_nick_msg').html('멋진닉네임이에요!!').css('color', 'blue');
+						$("#m_nick").addClass("alert alert-success").removeClass("alert-danger");
+					}
+				}
+			});
+		});
+		
 
 		<!--비밀번호 체크-->
 		$('#admin_pwd').keyup(function(event) {
@@ -139,15 +176,16 @@
 	
 	function member_Insert(f) {
 		
-		var m_id     = f.m_id.value.trim();
-		var m_pwd    = f.m_pwd.value.trim();
-		var m_name   = f.m_name.value.trim();
-		var m_nick   = f.m_nick.value.trim();
-		var m_tel 	 = f.m_tel.value.trim();
-		var m_addr   = f.m_addr.value.trim();
-		var m_addr_d = f.m_addr_d.value.trim();
-		var m_grade  = f.m_grade.value.trim();
-		var m_image  = f.m_image_m.value;
+		var m_id      = f.m_id.value.trim();
+		var m_pwd     = f.m_pwd.value.trim();
+		var m_name    = f.m_name.value.trim();
+		var m_nick    = f.m_nick.value.trim();
+		var m_tel 	  = f.m_tel.value.trim();
+		var m_addr    = f.m_addr.value.trim();
+		var m_addr_d  = f.m_addr_d.value.trim();
+		var m_zipcode = f.m_zipcode.value.trim();
+		var m_grade   = f.m_grade.value.trim();
+		var m_image   = f.m_image_m.value;
 
 		if (m_id == '') {
 			alert('아이디를 입력하세요')
@@ -236,6 +274,7 @@
 					<div class="form-group">
 						<label for="">닉네임</label> 
 						<input type="text" name="m_nick" class="form-control" id="m_nick" placeholder="닉네임" />
+						<span class="mt5" id="m_nick_msg"></span>
 					</div>
 					<div class="form-group">
 						<label for="">핸드폰번호</label> 
