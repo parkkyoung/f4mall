@@ -49,6 +49,7 @@ function login(f) {
 		return;
 	}
 
+	
 	$.ajax({
 		url : 'login.do',
 		data : {
@@ -125,6 +126,7 @@ function findProduct(){
 }
 </script>
 </head>
+
 <body>
 
 	<!-- 스킵 네비게이션 -->
@@ -272,7 +274,33 @@ function findProduct(){
 	<c:if test="${ not empty user }">	
 	<div class="mHead">
 		<div class="imgBox">
-			<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+		   
+		    <!-- <script type="text/javascript">
+		       alert('${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg');
+		    </script> -->
+			<!-- 회원 이미지 화면 -->
+			<c:if test="${ user.m_image eq 'no_file' }">
+			   
+				<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
+			</c:if>
+			
+			<c:if test="${ user.m_image ne 'no_file' }">
+				<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+			
+			</c:if>
+			<%-- <c:choose>
+				<c:when test="${ user.m_image eq 'no_file' }">
+					<img src="${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg" alt="profile" class="wFull" />
+				</c:when>
+				
+				<c:when test="${user.m_image ne 'no_file'}">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+				</c:when>
+				<c:otherwise>
+					<img src="${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg"  alt="profile" class="wFull" />
+				</c:otherwise>
+			</c:choose> --%>
+			<!-- //회원 이미지 화면 -->
 		</div>
 		<div class="txtBox">
 			<strong>[${ user.m_name }]</strong>님 어서오세요!
@@ -371,7 +399,20 @@ function findProduct(){
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
 				<a href="member.do" title="user" class="btnMember">
-					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a>
+					<%-- 회원 이미지 화면 --%>
+					<c:if test="${ user.m_image eq 'no_file' }">
+				   
+					<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
+					</c:if>
+					
+					<c:if test="${ user.m_image ne 'no_file' }">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+				
+					</c:if>
+					<%-- //회원 이미지 화면 --%>
+					</a>
+						<%-- <img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a> --%>
+						
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
 				<%-- //로그인 후에 노출 --%>
