@@ -95,4 +95,40 @@ public class MemberDao {
 		return mo_list;
 	}
 
+	/**
+	 * 회원 주문 목록
+	 * @param m_id
+	 * @return
+	 */
+	public List<DemandVo> demand_list(String m_id) {
+		// TODO Auto-generated method stub
+		List<DemandVo> d_list = null;
+		d_list = sqlSession.selectList("d_list", m_id);
+		return d_list;
+	}
+	
+	/**
+	 * 주문 상세
+	 * @param o_no
+	 * @return
+	 */
+	public DemandVo demand_one(int o_no) {
+		// TODO Auto-generated method stub
+		DemandVo vo = null;
+		vo = sqlSession.selectOne("d_one", o_no);
+		return vo;
+	}
+
+	/**
+	 * 주문 취소
+	 * @param o_no
+	 * @return
+	 */
+	public int demand_cancel(int o_no) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		res = sqlSession.update("d_cancel", o_no);
+		return res;
+	}
+
 }
