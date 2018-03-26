@@ -80,13 +80,8 @@ public class CartController {
 	@ResponseBody
 	public String delete_cart(int cart_no, HttpServletRequest request){
 		
-<<<<<<< HEAD
 		int res = cart_dao.cart_delete(cart_no);
 		
-=======
-		int res = cart_dao.cart_delete(cart_no);
-
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 		String resultStr = "";
 		String result = "yes";
 		
