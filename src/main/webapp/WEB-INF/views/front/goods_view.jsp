@@ -68,7 +68,7 @@ function add_cart(f){
 				if(json[0].result == 'fail'){
 					swal({
 						text : "이미 장바구니에 있는 상품입니다. 장바구니 목록으로 이동하시겠습니까?.",
-						icon : "error",
+						icon : "info",
 						buttons : true,
 						dangerMode: true,
 					}).then((willMove) =>{

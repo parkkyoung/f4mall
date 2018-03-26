@@ -36,6 +36,7 @@ public class ItemsController {
 	@Autowired
 	HttpServletRequest request;
 	
+	
 	public ItemsController() {
 		// TODO Auto-generated constructor stub
 	}
@@ -108,21 +109,17 @@ public class ItemsController {
 	
 	@RequestMapping("check_stock.do")
 	@ResponseBody
-	public String check_stock(Integer cart_amt, Integer i_no){
+	public String check_stock(Integer cart_amt, Integer i_no, Model model){
 		
 		String result = "fail";
 		String resultStr = "";
 		ItemsViewVo vo = items_dao.stock_check(i_no);
-		System.out.println(cart_amt);
-		System.out.println(vo.getS_amt());
 		if(vo.getS_amt() < cart_amt){
 			result = "fail";
-			System.out.println("재고수량 부족");
 		}else{
 			result = "success";
-			System.out.println("재고수량 충족");
 		}
-		System.out.println(result);
+		
 		resultStr = String.format("[{'result':'%s'}]", result); 
 		
 		return resultStr;

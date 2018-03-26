@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.CartDao;
+import dao.ItemsDao;
 import dao.ProductDao;
 import vo.CartVo;
+import vo.ItemsViewVo;
 import vo.MemberVo;
 import vo.ProductVo;
 
@@ -25,6 +27,9 @@ public class CartController {
 	
 	@Autowired
 	CartDao cart_dao;
+	
+	@Autowired
+	ItemsDao items_dao;
 	
 	public CartController() {
 		// TODO Auto-generated constructor stub
@@ -76,8 +81,6 @@ public class CartController {
 	public String delete_cart(int cart_no, HttpServletRequest request){
 		
 		int res = cart_dao.cart_delete(cart_no);
-<<<<<<< HEAD
-=======
 		
 		String resultStr = "";
 		String result = "yes";
@@ -89,28 +92,10 @@ public class CartController {
 		resultStr = String.format("[{'result':'%s'}]", result);
 		return resultStr;
 		
-		/*System.out.println(vo);
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
-		
-		String resultStr = "";
-		String result = "yes";
-		
-<<<<<<< HEAD
-		// 세션 삭제
-		HttpSession session = request.getSession();
-		session.removeAttribute("header_cart_list");
-		
-		resultStr = String.format("[{'result':'%s'}]", result);
-		return resultStr;
-=======
-		return "redirect:cart_view.do?m_id=" + m_id;*/
->>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall.git
 	}
 	
 	@RequestMapping("/update_cart.do")
 	public String update_cart(Model model,Integer i_no, String m_id, Integer cart_amt){
-		
-		System.out.println(cart_amt);
 		
 		Map map = new HashMap();
 		map.put("i_no", i_no);

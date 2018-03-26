@@ -35,7 +35,23 @@ function demand_list(f){
 } 
 
 function update_cart(i_no,cart_amt_i_no){
-	location.href="update_cart.do?i_no=" + i_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_i_no).value;
+	var cart_amt = document.getElementById(cart_amt_i_no).value;
+	console.log(cart_amt);
+	$.ajax({
+		url : 'check_stock.do',
+		data : { 'cart_amt' : cart_amt, 'i_no' : i_no, 'm_id' : '${ user.m_id }' },
+		success : function(data){
+			var json = eval(data);
+			if(json[0].result == 'fail'){
+				swal({
+					text : "재고량 보다 많은 수량을 입력하셨습니다.",
+					icon : "info"
+				}).then((value) =>{
+					location.href="update_cart.do?i_no=" + i_no + "&m_id=" + encodeURIComponent('${ user.m_id }') + "&cart_amt=" + document.getElementById(cart_amt_i_no).value;
+				});
+			}
+		}
+	});
 }
 
 </script>
