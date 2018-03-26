@@ -76,7 +76,7 @@ public class CartController {
 	public String delete_cart(int cart_no, HttpServletRequest request){
 		
 		int res = cart_dao.cart_delete(cart_no);
-		
+
 		String resultStr = "";
 		String result = "yes";
 		
@@ -87,11 +87,6 @@ public class CartController {
 		resultStr = String.format("[{'result':'%s'}]", result);
 		return resultStr;
 		
-		/*System.out.println(vo);
-		
-		int res = cart_dao.cart_delete(vo);
-		
-		return "redirect:cart_view.do?m_id=" + m_id;*/
 	}
 	
 	@RequestMapping("/update_cart.do")

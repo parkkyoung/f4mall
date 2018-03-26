@@ -1,7 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="template/header.jsp"%>
+
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+
+$(document).ready(function(){
+	$('#cart_amt').focusout(function(event){
+		var cart_amt = $(this).val();
+		var i_no = $('#i_no').val();
+		$.ajax({
+			url : 'check_stock.do',
+			data : { 'cart_amt' : cart_amt, 'i_no' : i_no },
+			success : function(data){
+				var json = eval(data);
+				if(json[0].result == 'fail'){
+					swal({
+						text : "재고량 보다 많은 수량을 입력하셨습니다.",
+						icon : "info"
+					}).then((value) =>{
+						$("#cart_amt").focus();
+					});
+				}
+			}
+		});
+	});
+});
+
 function modify_review(eval_no){
 	$.ajax({
 		url : 'eval_one.do',
@@ -133,7 +158,7 @@ function eval_insert(f){
                                 </div>
                                 <div class="form-group">
                                     <label class="block">수량(개)</label>
-                                    <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" value="1" id="cart_amt" name="cart_amt"/>
+                                    <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" id="cart_amt" name="cart_amt"/>
                                 </div>
 								<div class="form-group goPrice">
 									<del>${ vo.p_price }</del>

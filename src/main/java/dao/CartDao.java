@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import vo.CartVo;
 
-@Repository("cart_dai")
+@Repository
 public class CartDao {
 
 	@Autowired
