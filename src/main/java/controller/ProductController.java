@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import dao.EvalDao;
 import dao.ItemsDao;
 import dao.ProductDao;
+import vo.EvalVo;
 import vo.FaqVo;
 import vo.ItemsVo;
 import vo.ProductVo;
@@ -33,6 +35,8 @@ public class ProductController {
 	ProductDao product_dao;
 	@Autowired
 	ItemsDao items_dao;
+	@Autowired
+	EvalDao eval_dao;
 	
 	public ProductController() {
 		// TODO Auto-generated constructor stub
@@ -185,6 +189,10 @@ public class ProductController {
 		model.addAttribute("sex", sex);
 		model.addAttribute("brand", brand);
 		model.addAttribute("size", size);
+		
+		// 상품평 리스트 포장
+		List<EvalVo> e_list = eval_dao.select_list(p_no);
+		model.addAttribute("e_list", e_list);
 		
 		return common.ShortCut.Admin.ADMIN_VIEW_PATH+"goods_update";
 	}
