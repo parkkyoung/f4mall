@@ -332,24 +332,14 @@ public class MemberController {
 
 		return "redirect:/admin/member_list.do";
 	}
-
 	
 	/**
-	 * 주문목록
-	 * @param model
+	 * 이미지 체크
+	 * @param vo
 	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
 	 */
-	@RequestMapping("/admin/member_order.do")
-	public String member_order_form(Model model) {
-
-		List<DemandVo> mo_list = member_dao.molist();
-
-		model.addAttribute("mo_list", mo_list);
-
-		return "admin/member_order";
-	}
-	
-	
 	@RequestMapping("/check_image.do")
 	public String image_check(MemberVo vo) throws IllegalStateException, IOException {
 			return "redirect:/admin/member_update.do";
@@ -421,6 +411,38 @@ public class MemberController {
 		resultStr = String.format("[{'result':'%s'}]", result);
 
 		return resultStr;
+	}
+
+	
+	/**
+	 * 어드민 주문목록
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/admin/member_orders.do")
+	public String member_orders_admin(Model model) {
+		
+		// 주문 목록 가져오기
+		List<DemandVo> mo_list = member_dao.molist();
+		model.addAttribute("mo_list", mo_list);
+		
+		return ShortCut.Admin.ADMIN_VIEW_PATH+"member_orders";
+	}
+	
+	/**
+	 * 어드민 주문상세
+	 * @param model
+	 * @param o_no
+	 * @return
+	 */
+	@RequestMapping("/admin/member_order.do")
+	public String member_order_admin(Model model, int o_no){
+		
+		// 주문 상세 가져오기
+		DemandVo vo = member_dao.demand_one(o_no);
+		model.addAttribute("vo", vo);
+		
+		return ShortCut.Admin.ADMIN_VIEW_PATH+"member_order";
 	}
 	
 	/**

@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 주문 상세 -->
 	<select id="d_one" parameterType="int" resultType="vo.DemandVo">
 	   select
-	       d.o_status, d.o_pay_amt, d.o_zipcode, d.o_addr, d.o_addr_d, d.o_tel, d.o_pay_amt, d.o_pay_amt,
+	       d.o_no, d.i_no, d.m_id, d.o_status, d.o_amt, d.o_zipcode, d.o_addr, d.o_addr_d, d.o_tel, d.o_pay_amt, d.o_regdate, d.o_remarks,
 	       p.p_no, p.p_image_m, p.p_name
 	           from demand d inner join items i on d.i_no = i.i_no
                inner join product p on i.p_no = p.p_no

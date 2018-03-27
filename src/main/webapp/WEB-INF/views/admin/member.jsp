@@ -25,7 +25,7 @@
 				<!-- Loop -->
 				<c:forEach var = "m_list" items="${m_list }">
 				<tr>
-					<td><a href="member_update_form.do?m_id="${ user.m_id }"><c:out value="${m_list.m_id}"/></a></td>
+					<td><a href="member_update_form.do?m_id=<c:out value='${m_list.m_id}'/>"><c:out value="${m_list.m_id}"/></a></td>
 					<td><c:out value="${m_list.m_name }"/></td>
 					<td><c:out value="${m_list.m_nick }"/></td>
 					<td><c:out value="${m_list.m_addr }"/></td>
