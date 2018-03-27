@@ -88,7 +88,7 @@ function update_cart(i_no,cart_amt_i_no){
 				<c:forEach var="cart" items="${ c_view }">
 					<tr>
 						<td><input type="checkbox" class="checkMember" data-target="checkAll" name="i_no" id="i_no" value="${ cart.i_no }"></td>
-						<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ cart.p_image_m }" alt="" /></a></td>
+						<td><a href=""><img src="${ pageContext.request.contextPath }/resources/upload/${ cart.p_image_m }" alt="" /></a></td>
 						<td><a href="">${ cart.p_name }</a><br>
 									[${ cart.color_name }] ,${ cart.size_name }</td>
 						<td>

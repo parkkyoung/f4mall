@@ -40,6 +40,14 @@ drop table member;
 
 use f4mall;
 delete from member;
+
+use f4mall;
+select
+           d.o_no, d.i_no, d.o_status, d.o_pay_amt, d.o_zipcode, d.o_addr, d.o_addr_d, d.o_tel, d.o_pay_amt, d.o_pay_amt, d.o_regdate,
+           p.p_no, p.p_image_m, p.p_name
+               from demand d inner join items i on d.i_no = i.i_no
+               inner join product p on i.p_no = p.p_no
+                   where o_no=9
 	
     --d.o_no, d.p_no, d.o_regdate, d.o_amt, d.o_pay_amt, p.p_image_m, p.p_name
     

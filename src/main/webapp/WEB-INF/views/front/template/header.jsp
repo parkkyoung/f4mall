@@ -155,7 +155,8 @@ function delete_cart(cartNo, mId){
 };
 
 function demand_list(f){
-	
+	var i_no = f.i_no.value;
+	alert(i_no);
 	var checked=false;
 	
 	if(f.i_no.length==undefined){
@@ -200,6 +201,7 @@ function update_cart(i_no,cart_amt_i_no){
 	
 	<!-- cart popup -->
 	<form action="">
+	<input type="hidden" value="${ user.m_id }" name="m_id">
     <div class="modal fade" id="cartPop" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -224,10 +226,13 @@ function update_cart(i_no,cart_amt_i_no){
                         <tbody>
                             <c:forEach var="header_cart" items="${ header_cart_list }">
                             <tr>
-                                <td><input type="checkbox" class="checkMember" data-target="checkAll"></td>
-                                <td class="mHide"><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ header_cart.p_image_m }" alt="" /></a></td>
+                                <td><input type="checkbox" class="checkMember" data-target="checkAll" name="i_no" id="i_no" value="${ header_cart.i_no }"></td>
+                                <td class="mHide"><a href=""><img src="${ pageContext.request.contextPath }/resources/upload/${ header_cart.p_image_m }" alt="" /></a></td>
                                 <td><a href="">${ header_cart.p_name }</a></td>
-                                <td><input type="number" value="${ header_cart.cart_amt }" class="form-control inBlock text-center" /></td>
+                                <td>
+	                                <input type="number" value="${ header_cart.cart_amt }" id="cart_amt_${ header_cart.i_no }" class="form-control inBlock text-center" />
+	                                <input type="button" value="수정" class="btn btn-primary" onclick="update_cart('${ header_cart.i_no }','cart_amt_${ header_cart.i_no }'); return false;">
+                                </td>
                                 <td class="mHide"><del>${ header_cart.p_price }</del>원</td>
                                 <td><strong class="ftRed">${ header_cart.p_sale }원</strong></td>
                                 <td class="mHide">${ header_cart.cart_regdate }</td>

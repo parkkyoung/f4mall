@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.CartDao;
 import dao.DemandDao;
 import service.StockService;
 import vo.CartVo;
@@ -22,6 +23,9 @@ public class DemandController {
 	
 	@Autowired
 	DemandDao demand_dao;
+	
+	@Autowired
+	CartDao cart_dao;
 	
 	@Autowired
 	StockService stock_service;
@@ -47,6 +51,34 @@ public class DemandController {
 		
 		model.addAttribute("sales_price",sales_price);
 		model.addAttribute("d_list",d_list);
+		return "front/demand";
+	}
+	
+	@RequestMapping("/demand_one.do")
+	public String demand_one(Integer [] i_no, Model model, String m_id, Integer cart_amt){
+		
+		Map map =new HashMap();
+		map.put("i_no", i_no);
+		map.put("m_id", m_id);
+		map.put("cart_amt", cart_amt);
+		
+		CartVo vo = cart_dao.select_one(map);
+		
+		if(vo == null){
+			int res = cart_dao.cart_insert(map);
+		}
+		if(vo.getCart_amt() != cart_amt){
+			int res = cart_dao.update_cart(map);
+		}
+		
+		int sales_price = demand_dao.selectTotalsales(m_id);
+		
+		List<CartVo> d_list = null;
+		d_list = demand_dao.demand_list(map);
+
+		model.addAttribute("sales_price",sales_price);
+		model.addAttribute("d_list",d_list);
+		
 		return "front/demand";
 	}
 	
