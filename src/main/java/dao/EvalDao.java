@@ -45,6 +45,38 @@ public class EvalDao {
 		
 		return vo;
 	}
+
+	public double eval_total(Integer p_no) {
+		// TODO Auto-generated method stub
+		double avg_eval = 0;
+		
+		avg_eval = sqlSession.selectOne("eval_total",p_no);
+		
+		return avg_eval;
+	}
+	
+	/**
+	 * 상품평 리스트
+	 * @return
+	 */
+	public List<EvalVo> select_list() {
+		// TODO Auto-generated method stub
+		List<EvalVo> e_list = null;
+		e_list = sqlSession.selectList("eval_list");
+		return e_list;
+	}
+	
+	/**
+	 * 상품평 삭제
+	 * @param eval_no
+	 * @return
+	 */
+	public int eval_delete(int eval_no) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		res = sqlSession.delete("eval_delete", eval_no);
+		return res;
+	}
 	
 	
 }
