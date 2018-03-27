@@ -50,7 +50,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -73,7 +73,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                    <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -96,7 +96,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -119,7 +119,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -142,7 +142,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -165,7 +165,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -188,7 +188,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -211,7 +211,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>
@@ -234,7 +234,7 @@
             <li class="col-md-3 col-xs-6">
                 <div class="imgBox">
                     <a href="items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }"><img src="${ pageContext.request.contextPath }/resources/upload/${ list.p_image_m }" alt="상품" class="wFull" /></a>
-                    <button type="button" class="btnCart"><i class="fa fa-shopping-cart"></i></button>
+                   <button type="button" class="btnCart" onclick="location.href='items_view.do?p_no=${ list.p_no }&m_id=${ user.m_id }'"><i class="fa fa-shopping-cart"></i></button>
                 </div>
                 <div class="txtBox">
                     <h4>${ list.p_name }</h4>

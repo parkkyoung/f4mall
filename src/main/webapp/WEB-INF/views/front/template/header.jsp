@@ -338,27 +338,26 @@ function update_cart(i_no,cart_amt_i_no){
 		       alert('${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg');
 		    </script> -->
 			<!-- 회원 이미지 화면 -->
-			<c:if test="${ user.m_image eq 'no_file' }">
-			   
+			<%-- <c:if test="${ user.m_image eq 'no_file' }">
 				<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
 			</c:if>
 			
 			<c:if test="${ user.m_image ne 'no_file' }">
-				<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
-			
-			</c:if>
-			<%-- <c:choose>
-				<c:when test="${ user.m_image eq 'no_file' }">
-					<img src="${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg" alt="profile" class="wFull" />
-				</c:when>
-				
-				<c:when test="${user.m_image ne 'no_file'}">
 					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
-				</c:when>
-				<c:otherwise>
+			</c:if> --%>
+			
+				<c:if test="${ user.m_image eq 'no_file' }">
+				   		<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
+				</c:if>
+				
+              	<c:if test="${ user.m_image ne 'no_file' }">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+				</c:if> 
+				
+				<%-- <c:otherwise>
 					<img src="${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg"  alt="profile" class="wFull" />
-				</c:otherwise>
-			</c:choose> --%>
+				</c:otherwise> --%>
+			
 			<!-- //회원 이미지 화면 -->
 		</div>
 		<div class="txtBox">
@@ -458,18 +457,18 @@ function update_cart(i_no,cart_amt_i_no){
 				<c:if test="${ not empty user }">
 				<button type="button" title="cart" data-toggle="modal" data-target="#cartPop"><i class="fa fa-shopping-cart"></i></button>
                 <a href="member_orders.do?m_id=${user.m_id}" title="order list"><i class="fa fa-list-alt"></i></a>
-				<a href="member.do" title="user" class="btnMember"><img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a>
-				<a href="member.do" title="user" class="btnMember">
+				<%-- <a href="member.do" title="user" class="btnMember"><img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a> --%>
+		   		<a href="member.do" title="user" class="btnMember">
+		   		
 					<%-- 회원 이미지 화면 --%>
 					<c:if test="${ user.m_image eq 'no_file' }">
-				   
-					<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
+				   		<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
 					</c:if>
 					
-					<c:if test="${ user.m_image ne 'no_file' }">
-					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
-				
-					</c:if>
+               		<c:if test="${ user.m_image ne 'no_file' }">
+						<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+					</c:if> 
+					
 					<%-- //회원 이미지 화면 --%>
 					</a>
 						<%-- <img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a> --%>
