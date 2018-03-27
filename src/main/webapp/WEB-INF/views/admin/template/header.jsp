@@ -80,7 +80,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> 상품관리<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> 상품관리<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li><a href="goods_list.do">상품목록</a></li>
                                 <li><a href="goods_insert_form.do">상품등록</a></li>
