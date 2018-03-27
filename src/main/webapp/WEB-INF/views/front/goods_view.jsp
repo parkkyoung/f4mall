@@ -93,7 +93,7 @@ function add_cart(f){
 	}
 }
 
-function demand_list(f){
+function demand_one(f){
 	if('${ empty sessionScope.user }'=='true'){
 		alert('로그인 후 사용해주세요');
 		return;
@@ -111,7 +111,7 @@ function demand_list(f){
 	
 	if(confirm('선택하신 상품을 주문하시겠습니까?')==false)return;
 	
-	f.action="demand_list.do";
+	f.action="demand_one.do";
 	f.submit();
 	
 	
@@ -135,6 +135,8 @@ function eval_insert(f){
 	
 }
 
+var star = "";
+
 </script>
 			<!-- sub contents -->
 			<section class="sub container">
@@ -157,7 +159,17 @@ function eval_insert(f){
 							<form action="" class="productOption">
 							<input type="hidden" value="${ user.m_id }" name="m_id">
 								<div class="form-group goCategory">
-                                    <div>★★★★★</div>
+                                    <div class="starRating mt5" id="total_eval_score">
+                                    	<div id="product_star"></div>
+                                    	<script>
+                                    		var starCount = ${ avg_score };
+                                    		var star = "";
+                                    		for(var i=0;i<starCount;i++){
+                                    			star = star+"★";
+                                    		}
+                                    		$("#product_star").text(star);
+                                    	</script>
+									</div>
 									<span>상품번호 : ${ vo.p_no }</span>
 								</div>
 								<div class="form-group goTitle">
@@ -191,7 +203,7 @@ function eval_insert(f){
 								</div>
 								<div class="form-group btnBox">
 								    <button type="button" class="btn btn-warning" onclick="add_cart(this.form);"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button>
-								    <button type="button" class="btn btn-primary" onclick="demand_list(this.form);return false;"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
+								    <button type="button" class="btn btn-primary" onclick="demand_one(this.form);return false;"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
 								</div>
 							</form>
 						</div>
@@ -208,9 +220,9 @@ function eval_insert(f){
 					<!-- 상품평 -->
 					<div class="panel-group">
 						
-						<h3 class="hide">상품평</h3>
+				<h3 class="hide">상품평</h3>
 
-						<!-- 상품평 컨텐츠의 아이디와 상품평 타이틀의 href에 해당 상품평 넘버를 삽입 -->
+				<!-- 상품평 컨텐츠의 아이디와 상품평 타이틀의 href에 해당 상품평 넘버를 삽입 -->
 				<c:if test="${ not empty possible_eval }">
 				<form action="">
 				<input type="hidden" value="${ vo.p_no }" name="p_no">
@@ -245,7 +257,16 @@ function eval_insert(f){
 							<div class="panel-title">
 								<h4 class="pull-left">
 									<a data-toggle="collapse" href="#gReview${items_eval.eval_no}" class="block">${ items_eval.eval_title }</a>
-									<small>${ eval.m_id }</small>
+									<small>${ items_eval.m_id }</small>
+									<span id="personal_eval_${ items_eval.eval_no }"></span>
+                                    	<script>
+                                    		var starCount = ${ items_eval.eval_score };
+                                    		star = "";
+                                    		for(var i=0;i<starCount;i++){
+                                    			star = star+"★";
+                                    		}
+                                    		$("#personal_eval_${ items_eval.eval_no }").text(star);
+                                    	</script>
 								</h4>
 								<c:if test="${ user.m_id == items_eval.m_id }">
 								<button class="btn btn-outline btn-warning pull-right" data-toggle="modal" data-target="#reviewPop" onclick="modify_review(${items_eval.eval_no})">수정</button> <!-- 등록자 or 관리자만 노출 -->
