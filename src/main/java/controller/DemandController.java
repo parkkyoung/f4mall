@@ -55,7 +55,7 @@ public class DemandController {
 	}
 	
 	@RequestMapping("/demand_one.do")
-	public String demand_one(Integer [] i_no, Model model, String m_id, Integer cart_amt){
+	public String demand_one(Integer i_no, Model model, String m_id, Integer cart_amt){
 		
 		Map map =new HashMap();
 		map.put("i_no", i_no);
