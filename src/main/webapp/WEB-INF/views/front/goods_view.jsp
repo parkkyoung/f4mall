@@ -93,6 +93,30 @@ function add_cart(f){
 	}
 }
 
+function demand_list(f){
+	if('${ empty sessionScope.user }'=='true'){
+		alert('로그인 후 사용해주세요');
+		return;
+	}
+	var cart_amt = f.cart_amt.value;
+	var option = f.i_no.value;
+	if(cart_amt==''){
+		alert('수량을 입력해주세요');
+		return;
+	}
+	if(option==''){
+		alert('옵션을 선택해주세요');
+		return;
+	}
+	
+	if(confirm('선택하신 상품을 주문하시겠습니까?')==false)return;
+	
+	f.action="demand_list.do";
+	f.submit();
+	
+	
+} 
+
 function eval_insert(f){
 	var eval_title = f.eval_title.value;
 	var eval_content = f.eval_content.value;
@@ -131,6 +155,7 @@ function eval_insert(f){
 						<!-- 옵션 -->
 						<div class="col-sm-6">
 							<form action="" class="productOption">
+							<input type="hidden" value="${ user.m_id }" name="m_id">
 								<div class="form-group goCategory">
                                     <div>★★★★★</div>
 									<span>상품번호 : ${ vo.p_no }</span>
@@ -152,7 +177,7 @@ function eval_insert(f){
                                     <label class="block">옵션</label>
                                     <select class="form-control wAuto right mt5"  id="i_no" name="i_no">
                                         <c:forEach var ="items_option" items="${ items_option }">
-                                        <option value="${ items_option.i_no }">색상: ${ items_option.color_name } / 사이즈: ${ items_option.size_name } / 재고수량: ${ items_option.s_amt }개</option>
+                                        	<option value="${ items_option.i_no }">색상: ${ items_option.color_name } / 사이즈: ${ items_option.size_name } / 재고수량: ${ items_option.s_amt }개</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -166,7 +191,7 @@ function eval_insert(f){
 								</div>
 								<div class="form-group btnBox">
 								    <button type="button" class="btn btn-warning" onclick="add_cart(this.form);"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button>
-								    <button type="button" class="btn btn-primary"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
+								    <button type="button" class="btn btn-primary" onclick="demand_list(this.form);return false;"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
 								</div>
 							</form>
 						</div>

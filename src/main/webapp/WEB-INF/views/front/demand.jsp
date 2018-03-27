@@ -122,7 +122,7 @@ function findAddress() {
 							<input type="hidden" name="i_no" value="${ d_list.i_no }">
 							<input type="hidden" name="cart_amt" value="${ d_list.cart_amt }">
 							<tr>
-								<td><a href=""><img src="${ pageContext.request.contextPath }/resources/front/img/sample/${ d_list.p_image_m }" alt="" /></a></td>
+								<td><a href=""><img src="${ pageContext.request.contextPath }/resources/upload/${ d_list.p_image_m }" alt="" /></a></td>
 								<td><a href="">${ d_list.p_name }</a><br>
 									[${ d_list.color_name }] ,${ d_list.size_name }</td>
 								<td><input type="text" value="${ d_list.cart_amt }" class="form-control inBlock w50 text-center" readonly/></td>
@@ -162,7 +162,7 @@ function findAddress() {
 					<!-- 배송지 정보는 회원의 db에서 가져오기 -->
 					<div class="form-group">
 						<label class="col-lg-3 control-label">받으시는 분</label>
-						<div class="col-lg-offset-3 col-lg-7"><input type="text" id="m_name" class="form-control" placeholder="받으시는 분" value="${ user.m_name }" name="o_name" /></div>
+						<div class="col-lg-7"><input type="text" id="m_name" class="form-control" placeholder="받으시는 분" value="${ user.m_name }" name="o_name" /></div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label">배송지 주소</label>
@@ -186,7 +186,7 @@ function findAddress() {
 					</div>
 
 					<div class="form-group btnBox">
-						<button type="button" class="btn btn-default">취소</button>
+						<button type="button" class="btn btn-default" onclick="location.href='cart_view.do?m_id=${ user.m_id }'">취소</button>
 						<button type="button" class="btn btn-primary" onclick="demand_insert(this.form);">구매하기</button>
 					</div>
 				</form>
