@@ -37,6 +37,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="check_stock" parameterType="int" resultType="vo.ItemsViewVo">
 		select * from items_view where i_no = #{ i_no }
 	</select>
+	
+	<select id="max_i_no" parameterType="vo.ItemsVo" resultType="int">
+		select ifnull(max(i_no),0) from items
+	</select>
 
 </mapper>
 

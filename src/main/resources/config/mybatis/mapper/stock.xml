@@ -5,15 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="">
 
 	<select id="stock_in_list" parameterType="java.util.Map" resultType="vo.StockVo">
-		select * from stock_view_in
+		select * from stock_view_in order by stock_no desc
 	</select>
 	
 	<select id="stock_out_list" parameterType="java.util.Map" resultType="vo.StockVo">
-		select * from stock_view_out
+		select * from stock_view_out order by stock_no desc
 	</select>
 	
 	<select id="stock_inv_list" parameterType="java.util.Map" resultType="vo.StockVo">
-		select * from stock_view_inv
+		select * from stock_view_inv order by stock_no desc
 	</select>
 
 	<insert id="insert_in_stock" parameterType="vo.StockVo">
@@ -22,6 +22,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="insert_inv_stock" parameterType="vo.StockVo">
 		insert into stock_inv (s_amt,s_regdate,i_no) values (#{ s_amt }, #{ s_regdate }, #{ i_no })
+	</insert>
+	
+	<insert id="insert_inv_stock2" parameterType="vo.StockVo">
+		insert into stock_inv (s_amt,s_regdate,i_no) values (#{ s_amt }, now(), #{ i_no })
+	</insert>
+	
+	<insert id="insert_in_stock2" parameterType="vo.StockVo">
+		insert into stock_in (s_amt,s_regdate,i_no) values (#{ s_amt }, now(), #{ i_no })
 	</insert>
 	
 	<insert id="insert_out_stock" parameterType="vo.StockVo">

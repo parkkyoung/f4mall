@@ -8,7 +8,16 @@ public class ItemsVo {
 	
 	int i_no, p_no, category_no, material_no, color_no, sex_no, brand_no, size_no, s_no;
 	String p_name, category_name, material_name, color_name, sex_name, brand_name, size_name;
+	int s_amt;
 	
+	public int getS_amt() {
+		return s_amt;
+	}
+
+	public void setS_amt(int s_amt) {
+		this.s_amt = s_amt;
+	}
+
 	public String getCategory_name() {
 		return category_name;
 	}

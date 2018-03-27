@@ -39,6 +39,16 @@ public class StockInDaoImpl implements StockDao{
 	}
 	
 	@Override
+	public int insert2(StockVo vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.insert("insert_in_stock2",vo);
+		
+		return res;
+	}
+	
+	@Override
 	public int update(StockVo vo) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -61,5 +71,6 @@ public class StockInDaoImpl implements StockDao{
 		
 		return res;
 	}
+
 
 }
