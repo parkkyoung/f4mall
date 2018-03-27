@@ -76,7 +76,7 @@
                             <ul class="nav nav-second-level">
                                 <li><a href="member_list.do">회원목록</a></li>
                                 <li><a href="member_insert_form.do">회원등록</a></li>
-                                <li><a href="member_order.do">주문목록</a></li>
+                                <li><a href="member_orders.do">주문목록</a></li>
                             </ul>
                         </li>
                         <li>

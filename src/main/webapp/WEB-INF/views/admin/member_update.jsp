@@ -29,7 +29,7 @@
 				$('#mm_pwd_msg').html('사용가능한 비밀번호입니다').css('color', 'blue');
 				$("#mm_pwd").addClass("alert alert-success").removeClass("alert-danger");
 			}
-
+			
 
 			<!--비밀번호 이중체크-->
 			$('#mm1_pwd').keyup(function(event) {
@@ -45,7 +45,6 @@
 				}
 			});
 		});
-	
 	});
 		     
 		     
@@ -89,8 +88,8 @@
 				// 커서를 상세주소 필드로 이동한다.
 				document.getElementById('address2').focus();
 			}
-		}).open();
-	}
+		  }).open();
+		};
 
 
 	function send_update(f) {
@@ -194,6 +193,7 @@
 					<div class="form-group">
 						<label for="">닉네임</label> 
 						<input type="text" name="m_nick"id="mm_nick" class="form-control" placeholder="닉네임"value="${user.m_nick }" />
+						<span class="mt5" id="m_nick_msg"></span>
 					</div>
 					<div class="form-group">
 						<label for="">핸드폰번호</label> 
@@ -208,7 +208,7 @@
 						<label for="">주소</label>
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" name="m_zipcode" id="mm_zipcode"class="form-control" placeholder="우편번호" value="" readonly />
+								<input type="text" name="m_zipcode" id="mm_zipcode"class="form-control" placeholder="우편번호"/>
 							</div>
 							<div class="col-xs-4">
 								<button type="button" class="btn btn-warning"onclick="findAddress()">주소찾기</button>

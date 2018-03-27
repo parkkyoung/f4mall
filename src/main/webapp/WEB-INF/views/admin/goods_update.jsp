@@ -208,36 +208,6 @@ function itemsDelete(i_no, p_no){
                     <input type="text" id="p_name" name="p_name" class="form-control" placeholder="상품이름" value="<c:out value='${vo.p_name}'/>" />
                 </div>
                 <div class="form-group">
-                    <label for="">상품설명</label>
-                    <!-- ckeditor -->
-					<textarea rows="8" class="form-control" name="p_content" id="p_content"placeholder="상품설명"><c:out value='${vo.p_content}'/></textarea>	
-					<script>
-						// Replace the <textarea id="editor1"> with a CKEditor
-						// instance, using default configuration.
-						CKEDITOR
-							.replace(
-								'p_content',
-								{
-									filebrowserUploadUrl : '${pageContext.request.contextPath}/ckeditorImageUpload.do'
-								});
-					
-						CKEDITOR.on('dialogDefinition', function(ev) {
-							var dialogName = ev.data.name;
-							var dialogDefinition = ev.data.definition;
-					
-							switch (dialogName) {
-							case 'image': //Image Properties dialog
-								//dialogDefinition.removeContents('info');
-								dialogDefinition.removeContents('Link');
-								dialogDefinition.removeContents('advanced');
-								break;
-							}
-						});
-					</script>
-					<!-- //ckeditor -->
-                    
-                </div>
-                <div class="form-group">
                     <label for="">상품가격(원)</label>
                     <input type="number" id="p_price" name="p_price"  class="form-control" placeholder="숫자만 입력 가능" value="<c:out value='${vo.p_price}'/>" />
                 </div>
@@ -249,12 +219,6 @@ function itemsDelete(i_no, p_no){
                     <label for="">공급업체코드</label>
                     <input type="text" id="p_supply" name="p_supply"  class="form-control" placeholder="공급업체코드" value="<c:out value='${vo.p_supply}'/>" />
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="">등록일자</label>
-                    <input type="text" class="form-control" value="YYYY-MM-DD" readonly value="<c:out value='${vo.p_entry}'/>" />
-                </div>
                 <div class="form-group">
                     <label for="">제조일자</label>
                     <input data-provide="datepicker" id="p_pdate" name="p_pdate" class="form-control datepicker" placeholder="YYYY-MM-DD" value="<c:out value='${vo.p_pdate}'/>" />
@@ -262,6 +226,42 @@ function itemsDelete(i_no, p_no){
                 <div class="form-group">
                     <label for="">제조국가</label>
                     <input type="text" id="p_country" name="p_country"  class="form-control" value="<c:out value='${vo.p_country}'/>" />
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="">등록일자</label>
+                    <input type="text" class="form-control" value="YYYY-MM-DD" readonly value="<c:out value='${vo.p_entry}'/>" />
+                </div>
+                <div class="form-group">
+                    <label for="">상품설명</label>
+                    <!-- ckeditor -->
+                    <textarea rows="8" class="form-control" name="p_content" id="p_content"placeholder="상품설명"><c:out value='${vo.p_content}'/></textarea>   
+                    <script>
+                        // Replace the <textarea id="editor1"> with a CKEditor
+                        // instance, using default configuration.
+                        CKEDITOR
+                            .replace(
+                                'p_content',
+                                {
+                                    filebrowserUploadUrl : '${pageContext.request.contextPath}/ckeditorImageUpload.do'
+                                });
+                    
+                        CKEDITOR.on('dialogDefinition', function(ev) {
+                            var dialogName = ev.data.name;
+                            var dialogDefinition = ev.data.definition;
+                    
+                            switch (dialogName) {
+                            case 'image': //Image Properties dialog
+                                //dialogDefinition.removeContents('info');
+                                dialogDefinition.removeContents('Link');
+                                dialogDefinition.removeContents('advanced');
+                                break;
+                            }
+                        });
+                    </script>
+                    <!-- //ckeditor -->
+                    
                 </div>
                 <div class="form-group">
                     <label for="">이미지 썸네일</label>

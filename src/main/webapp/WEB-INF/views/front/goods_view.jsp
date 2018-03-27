@@ -183,7 +183,7 @@ function eval_insert(f){
                                 </div>
                                 <div class="form-group">
                                     <label class="block">수량(개)</label>
-                                    <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" id="cart_amt" name="cart_amt"/>
+                                    <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" id="cart_amt" name="cart_amt" value="1" />
                                 </div>
 								<div class="form-group goPrice">
 									<del>${ vo.p_price }</del>
