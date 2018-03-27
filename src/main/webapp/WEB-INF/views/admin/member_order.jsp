@@ -5,6 +5,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt"%>
 
+<script>
+// 주문 상태 변경
+function update_status(o_no, o_status){
+	swal({
+		text : "주문 상태가 변경되었습니다.",
+		icon : "success"
+	}).then((value) =>{
+		location.href = "update_o_status.do?o_no="+o_no+"&o_status="+o_status;
+	});
+}
+</script>
 
 <!-- page title -->
 <h1 class="page-header">주문목록</h1>
@@ -45,7 +56,7 @@
             <div class="col-lg-6 form-horizontal">
                 <div class="form-group">
                     <label class="col-xs-3 control-label">주문코드</label>
-                    <div class="col-xs-9"><input type="text" class="form-control" value="<c:out value='${vo.o_pay_amt}' />" readonly /></div>
+                    <div class="col-xs-9"><input type="text" class="form-control" value="<c:out value='${vo.o_no}' />" readonly /></div>
                 </div>
                 <div class="form-group">
                     <label class="col-xs-3 control-label">주문날짜</label>
@@ -72,18 +83,27 @@
                 </div>
                 <div class="form-group">
                     <label class="col-xs-3 control-label">상태</label>
-                    <div class="col-xs-9"><input type="text" class="form-control" value="<c:out value='${vo.o_status}' />" readonly /></div>
+                    <div class="col-xs-9">
+                        <c:choose>
+		                   <c:when test="${vo.o_status == 0}"><strong style="display:block;font-size:16px">결제대기</strong></c:when>
+		                   <c:when test="${vo.o_status == 1}"><strong style="display:block;font-size:16pxcolor:red">결제완료</strong></c:when>
+		                   <c:when test="${vo.o_status == 2}"><strong style="display:block;font-size:16pxcolor:blue">배송중</strong></c:when>
+		                   <c:when test="${vo.o_status == 3}"><strong style="display:block;font-size:16pxcolor:green">배송완료</strong></c:when>
+		                   <c:when test="${vo.o_status == 4}"><strong style="display:block;font-size:16px">배송취소</strong></c:when>
+		                   <c:when test="${vo.o_status == 5}"><strong style="display:block;font-size:16px">주문취소</strong></c:when>
+		               </c:choose>
+                    </div>
                 </div>
                 <div class="form-group text-center">
                     <div>
-                        <button type="button" class="btn btn-default">결제대기중</button>
-                        <button type="button" class="btn btn-warning">결제완료</button>
-                        <button type="button" class="btn btn-primary">배송중</button>
+                        <button type="button" class="btn btn-default" onclick="update_status(<c:out value='${vo.o_no}' />, 0);">결제대기중</button>
+                        <button type="button" class="btn btn-warning" onclick="update_status(<c:out value='${vo.o_no}' />, 1);">결제완료</button>
+                        <button type="button" class="btn btn-primary" onclick="update_status(<c:out value='${vo.o_no}' />, 2);">배송중</button>
                     </div>
                     <div style="margin-top:10px;">
-                        <button type="button" class="btn btn-success">배송완료</button>
-                        <button type="button" class="btn btn-danger">주문취소</button>
-                        <button type="button" class="btn btn-danger">배송취소</button>
+                        <button type="button" class="btn btn-success" onclick="update_status(<c:out value='${vo.o_no}' />, 3);">배송완료</button>
+                        <button type="button" class="btn btn-danger" onclick="update_status(<c:out value='${vo.o_no}' />, 4);">배송취소</button>
+                        <button type="button" class="btn btn-danger" onclick="update_status(<c:out value='${vo.o_no}' />, 5);">주문취소</button>
                     </div>
                 </div>
             </div>

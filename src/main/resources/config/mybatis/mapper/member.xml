@@ -72,7 +72,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원 주문 캔슬 -->
 	<update id="d_cancel" parameterType="int">
-	   update demand set o_status = 5 where o_no=#{ o_no }
+	   update demand set o_status = 5 where o_no=#{o_no}
+	</update>
+	
+	<!-- 주문 상태 변경 -->
+	<update id="update_o_status">
+	   update demand set o_status = #{o_status} where o_no=#{o_no}
 	</update>
 	
 </mapper>

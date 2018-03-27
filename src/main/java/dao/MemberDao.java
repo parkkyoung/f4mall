@@ -131,4 +131,21 @@ public class MemberDao {
 		return res;
 	}
 
+	/**
+	 * 주문 상태 변경
+	 * @param o_no
+	 * @param o_status
+	 * @return
+	 */
+	public int update_o_status(DemandVo vo) {
+		// TODO Auto-generated method stub
+
+		System.out.println("dao o_no : "+vo.getO_no());
+		System.out.println("dao o_status : "+vo.getO_status());
+		
+		int res = 0;
+		res = sqlSession.update("update_o_status", vo);
+		return res;
+	}
+
 }

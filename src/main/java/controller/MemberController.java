@@ -412,7 +412,6 @@ public class MemberController {
 
 		return resultStr;
 	}
-
 	
 	/**
 	 * 어드민 주문목록
@@ -443,6 +442,28 @@ public class MemberController {
 		model.addAttribute("vo", vo);
 		
 		return ShortCut.Admin.ADMIN_VIEW_PATH+"member_order";
+	}
+	
+	/**
+	 * 주문상태 변경
+	 * @param model
+	 * @param o_no
+	 * @param o_status
+	 * @return
+	 */
+	@RequestMapping("/admin/update_o_status.do")
+	public String update_o_status(Model model, DemandVo vo){
+
+		System.out.println("컨트롤러 o_no : "+vo.getO_no());
+		System.out.println("컨트롤러 o_status : "+vo.getO_status());
+		
+		// 주문 상태 변경
+		int res = member_dao.update_o_status(vo);
+		
+		// 주문 상세 넘길 주문 번호 파라미터
+		model.addAttribute("o_no", vo.getO_no());
+		
+		return "redirect:member_order.do";
 	}
 	
 	/**
