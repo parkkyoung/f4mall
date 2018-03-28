@@ -126,6 +126,7 @@ public class ItemsController {
 		String result = "fail";
 		String resultStr = "";
 		ItemsViewVo vo = items_dao.stock_check(i_no);
+		
 		if(vo.getS_amt() < cart_amt){
 			result = "fail";
 		}else{

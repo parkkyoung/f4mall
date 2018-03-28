@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.CartDao;
 import dao.DemandDao;
+import dao.ItemsDao;
 import service.StockService;
 import vo.CartVo;
 import vo.DemandVo;
@@ -29,6 +30,9 @@ public class DemandController {
 	
 	@Autowired
 	StockService stock_service;
+	
+	@Autowired
+	ItemsDao items_dao;
 	
 	public DemandController() {
 		// TODO Auto-generated constructor stub

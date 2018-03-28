@@ -220,20 +220,31 @@ var star = "";
                                   </select>
                                 	</c:if>
                                  <c:if test="${ empty items_option }">
-                                		<strong class="ml20 ftRed">판매가 완료된 상품입니다</strong>
-                                	</c:if>
+                               		<strong class="ml20 ftRed">판매가 완료된 상품입니다</strong>
+                               	</c:if>
                              </div>
                              <div class="form-group">
                                  <label class="block">수량(개)</label>
                                  <input type="number" class="form-control wAuto right text-right mt5" placeholder="수량" id="cart_amt" name="cart_amt" value="1" />
+								<script>
+								if(${ empty items_option }) $("#cart_amt").attr("readonly", true).val("");
+								</script>
                              </div>
 					<div class="form-group goPrice">
 						<del>${ vo.p_price }</del>
 						<strong class="ml20">${ vo.p_sale }원</strong>
 					</div>
 					<div class="form-group btnBox">
-					    <button type="button" class="btn btn-warning" onclick="add_cart(this.form);"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button>
-					    <button type="button" class="btn btn-primary" onclick="demand_one(this.form);return false;"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
+					    <button type="button" id="sendCart" class="btn btn-warning" onclick="add_cart(this.form);"><i class="fa fa-shopping-cart ftWhite"></i> 장바구니</button>
+					    <button type="button" id="sendSale" class="btn btn-primary" onclick="demand_one(this.form);return false;"><i class="fa fa-credit-card ftWhite"></i> 구매하기</button>
+						<script>
+						if(${ empty items_option }){
+							$("#sendCart, #sendSale").hide();
+						}
+						</script>
+						<c:if test="${ empty items_option }">
+							<strong>판매가 완료됬어요 ㅠㅠ</strong>
+						</c:if>
 					</div>
 				</form>
 			</div>

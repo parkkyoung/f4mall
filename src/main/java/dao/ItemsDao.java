@@ -10,6 +10,7 @@ import vo.EvalVo;
 import vo.ItemsViewVo;
 import vo.ItemsVo;
 import vo.ProductVo;
+import vo.StockVo;
 
 @Repository
 public class ItemsDao {
@@ -93,10 +94,5 @@ public class ItemsDao {
 		
 		return i_no;
 	}
-
-
-
-	
-	
 	
 }
