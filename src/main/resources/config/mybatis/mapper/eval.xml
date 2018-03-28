@@ -19,12 +19,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="eval_total" parameterType="int" resultType="java.lang.String">
 		select round(sum(eval_score)/count(*)) from product_eval where p_no = #{ p_no }
+	<select id="eval_total" parameterType="int" resultType="java.lang.Double">
+		select ifnull(round(sum(eval_score)/count(*)),0) from product_eval where p_no = #{ p_no }
 	</select>
-	
-	<!-- 상품평 목록 -->
-	<select id="eval_list" resultType="vo.EvalVo">
-		select * from product_eval order by eval_no desc
-	</select>
+    
+    <!-- 상품평 목록 -->
+    <select id="eval_list" resultType="vo.EvalVo">
+        select * from product_eval order by eval_no desc
+    </select>
+    
+    <!-- 상품평 목록 -->
+    <select id="eval_list_product" parameterType="int" resultType="vo.EvalVo">
+        select * from product_eval where p_no=#{p_no} order by eval_no desc
+    </select>
 	
 	<!-- 상품평 삭제 -->
 	<delete id="eval_delete" parameterType="int">

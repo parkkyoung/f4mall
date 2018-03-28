@@ -65,6 +65,18 @@ public class EvalDao {
 		e_list = sqlSession.selectList("eval_list");
 		return e_list;
 	}
+
+	/**
+	 * 상품별 상품평 리스트
+	 * @param p_no
+	 * @return
+	 */
+	public List<EvalVo> select_list(int p_no) {
+		// TODO Auto-generated method stub
+		List<EvalVo> e_list = null;
+		e_list = sqlSession.selectList("eval_list_product", p_no);
+		return e_list;
+	}
 	
 	/**
 	 * 상품평 삭제
