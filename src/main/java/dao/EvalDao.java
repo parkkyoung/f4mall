@@ -46,9 +46,9 @@ public class EvalDao {
 		return vo;
 	}
 
-	public double eval_total(Integer p_no) {
+	public String eval_total(Integer p_no) {
 		// TODO Auto-generated method stub
-		double avg_eval = 0;
+		String avg_eval = null;
 		
 		avg_eval = sqlSession.selectOne("eval_total",p_no);
 		
@@ -89,6 +89,5 @@ public class EvalDao {
 		res = sqlSession.delete("eval_delete", eval_no);
 		return res;
 	}
-	
 	
 }

@@ -67,7 +67,7 @@ public class DemandController {
 		if(vo == null){
 			int res = cart_dao.cart_insert(map);
 		}
-		if(vo.getCart_amt() != cart_amt){
+		else if(vo.getCart_amt() != cart_amt){
 			int res = cart_dao.update_cart(map);
 		}
 		
@@ -83,7 +83,7 @@ public class DemandController {
 	}
 	
 	@RequestMapping("/demand_insert.do")
-	public String demand_insert(DemandVo vo, Integer [] cart_amt, Integer [] i_no){
+	public String demand_insert(DemandVo vo, Integer [] cart_amt, Integer [] i_no, Model model, Integer [] cart_no, CartVo c_vo){
 		int res = 0;
 		
 		for(int i=0; i<i_no.length; i++){
@@ -91,6 +91,11 @@ public class DemandController {
 			int o_amt = cart_amt[i];
 			vo.setO_amt(o_amt);
 			res = demand_dao.demand_insert(vo);
+			
+			c_vo.setI_no(i_no[i]);
+			c_vo.setCart_no(cart_no[i]);
+			int del_cart = cart_dao.compl_delete(c_vo);
+			
 			StockVo stock_vo =new StockVo();
 			stock_vo.setI_no(i_no[i]);
 			stock_vo.setS_amt(o_amt);
@@ -101,7 +106,9 @@ public class DemandController {
 				e.printStackTrace();
 			}
 		}
+		String m_id = vo.getM_id();
+		model.addAttribute("m_id", m_id);
 		
-		return "redirect:index.do";
+		return "redirect:member_orders.do";
 	}
 }

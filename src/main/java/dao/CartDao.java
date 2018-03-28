@@ -58,15 +58,17 @@ public class CartDao {
 	public int update_cart(Map map) {
 		// TODO Auto-generated method stub
 		int res = 0;
-		
-		/*String str = String.format("update cart set cart_amt =%s where m_id=%s and i_no=%s",
-				                                           map.get("cart_amt"),
-				                                           map.get("m_id"),
-				                                           map.get("i_no")
-				);
-		System.out.println(str);*/
 				
 		res = sqlSession.update("update_cart",map); 
+		
+		return res;
+	}
+
+	public int compl_delete(CartVo c_vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.delete("compl_del",c_vo);
 		
 		return res;
 	}

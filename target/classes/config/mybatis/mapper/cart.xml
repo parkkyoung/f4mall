@@ -24,6 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update cart set cart_amt = #{ cart_amt } where m_id=#{ m_id } and i_no=#{ i_no }
 </update>
 
+<delete id="compl_del" parameterType="vo.CartVo">
+	delete from cart where cart_no = #{ cart_no } and i_no = #{ i_no }
+</delete>
+
 </mapper>
 
 
