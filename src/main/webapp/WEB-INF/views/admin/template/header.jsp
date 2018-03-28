@@ -28,6 +28,18 @@
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> <!-- datatables(bootstrap) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> <!-- datepicker -->
     <script src="${ pageContext.request.contextPath }/resources/admin/js/common.js"></script> <!-- customizing -->
+    
+    <script>
+    // 로그아웃
+    function logout(){
+    	swal({
+    		text : "로그아웃되었습니다.",
+    		icon : "success"
+    	}).then((value) =>{
+    		location.href = "logout_a.do";	
+    	});
+    };
+    </script>
 </head>
 
 <body>
@@ -50,8 +62,7 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li><a href="../index.do"><i class="fa fa-shopping-bag fa-fw"></i> 쇼핑몰</a></li>
-                <li><a href="../logout.do"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
-
+                <li><a href="javascript:logout();"><i class="fa fa-sign-out fa-fw"></i> 로그아웃</a></li>
             </ul>
             <!-- /.navbar-top-links -->
 

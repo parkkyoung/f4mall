@@ -390,12 +390,13 @@ public class MemberController {
 	}
 
 	
+	
 	/**
-	 * 로그아웃체크
+	 *일반회원 로그아웃체크
 	 * @param vo
 	 * @return
 	 */
-	@RequestMapping("/logout.do")
+	@RequestMapping(value="/logout.do")
 	@ResponseBody
 	public String logout(MemberVo vo) {
 
@@ -409,10 +410,30 @@ public class MemberController {
 		String result = "yes";
 		String resultStr = "";
 		resultStr = String.format("[{'result':'%s'}]", result);
-
+		
 		return resultStr;
 	}
 	
+	
+	/**
+	 * 어드민 로그아웃
+	 * @param vo
+	 * @return
+	 */
+	@RequestMapping(value="/admin/logout_a.do")
+	public String logout_a(MemberVo vo) {
+		
+		System.out.println("로그아웃");
+		
+		// 세션 삭제
+		HttpSession session = request.getSession();
+		session.removeAttribute("user");
+		session.removeAttribute("header_cart_list");
+		
+		return "redirect:../index.do";
+	}
+	
+
 	/**
 	 * 어드민 주문목록
 	 * @param model

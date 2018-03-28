@@ -83,7 +83,7 @@
 
 		<!-- 훈철 -->
 		<div class="box">
-			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/img_profile03.jpg" alt="hoon" class="wFull" /></div>
+			<div class="imgBox"><img src="${ pageContext.request.contextPath }/resources/front/img/hoon_profile.jpg" alt="hoon" class="wFull" /></div>
 			<div class="txtBox">
 				<dl>
 					<dt>HOON</dt>

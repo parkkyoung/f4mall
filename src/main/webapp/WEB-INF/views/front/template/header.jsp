@@ -99,7 +99,7 @@ function logout(){
 		                    text : "로그아웃되었습니다.",
 		                    icon : "success",
 		                }).then((value) => {
-		                    location.href = '';
+		                    location.href = 'index.do';
 		                });
 		            }
 		        }
@@ -472,9 +472,9 @@ function update_cart(i_no,cart_amt_i_no){
 					<%-- //회원 이미지 화면 --%>
 					</a>
 						<%-- <img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a> --%>
-						
-				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
+					<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>
+				
 				<%-- //로그인 후에 노출 --%>
 				
                 <%-- 미 로그인 시에 노출 --%>
