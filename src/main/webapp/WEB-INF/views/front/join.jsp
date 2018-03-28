@@ -19,7 +19,7 @@ function checkConfirm(){
 			text : "약관에 동의해주시기 바랍니다.",
 			icon : "info"
 		});
-	} else location.href="/f4mall/member_join_form.do";
+	} else location.href="/member_join_form.do";
 }
 
 </script>
