@@ -1,6 +1,5 @@
 package controller;
 
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -109,14 +108,14 @@ public class ItemsController {
 		List<EvalVo> items_eval = items_dao.select_eval(p_no);
 		List<ItemsViewVo> items_option = items_dao.select_option(p_no);
 		List<EvalVo> possible_eval = eval_dao.possible_eval(map);
-		double avg_score = Math.round(eval_dao.eval_total(p_no));
+		String avg_score = eval_dao.eval_total(p_no);
+		
 
 		model.addAttribute("vo",vo);
 		model.addAttribute("items_eval",items_eval);
 		model.addAttribute("items_option",items_option);
 		model.addAttribute("possible_eval",possible_eval);
 		model.addAttribute("avg_score",avg_score);
-		
 		return "front/goods_view";
 	}
 	

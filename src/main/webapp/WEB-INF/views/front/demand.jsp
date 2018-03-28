@@ -119,6 +119,7 @@ function findAddress() {
 						<tbody>
 							<!-- Loop -->
 							<c:forEach var="d_list" items="${ d_list }">
+							<input type="hidden" name="cart_no" value="${ d_list.cart_no }">
 							<input type="hidden" name="i_no" value="${ d_list.i_no }">
 							<input type="hidden" name="cart_amt" value="${ d_list.cart_amt }">
 							<tr>
