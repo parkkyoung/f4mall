@@ -51,17 +51,7 @@
 		<input type="hidden" name="page" value="${param.page }"> 
 		<input type="hidden" name="m_id" value="${user.m_id}">
 		<input type="hidden" name="b_no" value="${ param.b_no }">
-			<!-- 괄리자만 노출 -->
-			<div class="form-group">
-				<label for="" class="col-sm-2 control-label">공지사항여부</label>
-				<div class="col-sm-10">
-					<select name="b_notice" class="form-control">
-						<option value=0 selected>X</option>
-						<option value=1>O</option>
-					</select>
-				</div>
-			</div>
-
+		<input type="hidden" name="b_notice" value="0">
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">제목</label>
 				<div class="col-sm-10">

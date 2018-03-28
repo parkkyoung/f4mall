@@ -26,23 +26,29 @@ function reply(){
 /* delete */
 function del(){
 	
-	if(confirm('작성하신글을 삭제하시겠습니까?')==false){
-		return;
-	}
-	location.href = "board_delete.do?b_no=${vo.b_no}&page=${param.page}&search=${param.search}&search_text=${param.search_text}";
+	 swal({
+         text : "작성글을 삭제하시겠습니까?",
+         icon : "info",
+         buttons : true
+      }).then((willDelete) =>{
+         if(willDelete) location.href = "board_delete.do?b_no=${vo.b_no}&page=${param.page}&search=${param.search}&search_text=${param.search_text}";
+      });
+   
 
-	return;
-}
+
+};
 /* update */
 function update(){
 	
-	if (confirm('작성하신글을 수정하시겠습니까?') == false) {
-		return;
-	}
-	location.href = "board_update_form.do?b_no=${vo.b_no}&page=${param.page}&search_text=${param.search_text}";
-
-	return;
-}
+	 swal({
+         text : "작성글을 수정하시겠습니까?",
+         icon : "info",
+         buttons : true
+      }).then((willDelete) =>{
+         if(willDelete) location.href = "board_update_form.do?b_no=${vo.b_no}&page=${param.page}&search_text=${param.search_text}";
+      });
+	
+};
 /* comment_list_page*/
  function comment_list(){
 	$.ajax({
@@ -140,7 +146,7 @@ $(document).ready(function(){
 
 		<!-- 작성자 or 관리자만 노출 -->
 		<div class="btnBox">
-			<c:if test="${uesr.m_id eq vo.m_id || user.m_grade eq 1}">
+			<c:if test="${user.m_id eq vo.m_id || user.m_grade eq 1}">
 			<button type="button" class="btn btn-danger" onclick="del()">삭제</button>
 			<button type="button" onclick="update()" class="btn btn-primary">수정</button>
 			</c:if>

@@ -27,10 +27,16 @@
 			f.b_content.focus();
 			return;
 		}
+		
+		swal({
+	         text : "글을 작성하시겠습니까?",
+	         icon : "info",
+	         buttons : true
+	      }).then((willDelete) =>{
+	         if(willDelete) f.submit();
+	      });
+};
 
-		f.submit();
-
-	}
 </script>
 
 <!-- visual -->
