@@ -4,7 +4,24 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@include file="template/header.jsp" %>
-			
+
+<%-- 관리자 페이지 접속 오류 --%>
+<script>
+if(${param.admin == 'none'}){
+	swal({
+		text : "관리자로 로그인하여 주시기 바랍니다.",
+		icon : "info"
+	}).then((value) =>{
+		$("#loginPop").modal();
+	});
+} else if (${param.admin == 'normal'}){
+	swal({
+        text : "일반 유저는 관리자 페이지에 접속하실 수 없습니다.",
+        icon : "error"
+    });
+}
+</script>
+
 <!-- visual -->
 <section class="mainVisual">
 	<video autoplay="" muted="" preload="true" loop="" class="wFull"><source src="${ pageContext.request.contextPath }/resources/front/img/visual.mp4" type="video/mp4"></video>

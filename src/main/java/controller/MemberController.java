@@ -294,7 +294,7 @@ public class MemberController {
 
 		int res = member_dao.insert_id(vo);
 
-		return "redirect:goods_list.do";
+		return "redirect:member_list.do";
 	}
 
 	
