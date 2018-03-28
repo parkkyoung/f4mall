@@ -333,19 +333,6 @@ function update_cart(i_no,cart_amt_i_no){
 	<c:if test="${ not empty user }">	
 	<div class="mHead">
 		<div class="imgBox">
-		   
-		    <!-- <script type="text/javascript">
-		       alert('${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg');
-		    </script> -->
-			<!-- 회원 이미지 화면 -->
-			<%-- <c:if test="${ user.m_image eq 'no_file' }">
-				<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
-			</c:if>
-			
-			<c:if test="${ user.m_image ne 'no_file' }">
-					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
-			</c:if> --%>
-			
 				<c:if test="${ user.m_image eq 'no_file' }">
 				   		<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
 				</c:if>
@@ -353,10 +340,6 @@ function update_cart(i_no,cart_amt_i_no){
               	<c:if test="${ user.m_image ne 'no_file' }">
 					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
 				</c:if> 
-				
-				<%-- <c:otherwise>
-					<img src="${ pageContext.request.contextPath }/resources/front/img/sample/sampleImage.jpg"  alt="profile" class="wFull" />
-				</c:otherwise> --%>
 			
 			<!-- //회원 이미지 화면 -->
 		</div>
@@ -470,8 +453,7 @@ function update_cart(i_no,cart_amt_i_no){
 					</c:if> 
 					
 					<%-- //회원 이미지 화면 --%>
-					</a>
-						<%-- <img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="user thumbnail" class="wFull" /></a> --%>
+				</a>
 						
 				<button type="button" title="logout"><i class="fa fa-unlock" onclick="logout();"></i></button>
 				</c:if>

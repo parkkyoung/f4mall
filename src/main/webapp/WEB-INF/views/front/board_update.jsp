@@ -26,10 +26,14 @@ function send(f){
 		return;
 	}
 
-	
-	if(confirm('정말 수정하시겠습니까?')==false){return;}else{
-	f.submit();}
-}
+		swal({
+	         text : "수정하시겠습니까?",
+	         icon : "info",
+	         buttons : true
+	      }).then((willDelete) =>{
+	         if(willDelete) f.submit();
+	      });
+	   };
 </script>
 
 <!-- visual -->
@@ -53,16 +57,7 @@ function send(f){
 		<input type="hidden" name="page" value="${param.page }">
 		<input type="hidden" name="search" value="${param.search }">
 		<input type="hidden" name="search_text" value="${param.search_text }">
-			<!-- 괄리자만 노출 -->
-			<div class="form-group">
-				<label for="" class="col-sm-2 control-label">공지사항여부</label>
-				<div class="col-sm-10">
-					<select class="form-control">
-						<option value="" selected>X</option>
-						<option value="">O</option>
-					</select>
-				</div>
-			</div>
+		<input type="hidden" name="b_notice" value="0">
 
 			<div class="form-group">
 				<label for="" class="col-sm-2 control-label">작성자 ID</label>
