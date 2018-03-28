@@ -287,13 +287,6 @@ function update_cart(i_no,cart_amt_i_no){
 										<input type="password" class="form-control" id="m_pwd" name="m_pwd" placeholder="Password" value="f4mall" onkeyup="if(window.event.keyCode == 13) login(this.form);" />
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10 col-xs-offset-3 col-xs-9">
-										<div class="checkbox">
-											<label><input type="checkbox"> Remember me</label>
-										</div>
-									</div>
-								</div>
 						</div>
 					</div>
                     <!-- //팝업 contents -->
