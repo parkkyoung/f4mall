@@ -10,8 +10,8 @@
 <script>
 // 상품수정
 function goodsUpdate(f){
-    
     var p_name = f.p_name.value;
+    var s_amt = f.s_amt.value;
     var p_content= CKEDITOR.instances.p_content.getData();
     var p_price = f.p_price.value;
     var p_pdate= f.p_pdate.value;
@@ -29,6 +29,14 @@ function goodsUpdate(f){
     } else if(p_content == ''){
         swal({
             text : "상품 설명을 입력해주세요",
+            icon : "error"
+        }).then((value) =>{
+            f.p_content.focus();
+            return;
+        });
+    }else if(s_amt == ''){
+        swal({
+            text : "입고 수량을 입력해주세요",
             icon : "error"
         }).then((value) =>{
             f.p_content.focus();
@@ -94,7 +102,8 @@ function goodsDelete(p_no){
 
 //아이템등록
 function itemInsert(f){
- 
+
+ var s_amt = f.s_amt.value;
  var sizeCheck = false;
  var colorCheck = false;
  var categoryCheck = false;
@@ -132,32 +141,40 @@ function itemInsert(f){
  if(sizeCheck == false){
      swal({
          text : "사이즈를 선택해주세요",
-         icon : "info"
+         icon : "error"
+     });
+ } else if(s_amt == ''){
+     swal({
+         text : "입고 수량을 입력해주세요",
+         icon : "error"
+     }).then((value) =>{
+         f.s_amt.focus();
+         return;
      });
  } else if(colorCheck == false){
      swal({
          text : "색상를 선택해주세요",
-         icon : "info"
+         icon : "error"
      });
  } else if(categoryCheck == false){
      swal({
          text : "카테고리를 선택해주세요",
-         icon : "info"
+         icon : "error"
      });
  } else if(sexCheck == false){
      swal({
          text : "성별을 선택해주세요",
-         icon : "info"
+         icon : "error"
      });
  } else if(brandCheck == false){
      swal({
          text : "브랜드를 선택해주세요",
-         icon : "info"
+         icon : "error"
      });
  } else if(materialCheck == false){
      swal({
          text : "재질을 선택해주세요",
-         icon : "info"
+         icon : "error"
      });
  } else {
      swal({
@@ -178,15 +195,22 @@ function itemsDelete(i_no, p_no){
      buttons : true
  }).then((willDelete) =>{
      if(willDelete){
-         swal({
-             text : "삭제되었습니다.",
-             icon : "success"
-         }).then((value) =>{
-             location.href = "items_delete.do?i_no="+i_no+"&p_no="+p_no;
-         });
+    	 location.href = "items_delete.do?i_no="+i_no+"&p_no="+p_no;
      };
  });
 };
+
+// 상품평
+var star ="";
+function eval_delete(eval_no){
+    swal({
+        text : "정말 삭제하시겠습니까?",
+        icon : "info",
+        buttons : true
+    }).then((willDelete) =>{
+        if(willDelete) location.href = "eval_delete.do?eval_no="+eval_no;
+    });
+}
 </script>
 
 <!-- page title -->
@@ -311,7 +335,7 @@ function itemsDelete(i_no, p_no){
                     <td><c:out value="${list.material_name}"/></td>
                     <td><c:out value="${list.size_name}"/></td>
                     <td><c:out value="${list.color_name}"/></td>
-                    <td><input type="button" value="재고등록" onclick="location.href='goods_stock_form.do?i_no=${ list.i_no }'"></td>
+                    <td><button type="button" onclick="location.href='goods_stock_form.do?i_no=${ list.i_no }'" class="btn btn-warning btn-sm">재고등록</button></td>
                     <td><button type="button" class="btn btn-danger btn-sm" onclick="itemsDelete(<c:out value='${list.i_no}'/>, <c:out value='${list.p_no}'/>)">삭제</button></td>
                 </tr>
                 </c:forEach>
@@ -328,6 +352,10 @@ function itemsDelete(i_no, p_no){
         <input type="hidden" name="p_no" value="${vo.p_no}" />
         <div class="row">
             <div class="col-lg-6">
+            	<div class="form-group">
+					<label>입고수량</label>
+					<input type="number" class="form-control" name="s_amt" id="s_amt" value="1" />
+				</div>
                 <div class="form-group">
                     <label for="">사이즈</label>
                     <div class="checkbox">
@@ -379,6 +407,7 @@ function itemsDelete(i_no, p_no){
                         </c:forEach>
                     </div>
                 </div>
+
                 <div class="form-group text-right">
                     <button type="button" class="btn btn-primary" onclick="itemInsert(this.form);">아이템등록</button>
                 </div>
@@ -387,5 +416,46 @@ function itemsDelete(i_no, p_no){
     </form>
 </div>
 <!-- //아이템등록 -->
+
+<!-- 상품평 -->
+<div class="panel panel-default">
+
+    <div class="panel-heading">상품평</div>
+    
+    <div class="panel-body">
+        <div class="panel-group">
+        
+            <c:if test="${empty e_list}">
+                <div class="text-center">상품평이 없어요 ㅠ</div>
+            </c:if>
+            
+            <c:forEach var="list" items="${e_list}">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title clearfix">
+                        <div class="pTitle pull-left">
+                            <a data-toggle="collapse" href="#eb01_${list.eval_no}" class="block"><c:out value="${list.eval_title}"/></a>
+                            <small><a href="member_update_form.do?m_id=<c:out value='${list.m_id}'/>"><c:out value="${list.m_id}"/></a></small>
+                            <small>★★★★★</small>
+                        </div>
+                        <div class="pull-right">
+                            <div class="pDate"><c:out value="${list.eval_regdate}"/></div>
+                            <button class="btn btn-danger" onclick="eval_delete(${list.eval_no})">삭제</button>
+                        </div>
+                    </h4>
+                </div>
+                <div id="eb01_${list.eval_no}" class="collapse in">
+                    <div class="panel-body">
+                        <p><c:out value="${list.eval_content}"/></p>
+                    </div>
+                </div>
+            </div>
+            </c:forEach>
+            
+        </div>
+    </div>
+    
+</div>
+<!-- //상품평 -->
 
 <%@include file="template/footer.jsp" %>

@@ -84,6 +84,18 @@ public class ItemsDao {
 		
 		return vo;
 	}
+
+	public int get_i_no() {
+		// TODO Auto-generated method stub
+		int i_no = 0;
+		
+		i_no = sqlSession.selectOne("max_i_no");
+		
+		return i_no;
+	}
+
+
+
 	
 	
 	

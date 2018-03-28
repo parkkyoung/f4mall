@@ -29,6 +29,18 @@
 		<beans:property name="test_dao" ref="test_daoBean"/>
 	</beans:bean> -->
 	
-	
+	<!-- interceptor처리할 객체 -->
+    <beans:bean id="admin_interceptor" 
+                class="interceptor.AdminCheckInterceptor"/>
+    
+    <!-- interceptor지정 -->
+    <interceptors>
+        
+        <interceptor>
+            <mapping path="/admin/*"/>
+            <beans:ref bean="admin_interceptor" />
+        </interceptor>
+        
+    </interceptors>
 	
 </beans:beans>

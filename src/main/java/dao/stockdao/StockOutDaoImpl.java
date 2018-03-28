@@ -60,4 +60,10 @@ public class StockOutDaoImpl implements StockDao{
 		return res;
 	}
 
+	@Override
+	public int insert2(StockVo vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

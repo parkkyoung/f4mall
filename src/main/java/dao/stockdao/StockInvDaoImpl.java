@@ -64,4 +64,15 @@ public class StockInvDaoImpl implements StockDao{
 		
 		return 0;
 	}
+
+	@Override
+	public int insert2(StockVo vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		
+		res = sqlSession.insert("insert_inv_stock2",vo);
+		
+		return res;
+	}
+
 }

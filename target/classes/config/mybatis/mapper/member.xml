@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 전체목록 -->
 	<select id="member_list" resultType="vo.MemberVo">
-		select * from member
+		select * from member order by m_id asc
 	</select>
 	
 	<!-- 아이디 체크 -->
@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 주문 목록 -->
 	<select id="mo_list" resultType="vo.DemandVo">
-		select * from demand
+		select * from demand order by o_no desc
 	</select>
     
     <!-- 회원 주문 목록 -->

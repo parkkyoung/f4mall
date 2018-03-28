@@ -44,9 +44,26 @@ public class StockServiceImpl implements StockService{
 		res = stock_dao_in.insert(vo);
 		
 		StockVo inv_vo = stock_dao_inv.select_one(vo.getI_no());
-		System.out.println(inv_vo);
 		if(inv_vo==null){
 			res = stock_dao_inv.insert(vo);
+		}else{
+			int amt = inv_vo.getS_amt() + vo.getS_amt();
+			inv_vo.setS_amt(amt);
+			res = stock_dao_inv.update(inv_vo);
+		}
+		
+		return res;
+	}
+
+	@Override
+	public int insert_in_stock2(StockVo vo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		res = stock_dao_in.insert2(vo);
+		
+		StockVo inv_vo = stock_dao_inv.select_one(vo.getI_no());
+		if(inv_vo==null){
+			res = stock_dao_inv.insert2(vo);
 		}else{
 			int amt = inv_vo.getS_amt() + vo.getS_amt();
 			inv_vo.setS_amt(amt);
