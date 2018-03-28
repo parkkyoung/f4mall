@@ -18,8 +18,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="eval_total" parameterType="int" resultType="java.lang.String">
-		select round(sum(eval_score)/count(*)) from product_eval where p_no = #{ p_no }
-	<select id="eval_total" parameterType="int" resultType="java.lang.Double">
 		select ifnull(round(sum(eval_score)/count(*)),0) from product_eval where p_no = #{ p_no }
 	</select>
     

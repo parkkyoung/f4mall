@@ -195,15 +195,22 @@ function itemsDelete(i_no, p_no){
      buttons : true
  }).then((willDelete) =>{
      if(willDelete){
-         swal({
-             text : "삭제되었습니다.",
-             icon : "success"
-         }).then((value) =>{
-             location.href = "items_delete.do?i_no="+i_no+"&p_no="+p_no;
-         });
+    	 location.href = "items_delete.do?i_no="+i_no+"&p_no="+p_no;
      };
  });
 };
+
+// 상품평
+var star ="";
+function eval_delete(eval_no){
+    swal({
+        text : "정말 삭제하시겠습니까?",
+        icon : "info",
+        buttons : true
+    }).then((willDelete) =>{
+        if(willDelete) location.href = "eval_delete.do?eval_no="+eval_no;
+    });
+}
 </script>
 
 <!-- page title -->
@@ -409,5 +416,46 @@ function itemsDelete(i_no, p_no){
     </form>
 </div>
 <!-- //아이템등록 -->
+
+<!-- 상품평 -->
+<div class="panel panel-default">
+
+    <div class="panel-heading">상품평</div>
+    
+    <div class="panel-body">
+        <div class="panel-group">
+        
+            <c:if test="${empty e_list}">
+                <div class="text-center">상품평이 없어요 ㅠ</div>
+            </c:if>
+            
+            <c:forEach var="list" items="${e_list}">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title clearfix">
+                        <div class="pTitle pull-left">
+                            <a data-toggle="collapse" href="#eb01_${list.eval_no}" class="block"><c:out value="${list.eval_title}"/></a>
+                            <small><a href="member_update_form.do?m_id=<c:out value='${list.m_id}'/>"><c:out value="${list.m_id}"/></a></small>
+                            <small>★★★★★</small>
+                        </div>
+                        <div class="pull-right">
+                            <div class="pDate"><c:out value="${list.eval_regdate}"/></div>
+                            <button class="btn btn-danger" onclick="eval_delete(${list.eval_no})">삭제</button>
+                        </div>
+                    </h4>
+                </div>
+                <div id="eb01_${list.eval_no}" class="collapse in">
+                    <div class="panel-body">
+                        <p><c:out value="${list.eval_content}"/></p>
+                    </div>
+                </div>
+            </div>
+            </c:forEach>
+            
+        </div>
+    </div>
+    
+</div>
+<!-- //상품평 -->
 
 <%@include file="template/footer.jsp" %>

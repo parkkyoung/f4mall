@@ -229,14 +229,12 @@
 			return;
 		}
 
-		f.action = 'member_insert.do';
-		f.submit();
-
 		swal({
 			text : "회원가입이 완료되었습니다.",
 			icon : "success",
 		}).then((value) => {
-			location.href = "product_list.do";
+			f.action = 'member_insert.do';
+	        f.submit();
 		});
 	};
 	

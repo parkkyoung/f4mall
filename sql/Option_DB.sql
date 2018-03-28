@@ -59,7 +59,7 @@ use f4mall;
 select * from items where category_no=1
 
 use f4mall;
-select * from category
+select * from brand
 
 use f4mall;
 select * from items
