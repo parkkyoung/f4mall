@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -66,3 +67,73 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+
+	<select id="stock_in_list" parameterType="java.util.Map" resultType="vo.StockVo">
+		select * from stock_view_in order by stock_no desc
+	</select>
+	
+	<select id="stock_out_list" parameterType="java.util.Map" resultType="vo.StockVo">
+		select * from stock_view_out order by stock_no desc
+	</select>
+	
+	<select id="stock_inv_list" parameterType="java.util.Map" resultType="vo.StockVo">
+		select * from stock_view_inv order by stock_no desc
+	</select>
+
+	<insert id="insert_in_stock" parameterType="vo.StockVo">
+		insert into stock_in (s_amt,s_regdate,i_no) values (#{ s_amt }, #{ s_regdate }, #{ i_no })
+	</insert>
+	
+	<insert id="insert_inv_stock" parameterType="vo.StockVo">
+		insert into stock_inv (s_amt,s_regdate,i_no) values (#{ s_amt }, #{ s_regdate }, #{ i_no })
+	</insert>
+	
+	<insert id="insert_inv_stock2" parameterType="vo.StockVo">
+		insert into stock_inv (s_amt,s_regdate,i_no) values (#{ s_amt }, now(), #{ i_no })
+	</insert>
+	
+	<insert id="insert_in_stock2" parameterType="vo.StockVo">
+		insert into stock_in (s_amt,s_regdate,i_no) values (#{ s_amt }, now(), #{ i_no })
+	</insert>
+	
+	<insert id="insert_out_stock" parameterType="vo.StockVo">
+		insert into stock_out (s_amt,s_regdate,i_no) values (#{ s_amt }, #{ s_regdate }, #{ i_no })
+	</insert>
+	
+	<update id="update_inv_stock" parameterType="vo.StockVo">
+		update stock_inv set s_amt = #{ s_amt } 
+		where i_no = #{ i_no }
+	</update>
+	
+	<select id="select_one_inv" parameterType="int" resultType="vo.StockVo">
+		select * from stock_inv where i_no = #{ i_no }
+	</select>
+	
+	<delete id="delete_in_stock" parameterType="vo.StockVo">
+		delete from stock_in where stock_no = #{ stock_no }
+	</delete>
+	
+	<delete id="delete_out_stock" parameterType="vo.StockVo">
+		delete from stock_out where stock_no = #{ stock_no }
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall

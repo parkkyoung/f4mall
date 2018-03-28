@@ -5,13 +5,18 @@
 <script type="text/javascript">
 
 function comment_del(c_no){
-	
-	if(confirm('댓글을 삭제하시겠습니까?')==false){
-		return;
-	}
-	location.href = 'board_comment_delete.do?c_no='+c_no+'&b_no=${param.b_no}&page=${ param.page }';
-}
-
+	   
+	   if('${user.m_id == co.m_id} || ${user.m_grade == 1}'){
+	      swal({
+	         text : "댓글을 삭제하시겠습니까?",
+	         icon : "info",
+	         buttons : true
+	      }).then((willDelete) =>{
+	         if(willDelete) location.href = 'board_comment_delete.do?c_no='+c_no+'&b_no=${param.b_no}&page=${ param.page }';
+	      });
+	   };
+	   
+};
 </script>
 <!-- 댓글목록 -->
 <input type="hidden" name="page" value="${param.page}">
@@ -28,13 +33,13 @@ function comment_del(c_no){
 			<tr>
 				<td class="cImg">
 					<%-- 회원 이미지 화면 --%>
-					<c:if test="${ user.m_image eq 'no_file' }">
+					<c:if test="${ co.c_image eq 'no_file'}">
 				   
 					<img src="${ pageContext.request.contextPath }/resources/upload/sampleImage.jpg" alt="profile" class="wFull" />
 					</c:if>
 					
-					<c:if test="${ user.m_image ne 'no_file' }">
-					<img src="${ pageContext.request.contextPath }/resources/upload/${user.m_image}" alt="profile" class="wFull" />
+					<c:if test="${ co.c_image ne 'no_file'}">
+					<img src="${ pageContext.request.contextPath }/resources/upload/${co.c_image}" alt="profile" class="wFull" />
 				
 					</c:if>
 					<%-- //회원 이미지 화면 --%>

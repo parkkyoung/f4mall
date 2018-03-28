@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -55,3 +56,61 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+
+    <select id="items_list" resultType="vo.ItemsVo">
+        select * from items_list where p_no=#{p_no}
+    </select>
+    
+    <insert id="items_insert" parameterType="vo.ItemsVo">
+        insert into items(
+            p_no, category_no, material_no, color_no,
+            sex_no, brand_no, size_no
+        ) values(
+            #{p_no}, #{category_no}, #{material_no}, #{color_no},
+            #{sex_no}, #{brand_no}, #{size_no}
+        )
+    </insert>
+    
+    <delete id="items_delete" parameterType="int">
+        delete from items where i_no=#{i_no}
+    </delete>
+
+	<select id="select_product" parameterType="int" resultType="vo.ProductVo">
+		select * from product where p_no = #{ p_no }
+	</select>
+	
+	<select id="items_option" parameterType="int" resultType="vo.ItemsViewVo">
+		select * from items_view where p_no = #{ p_no }
+	</select>
+	
+	<select id="items_eval" parameterType="int" resultType="vo.EvalVo">
+		select * from product_eval where p_no = #{ p_no } order by eval_no desc
+	</select>
+	
+	<select id="check_stock" parameterType="int" resultType="vo.ItemsViewVo">
+		select * from items_view where i_no = #{ i_no }
+	</select>
+	
+	<select id="max_i_no" parameterType="vo.ItemsVo" resultType="int">
+		select ifnull(max(i_no),0) from items
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall

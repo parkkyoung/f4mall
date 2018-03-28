@@ -46,6 +46,7 @@ public class EvalDao {
 		return vo;
 	}
 
+<<<<<<< HEAD
 	public double eval_total(Integer p_no) {
 		// TODO Auto-generated method stub
 		double avg_eval = 0;
@@ -88,7 +89,50 @@ public class EvalDao {
 		int res = 0;
 		res = sqlSession.delete("eval_delete", eval_no);
 		return res;
+=======
+	public String eval_total(Integer p_no) {
+		// TODO Auto-generated method stub
+		String avg_eval = null;
+		
+		avg_eval = sqlSession.selectOne("eval_total",p_no);
+		
+		return avg_eval;
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
 	}
 	
+	/**
+	 * 상품평 리스트
+	 * @return
+	 */
+	public List<EvalVo> select_list() {
+		// TODO Auto-generated method stub
+		List<EvalVo> e_list = null;
+		e_list = sqlSession.selectList("eval_list");
+		return e_list;
+	}
+
+	/**
+	 * 상품별 상품평 리스트
+	 * @param p_no
+	 * @return
+	 */
+	public List<EvalVo> select_list(int p_no) {
+		// TODO Auto-generated method stub
+		List<EvalVo> e_list = null;
+		e_list = sqlSession.selectList("eval_list_product", p_no);
+		return e_list;
+	}
+	
+	/**
+	 * 상품평 삭제
+	 * @param eval_no
+	 * @return
+	 */
+	public int eval_delete(int eval_no) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		res = sqlSession.delete("eval_delete", eval_no);
+		return res;
+	}
 	
 }

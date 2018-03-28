@@ -168,7 +168,7 @@ public class MemberController {
 
 		int res = member_dao.insert_id(vo);
 
-		return "redirect:product_list.do";
+		return "redirect:index.do";
 	}
 
 	

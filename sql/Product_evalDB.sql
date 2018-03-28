@@ -17,8 +17,15 @@ use f4mall;
 select * from stock_in
 
 use f4mall;
+<<<<<<< HEAD
 select sum(eval_score)/count(*) as average_eval from product_eval where p_no = 44
 where m_id = 'admin@f4mall.com' and o_status = 0
+=======
+select round(sum(eval_score)/count(*)) as average_eval from product_eval where p_no = 39
+where m_id = 'admin@f4mall.com' and o_status = 0
+
+select round(sum(eval_score)/count(*)) from product_eval where p_no = #{ p_no }
+>>>>>>> branch 'master' of https://github.com/parkkyoung/f4mall
 
 use f4mall;
 alter table product_eval add constraint fk_pep_no foreign key
