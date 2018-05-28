@@ -1,11 +1,13 @@
 # F4mall
 
-º» ÇÁ·ÎÁ§Æ®´Â Æ÷Æ®Æú¸®¿À¿ë ¼îÇÎ¸ô ÇÁ·ÎÁ§Æ®ÀÔ´Ï´Ù.
+ë³¸ í”„ë¡œì íŠ¸ëŠ” í¬íŠ¸í´ë¦¬ì˜¤ìš© ì‡¼í•‘ëª° í”„ë¡œì íŠ¸ì…ë‹ˆë‹¤.
 
-Âü¿© °³¹ßÀÚ : ¹Ú°æ¹Î, ½ÅÈÆÃ¶, ¼­´ö¿ø, ±èºÀ¼º
+ì°¸ì—¬ ê°œë°œì : ë°•ê²½ë¯¼, ì‹ í›ˆì² , ì„œë•ì›, ê¹€ë´‰ì„±
 
-È£½ºÆÃ µµ¸ŞÀÎ :   http://chopine.cafe24.com/
+í˜¸ìŠ¤íŒ… ë„ë©”ì¸ :   http://chopine.cafe24.com/
 
 ppt : http://chopine.cafe24.com/resources/file/F4mall.pptx.pdf
 
 work plan : http://chopine.cafe24.com/resources/file/F4mall.excel.pdf
+
+publishing url : http://chopin77.dothome.co.kr/f4
